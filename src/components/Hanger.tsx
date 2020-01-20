@@ -29,7 +29,7 @@ const Hanger = ({ before = null, parent = null, hidden = false }) => {
     }
     navigate.navigate(url.join("/"));
 
-    // addNode(
+    // api.getState().addNode(
     //   {
     //     id: Math.random().toString(),
     //     $t: TYPES.Statement,
@@ -43,7 +43,8 @@ const Hanger = ({ before = null, parent = null, hidden = false }) => {
   const handleContext = e => {
     e.preventDefault();
     api.getState().pasteNode(parent, before);
-    // addNode(
+
+    // api.getState().addNode(
     //   {
     //     id: Math.random().toString(),
     //     $t: TYPES.Portal,

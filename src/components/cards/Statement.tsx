@@ -57,8 +57,10 @@ const Statement = ({ id, node, parent = null }) => {
 
   if (!node) return null;
 
-  const handleClick = _e => {
+  const handleClick = e => {
     // api.getState().removeNode(id);
+    e.preventDefault();
+    e.stopPropagation();
 
     const { pathname } = navigate.getCurrentValue().url;
     let url = [pathname, "statements", id, "edit"];
@@ -70,6 +72,7 @@ const Statement = ({ id, node, parent = null }) => {
 
   const handleContext = e => {
     e.preventDefault();
+    e.stopPropagation();
     api.getState().copyNode(id);
   };
 

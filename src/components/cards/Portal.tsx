@@ -2,7 +2,7 @@ import classNames from "classnames";
 import React from "react";
 import { useDrag } from "react-dnd";
 import { useNavigation } from "react-navi";
-import { TYPES } from "../../lib/store";
+import { api, TYPES } from "../../lib/store";
 import Hanger from "../Hanger";
 
 const Portal = ({ id, node, parent = null }) => {
@@ -25,11 +25,16 @@ const Portal = ({ id, node, parent = null }) => {
     navigate.navigate([pathname, id].join(","));
   };
 
+  const handleContext = e => {
+    e.preventDefault();
+    api.getState().copyNode(id);
+  };
+
   return (
     <>
       <Hanger before={id} parent={parent} hidden={isDragging} />
       <li className={classNames("Portal", { isDragging })}>
-        <div onClick={handleClick} ref={drag}>
+        <div onClick={handleClick} onContextMenu={handleContext} ref={drag}>
           {node.text}
         </div>
       </li>

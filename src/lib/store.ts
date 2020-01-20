@@ -19,7 +19,7 @@ const jdiff = jsondiffpatch.create({
   objectHash: obj => obj.id || JSON.stringify(obj)
 });
 
-const g = new Graph({ directed: true });
+const g = new Graph({ directed: true, multigraph: false });
 window["g"] = g;
 g.setNode("null");
 
@@ -29,10 +29,10 @@ const removeOrphans = ids => {
     const overlap = root.some(value => other.includes(value));
     if (!overlap) {
       other.forEach(id => {
-        ids.push(id);
+        ids.add(id);
         g.removeNode(id);
       });
-      removeOrphans(ids);
+      return removeOrphans(ids);
     }
   });
 };
@@ -40,6 +40,8 @@ const removeOrphans = ids => {
 console.time("loading flow and initializing store");
 const flow = JSON.parse(localStorage.getItem("flow")) || {
   name: undefined,
+  // nodes: {},
+  // edges: []
   nodes: {
     a: {
       $t: TYPES.Statement,
@@ -71,6 +73,30 @@ const flow = JSON.parse(localStorage.getItem("flow")) || {
   ]
 };
 
+// const withGraph = config => (set, get, api) =>
+//   config(
+//     args => {
+//       if (get())
+//       // console.log("  applying", args);
+//       set(args);
+//       // console.log("  new state", get());
+//     },
+//     get,
+//     api
+//   );
+
+const checkGraph = oldGraph => {
+  const edgesLength = oldGraph.edges().length;
+  return () => {
+    if (!alg.isAcyclic(g)) {
+      throw "CYCLE";
+    }
+    if (edgesLength === g.edges().length) {
+      throw "EDGES";
+    }
+  };
+};
+
 export const [useStore, api] = create(set => ({
   flow,
 
@@ -81,17 +107,25 @@ export const [useStore, api] = create(set => ({
   pasteNode: (parent, before) => {
     const id = localStorage.getItem("clipboard");
     if (id && state.flow.nodes[id]) {
-      const edge = [parent, id];
-      if (before) {
-        const idx = state.flow.edges.findIndex(
-          ([src, tgt]) => src === parent && tgt === before
-        );
-        state.flow.edges.splice(idx, 0, edge);
-      } else {
-        state.flow.edges.push(edge);
-      }
+      const check = checkGraph(g);
+      g.setEdge(parent, id);
+      try {
+        check();
 
-      console.log(edge);
+        set(state => {
+          const edge = [parent, id];
+          if (before) {
+            const idx = state.flow.edges.findIndex(
+              ([src, tgt]) => src === parent && tgt === before
+            );
+            state.flow.edges.splice(idx, 0, edge);
+          } else {
+            state.flow.edges.push(edge);
+          }
+        });
+      } catch (e) {
+        alert("cannot paste there");
+      }
     }
   },
 
@@ -99,7 +133,7 @@ export const [useStore, api] = create(set => ({
     set(state => (state.flow.name = name));
   },
 
-  addNode: ({ id, node }, parent = null, before = null) => {
+  addNode: ({ id, ...node }, parent = null, before = null) => {
     g.setNode(id);
     g.setEdge(parent, id);
     set(state => {
@@ -118,16 +152,28 @@ export const [useStore, api] = create(set => ({
   },
 
   removeNode: id => {
-    console.info({ remove: id });
     const origEdges = g.edges();
     g.removeNode(id);
-    const ids = [id];
+    const ids = new Set([id]);
     removeOrphans(ids);
     const edgesDiff = jdiff.diff(origEdges, g.edges());
 
     set(state => {
       ids.forEach(id => delete state.flow.nodes[id]);
-      jdiff.patch(state.flow.edges, edgesDiff);
+      Object.values(edgesDiff).forEach(v => {
+        if (Array.isArray(v)) {
+          const s = v[0].v === "null" ? null : v[0].v;
+          const t = v[0].w === "null" ? null : v[0].w;
+          const i = state.flow.edges.findIndex(
+            ([src, tgt]) => src === s && tgt === t
+          );
+          if (i >= 0) {
+            state.flow.edges.splice(i, 1);
+          } else {
+            console.error("edge not found", v);
+          }
+        }
+      });
     });
   },
 
@@ -141,26 +187,39 @@ export const [useStore, api] = create(set => ({
   moveNode: (src, tgt, newSrc, before = null) => {
     // const origEdges = g.edges();
     // const edgesDiff = jdiff.diff(origEdges, g.edges());
+
     g.removeEdge(src, tgt);
+
+    const check = checkGraph(g);
     g.setEdge(newSrc, tgt);
+    try {
+      check();
 
-    set(state => {
-      const toRemoveIdx = state.flow.edges.findIndex(
-        ([eSrc, eTgt]) => eSrc === src && eTgt === tgt
-      );
-      state.flow.edges.splice(toRemoveIdx, 1);
-
-      const edge = [newSrc, tgt];
-      if (before) {
-        const idx = state.flow.edges.findIndex(
-          ([src, tgt]) => src === newSrc && tgt === before
+      set(state => {
+        const toRemoveIdx = state.flow.edges.findIndex(
+          ([eSrc, eTgt]) => eSrc === src && eTgt === tgt
         );
-        state.flow.edges.splice(idx, 0, edge);
+        state.flow.edges.splice(toRemoveIdx, 1);
+
+        const edge = [newSrc, tgt];
+        if (before) {
+          const idx = state.flow.edges.findIndex(
+            ([src, tgt]) => src === newSrc && tgt === before
+          );
+          state.flow.edges.splice(idx, 0, edge);
+        } else {
+          state.flow.edges.push(edge);
+        }
+        // jdiff.patch(state.flow.edges, edgesDiff);
+      });
+    } catch (e) {
+      g.setEdge(src, tgt);
+      if (e === "EDGES") {
+        alert("edge already exists here");
       } else {
-        state.flow.edges.push(edge);
+        g.removeEdge(newSrc, tgt);
       }
-      // jdiff.patch(state.flow.edges, edgesDiff);
-    });
+    }
   }
 }));
 console.timeEnd("loading flow and initializing store");
@@ -186,3 +245,5 @@ api.subscribe(
   state => JSON.stringify(state.flow)
 );
 console.timeEnd("subscribing to changes");
+
+// console.log(alg.isAcyclic(g));
