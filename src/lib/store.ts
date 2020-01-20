@@ -2,13 +2,6 @@ import { alg, Graph } from "graphlib";
 import * as jsondiffpatch from "jsondiffpatch";
 import create from "zustand";
 
-// import onChange from "../lib/proxy";
-// const flow1 = {
-//   a: 1
-// };
-// const changeable = onChange(flow1, console.log);
-// changeable.a = 2;
-
 export const TYPES = {
   Statement: 100,
   Response: 200,
@@ -72,18 +65,6 @@ const flow = JSON.parse(localStorage.getItem("flow")) || {
     [null, "e"]
   ]
 };
-
-// const withGraph = config => (set, get, api) =>
-//   config(
-//     args => {
-//       if (get())
-//       // console.log("  applying", args);
-//       set(args);
-//       // console.log("  new state", get());
-//     },
-//     get,
-//     api
-//   );
 
 const checkGraph = oldGraph => {
   const edgesLength = oldGraph.edges().length;
