@@ -1,8 +1,22 @@
+import classNames from "classnames";
 import React from "react";
+import { useDrop } from "react-dnd";
 import { TYPES, useStore } from "../lib/store";
 
-const Hanger = ({ before = null, parent = null }) => {
+const Hanger = ({ before = null, parent = null, hidden = false }) => {
   const addNode = useStore(state => state.addNode);
+
+  const [{ canDrop, item }, drop] = useDrop({
+    accept: [TYPES.Statement.toString(), TYPES.Portal.toString()],
+    drop: () => {
+      // moveNode(item, response || id, before);
+    },
+    collect: monitor => ({
+      isOver: monitor.isOver(),
+      canDrop: monitor.canDrop(),
+      item: monitor.isOver() && monitor.getItem()
+    })
+  });
 
   const handleClick = _e => {
     addNode(
@@ -30,9 +44,9 @@ const Hanger = ({ before = null, parent = null }) => {
   };
 
   return (
-    <li className="Hanger">
+    <li className={classNames("Hanger", { hidden })} ref={drop}>
       <div onClick={handleClick} onContextMenu={handleContext}>
-        Hanger
+        {canDrop && item ? item.text : "+"}
       </div>
     </li>
   );
