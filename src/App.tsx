@@ -1,22 +1,20 @@
 import React from "react";
+import Statement from "./components/cards/Statement";
+import Hanger from "./components/Hanger";
+import { useStore } from "./lib/store";
 
 const App: React.FC = () => {
+  const roots = useStore(state =>
+    state.flow.edges.filter(([src]) => !src).map(([, tgt]) => tgt)
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ol id="Flow">
+      <Hanger />
+      {roots.map(id => (
+        <Statement id={id} key={id} />
+      ))}
+    </ol>
   );
 };
 

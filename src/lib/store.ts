@@ -1,6 +1,11 @@
 import { alg, Graph } from "graphlib";
-import jsondiffpatch from "jsondiffpatch";
+import * as jsondiffpatch from "jsondiffpatch";
 import create from "zustand";
+
+const TYPES = {
+  Statement: 100,
+  Response: 200
+};
 
 const jdiff = jsondiffpatch.create({
   objectHash: obj => obj.id || JSON.stringify(obj)
@@ -26,8 +31,25 @@ const removeOrphans = ids => {
 export const [useStore, api] = create(set => ({
   flow: {
     name: undefined,
-    nodes: {},
-    edges: []
+    nodes: {
+      a: {
+        $t: TYPES.Statement,
+        text: "What do you think of XYZ?"
+      },
+      b: {
+        $t: TYPES.Response,
+        text: "Yes"
+      },
+      c: {
+        $t: TYPES.Response,
+        text: "No"
+      }
+    },
+    edges: [
+      [null, "a"],
+      ["a", "b"],
+      ["a", "c"]
+    ]
   },
 
   setName: name => {
