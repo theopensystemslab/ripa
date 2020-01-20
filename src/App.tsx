@@ -1,6 +1,7 @@
 import React from "react";
-import Statement from "./components/cards/Statement";
+import Card from "./components/cards/Card";
 import Hanger from "./components/Hanger";
+import "./editor.scss";
 import { useStore } from "./lib/store";
 
 const App: React.FC = () => {
@@ -9,9 +10,9 @@ const App: React.FC = () => {
   );
 
   return (
-    <ol id="Flow">
+    <ol className="Flow">
       {roots.map(id => (
-        <Statement id={id} key={id} />
+        <Card id={id} key={id} />
       ))}
       <Hanger />
     </ol>

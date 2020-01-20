@@ -1,6 +1,7 @@
 import React from "react";
 import { api, TYPES, useStore } from "../../lib/store";
 import Hanger from "../Hanger";
+import Card from "./Card";
 
 const Response = ({ id, statement }) => {
   const node = useStore(state => state.flow.nodes[id]);
@@ -13,34 +14,29 @@ const Response = ({ id, statement }) => {
       {
         id: Math.random().toString(),
         $t: TYPES.Statement,
-        text: "new statement"
+        text: `new statement`
       },
       statement
     );
   };
 
   return (
-    <>
-      <Hanger beforeId={id} />
-      <li className="Response">
-        <div onClick={handleClick}>{node.text}</div>
-        <ol className="Statements">
-          {statements.map(id => (
-            <Statement id={id} key={id} />
-          ))}
-        </ol>
-      </li>
-    </>
+    <li className="Response">
+      <div onClick={handleClick}>{node.text}</div>
+      <ol className="Statements">
+        {statements.map(sId => (
+          <Card id={sId} key={sId} response={id} />
+        ))}
+        <Hanger parent={id} />
+      </ol>
+    </li>
   );
 };
 
-const Statement = ({ id }) => {
-  const node = useStore(state => state.flow.nodes[id]);
+const Statement = ({ id, node, response = null }) => {
   const responses = useStore(state =>
     state.flow.edges.filter(([src]) => src === id).map(([, tgt]) => tgt)
   );
-
-  if (!node) return null;
 
   const handleClick = _e => {
     api.getState().removeNode(id);
@@ -48,12 +44,12 @@ const Statement = ({ id }) => {
 
   return (
     <>
-      <Hanger beforeId={id} />
+      <Hanger before={id} parent={response} />
       <li className="Statement">
         <div onClick={handleClick}>{node.text}</div>
         <ol className="Responses">
-          {responses.map(id => (
-            <Response id={id} statement={id} key={id} />
+          {responses.map(rId => (
+            <Response id={rId} key={rId} statement={id} />
           ))}
         </ol>
       </li>

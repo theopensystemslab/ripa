@@ -1,7 +1,7 @@
 import React from "react";
 import { TYPES, useStore } from "../lib/store";
 
-const Hanger = ({ beforeId = null }) => {
+const Hanger = ({ before = null, parent = null }) => {
   const addNode = useStore(state => state.addNode);
 
   const handleClick = _e => {
@@ -9,15 +9,31 @@ const Hanger = ({ beforeId = null }) => {
       {
         id: Math.random().toString(),
         $t: TYPES.Statement,
-        text: "new node"
+        text: `new node ${Date.now()}`
       },
-      beforeId
+      parent,
+      before
+    );
+  };
+
+  const handleContext = e => {
+    e.preventDefault();
+    addNode(
+      {
+        id: Math.random().toString(),
+        $t: TYPES.Portal,
+        text: `new portal ${Date.now()}`
+      },
+      parent,
+      before
     );
   };
 
   return (
     <li className="Hanger">
-      <div onClick={handleClick}>Hanger</div>
+      <div onClick={handleClick} onContextMenu={handleContext}>
+        Hanger
+      </div>
     </li>
   );
 };

@@ -4,7 +4,8 @@ import create from "zustand";
 
 export const TYPES = {
   Statement: 100,
-  Response: 200
+  Response: 200,
+  Portal: 300
 };
 
 const jdiff = jsondiffpatch.create({
@@ -43,12 +44,22 @@ export const [useStore, api] = create(set => ({
       c: {
         $t: TYPES.Response,
         text: "No"
+      },
+      d: {
+        $t: TYPES.Statement,
+        text: "Another root question"
+      },
+      e: {
+        $t: TYPES.Portal,
+        text: "This is a portal"
       }
     },
     edges: [
+      [null, "d"],
       [null, "a"],
       ["a", "b"],
-      ["a", "c"]
+      ["a", "c"],
+      [null, "e"]
     ]
   },
 
@@ -56,12 +67,21 @@ export const [useStore, api] = create(set => ({
     set(state => (state.flow.name = name));
   },
 
-  addNode: ({ id, ...node }, src = null) => {
+  addNode: ({ id, ...node }, parent = null, before = null) => {
     g.setNode(id);
-    g.setEdge(src, id);
+    g.setEdge(parent, id);
     set(state => {
       state.flow.nodes[id] = node;
-      state.flow.edges.push([src, id]);
+      const edge = [parent, id];
+      if (before) {
+        const idx = state.flow.edges.findIndex(
+          ([src, tgt]) => src === parent && tgt === before
+        );
+        console.log({ idx });
+        state.flow.edges.splice(idx, 0, edge);
+      } else {
+        state.flow.edges.push(edge);
+      }
     });
   },
 

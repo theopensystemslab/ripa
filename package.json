@@ -61,6 +61,7 @@
     "@types/graphlib": "^2.1.5",
     "husky": "^4.0.10",
     "lint-staged": "^10.0.0",
+    "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
     "react-cosmos": "^5.0.6",
