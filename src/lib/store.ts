@@ -2,7 +2,7 @@ import { alg, Graph } from "graphlib";
 import * as jsondiffpatch from "jsondiffpatch";
 import create from "zustand";
 
-const TYPES = {
+export const TYPES = {
   Statement: 100,
   Response: 200
 };
@@ -66,6 +66,7 @@ export const [useStore, api] = create(set => ({
   },
 
   removeNode: id => {
+    console.info({ remove: id });
     const origEdges = g.edges();
     g.removeNode(id);
     const ids = [id];
@@ -96,3 +97,14 @@ export const [useStore, api] = create(set => ({
     });
   }
 }));
+
+console.info("setting up graph...");
+const state = api.getState();
+state.flow.edges.forEach(([src, tgt]) => {
+  [src, tgt].forEach(id => {
+    if (!g.hasNode(id)) {
+      g.setNode(id);
+    }
+  });
+  g.setEdge(src, tgt);
+});

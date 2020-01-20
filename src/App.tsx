@@ -10,10 +10,10 @@ const App: React.FC = () => {
 
   return (
     <ol id="Flow">
-      <Hanger />
       {roots.map(id => (
         <Statement id={id} key={id} />
       ))}
+      <Hanger />
     </ol>
   );
 };
