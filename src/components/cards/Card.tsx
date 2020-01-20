@@ -6,6 +6,8 @@ import Statement from "./Statement";
 const Card = props => {
   const node = useStore(state => state.flow.nodes[props.id]);
 
+  if (!node) return null;
+
   switch (node?.$t) {
     case TYPES.Statement:
       return <Statement {...props} node={node} />;

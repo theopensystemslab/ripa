@@ -1,15 +1,18 @@
 import classNames from "classnames";
 import React from "react";
 import { useDrop } from "react-dnd";
-import { TYPES, useStore } from "../lib/store";
+import { useNavigation } from "react-navi";
+import { api, TYPES } from "../lib/store";
 
 const Hanger = ({ before = null, parent = null, hidden = false }) => {
-  const addNode = useStore(state => state.addNode);
+  const navigate = useNavigation();
+  // const addNode = useStore(state => state.addNode);
 
   const [{ canDrop, item }, drop] = useDrop({
     accept: [TYPES.Statement.toString(), TYPES.Portal.toString()],
     drop: () => {
       // moveNode(item, response || id, before);
+      api.getState().moveNode(item.parent, item.id, parent, before);
     },
     collect: monitor => ({
       isOver: monitor.isOver(),
@@ -19,28 +22,36 @@ const Hanger = ({ before = null, parent = null, hidden = false }) => {
   });
 
   const handleClick = _e => {
-    addNode(
-      {
-        id: Math.random().toString(),
-        $t: TYPES.Statement,
-        text: `new node ${Date.now()}`
-      },
-      parent,
-      before
-    );
+    const { pathname } = navigate.getCurrentValue().url;
+    let url = [pathname, "statements", "new"];
+    if (parent) {
+      url = [pathname, "responses", parent, "statements", "new"];
+    }
+    navigate.navigate(url.join("/"));
+
+    // addNode(
+    //   {
+    //     id: Math.random().toString(),
+    //     $t: TYPES.Statement,
+    //     text: `new node ${Date.now()}`
+    //   },
+    //   parent,
+    //   before
+    // );
   };
 
   const handleContext = e => {
     e.preventDefault();
-    addNode(
-      {
-        id: Math.random().toString(),
-        $t: TYPES.Portal,
-        text: `new portal ${Date.now()}`
-      },
-      parent,
-      before
-    );
+    api.getState().pasteNode(parent, before);
+    // addNode(
+    //   {
+    //     id: Math.random().toString(),
+    //     $t: TYPES.Portal,
+    //     text: `new portal ${Date.now()}`
+    //   },
+    //   parent,
+    //   before
+    // );
   };
 
   return (

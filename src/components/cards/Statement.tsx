@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import React from "react";
 import { useDrag } from "react-dnd";
+import { useNavigation } from "react-navi";
 import { api, TYPES, useStore } from "../../lib/store";
 import Hanger from "../Hanger";
 import Card from "./Card";
@@ -27,7 +28,7 @@ const Response = ({ id, statement }) => {
       <div onClick={handleClick}>{node.text}</div>
       <ol className="Statements">
         {statements.map(sId => (
-          <Card id={sId} key={sId} response={id} />
+          <Card id={sId} key={sId} parent={id} />
         ))}
         <Hanger parent={id} />
       </ol>
@@ -35,7 +36,9 @@ const Response = ({ id, statement }) => {
   );
 };
 
-const Statement = ({ id, node, response = null }) => {
+const Statement = ({ id, node, parent = null }) => {
+  const navigate = useNavigation();
+
   const responses = useStore(state =>
     state.flow.edges.filter(([src]) => src === id).map(([, tgt]) => tgt)
   );
@@ -43,6 +46,7 @@ const Statement = ({ id, node, response = null }) => {
   const [{ isDragging }, drag] = useDrag({
     item: {
       id,
+      parent,
       text: node.text,
       type: TYPES.Statement.toString()
     },
@@ -51,15 +55,29 @@ const Statement = ({ id, node, response = null }) => {
     })
   });
 
+  if (!node) return null;
+
   const handleClick = _e => {
-    api.getState().removeNode(id);
+    // api.getState().removeNode(id);
+
+    const { pathname } = navigate.getCurrentValue().url;
+    let url = [pathname, "statements", id, "edit"];
+    if (parent) {
+      url = [pathname, "responses", parent, "statements", id, "edit"];
+    }
+    navigate.navigate(url.join("/"));
+  };
+
+  const handleContext = e => {
+    e.preventDefault();
+    api.getState().copyNode(id);
   };
 
   return (
     <>
-      <Hanger before={id} parent={response} hidden={isDragging} />
+      <Hanger before={id} parent={parent} hidden={isDragging} />
       <li className={classNames("Statement", { isDragging })}>
-        <div onClick={handleClick} ref={drag}>
+        <div onClick={handleClick} onContextMenu={handleContext} ref={drag}>
           {node.text}
         </div>
         <ol className="Responses">

@@ -1,7 +1,24 @@
-import React from "react";
+import { createBrowserNavigation } from "navi";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import { Router, View } from "react-navi";
+import HelmetProvider from "react-navi-helmet-async";
+import routes from "./routes";
 import * as serviceWorker from "./serviceWorker";
+
+const navigation = createBrowserNavigation({
+  routes
+});
+
+const App = () => (
+  <HelmetProvider>
+    <Router navigation={navigation} context={{ navigation }}>
+      <Suspense fallback={<div>Loading... </div>}>
+        <View />
+      </Suspense>
+    </Router>
+  </HelmetProvider>
+);
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
