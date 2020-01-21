@@ -68,13 +68,21 @@
       "last 1 safari version"
     ]
   },
+  "importSort": {
+    ".js, .jsx, .ts, .tsx": {
+      "style": "module",
+      "parser": "typescript"
+    }
+  },
   "devDependencies": {
     "@testing-library/dom": ">=5",
     "@types/graphlib": "^2.1.5",
     "husky": "^4.0.10",
+    "import-sort-style-module": "^6.0.0",
     "lint-staged": "^10.0.0",
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
+    "prettier-plugin-import-sort": "^0.0.3",
     "pretty-quick": "^2.0.1",
     "react-cosmos": "^5.0.6",
     "tslint": "^5.20.1",

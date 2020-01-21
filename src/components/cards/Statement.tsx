@@ -8,6 +8,7 @@ import Card from "./Card";
 
 const Response = ({ id, statement }) => {
   const node = useStore(state => state.flow.nodes[id]);
+
   const statements = useStore(state =>
     state.flow.edges.filter(([src]) => src === id).map(([, tgt]) => tgt)
   );

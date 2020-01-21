@@ -7,6 +7,7 @@
     "import-name": false,
     "jsx-boolean-value": false,
     "jsx-no-lambda": false,
+    "ordered-imports": true,
     "variable-name": false
   },
   "rulesDirectory": []
