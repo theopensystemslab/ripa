@@ -7,7 +7,7 @@ import Hanger from "./components/Hanger";
 import "./editor.scss";
 import { useStore } from "./lib/store";
 
-const App: React.FC = () => {
+const App: React.FC = ({ children }) => {
   const navigation = useNavigation();
   const { pathname } = navigation.getCurrentValue().url;
   // const nodes = useStore(state => state.flow.nodes);
@@ -42,6 +42,7 @@ const App: React.FC = () => {
         ))}
         <Hanger />
       </ol>
+      {children}
     </DndProvider>
   );
 };

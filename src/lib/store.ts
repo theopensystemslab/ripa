@@ -36,33 +36,33 @@ const flow = JSON.parse(localStorage.getItem("flow")) || {
   // nodes: {},
   // edges: []
   nodes: {
-    a: {
+    aaa: {
       $t: TYPES.Statement,
       text: "What do you think of XYZ?"
     },
-    b: {
+    bbb: {
       $t: TYPES.Response,
       text: "Yes"
     },
-    c: {
+    ccc: {
       $t: TYPES.Response,
       text: "No"
     },
-    d: {
+    ddd: {
       $t: TYPES.Statement,
       text: "Another root question"
     },
-    e: {
+    eee: {
       $t: TYPES.Portal,
       text: "This is a portal"
     }
   },
   edges: [
-    [null, "d"],
-    [null, "a"],
-    ["a", "b"],
-    ["a", "c"],
-    [null, "e"]
+    [null, "ddd"],
+    [null, "aaa"],
+    ["aaa", "bbb"],
+    ["aaa", "ccc"],
+    [null, "eee"]
   ]
 };
 
@@ -132,7 +132,7 @@ export const [useStore, api] = create(set => ({
     });
   },
 
-  removeNode: id => {
+  removeNode: (id, parent = null) => {
     const origEdges = g.edges();
     g.removeNode(id);
     const ids = new Set([id]);
@@ -158,11 +158,27 @@ export const [useStore, api] = create(set => ({
     });
   },
 
-  connectNodes: (src, tgt) => {
+  connectNodes: (src, tgt, before = null) => {
+    console.log({ src, tgt, before });
+
+    const check = checkGraph(g);
     g.setEdge(src, tgt);
-    set(state => {
-      state.flow.edges.push([src, tgt]);
-    });
+    try {
+      check();
+      set(state => {
+        const edge = [src, tgt];
+        if (before) {
+          const idx = state.flow.edges.findIndex(
+            ([s, t]) => src === s && tgt === t
+          );
+          state.flow.edges.splice(idx, 0, edge);
+        } else {
+          state.flow.edges.push(edge);
+        }
+      });
+    } catch (e) {
+      alert("can't do that");
+    }
   },
 
   moveNode: (src, tgt, newSrc, before = null) => {

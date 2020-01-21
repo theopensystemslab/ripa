@@ -1,7 +1,6 @@
-import { compose, lazy, mount, route, withView } from "navi";
+import { compose, lazy, mount, withView } from "navi";
 import * as React from "react";
 import { NotFoundBoundary, View } from "react-navi";
-import App from "../App";
 
 export type IContext = {
   navigation;
@@ -19,10 +18,7 @@ export default compose(
   mount({
     "/:teamId/:flowId": lazy(async req => {
       // const [id, ...ids] = req.params.flowId.split(",");
-      return route({
-        title: "Editor",
-        view: <App />
-      });
+      return import("./flow");
     })
   })
 );
