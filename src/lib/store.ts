@@ -165,9 +165,15 @@ export const [useStore, api] = create(set => ({
     });
   },
 
+  setNode: (id, data) => {
+    g.setNode(id);
+    set(state => {
+      state.flow.nodes[id] = data;
+    });
+  },
+
   connectNodes: (src, tgt, before = null) => {
     console.log({ src, tgt, before });
-
     const check = checkGraph(g);
     g.setEdge(src, tgt);
     try {

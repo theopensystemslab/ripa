@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import Modal from "@material-ui/core/Modal";
+import difference from "lodash/difference";
 import React from "react";
 import {
   AlignLeft as MenuIcon,
@@ -81,10 +82,38 @@ const StatementForm: React.FC<IStatementForm> = ({
       statementValues.$t = TYPES.Statement;
 
       const { id = guid(), ...statement } = statementValues;
-      const { flow, addNode } = api.getState();
+      const {
+        flow,
+        addNode,
+        removeNode,
+        setNode,
+        connectNodes
+      } = api.getState();
 
       if (flow.nodes[id]) {
         // update statement
+
+        const existingResponseIds = flow.edges
+          .filter(([src]) => src === id)
+          .map(([, tgt]) => tgt);
+
+        const diff = difference(
+          existingResponseIds,
+          responses.map(r => r.id)
+        );
+
+        diff.forEach(i => removeNode(i, id));
+
+        responses.forEach(({ id: rId, ...response }) => {
+          if (response.text) {
+            setNode(rId, filterValues(response));
+            // flow.nodes[rId] = filterValues(response);
+            if (!existingResponseIds.includes(rId)) {
+              // flow.edges.push([id || null, rId]);
+              connectNodes(id, rId);
+            }
+          }
+        });
       } else {
         // create statement
 
