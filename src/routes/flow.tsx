@@ -1,6 +1,7 @@
 import { compose, mount, route, withView } from "navi";
 import * as React from "react";
 import { View } from "react-navi";
+
 import App from "../App";
 import portalForm from "./portalForm";
 import statementForm from "./statementForm";

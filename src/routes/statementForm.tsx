@@ -1,8 +1,9 @@
 import { map, mount, route } from "navi";
 import * as React from "react";
-import { IContext } from ".";
+
 import { EditStatement, NewStatement } from "../components/forms/StatementForm";
 import { api } from "../lib/store";
+import { IContext } from ".";
 
 export default map(async (req, context) => {
   const handleClose = () => {

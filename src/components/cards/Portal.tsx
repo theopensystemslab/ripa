@@ -3,7 +3,8 @@ import React from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { LogIn as Share } from "react-feather";
 import { useNavigation } from "react-navi";
-import { api, TYPES } from "../../lib/store";
+
+import { TYPES, api } from "../../lib/store";
 import Hanger from "../Hanger";
 
 const Portal = ({ id, node, parent = null }) => {

@@ -7,7 +7,8 @@ import React from "react";
 import { AlignLeft as MenuIcon } from "react-feather";
 import { Link } from "react-navi";
 import { v4 as guid } from "uuid";
-import { api, TYPES, useStore } from "../../lib/store";
+
+import { TYPES, api, useStore } from "../../lib/store";
 import useForm from "../../lib/useForm";
 import FormSection from "./components/FormSection";
 import InputField from "./components/InputField";

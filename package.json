@@ -47,11 +47,11 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn type-check && pretty-quick --staged --pattern 'frontend/**/*.*'"
+      "pre-commit": "yarn type-check && pretty-quick --staged --pattern 'src/**/*.*'"
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,html,md}": [
+    "*.{js,jsx,ts,tsx,html,md,css,scss}": [
       "prettier --write",
       "git add"
     ]

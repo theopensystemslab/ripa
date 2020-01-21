@@ -2,7 +2,8 @@ import classNames from "classnames";
 import React from "react";
 import { useDrop } from "react-dnd";
 import { useNavigation } from "react-navi";
-import { api, TYPES } from "../lib/store";
+
+import { TYPES, api } from "../lib/store";
 
 const Hanger = ({ before = null, parent = null, hidden = false }) => {
   const navigate = useNavigation();

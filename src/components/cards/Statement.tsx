@@ -2,7 +2,8 @@ import classNames from "classnames";
 import React from "react";
 import { useDrag } from "react-dnd";
 import { useNavigation } from "react-navi";
-import { api, TYPES, useStore } from "../../lib/store";
+
+import { TYPES, api, useStore } from "../../lib/store";
 import Hanger from "../Hanger";
 import Card from "./Card";
 

@@ -1,9 +1,10 @@
 // import { loader } from "graphql.macro";
 import { map, mount, route } from "navi";
 import * as React from "react";
-import { IContext } from ".";
+
 import { EditPortal, NewPortal } from "../components/forms/PortalForm";
-import { api, TYPES } from "../lib/store";
+import { TYPES, api } from "../lib/store";
+import { IContext } from ".";
 
 export default map(async (req, context: any) => {
   // const { data } = await context.client.query({

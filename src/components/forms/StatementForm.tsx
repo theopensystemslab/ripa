@@ -7,20 +7,22 @@ import Modal from "@material-ui/core/Modal";
 import difference from "lodash/difference";
 import React from "react";
 import {
-  AlignLeft as MenuIcon,
-  Edit3 as NotesIcon,
+  X as CloseIcon,
   Info as InfoIcon,
+  AlignLeft as MenuIcon,
   MessageSquare as MessageIcon,
-  X as CloseIcon
+  Edit3 as NotesIcon
 } from "react-feather";
 import { Link } from "react-navi";
-import { api, TYPES, useStore } from "../../lib/store";
+
+import { TYPES, api, useStore } from "../../lib/store";
 import useForm from "../../lib/useForm";
 import FormSection from "./components/FormSection";
 import InputField from "./components/InputField";
 import SelectField from "./components/SelectField";
 import flags from "./flags";
 import { useStyles } from "./form";
+
 // import removeFor from "../../../lib/removeFor";
 
 type IEditStatement = {

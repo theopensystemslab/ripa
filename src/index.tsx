@@ -3,6 +3,7 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { Router, View } from "react-navi";
 import HelmetProvider from "react-navi-helmet-async";
+
 import routes from "./routes";
 import * as serviceWorker from "./serviceWorker";
 

@@ -1,10 +1,12 @@
+import "./editor.scss";
+
 import React from "react";
 import { DndProvider } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 import { useNavigation } from "react-navi";
+
 import Card from "./components/cards/Card";
 import Hanger from "./components/Hanger";
-import "./editor.scss";
 import { api, useStore } from "./lib/store";
 
 const Current = ({ id }) => {

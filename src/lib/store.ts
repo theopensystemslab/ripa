@@ -1,4 +1,4 @@
-import { alg, Graph } from "graphlib";
+import { Graph, alg } from "graphlib";
 import * as jsondiffpatch from "jsondiffpatch";
 import difference from "lodash/difference";
 import create from "zustand";
