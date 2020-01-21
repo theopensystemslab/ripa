@@ -79,7 +79,6 @@ const StatementForm: React.FC<IStatementForm> = ({
       const { responses = [], ...statementValues } = filterValues(v);
 
       statementValues.$t = TYPES.Statement;
-      responses.forEach(r => (r.$t = TYPES.Response));
 
       const { id = guid(), ...statement } = statementValues;
       const { flow, addNode } = api.getState();
@@ -88,7 +87,23 @@ const StatementForm: React.FC<IStatementForm> = ({
         // update statement
       } else {
         // create statement
-        addNode({ id, ...statement }, responseId || null, beforeId || null);
+
+        const $children = responses.reduce((acc, { id: rId, ...response }) => {
+          if (response.text) {
+            acc[rId] = {
+              ...filterValues(response),
+              $t: TYPES.Response
+            };
+          }
+          return acc;
+        }, {});
+        console.log({ $children });
+
+        addNode(
+          { id, $children, ...statement },
+          responseId || null,
+          beforeId || null
+        );
       }
 
       handleClose();

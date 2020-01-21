@@ -5,7 +5,35 @@ import { useNavigation } from "react-navi";
 import Card from "./components/cards/Card";
 import Hanger from "./components/Hanger";
 import "./editor.scss";
-import { useStore } from "./lib/store";
+import { api, useStore } from "./lib/store";
+
+const Current = ({ id }) => {
+  const current = useStore(state => state.flow.nodes[id]);
+
+  const name = useStore(state => state.flow.name);
+
+  const { navigate } = useNavigation();
+
+  let currentName = name || "ROOT";
+  if (current) currentName = current.name || "ROOT";
+
+  return (
+    <li className="Current">
+      <div
+        onClick={() => {
+          if (current?.name) {
+            navigate(`${window.location.pathname}/edit`);
+          } else {
+            const name = prompt("Flow name", currentName);
+            api.getState().setName(name);
+          }
+        }}
+      >
+        {currentName}
+      </div>
+    </li>
+  );
+};
 
 const App: React.FC = ({ children }) => {
   const navigation = useNavigation();
@@ -37,6 +65,7 @@ const App: React.FC = ({ children }) => {
   return (
     <DndProvider backend={HTML5Backend}>
       <ol className="Flow">
+        <Current id={id} />
         {roots.map(id => (
           <Card id={id} key={id} />
         ))}

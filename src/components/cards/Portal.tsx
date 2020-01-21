@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import React from "react";
 import { useDrag, useDrop } from "react-dnd";
+import { LogIn as Share } from "react-feather";
 import { useNavigation } from "react-navi";
 import { api, TYPES } from "../../lib/store";
 import Hanger from "../Hanger";
@@ -33,7 +34,19 @@ const Portal = ({ id, node, parent = null }) => {
     })
   });
 
-  const handleClick = _e => {
+  const handleClick = e => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const { pathname } = navigate.getCurrentValue().url;
+    let url = [pathname, "portals", id, "edit"];
+    if (parent) {
+      url = [pathname, "responses", parent, "portals", id, "edit"];
+    }
+    navigate.navigate(url.join("/"));
+  };
+
+  const handleButtonClick = _e => {
     // api.getState().removeNode(id);
     const { pathname } = navigate.getCurrentValue().url;
     navigate.navigate([pathname, id].join(","));
@@ -48,8 +61,9 @@ const Portal = ({ id, node, parent = null }) => {
     <>
       <Hanger before={id} parent={parent} hidden={isDragging} />
       <li className={classNames("Portal", { isDragging })} ref={drop}>
-        <div onClick={handleClick} onContextMenu={handleContext} ref={drag}>
+        <div onContextMenu={handleContext} onClick={handleClick} ref={drag}>
           {node.text}
+          <Share size={15} onClick={handleButtonClick} />
         </div>
       </li>
     </>

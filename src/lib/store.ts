@@ -1,5 +1,6 @@
 import { alg, Graph } from "graphlib";
 import * as jsondiffpatch from "jsondiffpatch";
+import difference from "lodash/difference";
 import create from "zustand";
 
 export const TYPES = {
@@ -16,53 +17,45 @@ const g = new Graph({ directed: true, multigraph: false });
 window["g"] = g;
 g.setNode("null");
 
-const removeOrphans = ids => {
-  const [root, ...others] = alg.components(g);
-  others.forEach(other => {
-    const overlap = root.some(value => other.includes(value));
-    if (!overlap) {
-      other.forEach(id => {
-        ids.add(id);
-        g.removeNode(id);
-      });
-      return removeOrphans(ids);
-    }
-  });
+const isClone = id => (g.inEdges(id) || []).length > 1;
+
+const remove = (id, parent, ids) => {
+  // let ids = new Set();
+  if (isClone(id)) {
+    console.log("removing clone", { parent, id });
+    g.removeEdge(parent, id);
+  } else {
+    const [root, ...children] = alg.preorder(g, id);
+    g.removeNode(root);
+    const [_root, ...remaining] = alg.preorder(g, "null" as any);
+
+    const toRemove = difference(children, remaining);
+
+    toRemove.forEach(id => g.removeNode(id));
+  }
 };
 
 console.time("loading flow and initializing store");
 const flow = JSON.parse(localStorage.getItem("flow")) || {
   name: undefined,
-  // nodes: {},
-  // edges: []
   nodes: {
-    aaa: {
+    whatdoyouthink: {
       $t: TYPES.Statement,
       text: "What do you think of XYZ?"
     },
-    bbb: {
+    "whatdoyouthink-yes": {
       $t: TYPES.Response,
       text: "Yes"
     },
-    ccc: {
+    "whatdoyouthink-no": {
       $t: TYPES.Response,
       text: "No"
-    },
-    ddd: {
-      $t: TYPES.Statement,
-      text: "Another root question"
-    },
-    eee: {
-      $t: TYPES.Portal,
-      text: "This is a portal"
     }
   },
   edges: [
-    [null, "ddd"],
-    [null, "aaa"],
-    ["aaa", "bbb"],
-    ["aaa", "ccc"],
-    [null, "eee"]
+    [null, "whatdoyouthink"],
+    ["whatdoyouthink", "whatdoyouthink-yes"],
+    ["whatdoyouthink", "whatdoyouthink-no"]
   ]
 };
 
@@ -117,6 +110,15 @@ export const [useStore, api] = create(set => ({
   addNode: ({ id, ...node }, parent = null, before = null) => {
     g.setNode(id);
     g.setEdge(parent, id);
+
+    const children = node.$children || {};
+    delete node.$children;
+
+    Object.keys(children).forEach(cId => {
+      g.setNode(cId);
+      g.setEdge(id, cId);
+    });
+
     set(state => {
       state.flow.nodes[id] = node;
       const edge = [parent, id];
@@ -129,19 +131,24 @@ export const [useStore, api] = create(set => ({
       } else {
         state.flow.edges.push(edge);
       }
+
+      Object.entries(children).forEach(([cId, child]) => {
+        state.flow.nodes[cId] = child;
+        state.flow.edges.push([id, cId]);
+      });
     });
   },
 
   removeNode: (id, parent = null) => {
     const origEdges = g.edges();
-    g.removeNode(id);
-    const ids = new Set([id]);
-    removeOrphans(ids);
+    const ids = new Set();
+    remove(id, parent, ids);
     const edgesDiff = jdiff.diff(origEdges, g.edges());
 
     set(state => {
-      ids.forEach(id => delete state.flow.nodes[id]);
-      Object.values(edgesDiff).forEach(v => {
+      ids.forEach((id: string) => delete state.flow.nodes[id]);
+
+      Object.values(edgesDiff || {}).forEach(v => {
         if (Array.isArray(v)) {
           const s = v[0].v === "null" ? null : v[0].v;
           const t = v[0].w === "null" ? null : v[0].w;
