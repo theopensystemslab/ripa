@@ -110,7 +110,7 @@ const PortalForm: React.FC<IPortalForm> = ({
 
       //     state.flow.nodes[id] = {
       //       $t: TYPES.Portal,
-      //       name: portal.name || null
+      //       name: portal.text || null
       //     };
       //   }
       // }, handleClose);
@@ -176,12 +176,12 @@ const PortalForm: React.FC<IPortalForm> = ({
 
             <FormSection label={false} icon={<MenuIcon size={20} />}>
               <SelectField
-                native
+                disabled={!!values.text}
                 name="flowId"
-                disabled={!!values.name}
+                native
                 onChange={handleChange}
+                required={!values.text}
                 value={values.flowId || ""}
-                required={!values.name}
               >
                 {values.flowId ? (
                   <option value={""}>deselect</option>
