@@ -72,9 +72,11 @@ export default map(async (req, context: any) => {
           <EditPortal
             data={data}
             handleClose={handleClose}
-            // handleDelete={() =>
-            //   removeNode(req.params.id, responseId, handleClose)
-            // }
+            handleDelete={() => {
+              api
+                .getState()
+                .removeNode(req.params.id, req.params.responseId || null);
+            }}
           />
         )
       };

@@ -1,14 +1,29 @@
+import { makeStyles } from "@material-ui/core";
 import classNames from "classnames";
 import React from "react";
 import { useDrag } from "react-dnd";
 import { useNavigation } from "react-navi";
+import { mostReadable } from "tinycolor2";
 
 import { TYPES, api, useStore } from "../../lib/store";
+import { allFlags } from "../forms/flags";
 import Hanger from "../Hanger";
 import Card from "./Card";
 
+const styles = Object.values(allFlags).reduce((acc, { id, color }) => {
+  acc[`flag-${id}`] = {
+    "& > div": {
+      backgroundColor: `${color} !important`,
+      color: `${mostReadable(color, ["#000", "#fff"])} !important`
+    }
+  };
+  return acc;
+}, {});
+const useStyles = makeStyles(() => styles);
+
 const Response = ({ id, statement }) => {
   const node = useStore(state => state.flow.nodes[id]);
+  const classes = useStyles({});
 
   const statements = useStore(state =>
     state.flow.edges.filter(([src]) => src === id).map(([, tgt]) => tgt)
@@ -26,7 +41,12 @@ const Response = ({ id, statement }) => {
   };
 
   return (
-    <li className="Response">
+    <li
+      className={classNames(
+        "Response",
+        node.flag && classes[`flag-${node.flag}`]
+      )}
+    >
       <div onClick={handleClick}>{node.text}</div>
       <ol className="Statements">
         {statements.map(sId => (

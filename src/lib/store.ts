@@ -6,7 +6,8 @@ import create from "zustand";
 export const TYPES = {
   Statement: 100,
   Response: 200,
-  Portal: 300
+  Portal: 300,
+  Overwrite: 400
 };
 
 const jdiff = jsondiffpatch.create({
@@ -197,7 +198,6 @@ export const [useStore, api] = create(set => ({
   moveNode: (src, tgt, newSrc, before = null) => {
     // const origEdges = g.edges();
     // const edgesDiff = jdiff.diff(origEdges, g.edges());
-
     g.removeEdge(src, tgt);
 
     const check = checkGraph(g);

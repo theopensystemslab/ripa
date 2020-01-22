@@ -26,6 +26,7 @@
     "react-navi": "^0.14.3",
     "react-navi-helmet-async": "^0.14.3",
     "react-scripts": "3.3.0",
+    "tinycolor2": "^1.4.1",
     "typescript": "~3.7.2",
     "uuid": "^3.4.0",
     "zustand": "^2.2.2"
