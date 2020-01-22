@@ -202,6 +202,7 @@ export const [useStore, api] = create(set => ({
 
     const check = checkGraph(g);
     g.setEdge(newSrc, tgt);
+
     try {
       check();
 
@@ -223,12 +224,12 @@ export const [useStore, api] = create(set => ({
         // jdiff.patch(state.flow.edges, edgesDiff);
       });
     } catch (e) {
-      g.setEdge(src, tgt);
       if (e === "EDGES") {
         alert("edge already exists here");
       } else {
         g.removeEdge(newSrc, tgt);
       }
+      g.setEdge(src, tgt);
     }
   }
 }));

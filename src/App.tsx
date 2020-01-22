@@ -5,37 +5,10 @@ import { DndProvider } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 import { useNavigation } from "react-navi";
 
+import Breadcrumb from "./components/cards/Breadcrumb";
 import Card from "./components/cards/Card";
 import Hanger from "./components/Hanger";
-import { api, useStore } from "./lib/store";
-
-const Current = ({ id }) => {
-  const current = useStore(state => state.flow.nodes[id]);
-
-  const name = useStore(state => state.flow.name);
-
-  const { navigate } = useNavigation();
-
-  let currentName = name || "ROOT";
-  if (current) currentName = current.name || "ROOT";
-
-  return (
-    <li className="Current">
-      <div
-        onClick={() => {
-          if (current?.name) {
-            navigate(`${window.location.pathname}/edit`);
-          } else {
-            const name = prompt("Flow name", currentName);
-            api.getState().setName(name);
-          }
-        }}
-      >
-        {currentName}
-      </div>
-    </li>
-  );
-};
+import { useStore } from "./lib/store";
 
 const App: React.FC = ({ children }) => {
   const navigation = useNavigation();
@@ -49,7 +22,7 @@ const App: React.FC = ({ children }) => {
 
   let id = null;
   if (ids.length > 1) {
-    id = ids.pop();
+    id = ids[ids.length - 1];
   }
 
   // if (id && !nodes[id]) {
@@ -67,7 +40,14 @@ const App: React.FC = ({ children }) => {
   return (
     <DndProvider backend={HTML5Backend}>
       <ol className="Flow">
-        <Current id={id} />
+        {ids.map((id, i) => (
+          <Breadcrumb
+            id={id}
+            key={id}
+            current={i === ids.length - 1}
+            url={ids.slice(0, i + 1)}
+          />
+        ))}
         {roots.map(id => (
           <Card id={id} key={id} />
         ))}

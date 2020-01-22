@@ -95,7 +95,6 @@ $greyLineBackgroundImage: url($greyPixel);
   }
 }
 
-.Current,
 .Portal.Breadcrumb {
   @include verticalLine();
   padding-top: 10px;
@@ -103,15 +102,17 @@ $greyLineBackgroundImage: url($greyPixel);
   &:hover {
     opacity: 0.9;
   }
-}
-
-.Current {
-  & > div {
-    padding-top: 20px;
-    background: grey;
-    color: black;
+  &.Current {
+    & > div {
+      // padding-top: 20px;
+      background: grey;
+      color: black;
+      border-radius: 0;
+      color: white;
+    }
   }
 }
+
 .Portal > div {
   border-radius: 0% 0% 20px 0%;
   background: black;

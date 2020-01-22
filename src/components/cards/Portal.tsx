@@ -47,10 +47,14 @@ const Portal = ({ id, node, parent = null }) => {
     navigate.navigate(url.join("/"));
   };
 
-  const handleButtonClick = _e => {
-    // api.getState().removeNode(id);
+  const handleButtonClick = e => {
+    e.preventDefault();
+    e.stopPropagation();
+
     const { pathname } = navigate.getCurrentValue().url;
     navigate.navigate([pathname, id].join(","));
+
+    // api.getState().removeNode(id);
   };
 
   const handleContext = e => {
