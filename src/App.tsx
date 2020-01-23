@@ -4,34 +4,37 @@ import React from "react";
 import { DndProvider } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 import { useNavigation } from "react-navi";
+import scrollIntoView from "scroll-into-view-if-needed";
+import smoothScrollIntoView from "smooth-scroll-into-view-if-needed";
 
 import Breadcrumb from "./components/cards/Breadcrumb";
 import Card from "./components/cards/Card";
 import Hanger from "./components/Hanger";
 import { useStore } from "./lib/store";
 
-const App: React.FC = ({ children }) => {
-  const navigation = useNavigation();
-  const { pathname } = navigation.getCurrentValue().url;
-  // const nodes = useStore(state => state.flow.nodes);
+const scrollIntoViewSmoothly =
+  "scrollBehavior" in document.documentElement.style
+    ? scrollIntoView
+    : smoothScrollIntoView;
 
-  const ids = pathname
-    .split("/")
-    .pop()
-    .split(",");
+export const scrollIn = (node, overrides = {}) => {
+  scrollIntoViewSmoothly(node, {
+    // scrollMode: "if-needed",
+    behavior: "smooth",
+    block: "start",
+    inline: "center",
+    ...overrides
+  });
+};
 
-  let id = null;
-  if (ids.length > 1) {
-    id = ids[ids.length - 1];
-  }
+const App: React.FC<{ ids: string[] }> = ({ ids, children }) => {
+  const ref = React.useRef(null);
 
-  // if (id && !nodes[id]) {
-  //   const path = pathname
-  //     .split(",")
-  //     .slice(0, -1)
-  //     .join(",");
-  //   navigation.navigate(path);
-  // }
+  const id = ids.length > 1 ? ids[ids.length - 1] : null;
+
+  React.useLayoutEffect(() => {
+    scrollIn(ref.current);
+  }, [id]);
 
   const roots = useStore(state =>
     state.flow.edges.filter(([src, tgt]) => src === id).map(([, tgt]) => tgt)
@@ -39,7 +42,7 @@ const App: React.FC = ({ children }) => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <ol className="Flow">
+      <ol className="Flow" ref={ref}>
         {ids.map((id, i) => (
           <Breadcrumb
             id={id}
