@@ -10,11 +10,13 @@ import Hanger from "../Hanger";
 const Portal = ({ id, node, parent = null }) => {
   const navigate = useNavigation();
 
+  const label = node.text || node.name || id;
+
   const [{ isDragging }, drag] = useDrag({
     item: {
       id,
       parent,
-      text: node.text,
+      text: label,
       type: TYPES.Portal.toString()
     },
     collect: monitor => ({
@@ -22,7 +24,7 @@ const Portal = ({ id, node, parent = null }) => {
     })
   });
 
-  const [{ canDrop, item }, drop] = useDrop({
+  const [{ item }, drop] = useDrop({
     accept: [TYPES.Statement.toString(), TYPES.Portal.toString()],
     drop: () => {
       // moveNode(item, response || id, before);
@@ -67,7 +69,7 @@ const Portal = ({ id, node, parent = null }) => {
       <Hanger before={id} parent={parent} hidden={isDragging} />
       <li className={classNames("Portal", { isDragging })} ref={drop}>
         <div onContextMenu={handleContext} onClick={handleClick} ref={drag}>
-          {node.text}
+          {label}
           <Share size={15} onClick={handleButtonClick} />
         </div>
       </li>

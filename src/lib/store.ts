@@ -3,12 +3,18 @@ import * as jsondiffpatch from "jsondiffpatch";
 import difference from "lodash/difference";
 import create from "zustand";
 
+// import defaultFlow from "../data/defaultFlow";
+import defaultFlow from "../data/out.json"; // fetch('https://bit.ly/2GgbDyh')
+
 export const TYPES = {
   Statement: 100,
   Response: 200,
-  Portal: 300,
-  Overwrite: 400
+  Portal: 300
 };
+
+const DEBUG = true;
+
+const flow = JSON.parse(localStorage.getItem("flow")) || defaultFlow;
 
 const jdiff = jsondiffpatch.create({
   objectHash: obj => obj.id || JSON.stringify(obj)
@@ -28,7 +34,7 @@ const remove = (id, parent, ids) => {
   } else {
     const [root, ...children] = alg.preorder(g, id);
     g.removeNode(root);
-    const [_root, ...remaining] = alg.preorder(g, "null" as any);
+    const [, ...remaining] = alg.preorder(g, "null" as any);
 
     const toRemove = difference(children, remaining);
 
@@ -37,37 +43,29 @@ const remove = (id, parent, ids) => {
 };
 
 console.time("loading flow and initializing store");
-const flow = JSON.parse(localStorage.getItem("flow")) || {
-  name: undefined,
-  nodes: {
-    whatdoyouthink: {
-      $t: TYPES.Statement,
-      text: "What do you think of XYZ?"
-    },
-    "whatdoyouthink-yes": {
-      $t: TYPES.Response,
-      text: "Yes"
-    },
-    "whatdoyouthink-no": {
-      $t: TYPES.Response,
-      text: "No"
-    }
-  },
-  edges: [
-    [null, "whatdoyouthink"],
-    ["whatdoyouthink", "whatdoyouthink-yes"],
-    ["whatdoyouthink", "whatdoyouthink-no"]
-  ]
-};
+
+class CycleInGraphError extends Error {
+  constructor(message = "CycleInGraphError") {
+    super(message);
+    this.name = "CycleInGraphError";
+  }
+}
+
+class MultiGraphError extends Error {
+  constructor(message = "MultiGraphError") {
+    super(message);
+    this.name = "MultiGraphError";
+  }
+}
 
 const checkGraph = oldGraph => {
   const edgesLength = oldGraph.edges().length;
   return () => {
     if (!alg.isAcyclic(g)) {
-      throw "CYCLE";
-    }
-    if (edgesLength === g.edges().length) {
-      throw "EDGES";
+      if (DEBUG) console.info({ cycles: alg.findCycles(g) });
+      throw new CycleInGraphError();
+    } else if (edgesLength === g.edges().length) {
+      throw new MultiGraphError();
     }
   };
 };
@@ -99,7 +97,16 @@ export const [useStore, api] = create(set => ({
           }
         });
       } catch (e) {
-        alert("cannot paste there");
+        console.error(e);
+        if (e instanceof MultiGraphError) {
+          alert(
+            "cannot paste here, there is already another node with the same parent"
+          );
+        } else if (e instanceof CycleInGraphError) {
+          alert("cannot paste here as it would create a cycle");
+        } else {
+          alert("cannot paste here");
+        }
       }
     }
   },
@@ -109,6 +116,7 @@ export const [useStore, api] = create(set => ({
   },
 
   addNode: ({ id, ...node }, parent = null, before = null) => {
+    console.log({ add: { id, parent, before } });
     g.setNode(id);
     g.setEdge(parent, id);
 
@@ -127,7 +135,7 @@ export const [useStore, api] = create(set => ({
         const idx = state.flow.edges.findIndex(
           ([src, tgt]) => src === parent && tgt === before
         );
-        console.log({ idx });
+        // console.log({ idx });
         state.flow.edges.splice(idx, 0, edge);
       } else {
         state.flow.edges.push(edge);
@@ -166,6 +174,11 @@ export const [useStore, api] = create(set => ({
     });
   },
 
+  // cloneNode: (id) => {
+  //   const newId = guid()
+  //   g.setNode(newId)
+  // },
+
   setNode: (id, data) => {
     g.setNode(id);
     set(state => {
@@ -195,9 +208,11 @@ export const [useStore, api] = create(set => ({
     }
   },
 
-  moveNode: (src, tgt, newSrc, before = null) => {
+  moveNode: (s, tgt, newSrc, before = null) => {
     // const origEdges = g.edges();
     // const edgesDiff = jdiff.diff(origEdges, g.edges());
+
+    const src = s || "null";
     g.removeEdge(src, tgt);
 
     const check = checkGraph(g);
@@ -224,16 +239,18 @@ export const [useStore, api] = create(set => ({
         // jdiff.patch(state.flow.edges, edgesDiff);
       });
     } catch (e) {
-      if (e === "EDGES") {
+      console.error(e);
+      g.removeEdge(newSrc, tgt);
+      if (e instanceof MultiGraphError) {
         alert("edge already exists here");
-      } else {
-        g.removeEdge(newSrc, tgt);
       }
       g.setEdge(src, tgt);
     }
   }
 }));
 console.timeEnd("loading flow and initializing store");
+
+const checker = checkGraph(g);
 
 console.time("building internal DAG");
 const state = api.getState();
@@ -246,6 +263,8 @@ state.flow.edges.forEach(([src, tgt]) => {
   g.setEdge(src, tgt);
 });
 console.timeEnd("building internal DAG");
+
+setTimeout(() => checker(), 1000);
 
 console.time("subscribing to changes");
 // consider 'on-change' library https://github.com/sindresorhus/on-change

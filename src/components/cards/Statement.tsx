@@ -23,11 +23,14 @@ const useStyles = makeStyles(() => styles);
 
 const Response = ({ id, statement }) => {
   const node = useStore(state => state.flow.nodes[id]);
+
   const classes = useStyles({});
 
   const statements = useStore(state =>
     state.flow.edges.filter(([src]) => src === id).map(([, tgt]) => tgt)
   );
+
+  // if (node.$t !== TYPES.Response) return null;
 
   const handleClick = _e => {
     api.getState().addNode(
@@ -60,6 +63,10 @@ const Response = ({ id, statement }) => {
 
 const Statement = ({ id, node, parent = null }) => {
   const navigate = useNavigation();
+
+  const isClone = useStore(
+    state => state.flow.edges.filter(([, tgt]) => tgt === id).length > 1
+  );
 
   const responses = useStore(state =>
     state.flow.edges.filter(([src]) => src === id).map(([, tgt]) => tgt)
@@ -101,7 +108,10 @@ const Statement = ({ id, node, parent = null }) => {
   return (
     <>
       <Hanger before={id} parent={parent} hidden={isDragging} />
-      <li className={classNames("Statement", { isDragging })}>
+      <li
+        className={classNames("Statement", { isDragging, isClone })}
+        data-numchildren={responses.length}
+      >
         <div onClick={handleClick} onContextMenu={handleContext} ref={drag}>
           {node.text}
         </div>

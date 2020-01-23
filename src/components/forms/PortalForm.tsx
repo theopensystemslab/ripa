@@ -8,7 +8,7 @@ import { AlignLeft as MenuIcon } from "react-feather";
 import { Link } from "react-navi";
 import { v4 as guid } from "uuid";
 
-import { TYPES, api, useStore } from "../../lib/store";
+import { TYPES, api } from "../../lib/store";
 import useForm from "../../lib/useForm";
 import FormSection from "./components/FormSection";
 import InputField from "./components/InputField";
@@ -49,8 +49,6 @@ const PortalForm: React.FC<IPortalForm> = ({
   submitText,
   portals = []
 }) => {
-  const set = useStore(state => state.sset);
-
   const classes = useStyles();
 
   const defaults = {
@@ -71,12 +69,14 @@ const PortalForm: React.FC<IPortalForm> = ({
       portalValues.$t = TYPES.Portal;
 
       const { id = guid(), ...portal } = portalValues;
-      const { flow, connectNodes, addNode } = api.getState();
+      const { flow, connectNodes, addNode, setNode } = api.getState();
 
       if (portalValues.flowId) {
         connectNodes(responseId, portalValues.flowId, beforeId);
       } else if (flow.nodes[id]) {
         // update statement
+
+        setNode(id, portal);
       } else {
         // create statement
         addNode({ id, ...portal }, responseId, beforeId);

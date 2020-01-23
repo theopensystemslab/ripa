@@ -3,7 +3,6 @@ import "./editor.scss";
 import React from "react";
 import { DndProvider } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
-import { useNavigation } from "react-navi";
 import scrollIntoView from "scroll-into-view-if-needed";
 import smoothScrollIntoView from "smooth-scroll-into-view-if-needed";
 
@@ -37,7 +36,7 @@ const App: React.FC<{ ids: string[] }> = ({ ids, children }) => {
   }, [id]);
 
   const roots = useStore(state =>
-    state.flow.edges.filter(([src, tgt]) => src === id).map(([, tgt]) => tgt)
+    state.flow.edges.filter(([src]) => src === id).map(([, tgt]) => tgt)
   );
 
   return (

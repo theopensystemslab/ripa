@@ -3,7 +3,6 @@ import * as React from "react";
 import { useDrop } from "react-dnd";
 import { useNavigation } from "react-navi";
 
-// import { moveNode, useStore } from "../../../../../lib/store";
 import { TYPES, api, useStore } from "../../lib/store";
 
 // const Current = ({ id }) => {
@@ -56,11 +55,9 @@ const Breadcrumb = ({ id, url, current = false }) => {
   });
 
   let breadcrumbName = name || "ROOT";
-
   if (breadcrumb) {
-    breadcrumbName = breadcrumb.text;
+    breadcrumbName = breadcrumb.text || breadcrumb.name || id;
   }
-  breadcrumbName = breadcrumbName || id;
 
   return (
     <li

@@ -15,7 +15,7 @@ import {
 } from "react-feather";
 import { Link } from "react-navi";
 
-import { TYPES, api, useStore } from "../../lib/store";
+import { TYPES, api } from "../../lib/store";
 import useForm from "../../lib/useForm";
 import FormSection from "./components/FormSection";
 import InputField from "./components/InputField";
@@ -62,8 +62,6 @@ const StatementForm: React.FC<IStatementForm> = ({
   responseId = null,
   submitText
 }) => {
-  const set = useStore(state => state.sset);
-
   const classes = useStyles();
 
   const defaults = {
@@ -94,6 +92,8 @@ const StatementForm: React.FC<IStatementForm> = ({
 
       if (flow.nodes[id]) {
         // update statement
+
+        setNode(id, statement);
 
         const existingResponseIds = flow.edges
           .filter(([src]) => src === id)
@@ -128,6 +128,7 @@ const StatementForm: React.FC<IStatementForm> = ({
           }
           return acc;
         }, {});
+
         console.log({ $children });
 
         addNode(
@@ -138,58 +139,6 @@ const StatementForm: React.FC<IStatementForm> = ({
       }
 
       handleClose();
-
-      // set(state => {
-      //   const { id = guid(), ...statement } = statementValues;
-
-      //   if (!state.flow.nodes[id]) {
-      //     // (new statement)
-
-      //     const edge = [responseId || null, id];
-
-      //     if (beforeId) {
-      //       const i = state.flow.edges.findIndex(
-      //         // src === responseId &&
-      //         ([, tgt]) => tgt === beforeId
-      //       );
-      //       state.flow.edges.splice(i, 0, edge);
-      //     } else {
-      //       state.flow.edges.push(edge);
-      //     }
-
-      //     responses.forEach(({ id: rId, ...response }) => {
-      //       if (response.text) {
-      //         state.flow.nodes[rId] = filterValues(response);
-      //         state.flow.edges.push([id || null, rId]);
-      //       }
-      //     });
-      //   } else {
-      //     // (existing statement)
-
-      //     const existingResponseIds = state.flow.edges
-      //       .filter(([src]) => src === id)
-      //       .map(([, tgt]) => tgt);
-
-      //     const diff = difference(
-      //       existingResponseIds,
-      //       responses.map(r => r.id)
-      //     );
-
-      //     console.log("REMOVE STUFF HERE");
-      //     // diff.forEach(i => removeFor(i, state.flow));
-
-      //     responses.forEach(({ id: rId, ...response }) => {
-      //       if (response.text) {
-      //         state.flow.nodes[rId] = filterValues(response);
-      //         if (!existingResponseIds.includes(rId)) {
-      //           state.flow.edges.push([id || null, rId]);
-      //         }
-      //       }
-      //     });
-      //   }
-
-      //   state.flow.nodes[id] = statement;
-      // }, handleClose);
     }
   );
 
@@ -303,14 +252,24 @@ const StatementForm: React.FC<IStatementForm> = ({
 
         <div className={classes.modalFooter}>
           {handleDelete && (
-            <Button
-              onClick={() => {
-                handleDelete();
-                handleClose();
-              }}
-            >
-              Delete
-            </Button>
+            <>
+              <Button
+                onClick={() => {
+                  handleDelete();
+                  handleClose();
+                }}
+              >
+                Delete
+              </Button>
+
+              <Button
+                onClick={() => {
+                  alert("create overwrite");
+                }}
+              >
+                Create Overwrite
+              </Button>
+            </>
           )}
           <Button type="submit">{submitText}</Button>
         </div>

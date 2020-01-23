@@ -7,11 +7,15 @@ import portalForm from "./portalForm";
 import statementForm from "./statementForm";
 
 export default compose(
-  withView(
-    <App>
-      <View />
-    </App>
-  ),
+  withView(req => {
+    const ids = req.params.flowId.split(",");
+
+    return (
+      <App ids={ids}>
+        <View />
+      </App>
+    );
+  }),
   mount({
     "*": route({
       title: "Editor",

@@ -17,7 +17,6 @@ export default compose(
 
   mount({
     "/:teamId/:flowId": lazy(async req => {
-      // const [id, ...ids] = req.params.flowId.split(",");
       return import("./flow");
     })
   })

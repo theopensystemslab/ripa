@@ -36,9 +36,13 @@ export default map(async (req, context) => {
 
     "/:id/edit": route(async req => {
       const store = api.getState();
+
+      const node = store.flow.nodes[req.params.id];
+      // if (node.$src)
+
       const data = {
         id: req.params.id,
-        ...store.flow.nodes[req.params.id],
+        ...node,
         responses: store.flow.edges
           .filter(([src]) => src === req.params.id)
           .map(([, tgt]) => ({ id: tgt, ...store.flow.nodes[tgt] }))
