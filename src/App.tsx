@@ -41,7 +41,7 @@ const App: React.FC<{ ids: string[] }> = ({ ids, children }) => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <ol className="Flow" ref={ref}>
+      <ol className="Flow" ref={ref} data-testid="Flow">
         {ids.map((id, i) => (
           <Breadcrumb
             id={id}
