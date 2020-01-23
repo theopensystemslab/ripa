@@ -35,10 +35,15 @@ $greyLineBackgroundImage: url($greyPixel);
 
 .Statement {
   cursor: pointer;
-  // &.isClone > div {
-  //   border: 2px dotted black;
-  //   // color: #333;
-  // }
+  &.isClone {
+    > .Responses > .Response > div,
+    > div {
+      opacity: 0.5;
+      // border: 2px dotted black;
+      // color: #333;
+    }
+  }
+
   &[data-numchildren="0"] > div {
     background: yellow;
   }
