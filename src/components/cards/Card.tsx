@@ -20,4 +20,4 @@ const Card = props => {
   }
 };
 
-export default Card;
+export default React.memo(Card);
