@@ -64,7 +64,8 @@ const checkGraph = oldGraph => {
     if (!alg.isAcyclic(g)) {
       if (DEBUG) console.info({ cycles: alg.findCycles(g) });
       throw new CycleInGraphError();
-    } else if (edgesLength === g.edges().length) {
+    } else if (edgesLength > 0 && edgesLength === g.edges().length) {
+      console.error(`${edgesLength} === ${g.edges().length}`);
       throw new MultiGraphError();
     }
   };
@@ -102,10 +103,13 @@ export const [useStore, api] = create(set => ({
           alert(
             "cannot paste here, there is already another node with the same parent"
           );
-        } else if (e instanceof CycleInGraphError) {
-          alert("cannot paste here as it would create a cycle");
         } else {
-          alert("cannot paste here");
+          if (e instanceof CycleInGraphError) {
+            alert("cannot paste here as it would create a cycle");
+          } else {
+            alert("cannot paste here");
+          }
+          g.removeEdge(parent, id);
         }
       }
     }
