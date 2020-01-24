@@ -1,3 +1,7 @@
+# http://planx-components.netlify.com
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9501d555-bbeb-4220-979c-d4efaac41c49/deploy-status)](https://app.netlify.com/sites/planx-components/deploys)
+
 ## Setting up
 
 1. Install dependencies - `yarn`

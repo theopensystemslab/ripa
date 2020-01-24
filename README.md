@@ -1,3 +1,17 @@
+## Live Build
+
+### http://planx-next-editor.netlify.com
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b2f94388-d945-4a0e-8af8-78e33104fc54/deploy-status)](https://app.netlify.com/sites/planx-next-editor/deploys)
+
+## Components
+
+### http://planx-components.netlify.com
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9501d555-bbeb-4220-979c-d4efaac41c49/deploy-status)](https://app.netlify.com/sites/planx-components/deploys)
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
