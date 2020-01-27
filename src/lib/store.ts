@@ -217,40 +217,57 @@ export const [useStore, api] = create(set => ({
   moveNode: (s, tgt, newSrc, before = null) => {
     // const origEdges = g.edges();
     // const edgesDiff = jdiff.diff(origEdges, g.edges());
+
     log({
       moveNode: {
-        src: s,
         tgt,
-        parent: newSrc,
-        before
+        before,
+        src: s,
+        parent: newSrc
       }
     });
 
     const src = s || "null";
+    // log({ remove: { src, tgt } });
     g.removeEdge(src, tgt);
 
     const check = checkGraph(g);
-    g.setEdge(newSrc, tgt);
+
+    const src2 = newSrc || "null";
+    // log({ add: { tgt, src: src2 } });
+    g.setEdge(src2, tgt);
 
     try {
       check();
 
       set(state => {
         const toRemoveIdx = state.flow.edges.findIndex(
-          ([eSrc, eTgt]) => eSrc === src && eTgt === tgt
+          ([eSrc, eTgt]) => eSrc === s && eTgt === tgt
         );
-        state.flow.edges.splice(toRemoveIdx, 1);
 
-        const edge = [newSrc, tgt];
-        if (before) {
-          const idx = state.flow.edges.findIndex(
-            ([src, tgt]) => src === newSrc && tgt === before
-          );
-          state.flow.edges.splice(idx, 0, edge);
+        if (toRemoveIdx >= 0) {
+          state.flow.edges.splice(toRemoveIdx, 1);
+
+          // log({ toRemoveIdx, newSrc, tgt });
+
+          const edge = [newSrc, tgt];
+          if (before) {
+            const idx = state.flow.edges.findIndex(
+              ([src, tgt]) => src === newSrc && tgt === before
+            );
+            // log({ idx });
+            if (idx >= 0) {
+              state.flow.edges.splice(idx, 0, edge);
+            } else {
+              console.error({ toRemoveIdx, newSrc, tgt, idx });
+            }
+          } else {
+            state.flow.edges.push(edge);
+          }
+          // jdiff.patch(state.flow.edges, edgesDiff);
         } else {
-          state.flow.edges.push(edge);
+          console.error({ toRemoveIdx, newSrc, tgt });
         }
-        // jdiff.patch(state.flow.edges, edgesDiff);
       });
     } catch (e) {
       console.error(e);
