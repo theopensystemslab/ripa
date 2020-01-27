@@ -2,7 +2,7 @@ const planningPermissionFlags = {
   MISSING_INFO: {
     priority: 6,
     id: "MISSING_INFO",
-    name: "Missing info",
+    name: "Missing information",
     icon: "check",
     color: "lightgrey",
     safeColor: "blue",
@@ -44,7 +44,7 @@ const planningPermissionFlags = {
     id: "PLANNING_PERMISSION_REQUIRED",
     name: "Planning permission required",
     icon: "info",
-    color: "white",
+    color: "black",
     safeColor: "black",
     description:
       "Based on the information you have provided, your project appears to require planning permission. You should submit a planning application, however we recommend a pre-application meeting to discuss this further with a planning officer."
@@ -52,7 +52,7 @@ const planningPermissionFlags = {
   PRIOR_APPROVAL: {
     priority: 2,
     id: "PRIOR_APPROVAL",
-    name: "Prior consent",
+    name: "Prior approval required",
     icon: "info",
     color: "#888",
     safeColor: "yellow",
@@ -62,7 +62,7 @@ const planningPermissionFlags = {
   NO_APP_REQUIRED: {
     priority: 1,
     id: "NO_APP_REQUIRED",
-    name: "No application needed",
+    name: "Permitted development",
     icon: "check",
     color: "grey",
     safeColor: "blue",
