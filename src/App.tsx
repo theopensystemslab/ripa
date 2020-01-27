@@ -62,7 +62,7 @@ const Flow: React.FC<IApp> = React.memo(
       </ol>
     );
   },
-  (a, b) => a.toString() === b.toString()
+  (a, b) => a.ids.toString() === b.ids.toString()
 );
 
 const App: React.FC<IApp> = ({ ids, children }) => {
