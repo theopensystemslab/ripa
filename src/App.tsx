@@ -50,10 +50,10 @@ const App: React.FC<{ ids: string[] }> = ({ ids, children }) => {
             url={ids.slice(0, i + 1)}
           />
         ))}
-        {roots.map(id => (
-          <Card id={id} key={id} />
+        {roots.map(rId => (
+          <Card id={rId} key={rId} parent={id} />
         ))}
-        <Hanger />
+        <Hanger parent={id} />
       </ol>
       {children}
     </DndProvider>
