@@ -26,21 +26,26 @@ export const scrollIn = (node, overrides = {}) => {
   });
 };
 
-const App: React.FC<{ ids: string[] }> = ({ ids, children }) => {
-  const ref = React.useRef(null);
+interface IApp {
+  ids: string[];
+  children?: React.ReactNode;
+}
 
-  const id = ids.length > 1 ? ids[ids.length - 1] : null;
+const Flow: React.FC<IApp> = React.memo(
+  ({ ids }) => {
+    const ref = React.useRef(null);
 
-  React.useLayoutEffect(() => {
-    scrollIn(ref.current);
-  }, [id]);
+    const id = ids.length > 1 ? ids[ids.length - 1] : null;
 
-  const roots = useStore(state =>
-    state.flow.edges.filter(([src]) => src === id).map(([, tgt]) => tgt)
-  );
+    React.useLayoutEffect(() => {
+      scrollIn(ref.current);
+    }, [id]);
 
-  return (
-    <DndProvider backend={HTML5Backend}>
+    const roots = useStore(state =>
+      state.flow.edges.filter(([src]) => src === id).map(([, tgt]) => tgt)
+    );
+
+    return (
       <ol className="Flow" ref={ref} data-testid="Flow">
         {ids.map((id, i) => (
           <Breadcrumb
@@ -55,6 +60,15 @@ const App: React.FC<{ ids: string[] }> = ({ ids, children }) => {
         ))}
         <Hanger parent={id} />
       </ol>
+    );
+  },
+  (a, b) => a.toString() === b.toString()
+);
+
+const App: React.FC<IApp> = ({ ids, children }) => {
+  return (
+    <DndProvider backend={HTML5Backend}>
+      <Flow ids={ids} />
       {children}
     </DndProvider>
   );

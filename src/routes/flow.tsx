@@ -9,7 +9,6 @@ import statementForm from "./statementForm";
 export default compose(
   withView(req => {
     const ids = req.params.flowId.split(",");
-
     return (
       <App ids={ids}>
         <View />
