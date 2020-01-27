@@ -14,6 +14,8 @@ export const TYPES = {
 
 const DEBUG = true;
 
+const log = input => DEBUG && console.info(input);
+
 const flow = JSON.parse(localStorage.getItem("flow")) || defaultFlow;
 
 const jdiff = jsondiffpatch.create({
@@ -62,7 +64,7 @@ const checkGraph = oldGraph => {
   const edgesLength = oldGraph.edges().length;
   return () => {
     if (!alg.isAcyclic(g)) {
-      if (DEBUG) console.info({ cycles: alg.findCycles(g) });
+      log({ cycles: alg.findCycles(g) });
       throw new CycleInGraphError();
     } else if (edgesLength > 0 && edgesLength === g.edges().length) {
       console.error(`${edgesLength} === ${g.edges().length}`);
@@ -215,6 +217,14 @@ export const [useStore, api] = create(set => ({
   moveNode: (s, tgt, newSrc, before = null) => {
     // const origEdges = g.edges();
     // const edgesDiff = jdiff.diff(origEdges, g.edges());
+    log({
+      moveNode: {
+        src: s,
+        tgt,
+        parent: newSrc,
+        before
+      }
+    });
 
     const src = s || "null";
     g.removeEdge(src, tgt);
