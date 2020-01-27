@@ -1,4 +1,5 @@
 // import { loader } from "graphql.macro";
+import natsort from "natsort";
 import { map, mount, route } from "navi";
 import * as React from "react";
 
@@ -21,8 +22,10 @@ export default map(async (req, context: any) => {
   const responseId =
     req.params.responseId || (ids.length > 1 ? ids.pop() : null);
 
+  const sorter = natsort({ insensitive: true });
+
   const portals = Object.entries(api.getState().flow.nodes)
-    .filter(([id, node]: any) => node.$t === TYPES.Portal)
+    .filter(([, node]: any) => node.$t === TYPES.Portal)
     .map(([id, flow]: any) => ({
       id,
       name: flow.text || id
@@ -30,7 +33,7 @@ export default map(async (req, context: any) => {
     }))
     // .concat(data.flows.map(f => ({ id: f.id, name: f.data || f.id })))
     .filter(({ id }) => !window.location.pathname.includes(id))
-    .sort();
+    .sort((a, b) => sorter(a.name, b.name));
 
   return mount({
     "/new": route({
