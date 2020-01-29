@@ -3,8 +3,9 @@ import * as jsondiffpatch from "jsondiffpatch";
 import difference from "lodash/difference";
 import create from "zustand";
 
-// import defaultFlow from "../data/defaultFlow";
-import defaultFlow from "../data/out.json"; // fetch('https://bit.ly/2GgbDyh')
+import defaultFlow from "../data/defaultFlow";
+
+// import defaultFlow from "../data/out.json"; // fetch('https://bit.ly/2GgbDyh')
 
 export const TYPES = {
   Statement: 100,

@@ -1,31 +1,48 @@
 import { Button, TextField } from "@material-ui/core";
+import { useFormik } from "formik";
 import * as React from "react";
 
-import useForm from "../lib/useForm";
-
+// Validation with yup needs to get predefined
 interface IText {
   title: string;
-  text?: string;
-  long?: boolean;
+  type: string;
+  name: string;
+  multiline?: boolean;
+  label?: string;
+  required?: boolean;
+  placeholder?: string;
 }
-const Text: React.FC<IText> = ({ title, text = "", long = false }) => {
-  const { values, handleChange, handleSubmit } = useForm({ text }, v => {
-    console.log({ text: v.text });
+const Text: React.FC<IText> = ({
+  title,
+  label = "",
+  placeholder = "",
+  multiline = false,
+  required = true,
+  name = "",
+  type = ""
+}) => {
+  const formik = useFormik({
+    initialValues: {},
+    onSubmit: values => {
+      console.log(JSON.stringify(values, null, 2));
+    }
   });
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>{title}</h1>
+    <form onSubmit={formik.handleSubmit}>
+      <h1> {title}</h1>
       <div>
         <TextField
-          label="Instruction"
-          multiline={long}
-          name="text"
-          onChange={handleChange}
-          rows={long ? 8 : 1}
-          value={values.text}
+          placeholder={placeholder}
+          label={label}
+          multiline={multiline}
+          name={name}
+          type={type}
+          onChange={formik.handleChange}
+          rows={multiline ? 10 : 1}
+          value={formik.values[0]}
           variant="outlined"
-          required
+          required={required}
         />
       </div>
       <Button type="submit">Save and Continue</Button>
@@ -34,6 +51,31 @@ const Text: React.FC<IText> = ({ title, text = "", long = false }) => {
 };
 
 export default {
-  shortText: <Text title="Short Text Input" text="blah blah blah" />,
-  longText: <Text title="Long Text Input" long />
+  "Short Text": (
+    <Text
+      title="Short Text Input"
+      placeholder="placeholder"
+      label="label short"
+      type="text"
+      name="textFieldShort"
+    />
+  ),
+  "Long Text": (
+    <Text
+      title="Long Text Input"
+      multiline
+      type="text"
+      name="textFieldLong"
+      required={false}
+    />
+  ),
+  Email: (
+    <Text
+      title="Email"
+      label="Email Address"
+      placeholder="Email Address"
+      name="email"
+      type="email"
+    />
+  )
 };

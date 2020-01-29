@@ -13,6 +13,7 @@
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "classnames": "^2.2.6",
+    "formik": "^2.1.2",
     "graphlib": "^2.1.8",
     "jsondiffpatch": "^0.4.1",
     "lodash": "^4.17.15",
@@ -31,6 +32,7 @@
     "tinycolor2": "^1.4.1",
     "typescript": "~3.7.2",
     "uuid": "^3.4.0",
+    "yup": "^0.28.1",
     "zustand": "^2.2.2"
   },
   "scripts": {

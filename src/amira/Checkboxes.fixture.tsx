@@ -8,6 +8,9 @@ import * as React from "react";
 
 import useForm from "../lib/useForm";
 
+//Is the text dynamic or static?
+//Is this component considered done? Also in regards to design?
+//How will we handle responsiveness and CSS
 interface ICheckboxes {
   title: string;
   options: object;
