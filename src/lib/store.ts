@@ -5,16 +5,13 @@ import create from "zustand";
 
 // import defaultFlow from "../data/defaultFlow";
 import defaultFlow from "../data/out.json"; // fetch('https://bit.ly/2GgbDyh')
+import log from "../lib/log";
 
 export const TYPES = {
   Statement: 100,
   Response: 200,
   Portal: 300
 };
-
-const DEBUG = true;
-
-const log = input => DEBUG && console.info(input);
 
 const flow = JSON.parse(localStorage.getItem("flow")) || defaultFlow;
 
@@ -237,6 +234,15 @@ export const [useStore, api] = create(set => ({
     // log({ add: { tgt, src: src2 } });
     g.setEdge(src2, tgt);
 
+    const revert = e => {
+      console.error(e);
+      g.removeEdge(src2, tgt);
+      if (e instanceof MultiGraphError) {
+        alert("edge already exists here");
+      }
+      g.setEdge(src, tgt);
+    };
+
     try {
       check();
 
@@ -251,6 +257,7 @@ export const [useStore, api] = create(set => ({
           // log({ toRemoveIdx, newSrc, tgt });
 
           const edge = [newSrc, tgt];
+
           if (before) {
             const idx = state.flow.edges.findIndex(
               ([src, tgt]) => src === newSrc && tgt === before
@@ -259,23 +266,18 @@ export const [useStore, api] = create(set => ({
             if (idx >= 0) {
               state.flow.edges.splice(idx, 0, edge);
             } else {
-              console.error({ toRemoveIdx, newSrc, tgt, idx });
+              revert({ toRemoveIdx, src2, tgt, idx });
             }
           } else {
             state.flow.edges.push(edge);
           }
           // jdiff.patch(state.flow.edges, edgesDiff);
         } else {
-          console.error({ toRemoveIdx, newSrc, tgt });
+          revert({ toRemoveIdx, src2, tgt });
         }
       });
     } catch (e) {
-      console.error(e);
-      g.removeEdge(newSrc, tgt);
-      if (e instanceof MultiGraphError) {
-        alert("edge already exists here");
-      }
-      g.setEdge(src, tgt);
+      revert(e);
     }
   }
 }));
