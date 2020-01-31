@@ -56,10 +56,12 @@ export default {
   "Short Text": (
     <Text
       title="Short Text Input"
-      placeholder="placeholder"
-      label="label short"
+      multiline={false}
       type="text"
       name="textFieldShort"
+      label=""
+      placeholder=""
+      required={false}
     />
   ),
   "Long Text": (
@@ -68,6 +70,8 @@ export default {
       multiline
       type="text"
       name="textFieldLong"
+      label=""
+      placeholder=""
       required={false}
     />
   ),
