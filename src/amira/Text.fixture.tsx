@@ -14,7 +14,7 @@ interface IText {
 }
 const Text: React.FC<IText> = ({
   title,
-  label = "",
+  label = false,
   placeholder = "",
   multiline = false,
   required = true,
@@ -36,7 +36,7 @@ const Text: React.FC<IText> = ({
       <div>
         <TextField
           placeholder={placeholder}
-          label={label}
+          {...(label && { label })}
           multiline={multiline}
           name={name}
           type={type}
