@@ -22,7 +22,9 @@ const Text: React.FC<IText> = ({
   type = ""
 }) => {
   const formik = useFormik({
-    initialValues: {},
+    initialValues: {
+      [name]: ""
+    },
     onSubmit: values => {
       console.log(JSON.stringify(values, null, 2));
     }
@@ -40,7 +42,7 @@ const Text: React.FC<IText> = ({
           type={type}
           onChange={formik.handleChange}
           rows={multiline ? 10 : 1}
-          value={formik.values[0]}
+          value={formik.values[name]}
           variant="outlined"
           required={required}
         />
@@ -73,9 +75,10 @@ export default {
     <Text
       title="Email"
       label="Email Address"
-      placeholder="Email Address"
+      placeholder="you@example.com"
       name="email"
       type="email"
+      required={false}
     />
   )
 };
