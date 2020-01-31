@@ -32,7 +32,7 @@ const Text: React.FC<IText> = ({
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <h1> {title}</h1>
+      <h1>{title}</h1>
       <div>
         <TextField
           placeholder={placeholder}
