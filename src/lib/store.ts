@@ -4,6 +4,7 @@ import difference from "lodash/difference";
 import create from "zustand";
 
 import defaultFlow from "../data/out.json";
+import log from "./log";
 
 export const TYPES = {
   Statement: 100,
