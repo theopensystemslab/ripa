@@ -11,6 +11,10 @@ interface IText {
   label?: string;
   required?: boolean;
   placeholder?: string;
+  unit?: string;
+  min?: string;
+  max?: string;
+  inputProps?: object;
 }
 const Text: React.FC<IText> = ({
   title,
@@ -19,8 +23,15 @@ const Text: React.FC<IText> = ({
   multiline = false,
   required = false,
   name = "",
-  type = ""
+  type = "",
+  unit = "",
+  inputProps = {
+    min: "",
+    max: ""
+  }
 }) => {
+  console.log(inputProps);
+
   const formik = useFormik({
     initialValues: {
       [name]: ""
@@ -45,7 +56,9 @@ const Text: React.FC<IText> = ({
           value={formik.values[name]}
           variant="outlined"
           required={required}
+          inputProps={{ ...inputProps }}
         />
+        {unit.length > 0 && <strong>{unit}</strong>}
       </div>
       <Button type="submit">Save and Continue</Button>
     </form>
@@ -83,6 +96,18 @@ export default {
       name="email"
       type="email"
       required={false}
+    />
+  ),
+  Number: (
+    <Text
+      title="Number"
+      label="Number"
+      placeholder="Number Input"
+      name="number"
+      type="number"
+      unit="specified unit"
+      required={false}
+      inputProps={{ min: "2", max: "10" }}
     />
   )
 };
