@@ -11,12 +11,14 @@ interface ICheckboxes {
   title: string;
   options: object;
   name: string;
+  required?: boolean;
 }
 
 const Checkboxes: React.FC<ICheckboxes> = ({
   title = "Title",
   options = {},
-  name = ""
+  name = "",
+  required = false
 }) => {
   const formik = useFormik({
     initialValues: {
@@ -24,7 +26,11 @@ const Checkboxes: React.FC<ICheckboxes> = ({
       selectedOptions: ["redwood"]
     },
     onSubmit: values => {
-      console.log(JSON.stringify(values, null, 2));
+      if (required && values.selectedOptions.length === 0) {
+        alert("Please choose at least one option");
+      } else {
+        console.log(JSON.stringify(values, null, 2));
+      }
     }
   });
   return (
@@ -71,6 +77,7 @@ export default {
     <Checkboxes
       title="What types of street trees will you plant?"
       name="default_boxes"
+      required
       options={{
         oak: "English Oak",
         plane: "London Plane Tree",
