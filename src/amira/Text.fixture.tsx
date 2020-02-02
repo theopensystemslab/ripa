@@ -30,8 +30,6 @@ const Text: React.FC<IText> = ({
     max: ""
   }
 }) => {
-  console.log(inputProps);
-
   const formik = useFormik({
     initialValues: {
       [name]: ""
