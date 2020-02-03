@@ -59,7 +59,7 @@ const Text: React.FC<IText> = ({
           value={formik.values[name]}
           variant="outlined"
           required={required}
-          inputProps={{ ...inputProps }}
+          {...inputProps}
         />
         {unit.length > 0 && <strong>{unit}</strong>}
       </div>
@@ -110,7 +110,7 @@ export default {
       type="number"
       unit="specified unit"
       required={false}
-      inputProps={{ min: "2", max: "10" }}
+      inputProps={{ min: 2, max: 10 }}
     />
   )
 };
