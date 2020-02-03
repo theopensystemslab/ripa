@@ -3,6 +3,11 @@ import { useFormik } from "formik";
 import * as React from "react";
 
 // Validation with yup needs to get predefined
+
+interface IMinMax {
+  min?: number;
+  max?: number;
+}
 interface IText {
   title: string;
   type: string;
@@ -11,7 +16,12 @@ interface IText {
   label?: string;
   required?: boolean;
   placeholder?: string;
+  unit?: string;
+  min?: string;
+  max?: string;
+  inputProps?: IMinMax;
 }
+
 const Text: React.FC<IText> = ({
   title,
   label = false,
@@ -19,7 +29,12 @@ const Text: React.FC<IText> = ({
   multiline = false,
   required = false,
   name = "",
-  type = ""
+  type = "",
+  unit = "",
+  inputProps = {
+    min: 0,
+    max: Infinity
+  }
 }) => {
   const formik = useFormik({
     initialValues: {
@@ -45,7 +60,9 @@ const Text: React.FC<IText> = ({
           value={formik.values[name]}
           variant="outlined"
           required={required}
+          {...inputProps}
         />
+        {unit && <strong>{unit}</strong>}
       </div>
       <Button type="submit">Save and Continue</Button>
     </form>
@@ -83,6 +100,18 @@ export default {
       name="email"
       type="email"
       required={false}
+    />
+  ),
+  Number: (
+    <Text
+      title="Number"
+      label="Number"
+      placeholder="Number Input"
+      name="number"
+      type="number"
+      unit="specified unit"
+      required={false}
+      inputProps={{ min: 2, max: 10 }}
     />
   )
 };
