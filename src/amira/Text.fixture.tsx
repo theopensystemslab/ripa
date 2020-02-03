@@ -62,7 +62,7 @@ const Text: React.FC<IText> = ({
           required={required}
           {...inputProps}
         />
-        {unit.length > 0 && <strong>{unit}</strong>}
+        {unit && <strong>{unit}</strong>}
       </div>
       <Button type="submit">Save and Continue</Button>
     </form>
