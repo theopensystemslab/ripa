@@ -3,6 +3,11 @@ import { useFormik } from "formik";
 import * as React from "react";
 
 // Validation with yup needs to get predefined
+
+interface IMinMax {
+  min?: number;
+  max?: number;
+}
 interface IText {
   title: string;
   type: string;
@@ -14,7 +19,7 @@ interface IText {
   unit?: string;
   min?: string;
   max?: string;
-  inputProps?: object;
+  inputProps?: IMinMax;
 }
 const Text: React.FC<IText> = ({
   title,
