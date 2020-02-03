@@ -21,6 +21,7 @@ interface IText {
   max?: string;
   inputProps?: IMinMax;
 }
+
 const Text: React.FC<IText> = ({
   title,
   label = false,
@@ -31,8 +32,8 @@ const Text: React.FC<IText> = ({
   type = "",
   unit = "",
   inputProps = {
-    min: "",
-    max: ""
+    min: 0,
+    max: Infinity
   }
 }) => {
   const formik = useFormik({
