@@ -27,7 +27,7 @@ const Date: React.FC<IText> = ({ title, type, name, options, inputProps }) => {
       <div style={{ display: "flex" }}>
         {options.map((el, index) => (
           <div key={`${el}-${index}`}>
-            <p>{el}</p>
+            <label>{el}</label>
             <TextField
               required
               onChange={formik.handleChange}
