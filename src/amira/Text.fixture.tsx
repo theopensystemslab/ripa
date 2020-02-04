@@ -2,8 +2,6 @@ import { Button, TextField } from "@material-ui/core";
 import { useFormik } from "formik";
 import * as React from "react";
 
-// Validation with yup needs to get predefined
-
 interface IMinMax {
   min?: number;
   max?: number;
