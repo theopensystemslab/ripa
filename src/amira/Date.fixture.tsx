@@ -44,7 +44,7 @@ const Date: React.FC<IText> = ({ title, type, name, options, inputProps }) => {
   );
 };
 export default {
-  Date: (
+  default: (
     <Date
       title="Long Text Input"
       type="number"
