@@ -46,20 +46,22 @@ const Flow: React.FC<IApp> = React.memo(
     );
 
     return (
-      <ol className="Flow" ref={ref} data-testid="Flow">
-        {ids.map((id, i) => (
-          <Breadcrumb
-            id={id}
-            key={id}
-            current={i === ids.length - 1}
-            url={ids.slice(0, i + 1)}
-          />
-        ))}
-        {roots.map(rId => (
-          <Card id={rId} key={rId} parent={id} />
-        ))}
-        <Hanger parent={id} />
-      </ol>
+      <div id="editor">
+        <ol className="Flow" ref={ref} data-testid="Flow">
+          {ids.map((id, i) => (
+            <Breadcrumb
+              id={id}
+              key={id}
+              current={i === ids.length - 1}
+              url={ids.slice(0, i + 1)}
+            />
+          ))}
+          {roots.map(rId => (
+            <Card id={rId} key={rId} parent={id} />
+          ))}
+          <Hanger parent={id} />
+        </ol>
+      </div>
     );
   },
   (a, b) => a.ids.toString() === b.ids.toString()

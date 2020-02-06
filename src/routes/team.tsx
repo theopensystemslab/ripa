@@ -22,11 +22,16 @@ const teamRoutes = compose(
             teams(where: { slug: { _eq: $slug } }) {
               id
               name
-              members(order_by: { user: { username: asc } }) {
+              users {
+                id
+                email
+              }
+              # members(order_by: { user: { username: asc } }) {
+              members {
                 id
                 user {
                   id
-                  username
+                  # username
                 }
               }
               flows(order_by: { id: desc }) {
@@ -41,12 +46,14 @@ const teamRoutes = compose(
       });
 
       if (data.teams.length > 0) {
+        const team = data.teams[0];
         return {
-          view: <Team flows={data.flows} />
+          title: team.name,
+          view: <Team team={team} />
         };
-      } else {
-        redirect(`/`);
       }
+
+      redirect(`/`);
     }),
 
     "/:flowId": lazy(async req => import("./flow"))

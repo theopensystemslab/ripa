@@ -1,3 +1,4 @@
+import { gql } from "apollo-boost";
 import { compose, lazy, map, mount, redirect, route, withView } from "navi";
 import * as React from "react";
 import { NotFoundBoundary, View } from "react-navi";
@@ -50,9 +51,25 @@ export default compose(
           )
     ),
 
-    "/": route({
-      title: "Teams",
-      view: <TeamsList />
+    // "/": route({
+    //   title: "Teams",
+    //   view: <TeamsList />
+    // })
+    "/": route(async (req, context: IContext) => {
+      const { data } = await context.gqlClient.query({
+        query: gql`
+          query Teams {
+            teams {
+              id
+              name
+            }
+          }
+        `
+      });
+
+      return {
+        view: <TeamsList teams={data.teams} />
+      };
     })
   })
 );
