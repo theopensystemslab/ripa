@@ -1,7 +1,7 @@
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
 import { createBrowserNavigation } from "navi";
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { Router, View } from "react-navi";
 import HelmetProvider from "react-navi-helmet-async";
@@ -28,31 +28,26 @@ const navigation = createBrowserNavigation({
   routes
 });
 
-// const authService = new AuthService();
-
 const App = () => {
+  const [currentUser, setCurrentUser] = useState(false);
+
   useEffect(() => {
-    // Update the document title using the browser API
-    // document.title = `You clicked ${count} times`;
     const token = getCookie("jwt");
     if (token) {
       localStorage.setItem("token", token);
+      setCurrentUser(true);
     } else {
       localStorage.removeItem("token");
+      setCurrentUser(false);
     }
-  });
-
-  // const [currentUser, setCurrentUser] = useState(() =>
-  //   authService.getCurrentUser()
-  // );
-  // useEffect(() => authService.subscribe(setCurrentUser), []);
+  }, [setCurrentUser]);
 
   return (
     <ApolloProvider client={gqlClient}>
       <HelmetProvider>
         <Router
           navigation={navigation}
-          context={{ navigation, gqlClient }} //currentUser
+          context={{ navigation, gqlClient, currentUser }}
         >
           <Suspense fallback={<div>Loading... </div>}>
             <View />
