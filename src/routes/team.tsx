@@ -3,8 +3,31 @@ import { compose, lazy, mount, redirect, route, withView } from "navi";
 import * as React from "react";
 import { View } from "react-navi";
 
+import Sharer from "../lib/sharer";
 import Team from "../pages/Team";
 import { IContext } from "./index";
+
+const receivePatch = (ops, isLocal) => {
+  console.log({ isLocal, received: ops });
+};
+
+const sharer = new Sharer({
+  afterJoin: self => {
+    console.log("joined");
+    window["sharer"] = sharer;
+    self.doc.on("op", receivePatch);
+  },
+  beforeRemove: self => {
+    console.log("removing");
+    self.doc.removeListener("op", receivePatch);
+  },
+  // onSocketError: console.error,
+  // onSocketShareDB: data => {
+  //   console.log({ received: data });
+  // },
+  socketUrl: process.env.REACT_APP_WEBSOCKET_URL
+});
+window["sharer"] = sharer;
 
 const teamRoutes = compose(
   withView((_req, context: IContext) => (
@@ -56,7 +79,21 @@ const teamRoutes = compose(
       redirect(`/`);
     }),
 
-    "/:flowId": lazy(async req => import("./flow"))
+    "/:flowId": lazy(async req => {
+      // const ids = req.params.flowId.split(",");
+      // const id = ids[0];
+
+      // await sharer.join("flows", id, {
+      //   name: null,
+      //   edges: [],
+      //   nodes: {}
+      // });
+
+      // const flow = sharer.doc.data;
+      // console.log({ flow });
+
+      return import("./flow");
+    })
   })
 );
 

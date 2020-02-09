@@ -1,10 +1,8 @@
-import { gql } from "apollo-boost";
 import { compose, lazy, map, mount, redirect, route, withView } from "navi";
 import * as React from "react";
 import { NotFoundBoundary, View } from "react-navi";
 
 import Login from "../components/Login";
-import TeamsList from "../pages/TeamsList";
 
 export type IContext = {
   gqlClient;
@@ -27,7 +25,7 @@ export default compose(
         ? redirect(
             req.params.redirectTo
               ? decodeURIComponent(req.params.redirectTo)
-              : "/osl"
+              : "/"
           )
         : route({
             title: "Login",
@@ -35,41 +33,19 @@ export default compose(
           })
     ),
 
-    "/:teamId": lazy(() => import("./team")),
+    "/logout": map(async (req, context: IContext) => {
+      document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      context.gqlClient.resetStore();
+      return redirect("/login");
+    }),
 
     "*": map(async (req, context: IContext) =>
       context.currentUser
-        ? // ? mount({
-          //     "/:teamId/:flowId": lazy(async () => import("./flow"))
-          //   })
-          mount({
-            "/:teamId": lazy(() => import("./team"))
-          })
+        ? lazy(() => import("./authenticated"))
         : redirect(
             `/login/?redirectTo=${encodeURIComponent(req.originalUrl)}`,
             { exact: false }
           )
-    ),
-
-    // "/": route({
-    //   title: "Teams",
-    //   view: <TeamsList />
-    // })
-    "/": route(async (req, context: IContext) => {
-      const { data } = await context.gqlClient.query({
-        query: gql`
-          query Teams {
-            teams {
-              id
-              name
-            }
-          }
-        `
-      });
-
-      return {
-        view: <TeamsList teams={data.teams} />
-      };
-    })
+    )
   })
 );
