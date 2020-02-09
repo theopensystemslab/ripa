@@ -6,20 +6,9 @@ import ReactDOM from "react-dom";
 import { Router, View } from "react-navi";
 import HelmetProvider from "react-navi-helmet-async";
 
+import getCookie from "./lib/getCookie";
 import routes from "./routes";
 import * as serviceWorker from "./serviceWorker";
-
-function getCookie(name: string): string | undefined {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) {
-    return parts
-      .pop()
-      .split(";")
-      .shift();
-  }
-  return undefined;
-}
 
 const gqlClient = new ApolloClient({
   uri: process.env.REACT_APP_GRAPHQL_URL,
