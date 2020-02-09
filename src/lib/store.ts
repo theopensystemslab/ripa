@@ -307,5 +307,3 @@ api.subscribe(
   state => JSON.stringify(state.flow)
 );
 console.timeEnd("subscribing to changes");
-
-// console.log(alg.isAcyclic(g));
