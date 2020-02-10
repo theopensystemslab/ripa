@@ -17,6 +17,7 @@ interface IText {
   unit?: string;
   min?: string;
   max?: string;
+  maxWords?: number;
   inputProps?: IMinMax;
 }
 
@@ -29,17 +30,24 @@ const Text: React.FC<IText> = ({
   name = "",
   type = "",
   unit = "",
+  maxWords,
   inputProps = {
     min: 0,
     max: Infinity
   }
 }) => {
+  const [count, setCount] = React.useState(0);
+  let diff = maxWords - count;
   const formik = useFormik({
     initialValues: {
       [name]: ""
     },
     onSubmit: values => {
-      console.log(JSON.stringify(values, null, 2));
+      if (diff > 0) {
+        console.log(JSON.stringify(values, null, 2));
+      } else {
+        alert("You exceeded the max number of words allowed!");
+      }
     }
   });
 
@@ -53,14 +61,28 @@ const Text: React.FC<IText> = ({
           multiline={multiline}
           name={name}
           type={type}
-          onChange={formik.handleChange}
+          onChange={e => {
+            if (maxWords) {
+              setCount(e.target.value.split(" ").length - 1);
+            }
+            formik.handleChange(e);
+          }}
           rows={multiline ? 10 : 1}
           value={formik.values[name]}
           variant="outlined"
           required={required}
           {...inputProps}
         />
-        {unit && <strong>{unit}</strong>}
+        {maxWords && (
+          <div>
+            <span>{diff >= 0 ? `${diff}` : 0} words Remaining</span>
+          </div>
+        )}
+        {unit && (
+          <div>
+            <strong>{unit}</strong>
+          </div>
+        )}
       </div>
       <Button type="submit">Save and Continue</Button>
     </form>
@@ -88,6 +110,7 @@ export default {
       label=""
       placeholder=""
       required={false}
+      maxWords={5}
     />
   ),
   Email: (
