@@ -55,9 +55,6 @@ const _default = {
   shape: {
     borderRadius: 0
   },
-  spacing: {
-    unit: 8
-  },
   props: {
     // changes global prop defaults for material ui components
     MuiPaper: {
@@ -283,7 +280,7 @@ const _default = {
     },
     MuiInput: {
       root: {
-        backgroundColor: "rgba(36,36,36,0.05)",
+        backgroundColor: "#fff",
         boxSizing: "border-box",
         color: "currentColor",
         "&:hover": {
@@ -294,7 +291,10 @@ const _default = {
         }
       },
       input: {
+        height: 30,
+        border: "1px solid #000",
         padding: "8px",
+        boxSizing: "border-box",
         fontSize: 14,
         lineHeight: 1.429
       },
@@ -320,7 +320,7 @@ const _default = {
       },
       shrink: {
         transform: "translate(0, -1.5px) scale(0.875)",
-        color: "#999"
+        color: "#000"
       },
       formControl: {
         transform: "translate(8px, 27px) scale(1)",
