@@ -1,4 +1,6 @@
 import { Button, TextField } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
 import * as React from "react";
 
@@ -53,8 +55,10 @@ const Text: React.FC<IText> = ({
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <h1>{title}</h1>
-      <div>
+      <Typography variant="h2" gutterBottom>
+        {title}
+      </Typography>
+      <Box mb={3}>
         <TextField
           placeholder={placeholder}
           {...(label && { label })}
@@ -67,24 +71,29 @@ const Text: React.FC<IText> = ({
             }
             formik.handleChange(e);
           }}
+          fullWidth
           rows={multiline ? 10 : 1}
           value={formik.values[name]}
-          variant="outlined"
           required={required}
+          InputLabelProps={{
+            shrink: true
+          }}
           {...inputProps}
         />
         {maxWords && (
-          <div>
+          <Box fontFamily="body2.fontFamily" pt={1}>
             <span>{diff >= 0 ? `${diff}` : 0} words Remaining</span>
-          </div>
+          </Box>
         )}
         {unit && (
-          <div>
+          <Box fontFamily="body2.fontFamily" pt={1}>
             <strong>{unit}</strong>
-          </div>
+          </Box>
         )}
-      </div>
-      <Button type="submit">Save and Continue</Button>
+      </Box>
+      <Button variant="contained" color="primary" type="submit">
+        Save and Continue
+      </Button>
     </form>
   );
 };
@@ -96,7 +105,7 @@ export default {
       multiline={false}
       type="text"
       name="textFieldShort"
-      label=""
+      label="label"
       placeholder=""
       required={false}
     />
@@ -107,7 +116,7 @@ export default {
       multiline
       type="text"
       name="textFieldLong"
-      label=""
+      label="label"
       placeholder=""
       required={false}
       maxWords={5}

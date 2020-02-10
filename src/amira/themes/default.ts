@@ -299,9 +299,13 @@ const _default = {
         lineHeight: 1.429
       },
       multiline: {
-        padding: "8px",
+        padding: 0,
+        border: 0,
+        "&:hover, &:focus": {
+          border: 0
+        },
         "& textarea": {
-          padding: 0
+          height: "auto"
         }
       }
     },
