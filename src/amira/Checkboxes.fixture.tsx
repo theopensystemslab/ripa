@@ -4,14 +4,11 @@ import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormLabel from "@material-ui/core/FormLabel";
-import { ThemeProvider, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
 import { useFormik } from "formik";
 import * as React from "react";
-
-// styles from planx theme
-import theme from "./defaultTheme";
 
 interface ICheckboxes {
   title: string;
@@ -78,65 +75,57 @@ const Checkboxes: React.FC<ICheckboxes> = ({
   });
   const classes = useStyles();
   return (
-    <ThemeProvider theme={theme}>
-      <form onSubmit={formik.handleSubmit}>
-        <Typography variant="h2" gutterBottom>
-          {title}
-        </Typography>
-        <FormControl component="fieldset">
-          <FormLabel
-            component="legend"
-            className={classes.formControlLabelRoot}
-          >
-            Select all that apply
-          </FormLabel>
-          <FormGroup>
-            {Object.entries(options).map(([id, label]) => (
-              <FormControlLabel
-                className={classes.formControlLabelRoot}
-                key={id}
-                control={
-                  <Checkbox
-                    className={classes.checkBoxRoot}
-                    checked={formik.values.selectedOptions.includes(id)}
-                    icon={<span className={classes.icon} />}
-                    checkedIcon={
-                      <span
-                        className={classNames(
-                          classes.icon,
-                          classes.checkedIcon
-                        )}
-                      />
+    <form onSubmit={formik.handleSubmit}>
+      <Typography variant="h2" gutterBottom>
+        {title}
+      </Typography>
+      <FormControl component="fieldset">
+        <FormLabel component="legend" className={classes.formControlLabelRoot}>
+          Select all that apply
+        </FormLabel>
+        <FormGroup>
+          {Object.entries(options).map(([id, label]) => (
+            <FormControlLabel
+              className={classes.formControlLabelRoot}
+              key={id}
+              control={
+                <Checkbox
+                  className={classes.checkBoxRoot}
+                  checked={formik.values.selectedOptions.includes(id)}
+                  icon={<span className={classes.icon} />}
+                  checkedIcon={
+                    <span
+                      className={classNames(classes.icon, classes.checkedIcon)}
+                    />
+                  }
+                  disableRipple
+                  onChange={e => {
+                    if (e.target.checked) {
+                      formik.setFieldValue("selectedOptions", [
+                        ...formik.values.selectedOptions,
+                        id
+                      ]);
+                    } else {
+                      formik.setFieldValue(
+                        "selectedOptions",
+                        formik.values.selectedOptions.filter(el => el !== id)
+                      );
                     }
-                    disableRipple
-                    onChange={e => {
-                      if (e.target.checked) {
-                        formik.setFieldValue("selectedOptions", [
-                          ...formik.values.selectedOptions,
-                          id
-                        ]);
-                      } else {
-                        formik.setFieldValue(
-                          "selectedOptions",
-                          formik.values.selectedOptions.filter(el => el !== id)
-                        );
-                      }
-                    }}
-                    value={id}
-                    name={id}
-                  />
-                }
-                label={label}
-              />
-            ))}
-          </FormGroup>
+                  }}
+                  value={id}
+                  name={id}
+                />
+              }
+              label={label}
+            />
+          ))}
+        </FormGroup>
 
-          <Button type="submit" variant="contained" color="primary">
-            Save and Continue
-          </Button>
-        </FormControl>
-      </form>
-    </ThemeProvider>
+        <Button type="submit" variant="contained" color="primary">
+          Save and Continue
+        </Button>
+      </FormControl>
+    </form>
   );
 };
 
