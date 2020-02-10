@@ -2,6 +2,7 @@ import { map, mount, route } from "navi";
 import * as React from "react";
 
 import { EditStatement, NewStatement } from "../components/forms/StatementForm";
+import log from "../lib/log";
 import { api } from "../lib/store";
 import { IContext } from ".";
 
@@ -47,6 +48,8 @@ export default map(async (req, context) => {
           .filter(([src]) => src === req.params.id)
           .map(([, tgt]) => ({ id: tgt, ...store.flow.nodes[tgt] }))
       };
+
+      log(data);
 
       return {
         title: `Edit Statement #${req.params.id}`,

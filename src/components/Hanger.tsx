@@ -26,9 +26,9 @@ const Hanger = ({ before = null, parent = null, hidden = false }) => {
     const { pathname } = navigate.getCurrentValue().url;
     let url = [pathname, "statements", "new"];
     if (parent) {
-      url = [pathname, "responses", parent, "statements", "new", before];
+      url = [pathname, "responses", parent, "statements", "new"];
     }
-    navigate.navigate(url.filter(Boolean).join("/"));
+    navigate.navigate([...url, before].filter(Boolean).join("/"));
 
     // api.getState().addNode(
     //   {

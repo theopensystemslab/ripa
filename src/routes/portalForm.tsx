@@ -1,4 +1,6 @@
 // import { loader } from "graphql.macro";
+import { gql } from "apollo-boost";
+import natsort from "natsort";
 import { map, mount, route } from "navi";
 import * as React from "react";
 
@@ -7,9 +9,16 @@ import { TYPES, api } from "../lib/store";
 import { IContext } from ".";
 
 export default map(async (req, context: any) => {
-  // const { data } = await context.client.query({
-  //   query: loader("../gql/queries/flows.gql")
-  // });
+  const { data } = await context.gqlClient.query({
+    query: gql`
+      query Flows {
+        flows {
+          id
+          version
+        }
+      }
+    `
+  });
 
   const handleClose = () => {
     (context as IContext).navigation.navigate(
@@ -21,16 +30,18 @@ export default map(async (req, context: any) => {
   const responseId =
     req.params.responseId || (ids.length > 1 ? ids.pop() : null);
 
+  const sorter = natsort({ insensitive: true });
+
   const portals = Object.entries(api.getState().flow.nodes)
-    .filter(([id, node]: any) => node.$t === TYPES.Portal)
+    .filter(([, node]: any) => node.$t === TYPES.Portal)
     .map(([id, flow]: any) => ({
       id,
       name: flow.text || id
       // name: flow.name || flow.id
     }))
-    // .concat(data.flows.map(f => ({ id: f.id, name: f.data || f.id })))
+    .concat(data.flows.map(f => ({ id: f.id, name: f.data || f.id })))
     .filter(({ id }) => !window.location.pathname.includes(id))
-    .sort();
+    .sort((a, b) => sorter(a.name, b.name));
 
   return mount({
     "/new": route({

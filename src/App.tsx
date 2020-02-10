@@ -26,35 +26,51 @@ export const scrollIn = (node, overrides = {}) => {
   });
 };
 
-const App: React.FC<{ ids: string[] }> = ({ ids, children }) => {
-  const ref = React.useRef(null);
+interface IApp {
+  ids: string[];
+  children?: React.ReactNode;
+}
 
-  const id = ids.length > 1 ? ids[ids.length - 1] : null;
+const Flow: React.FC<IApp> = React.memo(
+  ({ ids }) => {
+    const ref = React.useRef(null);
 
-  React.useLayoutEffect(() => {
-    scrollIn(ref.current);
-  }, [id]);
+    const id = ids.length > 1 ? ids[ids.length - 1] : null;
 
-  const roots = useStore(state =>
-    state.flow.edges.filter(([src]) => src === id).map(([, tgt]) => tgt)
-  );
+    React.useLayoutEffect(() => {
+      scrollIn(ref.current);
+    }, [id]);
 
+    const roots = useStore(state =>
+      state.flow.edges.filter(([src]) => src === id).map(([, tgt]) => tgt)
+    );
+
+    return (
+      <div id="editor">
+        <ol className="Flow" ref={ref} data-testid="Flow">
+          {ids.map((id, i) => (
+            <Breadcrumb
+              id={id}
+              key={id}
+              current={i === ids.length - 1}
+              url={ids.slice(0, i + 1)}
+            />
+          ))}
+          {roots.map(rId => (
+            <Card id={rId} key={rId} parent={id} />
+          ))}
+          <Hanger parent={id} />
+        </ol>
+      </div>
+    );
+  },
+  (a, b) => a.ids.toString() === b.ids.toString()
+);
+
+const App: React.FC<IApp> = ({ ids, children }) => {
   return (
     <DndProvider backend={HTML5Backend}>
-      <ol className="Flow" ref={ref}>
-        {ids.map((id, i) => (
-          <Breadcrumb
-            id={id}
-            key={id}
-            current={i === ids.length - 1}
-            url={ids.slice(0, i + 1)}
-          />
-        ))}
-        {roots.map(id => (
-          <Card id={id} key={id} />
-        ))}
-        <Hanger />
-      </ol>
+      <Flow ids={ids} />
       {children}
     </DndProvider>
   );

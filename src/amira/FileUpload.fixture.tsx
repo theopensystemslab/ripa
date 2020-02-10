@@ -57,15 +57,14 @@ const FileUpload: React.FC<IFileUpload> = ({ title }) => {
           onDragOver={handleDragOver}
         >
           drag and drop here or{" "}
-          <a
-            href="#"
+          <button
             onClick={e => {
               e.preventDefault();
               alert("todo");
             }}
           >
             choose file
-          </a>
+          </button>
         </div>
       </div>
     </div>
