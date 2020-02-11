@@ -1,5 +1,3 @@
-import {} from "formik";
-
 import { Button } from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";

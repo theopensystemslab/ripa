@@ -1,5 +1,8 @@
+import { Button } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import * as React from "react";
+import { useFormik } from "formik";
+import React, { useCallback, useEffect, useState } from "react";
+import { useDropzone } from "react-dropzone";
 
 const styles = theme => ({
   box: {
@@ -13,65 +16,74 @@ const useStyles = makeStyles(styles as any) as any;
 
 interface IFileUpload {
   title: string;
+  accept: string[];
+  maxSize: number;
 }
-const FileUpload: React.FC<IFileUpload> = ({ title }) => {
-  const [files, setFiles] = React.useState([]);
+const FileUpload: React.FC<IFileUpload> = ({ title, maxSize, accept = [] }) => {
+  const [files, setFiles] = useState([]);
   const classes = useStyles();
 
-  const handleDrop = e => {
-    e.preventDefault();
-    let fileName;
-    if (e.dataTransfer.items) {
-      [...e.dataTransfer.items].forEach(file => {
-        if (file.kind === "file") {
-          fileName = file.getAsFile().name;
-        }
-      });
-    } else {
-      [...e.dataTransfer.files].forEach(file => {
-        fileName = file.name;
-      });
+  const onDrop = useCallback(acceptedFiles => {
+    setFiles(acceptedFiles);
+  }, []);
+
+  useEffect(() => {
+    if (files.length > 0) {
+      formik.setFieldValue("path", files[0].path);
     }
+  }, [files]);
 
-    if (fileName) setFiles([...files, fileName]);
-  };
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: accept,
+    maxSize: maxSize
+  });
 
-  const handleDragOver = e => {
-    e.preventDefault();
-    // console.log(e);
-  };
-
+  const formik = useFormik({
+    initialValues: {
+      path: ""
+    },
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    }
+  });
   return (
-    <div>
+    <form onSubmit={formik.handleSubmit}>
       <h1>{title}</h1>
-      <div>
-        {files.map(file => (
-          <div key={file} className={classes.box}>
-            {file}
+      {files.map(file => {
+        return (
+          <div key={file.name} className={classes.box}>
+            <p>
+              Name: <strong>{file.name}</strong>
+            </p>
+            <p>Size: {file.size}</p>
+            <p>Type: {file.type}</p>
             <p onClick={e => setFiles(files.filter(f => f !== file))}>x</p>
           </div>
-        ))}
-        <div
-          className={classes.box}
-          onDrop={handleDrop}
-          onDragOver={handleDragOver}
-        >
-          drag and drop here or{" "}
-          <a
-            href="#"
-            onClick={e => {
-              e.preventDefault();
-              alert("todo");
-            }}
-          >
-            choose file
-          </a>
-        </div>
+        );
+      })}
+      <div className={classes.box} {...getRootProps()}>
+        <input {...getInputProps()} />
+        {isDragActive ? (
+          <p>Drop the files here ...</p>
+        ) : (
+          <p>Drag 'n' drop some files here, or click to select files</p>
+        )}
       </div>
-    </div>
+      <small>Max size of file is {maxSize} Bytes</small>
+      <div>
+        <Button type="submit">Save and Continue</Button>
+      </div>
+    </form>
   );
 };
 
 export default {
-  default: <FileUpload title="File upload" />
+  default: (
+    <FileUpload
+      maxSize={4000}
+      accept={["image/jpeg", "image/png"]}
+      title="File upload"
+    />
+  )
 };
