@@ -1,6 +1,5 @@
-import {} from "formik";
-
-import { Button } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
@@ -9,6 +8,7 @@ import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormLabel from "@material-ui/core/FormLabel";
+import Typography from "@material-ui/core/Typography";
 import { ExpandMore } from "@material-ui/icons";
 import { useFormik } from "formik";
 import * as React from "react";
@@ -49,71 +49,75 @@ const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
     }
   });
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <h1>{title}</h1>
-      {panelsOptions.map(({ sectionTitle, values }, index) => (
-        <ExpansionPanel key={`${title}-${index}`}>
-          <ExpansionPanelSummary
-            expandIcon={<ExpandMore />}
-            aria-label="Expand"
-            aria-controls="additional-actions1-content"
-            id="additional-actions1-header"
-          >
-            {sectionTitle}
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <FormControl component="fieldset">
-              <FormLabel component="legend"></FormLabel>
-              <FormGroup>
-                {values.map((checkbox, index) => (
-                  <div>
-                    <FormControlLabel
-                      key={`${checkbox}-${index}`}
-                      control={
-                        <Checkbox
-                          checked={formik.values.selectedOptions.includes(
-                            checkbox
-                          )}
-                          onChange={e => {
-                            if (e.target.checked) {
-                              formik.setFieldValue("selectedOptions", [
-                                ...formik.values.selectedOptions,
-                                checkbox
-                              ]);
-                              formik.setFieldValue("selectedSections", [
-                                ...formik.values.selectedSections,
-                                sectionTitle
-                              ]);
-                            } else {
-                              formik.setFieldValue(
-                                "selectedOptions",
-                                formik.values.selectedOptions.filter(
-                                  el => el !== checkbox
-                                )
-                              );
-                              formik.setFieldValue(
-                                "selectedSections",
-                                formik.values.selectedSections.filter(
-                                  el => el !== sectionTitle
-                                )
-                              );
-                            }
-                          }}
-                          value={checkbox}
-                          name={checkbox}
-                        />
-                      }
-                      label={checkbox}
-                    />
-                  </div>
-                ))}
-              </FormGroup>
-            </FormControl>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-      ))}
-      <Button type="submit">Save and Continue</Button>
-    </form>
+    <Box bgcolor="background.paper" p={4}>
+      <form onSubmit={formik.handleSubmit}>
+        <Typography variant="h5">{title}</Typography>
+        {panelsOptions.map(({ sectionTitle, values }, index) => (
+          <ExpansionPanel key={`${title}-${index}`}>
+            <ExpansionPanelSummary
+              expandIcon={<ExpandMore />}
+              aria-label="Expand"
+              aria-controls="additional-actions1-content"
+              id="additional-actions1-header"
+            >
+              {sectionTitle}
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <FormControl component="fieldset">
+                <FormLabel component="legend"></FormLabel>
+                <FormGroup>
+                  {values.map((checkbox, index) => (
+                    <div>
+                      <FormControlLabel
+                        key={`${checkbox}-${index}`}
+                        control={
+                          <Checkbox
+                            checked={formik.values.selectedOptions.includes(
+                              checkbox
+                            )}
+                            onChange={e => {
+                              if (e.target.checked) {
+                                formik.setFieldValue("selectedOptions", [
+                                  ...formik.values.selectedOptions,
+                                  checkbox
+                                ]);
+                                formik.setFieldValue("selectedSections", [
+                                  ...formik.values.selectedSections,
+                                  sectionTitle
+                                ]);
+                              } else {
+                                formik.setFieldValue(
+                                  "selectedOptions",
+                                  formik.values.selectedOptions.filter(
+                                    el => el !== checkbox
+                                  )
+                                );
+                                formik.setFieldValue(
+                                  "selectedSections",
+                                  formik.values.selectedSections.filter(
+                                    el => el !== sectionTitle
+                                  )
+                                );
+                              }
+                            }}
+                            value={checkbox}
+                            name={checkbox}
+                          />
+                        }
+                        label={checkbox}
+                      />
+                    </div>
+                  ))}
+                </FormGroup>
+              </FormControl>
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+        ))}
+        <Button variant="contained" color="primary" type="submit">
+          Save and Continue
+        </Button>
+      </form>
+    </Box>
   );
 };
 

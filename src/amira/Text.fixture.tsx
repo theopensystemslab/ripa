@@ -14,6 +14,7 @@ interface IText {
   name: string;
   multiline?: boolean;
   label?: string;
+  fullWidth?: boolean;
   required?: boolean;
   placeholder?: string;
   unit?: string;
@@ -26,6 +27,7 @@ interface IText {
 const Text: React.FC<IText> = ({
   title,
   label = false,
+  fullWidth = true,
   placeholder = "",
   multiline = false,
   required = false,
@@ -54,47 +56,61 @@ const Text: React.FC<IText> = ({
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <Typography variant="h2" gutterBottom>
-        {title}
-      </Typography>
-      <Box mb={3}>
-        <TextField
-          placeholder={placeholder}
-          {...(label && { label })}
-          multiline={multiline}
-          name={name}
-          type={type}
-          onChange={e => {
-            if (maxWords) {
-              setCount(e.target.value.split(" ").length - 1);
-            }
-            formik.handleChange(e);
-          }}
-          fullWidth
-          rows={multiline ? 10 : 1}
-          value={formik.values[name]}
-          required={required}
-          InputLabelProps={{
-            shrink: true
-          }}
-          {...inputProps}
-        />
-        {maxWords && (
-          <Box fontFamily="body2.fontFamily" pt={1}>
-            <span>{diff >= 0 ? `${diff}` : 0} words Remaining</span>
-          </Box>
-        )}
-        {unit && (
-          <Box fontFamily="body2.fontFamily" pt={1}>
-            <strong>{unit}</strong>
-          </Box>
-        )}
-      </Box>
-      <Button variant="contained" color="primary" type="submit">
-        Save and Continue
-      </Button>
-    </form>
+    <Box bgcolor="background.paper" p={4}>
+      <form onSubmit={formik.handleSubmit}>
+        <Typography variant="h5" gutterBottom>
+          {title}
+        </Typography>
+        <Box mb={3}>
+          <TextField
+            placeholder={placeholder}
+            {...(label && { label })}
+            fullWidth={fullWidth}
+            multiline={multiline}
+            name={name}
+            type={type}
+            onChange={e => {
+              if (maxWords) {
+                setCount(e.target.value.split(" ").length - 1);
+              }
+              formik.handleChange(e);
+            }}
+            rows={multiline ? 10 : 1}
+            value={formik.values[name]}
+            required={required}
+            InputLabelProps={{
+              shrink: true
+            }}
+            {...inputProps}
+          />
+          {maxWords && (
+            <Box
+              fontFamily="body2.fontFamily"
+              fontSize="caption.fontSize"
+              color="text.secondary"
+              pt={1}
+              textAlign="right"
+            >
+              <span>{diff >= 0 ? `${diff}` : 0} words Remaining</span>
+            </Box>
+          )}
+          {unit && (
+            <Box
+              component="span"
+              fontFamily="body2.fontFamily"
+              fontSize="caption.fontSize"
+              style={{ verticalAlign: "bottom", lineHeight: "30px" }}
+              pl={1.5}
+            >
+              {unit}
+            </Box>
+          )}
+        </Box>
+        <Button variant="contained" color="primary" type="submit">
+          Save and Continue
+        </Button>
+      </form>
+    </Box>
   );
 };
 
@@ -114,10 +130,11 @@ export default {
     <Text
       title="Long Text Input"
       multiline
+      fullWidth
       type="text"
       name="textFieldLong"
       label="label"
-      placeholder=""
+      placeholder="instruction"
       required={false}
       maxWords={5}
     />
@@ -136,6 +153,7 @@ export default {
     <Text
       title="Number"
       label="Number"
+      fullWidth={false}
       placeholder="Number Input"
       name="number"
       type="number"

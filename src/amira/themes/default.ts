@@ -77,6 +77,9 @@ const _default = {
     },
     MuiCheckbox: {
       disableRipple: true
+    },
+    MuiInputLabel: {
+      shrink: true
     }
   },
   overrides: {
@@ -295,7 +298,7 @@ const _default = {
         border: "1px solid #000",
         padding: "8px",
         boxSizing: "border-box",
-        fontSize: 14,
+        fontSize: 12,
         lineHeight: 1.429
       },
       multiline: {

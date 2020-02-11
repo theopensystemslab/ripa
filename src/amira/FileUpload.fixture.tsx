@@ -1,4 +1,6 @@
+import Box from "@material-ui/core/Box";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import Typography from "@material-ui/core/Typography";
 import * as React from "react";
 
 const styles = theme => ({
@@ -6,7 +8,20 @@ const styles = theme => ({
     width: 200,
     height: 200,
     background: "#EAEAEA",
-    padding: 10
+    padding: theme.spacing(2),
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center"
+  },
+  button: {
+    textDecoration: "underline",
+    display: "inline",
+    fontFamily: "inherit",
+    border: 0,
+    paddingLeft: 0,
+    background: "none",
+    cursor: "pointer",
+    textAlign: "left"
   }
 });
 const useStyles = makeStyles(styles as any) as any;
@@ -42,8 +57,10 @@ const FileUpload: React.FC<IFileUpload> = ({ title }) => {
   };
 
   return (
-    <div>
-      <h1>{title}</h1>
+    <Box bgcolor="background.paper" p={4}>
+      <Typography variant="h5" component="h1" gutterBottom>
+        {title}
+      </Typography>
       <div>
         {files.map(file => (
           <div key={file} className={classes.box}>
@@ -58,6 +75,7 @@ const FileUpload: React.FC<IFileUpload> = ({ title }) => {
         >
           drag and drop here or{" "}
           <button
+            className={classes.button}
             onClick={e => {
               e.preventDefault();
               alert("todo");
@@ -67,7 +85,7 @@ const FileUpload: React.FC<IFileUpload> = ({ title }) => {
           </button>
         </div>
       </div>
-    </div>
+    </Box>
   );
 };
 

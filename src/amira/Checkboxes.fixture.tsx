@@ -1,3 +1,4 @@
+import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControl from "@material-ui/core/FormControl";
@@ -18,15 +19,20 @@ interface ICheckboxes {
 }
 
 const useStyles = makeStyles({
-  formGroupRoot: {},
   formControlLabelRoot: {
     marginLeft: 0,
     marginBottom: 12
+  },
+  formControlLabel: {
+    fontWeight: 400,
+    fontSize: 12
   },
   checkBoxRoot: {
     borderRadius: 0,
     padding: 0,
     marginRight: 12,
+    height: 32,
+    width: 32,
     "&:hover": {
       backgroundColor: "transparent"
     }
@@ -43,12 +49,12 @@ const useStyles = makeStyles({
       content: "''",
       display: "block",
       position: "absolute",
-      height: 15,
-      width: 7,
-      borderBottom: "3px solid #000",
-      borderRight: "3px solid #000",
+      height: 18,
+      width: 10,
+      borderBottom: "2.5px solid #000",
+      borderRight: "2.5px solid #000",
       left: "50%",
-      top: "45%",
+      top: "42%",
       transform: "translate(-50%, -50%) rotate(45deg)"
     }
   }
@@ -75,57 +81,74 @@ const Checkboxes: React.FC<ICheckboxes> = ({
   });
   const classes = useStyles();
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <Typography variant="h2" gutterBottom>
-        {title}
-      </Typography>
-      <FormControl component="fieldset">
-        <FormLabel component="legend" className={classes.formControlLabelRoot}>
-          Select all that apply
-        </FormLabel>
-        <FormGroup>
-          {Object.entries(options).map(([id, label]) => (
-            <FormControlLabel
-              className={classes.formControlLabelRoot}
-              key={id}
-              control={
-                <Checkbox
-                  className={classes.checkBoxRoot}
-                  checked={formik.values.selectedOptions.includes(id)}
-                  icon={<span className={classes.icon} />}
-                  checkedIcon={
-                    <span
-                      className={classNames(classes.icon, classes.checkedIcon)}
+    <Box p={4} bgcolor="background.paper">
+      <form onSubmit={formik.handleSubmit}>
+        <Typography variant="h5" gutterBottom>
+          {title}
+        </Typography>
+        <FormControl component="fieldset">
+          <FormLabel
+            component="legend"
+            className={classes.formControlLabelRoot}
+          >
+            <Box fontSize="caption.fontSize" color="text.secondary" mb={1}>
+              Select all that apply
+            </Box>
+          </FormLabel>
+          <Box mb={3}>
+            <FormGroup>
+              {Object.entries(options).map(([id, label]) => (
+                <FormControlLabel
+                  classes={{
+                    root: classes.formControlLabelRoot,
+                    label: classes.formControlLabel
+                  }}
+                  key={id}
+                  control={
+                    <Checkbox
+                      className={classes.checkBoxRoot}
+                      checked={formik.values.selectedOptions.includes(id)}
+                      icon={<span className={classes.icon} />}
+                      checkedIcon={
+                        <span
+                          className={classNames(
+                            classes.icon,
+                            classes.checkedIcon
+                          )}
+                        />
+                      }
+                      disableRipple
+                      onChange={e => {
+                        if (e.target.checked) {
+                          formik.setFieldValue("selectedOptions", [
+                            ...formik.values.selectedOptions,
+                            id
+                          ]);
+                        } else {
+                          formik.setFieldValue(
+                            "selectedOptions",
+                            formik.values.selectedOptions.filter(
+                              el => el !== id
+                            )
+                          );
+                        }
+                      }}
+                      value={id}
+                      name={id}
                     />
                   }
-                  disableRipple
-                  onChange={e => {
-                    if (e.target.checked) {
-                      formik.setFieldValue("selectedOptions", [
-                        ...formik.values.selectedOptions,
-                        id
-                      ]);
-                    } else {
-                      formik.setFieldValue(
-                        "selectedOptions",
-                        formik.values.selectedOptions.filter(el => el !== id)
-                      );
-                    }
-                  }}
-                  value={id}
-                  name={id}
+                  label={label}
                 />
-              }
-              label={label}
-            />
-          ))}
-        </FormGroup>
+              ))}
+            </FormGroup>
+          </Box>
 
-        <Button type="submit" variant="contained" color="primary">
-          Save and Continue
-        </Button>
-      </FormControl>
-    </form>
+          <Button type="submit" variant="contained" color="primary">
+            Save and Continue
+          </Button>
+        </FormControl>
+      </form>
+    </Box>
   );
 };
 
