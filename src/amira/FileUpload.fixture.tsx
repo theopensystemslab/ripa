@@ -23,22 +23,6 @@ const FileUpload: React.FC<IFileUpload> = ({ title, maxSize, accept = [] }) => {
   const [files, setFiles] = useState([]);
   const classes = useStyles();
 
-  const onDrop = useCallback(acceptedFiles => {
-    setFiles(acceptedFiles);
-  }, []);
-
-  useEffect(() => {
-    if (files.length > 0) {
-      formik.setFieldValue("path", files[0].path);
-    }
-  }, [files]);
-
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    accept,
-    maxSize
-  });
-
   const formik = useFormik({
     initialValues: {
       path: ""
@@ -47,6 +31,23 @@ const FileUpload: React.FC<IFileUpload> = ({ title, maxSize, accept = [] }) => {
       alert(JSON.stringify(values, null, 2));
     }
   });
+
+  const onDrop = useCallback(acceptedFiles => {
+    setFiles(acceptedFiles);
+  }, []);
+
+  useEffect(() => {
+    if (files.length > 0) {
+      formik.setFieldValue("path", files[0].path);
+    }
+  }, [files, formik]);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept,
+    maxSize
+  });
+
   return (
     <form onSubmit={formik.handleSubmit}>
       <h1>{title}</h1>
@@ -80,10 +81,6 @@ const FileUpload: React.FC<IFileUpload> = ({ title, maxSize, accept = [] }) => {
 
 export default {
   default: (
-    <FileUpload
-      maxSize={4000}
-      accept={["image/jpeg", "image/png"]}
-      title="File upload"
-    />
+    <FileUpload maxSize={4000} accept={["image/*"]} title="File upload" />
   )
 };
