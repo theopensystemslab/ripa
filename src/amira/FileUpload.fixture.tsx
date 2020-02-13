@@ -35,8 +35,8 @@ const FileUpload: React.FC<IFileUpload> = ({ title, maxSize, accept = [] }) => {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    accept: accept,
-    maxSize: maxSize
+    accept,
+    maxSize
   });
 
   const formik = useFormik({
