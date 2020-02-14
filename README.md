@@ -1,14 +1,14 @@
 ## Live Build
 
-### http://planx-next-editor.netlify.com
+### https://demo.ripa.digital
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b2f94388-d945-4a0e-8af8-78e33104fc54/deploy-status)](https://app.netlify.com/sites/planx-next-editor/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b2f94388-d945-4a0e-8af8-78e33104fc54/deploy-status)](https://app.netlify.com/sites/ripa/deploys)
 
 ## Components
 
-### http://planx-components.netlify.com
+### https://ui.ripa.digital
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9501d555-bbeb-4220-979c-d4efaac41c49/deploy-status)](https://app.netlify.com/sites/planx-components/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9501d555-bbeb-4220-979c-d4efaac41c49/deploy-status)](https://app.netlify.com/sites/ripa-ui/deploys)
 
 ---
 
