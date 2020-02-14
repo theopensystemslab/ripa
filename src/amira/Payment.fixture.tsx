@@ -5,7 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import * as React from "react";
 
-import useForm from "../lib/useForm";
+import useForm from "./lib/useForm";
 
 interface IPayment {
   fee: number;
