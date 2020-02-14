@@ -1,3 +1,4 @@
+import CssBaseline from "@material-ui/core/CssBaseline";
 import ThemeProvider from "@material-ui/styles/ThemeProvider";
 import React from "react";
 import { useValue } from "react-cosmos/fixture";
@@ -17,6 +18,7 @@ const Decorator: React.FC<{ children: any; theme?: string }> = ({
 
   return (
     <ThemeProvider theme={defaultTheme}>
+      <CssBaseline />
       <header style={{ display: "none" }}>
         <select
           onChange={e => {
