@@ -1,9 +1,22 @@
 import * as React from "react";
 
+export const Header = ({ team, breadcrumbs = [] }) => {
+  return (
+    <header>
+      {team} logo
+      <ol>
+        {breadcrumbs.map(breadcrumb => (
+          <li key={breadcrumb}>{breadcrumb}</li>
+        ))}
+      </ol>
+    </header>
+  );
+};
+
 const Application = ({ children }) => {
   return (
     <div>
-      <header>Council logo</header>
+      <Header team="Council" />
       <section role="main">{children}</section>
       <footer>
         <a href="#">Privacy</a>
