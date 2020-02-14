@@ -13,16 +13,16 @@ const BorderLinearProgress = withStyles({
   }
 })(LinearProgress);
 
-const MyApplication = ({ sections }) => {
+const MyApplication = ({ sections, percentageComplete = 100 }) => {
   return (
     <>
       <h1>My application</h1>
       <p>Please complete all sections</p>
-      <p>12% complete</p>
+      <p>{percentageComplete}% complete</p>
       <BorderLinearProgress
         variant="determinate"
         color="secondary"
-        value={12}
+        value={percentageComplete}
       />
       <ul>
         {Object.entries(sections).map(([name, status]) => (

@@ -12,5 +12,6 @@ export default (
       "Materials & appearance": "Not started yet",
       Heritage: "Not started yet"
     }}
+    percentageComplete={12}
   />
 );
