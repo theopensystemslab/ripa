@@ -1,7 +1,11 @@
 {
-  "name": "planx-editor",
-  "version": "0.1.0",
+  "name": "ripa",
+  "version": "0.2.0",
   "private": true,
+  "homepage": "https://demo.ripa.digital",
+  "repository": {
+    "url": "https://github.com/theopensystemslab/ripa"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
