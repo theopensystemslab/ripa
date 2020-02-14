@@ -2,7 +2,7 @@ import ThemeProvider from "@material-ui/styles/ThemeProvider";
 import React from "react";
 import { useValue } from "react-cosmos/fixture";
 
-import defaultTheme from "./themes/default";
+import defaultTheme from "./amira/themes/default";
 
 const themes = {
   default: {}
