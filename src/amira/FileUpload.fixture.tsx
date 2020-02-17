@@ -21,6 +21,8 @@ interface IFileUpload {
 }
 const FileUpload: React.FC<IFileUpload> = ({ title, maxSize, accept = [] }) => {
   const [files, setFiles] = useState([]);
+  const [stateText, setStateText] = useState("Click to select files");
+
   const classes = useStyles();
 
   const formik = useFormik({
@@ -33,21 +35,32 @@ const FileUpload: React.FC<IFileUpload> = ({ title, maxSize, accept = [] }) => {
   });
 
   const onDrop = useCallback(acceptedFiles => {
-    setFiles(acceptedFiles);
+    console.log(acceptedFiles);
+    if (acceptedFiles.length > 0) {
+      const reader = new FileReader();
+      reader.onprogress = () => {
+        setStateText("Loading");
+      };
+      reader.onload = () => {
+        setStateText("click to select files");
+      };
+      setFiles(acceptedFiles);
+    } else {
+      alert(`Please choose a file with max size ${maxSize} Bytes`);
+    }
   }, []);
 
   useEffect(() => {
     if (files.length > 0) {
       formik.setFieldValue("path", files[0].path);
     }
-  }, [files, formik]);
+  }, [files]);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     accept,
     maxSize
   });
-
   return (
     <form onSubmit={formik.handleSubmit}>
       <h1>{title}</h1>
@@ -63,13 +76,9 @@ const FileUpload: React.FC<IFileUpload> = ({ title, maxSize, accept = [] }) => {
           </div>
         );
       })}
-      <div className={classes.box} {...getRootProps()}>
+      <div className={classes.box} {...getRootProps({ isDragActive: true })}>
         <input {...getInputProps()} />
-        {isDragActive ? (
-          <p>Drop the files here ...</p>
-        ) : (
-          <p>Drag 'n' drop some files here, or click to select files</p>
-        )}
+        <p>{stateText}</p>
       </div>
       <small>Max size of file is {maxSize} Bytes</small>
       <div>
@@ -80,7 +89,5 @@ const FileUpload: React.FC<IFileUpload> = ({ title, maxSize, accept = [] }) => {
 };
 
 export default {
-  default: (
-    <FileUpload maxSize={4000} accept={["image/*"]} title="File upload" />
-  )
+  default: <FileUpload maxSize={400} accept={["image/*"]} title="File upload" />
 };
