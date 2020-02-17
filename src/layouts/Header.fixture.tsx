@@ -10,7 +10,7 @@ export default (
       "About the works",
       "My application",
       "Declaration",
-      "Pay fee"
+      "Pay & submit"
     ]}
   />
 );
