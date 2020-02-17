@@ -9,8 +9,8 @@ export default (
       Ownership: "Complete",
       "Applicant details": "In progress",
       "Agent details": "In progress",
-      "Materials & appearance": "Not started yet",
-      Heritage: "Not started yet"
+      "Materials & appearance": "Not started",
+      Heritage: "Not started"
     }}
     percentageComplete={12}
   />
