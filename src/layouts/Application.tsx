@@ -44,7 +44,7 @@ export const Header = ({ team, breadcrumbs = [] }) => {
           </IconButton>
         </Box>
       </Toolbar>
-      <Container>
+      <Container maxWidth="md">
         <Box pt={8} pb={2}>
           <Stepper
             active={2}
