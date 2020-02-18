@@ -1,7 +1,8 @@
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
 import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
 import * as React from "react";
@@ -34,14 +35,14 @@ const Date: React.FC<IText> = ({ title, type, name, options, inputProps }) => {
         <Grid container spacing={1}>
           {options.map((el, index) => (
             <Grid item key={`${el}-${index}`}>
-              <TextField
-                label={el}
+              <InputLabel>{el}</InputLabel>
+              <Input
                 required
                 onChange={formik.handleChange}
                 type={type}
                 name={`${name}-${el}`}
                 inputProps={inputProps[el]}
-              ></TextField>
+              ></Input>
             </Grid>
           ))}
         </Grid>

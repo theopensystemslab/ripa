@@ -1,4 +1,5 @@
 import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import DividerIcon from "@material-ui/icons/ArrowForward";
 import classNames from "classnames";
@@ -50,21 +51,23 @@ const useStyles = makeStyles({
 const Breadcrumb: React.FC<IBreadcrumb> = ({ active = 0, list = [] }) => {
   const classes = useStyles();
   return (
-    <Box bgcolor="background.paper" p={3}>
-      <Box fontSize="h6.fontSize" component="ol" className={classes.root}>
-        {list.map((child, i) => (
-          <div
-            className={classNames(
-              classes.breadcrumb,
-              i + 1 === active && classes.active
-            )}
-            key={i}
-          >
-            {i + 1}. {child}
-            {i + 1 < list.length && <DividerIcon className={classes.icon} />}
-          </div>
-        ))}
-      </Box>
+    <Box bgcolor="background.paper" py={3}>
+      <Container maxWidth="lg">
+        <Box fontSize="h6.fontSize" component="ol" className={classes.root}>
+          {list.map((child, i) => (
+            <div
+              className={classNames(
+                classes.breadcrumb,
+                i + 1 === active && classes.active
+              )}
+              key={i}
+            >
+              {i + 1}. {child}
+              {i + 1 < list.length && <DividerIcon className={classes.icon} />}
+            </div>
+          ))}
+        </Box>
+      </Container>
     </Box>
   );
 };

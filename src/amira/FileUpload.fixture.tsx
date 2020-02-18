@@ -101,7 +101,9 @@ const FileUpload: React.FC<IFileUpload> = ({ title, maxSize, accept = [] }) => {
         </div>
         <small>Max size of file is {maxSize} Bytes</small>
         <div>
-          <Button type="submit">Save and Continue</Button>
+          <Button type="submit" variant="contained" color="primary">
+            Save and Continue
+          </Button>
         </div>
       </form>
     </Box>

@@ -1,5 +1,7 @@
-import { Button, TextField } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
 import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
 import * as React from "react";
@@ -62,9 +64,9 @@ const Text: React.FC<IText> = ({
           {title}
         </Typography>
         <Box mb={3}>
-          <TextField
+          {label && <InputLabel>{label}</InputLabel>}
+          <Input
             placeholder={placeholder}
-            {...(label && { label })}
             fullWidth={fullWidth}
             multiline={multiline}
             name={name}
@@ -78,9 +80,6 @@ const Text: React.FC<IText> = ({
             rows={multiline ? 10 : 1}
             value={formik.values[name]}
             required={required}
-            InputLabelProps={{
-              shrink: true
-            }}
             {...inputProps}
           />
           {maxWords && (
