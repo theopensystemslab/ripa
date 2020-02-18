@@ -1,72 +1,32 @@
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
-import { makeStyles } from "@material-ui/core/styles";
-import DividerIcon from "@material-ui/icons/ArrowForward";
-import classNames from "classnames";
+import ArrowForward from "@material-ui/icons/ArrowForward";
 import * as React from "react";
 
-interface IMinMax {
-  min?: number;
-  max?: number;
-}
-interface IBreadcrumb {
+import Stepper from "../components/Stepper";
+
+interface IBreadcrumbs {
   active?: number;
   list?: string[];
+  numbered?: boolean;
+  Divider?: any;
 }
 
-const useStyles = makeStyles({
-  root: {
-    display: "flex",
-    padding: 0,
-    margin: 0,
-    alignItems: "center",
-    color: "currentColor",
-    flexWrap: "wrap",
-    "& li": {
-      color: "currentColor",
-      fontSize: "20px",
-      listStyle: "decimal inside",
-      whiteSpace: "nowrap",
-      paddingRight: "1rem",
-      fontWeight: "500"
-    }
-  },
-  breadcrumb: {
-    display: "flex",
-    alignItems: "center",
-    opacity: 0.75
-  },
-  active: {
-    fontWeight: 700,
-    opacity: 1
-  },
-  icon: {
-    color: "currentColor",
-    margin: "0 0.5em",
-    width: "0.75em",
-    height: "0.75em"
-  }
-});
-
-const Breadcrumb: React.FC<IBreadcrumb> = ({ active = 0, list = [] }) => {
-  const classes = useStyles();
+const Breadcrumbs: React.FC<IBreadcrumbs> = ({
+  active = 1,
+  list = [],
+  numbered = false,
+  Divider = false
+}) => {
   return (
-    <Box bgcolor="background.paper" py={3}>
+    <Box bgcolor="background.paper" fontSize="h6.fontSize" py={4}>
       <Container maxWidth="lg">
-        <Box fontSize="h6.fontSize" component="ol" className={classes.root}>
-          {list.map((child, i) => (
-            <div
-              className={classNames(
-                classes.breadcrumb,
-                i + 1 === active && classes.active
-              )}
-              key={i}
-            >
-              {i + 1}. {child}
-              {i + 1 < list.length && <DividerIcon className={classes.icon} />}
-            </div>
-          ))}
-        </Box>
+        <Stepper
+          active={active}
+          list={list}
+          numbered={numbered}
+          Divider={Divider}
+        />
       </Container>
     </Box>
   );
@@ -74,8 +34,11 @@ const Breadcrumb: React.FC<IBreadcrumb> = ({ active = 0, list = [] }) => {
 
 export default {
   default: (
-    <Breadcrumb
-      active={2}
+    <Breadcrumbs active={2} list={["My applications", "30 Lake Road"]} />
+  ),
+  stepper: (
+    <Breadcrumbs
+      numbered={true}
       list={[
         "Property location",
         "About the works",
@@ -83,6 +46,7 @@ export default {
         "Declaration",
         "Pay fee"
       ]}
+      Divider={ArrowForward}
     />
   )
 };
