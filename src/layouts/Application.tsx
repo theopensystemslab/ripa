@@ -13,7 +13,7 @@ import Stepper from "../components/Stepper";
 
 export const Header = ({ team, breadcrumbs = [] }) => {
   return (
-    <AppBar elevation={0}>
+    <AppBar elevation={0} position="static">
       <Toolbar>
         <Box fontSize="h5.fontSize" px={1}>
           <CouncilIcon /> {team} logo

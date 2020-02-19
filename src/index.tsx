@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@material-ui/core";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -10,6 +11,7 @@ import * as serviceWorker from "./serviceWorker";
 const App = () => {
   return (
     <ThemeProvider theme={defaultTheme}>
+      <CssBaseline />>
       <Application>
         <SignIn />
       </Application>

@@ -319,6 +319,9 @@ const _default = {
         cursor: "text",
         "&$error": {
           color: "currentColor"
+        },
+        "&$focused": {
+          color: "currentColor"
         }
       },
       animated: {
