@@ -63,7 +63,7 @@ const Text: React.FC<IText> = ({
         <Typography variant="h5" gutterBottom>
           {title}
         </Typography>
-        <Box mb={3}>
+        <Box mb={3} maxWidth={600}>
           {label && <InputLabel>{label}</InputLabel>}
           <Input
             placeholder={placeholder}
@@ -84,7 +84,6 @@ const Text: React.FC<IText> = ({
           />
           {maxWords && (
             <Box
-              fontFamily="body2.fontFamily"
               fontSize="caption.fontSize"
               color="text.secondary"
               pt={1}
@@ -96,9 +95,8 @@ const Text: React.FC<IText> = ({
           {unit && (
             <Box
               component="span"
-              fontFamily="body2.fontFamily"
               fontSize="caption.fontSize"
-              style={{ verticalAlign: "bottom", lineHeight: "30px" }}
+              style={{ verticalAlign: "bottom", lineHeight: "40px" }}
               pl={1.5}
             >
               {unit}

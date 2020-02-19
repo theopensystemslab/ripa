@@ -26,15 +26,7 @@ const PropertyInformation = ({ streetAddress, information, constraints }) => {
   return (
     <Box py={3} bgcolor="background.paper">
       <Container maxWidth="md">
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
-            <img src="https://i.imgur.com/S16hH4J.png" width="100%" />
-            <Box fontSize="subtitle1.fontSize" pt={1} color="#c00">
-              <a href="#" className={classes.link}>
-                Redraw the site boundary
-              </a>
-            </Box>
-          </Grid>
+        <Grid container spacing={3} direction="row-reverse">
           <Grid item xs={12} sm={6}>
             <Typography variant="h3" component="h2" gutterBottom>
               <strong>{streetAddress}</strong>
@@ -57,6 +49,14 @@ const PropertyInformation = ({ streetAddress, information, constraints }) => {
                   <strong>{key}</strong> {value}
                 </Box>
               ))}
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <img src="https://i.imgur.com/S16hH4J.png" width="100%" />
+            <Box fontSize="subtitle1.fontSize" pt={1} color="#c00">
+              <a href="#" className={classes.link}>
+                Redraw the site boundary
+              </a>
             </Box>
           </Grid>
         </Grid>

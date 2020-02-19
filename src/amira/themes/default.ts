@@ -294,11 +294,11 @@ const _default = {
         }
       },
       input: {
-        height: 30,
+        height: 40,
         border: "1px solid #000",
         padding: "8px",
         boxSizing: "border-box",
-        fontSize: 12,
+        fontSize: 16,
         lineHeight: 1.429
       },
       multiline: {
@@ -326,8 +326,12 @@ const _default = {
         transitionDuration: "200ms, 350ms"
       },
       shrink: {
-        transform: "translate(0, -1.5px) scale(0.875)",
-        color: "#000"
+        transform: "translate(0) scale(1)",
+        color: "currentColor",
+        marginBottom: 10,
+        "& + .MuiInput-formControl": {
+          marginTop: 24
+        }
       },
       formControl: {
         transform: "translate(8px, 27px) scale(1)",
