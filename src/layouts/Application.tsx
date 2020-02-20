@@ -13,7 +13,10 @@ const useStyles = makeStyles(theme => ({
     padding: 20
   },
   main: {
-    flex: 1
+    flex: 1,
+    alignItems: "stretch",
+    display: "flex"
+    // marginTop: -100
   },
   footer: {
     padding: 20,
