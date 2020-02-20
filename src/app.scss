@@ -15,3 +15,7 @@ body {
     color: white;
   }
 }
+
+label[data-shrink="false"] {
+  pointer-events: none;
+}
