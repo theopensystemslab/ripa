@@ -1,9 +1,36 @@
+import { makeStyles } from "@material-ui/core/styles";
 import * as React from "react";
 
-export const Header = ({ team, breadcrumbs = [] }) => {
+import logo from "./logo.png";
+
+const useStyles = makeStyles(theme => ({
+  container: {
+    minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column"
+  },
+  header: {
+    padding: 20
+  },
+  main: {
+    flex: 1
+  },
+  footer: {
+    padding: 20,
+    "& a": {
+      textDecoration: "none",
+      padding: "0 20px 0 0"
+    }
+  }
+}));
+
+export const Header = ({ team, currentUser = false, breadcrumbs = [] }) => {
+  const classes = useStyles();
   return (
-    <header>
-      {team} logo
+    <header className={classes.header}>
+      <img src={logo} height={16} />
+      {team}
+      {currentUser && <a href="/logout">Logout</a>}
       <ol>
         {breadcrumbs.map(breadcrumb => (
           <li key={breadcrumb}>{breadcrumb}</li>
@@ -13,12 +40,15 @@ export const Header = ({ team, breadcrumbs = [] }) => {
   );
 };
 
-const Application = ({ children }) => {
+const Application = ({ children, currentUser = false }) => {
+  const classes = useStyles();
   return (
-    <div>
-      <Header team="Council" />
-      <section role="main">{children}</section>
-      <footer>
+    <div className={classes.container}>
+      <Header team="Hampton" currentUser={currentUser} />
+      <section role="main" className={classes.main}>
+        {children}
+      </section>
+      <footer className={classes.footer}>
         <a href="#">Privacy</a>
         <a href="#">Terms & conditions</a>
         <a href="#">Help</a>

@@ -1,3 +1,5 @@
+import "typeface-inter";
+
 import "./app.scss";
 
 import { ApolloProvider } from "@apollo/react-hooks";
@@ -9,7 +11,6 @@ import ReactDOM from "react-dom";
 import { Router, View } from "react-navi";
 
 import defaultTheme from "./amira/themes/default";
-import Application from "./layouts/Application";
 import routes from "./routes";
 import * as serviceWorker from "./serviceWorker";
 
@@ -41,16 +42,14 @@ const App = () => {
   return (
     <ApolloProvider client={gqlClient}>
       <ThemeProvider theme={defaultTheme}>
-        <Application>
-          <Router
-            navigation={navigation}
-            context={{ navigation, gqlClient, currentUser }}
-          >
-            <Suspense fallback={<div>Loading... </div>}>
-              <View />
-            </Suspense>
-          </Router>
-        </Application>
+        <Router
+          navigation={navigation}
+          context={{ navigation, gqlClient, currentUser }}
+        >
+          <Suspense fallback={<div>Loading... </div>}>
+            <View />
+          </Suspense>
+        </Router>
       </ThemeProvider>
     </ApolloProvider>
   );

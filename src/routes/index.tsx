@@ -2,6 +2,7 @@ import { compose, lazy, map, mount, redirect, route, withView } from "navi";
 import * as React from "react";
 import { NotFoundBoundary, View } from "react-navi";
 
+import Application from "../layouts/Application";
 import Login from "../pages/SignIn";
 
 export type IContext = {
@@ -13,11 +14,13 @@ export type IContext = {
 const renderNotFound: React.FC<any> = () => <h1>404 - Not Found</h1>;
 
 export default compose(
-  withView(
-    <NotFoundBoundary render={renderNotFound}>
-      <View />
-    </NotFoundBoundary>
-  ),
+  withView((req, context: IContext) => (
+    <Application currentUser={context.currentUser}>
+      <NotFoundBoundary render={renderNotFound}>
+        <View />
+      </NotFoundBoundary>
+    </Application>
+  )),
 
   mount({
     "/login": map(async (req, context: IContext) =>
