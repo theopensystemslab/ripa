@@ -29,8 +29,12 @@ const SignIn = () => {
           <br />
           <TextField label="Password" type="password" />
           <br />
-          <Button type="submit">Sign in</Button>
+          <br />
+          <Button type="submit" variant="contained" color="primary">
+            Sign in
+          </Button>
         </form>
+        <br />
         <a href="#">Forgot your password?</a>
       </div>
     </HVCenterContainer>
