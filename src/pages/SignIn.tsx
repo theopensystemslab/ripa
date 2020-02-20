@@ -1,4 +1,5 @@
-import { Button } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 import * as React from "react";
 
 const SignIn = () => {
@@ -13,8 +14,8 @@ const SignIn = () => {
       <p>
         Sign in or <a href="#">create an account</a> to get started
       </p>
-      <input name="email" type="email" />
-      <input name="password" type="password" />
+      <TextField label="Email" type="email" />
+      <TextField label="Password" type="password" />
       <Button type="submit">Sign in</Button>
       <a href="#">Forgot your password?</a>
     </form>
