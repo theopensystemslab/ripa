@@ -6,11 +6,12 @@ import { ApolloProvider } from "@apollo/react-hooks";
 import { ThemeProvider } from "@material-ui/core";
 import ApolloClient from "apollo-boost";
 import { createBrowserNavigation } from "navi";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { Router, View } from "react-navi";
 
 import defaultTheme from "./amira/themes/default";
+import { useStore } from "./lib/store";
 import routes from "./routes";
 import * as serviceWorker from "./serviceWorker";
 
@@ -33,11 +34,7 @@ const navigation = createBrowserNavigation({
 });
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState(false);
-
-  useEffect(() => {
-    setCurrentUser(!!localStorage.getItem("token"));
-  }, [setCurrentUser]);
+  const currentUser = useStore(state => state.data.currentUser);
 
   return (
     <ApolloProvider client={gqlClient}>

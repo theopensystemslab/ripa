@@ -2,6 +2,8 @@ import { withStyles } from "@material-ui/core";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import * as React from "react";
 
+import HVCenterContainer from "../components/HVCenterContainer";
+
 const BorderLinearProgress = withStyles({
   root: {
     height: 10,
@@ -15,7 +17,7 @@ const BorderLinearProgress = withStyles({
 
 const MyApplication = ({ sections, percentageComplete = 100 }) => {
   return (
-    <>
+    <HVCenterContainer light>
       <h1>My application</h1>
       <p>Please complete all sections</p>
       <p>{percentageComplete}% complete</p>
@@ -31,7 +33,7 @@ const MyApplication = ({ sections, percentageComplete = 100 }) => {
           </li>
         ))}
       </ul>
-    </>
+    </HVCenterContainer>
   );
 };
 

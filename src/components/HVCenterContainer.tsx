@@ -7,12 +7,27 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     "align-items": "center",
     "justify-content": "center"
+  },
+  lightContainer: {
+    background: "white",
+    color: "black",
+    width: "100%",
+    display: "flex",
+    "align-items": "center",
+    "justify-content": "center"
+  },
+  innerContainer: {
+    margin: "0 auto"
   }
 }));
 
-const HVCenterContainer = ({ children }) => {
+const HVCenterContainer = ({ children, light = false }) => {
   const classes = useStyles();
-  return <div className={classes.container}>{children}</div>;
+  return (
+    <div className={light ? classes.lightContainer : classes.container}>
+      <div>{children}</div>
+    </div>
+  );
 };
 
 export default HVCenterContainer;

@@ -15,7 +15,8 @@ const useStyles = makeStyles(theme => ({
   main: {
     flex: 1,
     alignItems: "stretch",
-    display: "flex"
+    display: "flex",
+    flexDirection: "column"
     // marginTop: -100
   },
   footer: {

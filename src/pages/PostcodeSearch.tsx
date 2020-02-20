@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import * as React from "react";
 
 import HVCenterContainer from "../components/HVCenterContainer";
+import { useStore } from "../lib/store";
 
 const useStyles = makeStyles(theme => ({
   form: {
@@ -15,7 +16,9 @@ const useStyles = makeStyles(theme => ({
 
 const PostcodeSearch = () => {
   const classes = useStyles();
-  const [postcode, setPostcode] = React.useState("");
+  const set = useStore(state => state.set);
+  const _postcode = useStore(state => state.data.postcode || "");
+  const [postcode, setPostcode] = React.useState(_postcode);
 
   const changePostcode = e => {
     const { value } = e.currentTarget;
@@ -24,7 +27,14 @@ const PostcodeSearch = () => {
 
   return (
     <HVCenterContainer>
-      <form className={classes.form}>
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          set(state => {
+            state.data.postcode = postcode;
+          });
+        }}
+      >
         <label htmlFor="postcode">The postcode of the property is </label>
         <TextField
           id="postcode"

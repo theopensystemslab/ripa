@@ -9,7 +9,7 @@ const AddressSelect = () => {
       <select>
         <option>30 Lake Road</option>
       </select>
-      <a href="#">It doesn't have an address</a>
+      {/* <a href="#">It doesn't have an address</a> */}
     </HVCenterContainer>
   );
 };

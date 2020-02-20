@@ -10,11 +10,7 @@ import PropertyInformation from "../pages/PropertyInformation";
 import { IContext } from ".";
 
 export default compose(
-  withView(
-    <div>
-      <View />
-    </div>
-  ),
+  withView(<View />),
 
   mount({
     "/": map(async (req, context: IContext) => {

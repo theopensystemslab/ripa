@@ -3,6 +3,7 @@ import * as React from "react";
 import { NotFoundBoundary, View } from "react-navi";
 
 import Application from "../layouts/Application";
+import { api } from "../lib/store";
 import Login from "../pages/SignIn";
 
 export type IContext = {
@@ -38,7 +39,10 @@ export default compose(
 
     "/logout": map(async (req, context: IContext) => {
       // context.gqlClient.resetStore();
-      localStorage.removeItem("token");
+      // localStorage.removeItem("token");
+      api.getState().set(state => {
+        state.data = {};
+      });
       return redirect("/login");
     }),
 
