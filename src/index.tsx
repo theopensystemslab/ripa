@@ -1,19 +1,58 @@
+import "./app.scss";
+
+import { ApolloProvider } from "@apollo/react-hooks";
 import { ThemeProvider } from "@material-ui/core";
-import React from "react";
+import ApolloClient from "apollo-boost";
+import { createBrowserNavigation } from "navi";
+import React, { Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+import { Router, View } from "react-navi";
 
 import defaultTheme from "./amira/themes/default";
 import Application from "./layouts/Application";
-import SignIn from "./pages/SignIn";
+import routes from "./routes";
 import * as serviceWorker from "./serviceWorker";
 
+const gqlClient = new ApolloClient({
+  uri: process.env.REACT_APP_GRAPHQL_URL,
+  request: operation => {
+    // const token = localStorage.getItem("token");
+    // if (token) {
+    //   operation.setContext({
+    //     headers: {
+    //       Authorization: `Bearer ${token}`
+    //     }
+    //   });
+    // }
+  }
+});
+
+const navigation = createBrowserNavigation({
+  routes
+});
+
 const App = () => {
+  const [currentUser, setCurrentUser] = useState(false);
+
+  useEffect(() => {
+    setCurrentUser(!!localStorage.getItem("token"));
+  }, [setCurrentUser]);
+
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Application>
-        <SignIn />
-      </Application>
-    </ThemeProvider>
+    <ApolloProvider client={gqlClient}>
+      <ThemeProvider theme={defaultTheme}>
+        <Application>
+          <Router
+            navigation={navigation}
+            context={{ navigation, gqlClient, currentUser }}
+          >
+            <Suspense fallback={<div>Loading... </div>}>
+              <View />
+            </Suspense>
+          </Router>
+        </Application>
+      </ThemeProvider>
+    </ApolloProvider>
   );
 };
 
