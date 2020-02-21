@@ -139,6 +139,11 @@ const SelectQuestion = ({
           }
         }}
         MenuProps={{
+          getContentAnchorEl: null,
+          anchorOrigin: {
+            vertical: "bottom",
+            horizontal: "left"
+          },
           classes: {
             paper: classes.paper
           }
