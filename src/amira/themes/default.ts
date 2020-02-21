@@ -10,8 +10,8 @@ const themePalette = {
     contrastText: "#fff"
   },
   secondary: {
-    main: "#21BA45", // bright lime green
-    contrastText: "#141414"
+    main: "#038521",
+    contrastText: "#fff"
   },
   grey: {
     main: "#999999"
@@ -55,9 +55,6 @@ const _default = {
   shape: {
     borderRadius: 0
   },
-  spacing: {
-    unit: 8
-  },
   props: {
     // changes global prop defaults for material ui components
     MuiPaper: {
@@ -80,6 +77,9 @@ const _default = {
     },
     MuiCheckbox: {
       disableRipple: true
+    },
+    MuiInputLabel: {
+      shrink: true
     }
   },
   overrides: {
@@ -283,9 +283,8 @@ const _default = {
     },
     MuiInput: {
       root: {
-        backgroundColor: "rgba(36,36,36,0.05)",
+        backgroundColor: "#fff",
         boxSizing: "border-box",
-        color: "currentColor",
         "&:hover": {
           boxShadow: "inset 0 0 0 1px #ddd"
         },
@@ -294,14 +293,21 @@ const _default = {
         }
       },
       input: {
+        height: 40,
+        border: "1px solid #000",
         padding: "8px",
-        fontSize: 14,
+        boxSizing: "border-box",
+        fontSize: 16,
         lineHeight: 1.429
       },
       multiline: {
-        padding: "8px",
+        padding: 0,
+        border: 0,
+        "&:hover, &:focus": {
+          border: 0
+        },
         "& textarea": {
-          padding: 0
+          height: "auto"
         }
       }
     },
@@ -312,6 +318,9 @@ const _default = {
         cursor: "text",
         "&$error": {
           color: "currentColor"
+        },
+        "&$focused": {
+          color: "currentColor"
         }
       },
       animated: {
@@ -319,8 +328,12 @@ const _default = {
         transitionDuration: "200ms, 350ms"
       },
       shrink: {
-        transform: "translate(0, -1.5px) scale(0.875)",
-        color: "#999"
+        transform: "translate(0) scale(1)",
+        color: "currentColor",
+        marginBottom: 10,
+        "& + .MuiInput-formControl": {
+          marginTop: 24
+        }
       },
       formControl: {
         transform: "translate(8px, 27px) scale(1)",

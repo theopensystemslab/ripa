@@ -6,13 +6,15 @@ body {
   font-family: Inter, Arial, Helvetica, sans-serif;
 }
 
-body {
+body,
+#root {
   background: #038521;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  &,
+}
+body {
   a {
-    color: white;
+    color: #ffffff;
   }
 }
 

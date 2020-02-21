@@ -4,6 +4,7 @@ import "./app.scss";
 
 import { ApolloProvider } from "@apollo/react-hooks";
 import { ThemeProvider } from "@material-ui/core";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import ApolloClient from "apollo-boost";
 import { createBrowserNavigation } from "navi";
 import React, { Suspense } from "react";
@@ -39,6 +40,7 @@ const App = () => {
   return (
     <ApolloProvider client={gqlClient}>
       <ThemeProvider theme={defaultTheme}>
+        <CssBaseline />
         <Router
           navigation={navigation}
           context={{ navigation, gqlClient, currentUser }}

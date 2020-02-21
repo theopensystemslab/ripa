@@ -1,8 +1,16 @@
+import AppBar from "@material-ui/core/AppBar";
+import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
+import Toolbar from "@material-ui/core/Toolbar";
+import ArrowForward from "@material-ui/icons/ArrowForward";
+import CouncilLogo from "@material-ui/icons/EcoOutlined";
+import MenuIcon from "@material-ui/icons/Menu";
 import * as React from "react";
-import { Link } from "react-navi";
 
-import logo from "./logo.png";
+import Stepper from "../components/Stepper";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -44,28 +52,53 @@ export const Header = ({
   address = "",
   breadcrumbs = []
 }) => {
+  const nav = ["My planning applications"];
+  if (address) {
+    nav.push(address);
+  }
   const classes = useStyles();
   return (
-    <header className={classes.header}>
-      <div>
-        <img src={logo} height={16} />
-        {team}
-      </div>
-      {address && (
-        <div>
-          <Link href="/" prefetch={false}>
-            My planning applications
-          </Link>{" "}
-          / <strong>{address}</strong>
-        </div>
-      )}
-      {currentUser && <a href="/logout">Logout</a>}
-      <ol className={classes.breadcrumbs}>
-        {breadcrumbs.map(breadcrumb => (
-          <li key={breadcrumb}>{breadcrumb}</li>
-        ))}
-      </ol>
-    </header>
+    <AppBar elevation={0} position="fixed" color="secondary">
+      <Toolbar>
+        <Box fontSize="h5.fontSize" display="flex" alignItems="center" px={1}>
+          <CouncilLogo /> {team}
+        </Box>
+        {currentUser && (
+          <>
+            <Box px={3} style={{ flexGrow: 1 }}>
+              <Grid container alignItems="center">
+                <Grid item>
+                  <Box fontSize="h6.fontSize">
+                    <Stepper list={nav} active={2}></Stepper>
+                  </Box>
+                </Grid>
+                {/* <Grid item>
+              <Box fontSize="subtitle1.fontSize" pl={2}>
+                Saved 1m ago
+              </Box>
+            </Grid> */}
+              </Grid>
+            </Box>
+            <Box>
+              <IconButton color="inherit">
+                <MenuIcon />
+              </IconButton>
+              <a href="/logout">Logout</a>
+            </Box>
+          </>
+        )}
+      </Toolbar>
+      <Container maxWidth="md">
+        <Box pt={8} pb={2}>
+          <Stepper
+            active={2}
+            numbered
+            list={breadcrumbs}
+            Divider={ArrowForward}
+          ></Stepper>
+        </Box>
+      </Container>
+    </AppBar>
   );
 };
 
@@ -98,7 +131,7 @@ const Application = ({
       </section>
       <footer className={classes.footer}>
         <a href="#">Privacy</a>
-        <a href="#">Terms & conditions</a>
+        <a href="#">Terms &amp; conditions</a>
         <a href="#">Help</a>
       </footer>
     </div>
