@@ -70,13 +70,17 @@ const Application = ({
         team="Hampton"
         currentUser={currentUser}
         address={address}
-        breadcrumbs={[
-          "Property location",
-          "About the works",
-          "My application",
-          "Declaration",
-          "Pay & submit"
-        ]}
+        breadcrumbs={
+          address
+            ? [
+                "Property location",
+                "About the works",
+                "My application",
+                "Declaration",
+                "Pay & submit"
+              ]
+            : undefined
+        }
       />
       <section role="main" className={classes.main}>
         {children}
