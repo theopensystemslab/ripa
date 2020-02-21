@@ -1,4 +1,3 @@
-import { gql } from "apollo-boost";
 import axios from "axios";
 import { compose, map, mount, route, withView } from "navi";
 import * as React from "react";
@@ -123,20 +122,19 @@ export default compose(
 
   mount({
     "/": map(async (req, context: IContext) => {
-      const { data } = await context.gqlClient.query({
-        query: gql`
-          query Flow($id: uuid!) {
-            flows_by_pk(id: $id) {
-              data
-            }
-          }
-        `,
-        variables: {
-          id: process.env.REACT_APP_FLOW_ID
-        }
-      });
-
-      console.log(data.flows_by_pk.data);
+      // const { data } = await context.gqlClient.query({
+      //   query: gql`
+      //     query Flow($id: uuid!) {
+      //       flows_by_pk(id: $id) {
+      //         data
+      //       }
+      //     }
+      //   `,
+      //   variables: {
+      //     id: process.env.REACT_APP_FLOW_ID
+      //   }
+      // });
+      // console.log(data.flows_by_pk.data);
 
       return route({
         view: <App />
