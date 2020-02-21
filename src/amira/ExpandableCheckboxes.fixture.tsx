@@ -38,12 +38,12 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
       selectedOptions: []
     },
     onSubmit: values => {
-      let unDuplicatedSections = Array.from(new Set(values.selectedSections));
-      if (unDuplicatedSections.length !== values.noOfPanels) {
-        alert("Please select at least one of each section");
-      } else {
-        alert(JSON.stringify(values, null, 2));
-      }
+      // let unDuplicatedSections = Array.from(new Set(values.selectedSections));
+      // if (unDuplicatedSections.length !== values.noOfPanels) {
+      //   alert("Please select at least one of each section");
+      // } else {
+      //   alert(JSON.stringify(values, null, 2));
+      // }
     }
   });
   return (
@@ -109,7 +109,14 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
           </ExpansionPanelDetails>
         </ExpansionPanel>
       ))}
-      <Button type="submit">Save and Continue</Button>
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        style={{ margin: "10px 0" }}
+      >
+        Save and Continue
+      </Button>
     </form>
   );
 };

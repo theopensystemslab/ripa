@@ -1,17 +1,47 @@
+import { gql } from "apollo-boost";
 import axios from "axios";
 import { compose, mount, route, withView } from "navi";
 import * as React from "react";
 import { View } from "react-navi";
 
 import { ExpandableCheckboxes } from "../amira/ExpandableCheckboxes.fixture";
+import HVCenterContainer from "../components/HVCenterContainer";
 import { api, useStore } from "../lib/store";
 import AddressSelect from "../pages/AddressSelect";
 import Dashboard from "../pages/Dashboard";
-import MyApplication from "../pages/MyApplication";
 import PostcodeSearch from "../pages/PostcodeSearch";
 import PropertyInformation from "../pages/PropertyInformation";
+import { IContext } from ".";
 
-const App = () => {
+const Flow = ({ flow }) => {
+  window["flow"] = flow;
+
+  const id = "d24ffc88-cf93-4f59-9c65-631cdd2c5f45";
+  const panels = flow.edges.filter(([src]) => src === id).map(([, tgt]) => tgt);
+
+  const data = panels.map(id => {
+    const tgt = flow.edges.find(([src]) => src === id)[1];
+
+    return {
+      sectionTitle: flow.nodes[id].text,
+      values: flow.edges
+        .filter(([src]) => src === tgt)
+        .map(([, tgt]) => flow.nodes[tgt].text)
+    };
+  });
+
+  return (
+    <HVCenterContainer light>
+      <ExpandableCheckboxes
+        name="ExpandableCheckboxes"
+        title={flow.nodes[id].text}
+        panelsOptions={data}
+      />
+    </HVCenterContainer>
+  );
+};
+
+const App = ({ flow }) => {
   const set = useStore(state => state.set);
   const postcode = useStore(state => state.data.postcode || "");
   const address = useStore(state => state.data.address);
@@ -80,7 +110,8 @@ const App = () => {
       )}
       {continued && (
         <>
-          <MyApplication
+          <Flow flow={flow} />
+          {/* <MyApplication
             sections={{
               "About the property": "Complete",
               Ownership: "Complete",
@@ -90,25 +121,7 @@ const App = () => {
               Heritage: "Not started"
             }}
             percentageComplete={12}
-          />
-          <ExpandableCheckboxes
-            title="Expandable Checkboxes"
-            name="ExpandableCheckboxes"
-            panelsOptions={[
-              {
-                sectionTitle: "section A",
-                values: ["Response A1", "Response A2", "Response A3"]
-              },
-              {
-                sectionTitle: "section B",
-                values: ["Response B1", "Response B2", "Response B3"]
-              },
-              {
-                sectionTitle: "section C",
-                values: ["Response C1", "Response C2", "Response C3"]
-              }
-            ]}
-          />
+          /> */}
         </>
       )}
     </>
@@ -141,9 +154,24 @@ export default compose(
         )
       };
     }),
-    "/start": route({
-      title: "Start",
-      view: <App />
+    "/start": route(async (req, context: IContext) => {
+      const { data } = await context.gqlClient.query({
+        query: gql`
+          query Flow($id: uuid!) {
+            flows_by_pk(id: $id) {
+              data
+            }
+          }
+        `,
+        variables: {
+          id: process.env.REACT_APP_FLOW_ID
+        }
+      });
+
+      return {
+        title: "Start",
+        view: <App flow={data.flows_by_pk.data} />
+      };
     })
   })
 );
