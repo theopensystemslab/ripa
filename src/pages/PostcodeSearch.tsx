@@ -1,48 +1,41 @@
-import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import Postcode from "postcode";
 import * as React from "react";
 
 import HVCenterContainer from "../components/HVCenterContainer";
-import { useStore } from "../lib/store";
 
-const useStyles = makeStyles(theme => ({
-  form: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: 200
-    }
-  }
-}));
+const PostcodeSearch = ({
+  handleChange = undefined,
+  handleReset = undefined,
+  postcode = ""
+}) => {
+  const [_postcode, setPostcode] = React.useState(postcode);
 
-const PostcodeSearch = () => {
-  const classes = useStyles();
-  const set = useStore(state => state.set);
-  const _postcode = useStore(state => state.data.postcode || "");
-  const [postcode, setPostcode] = React.useState(_postcode);
+  const handleLocalChange = e => {
+    if (handleReset) handleReset();
 
-  const changePostcode = e => {
     const { value } = e.currentTarget;
-    setPostcode(value.toUpperCase());
+    let pc = value.toUpperCase();
+
+    const p = Postcode.parse(pc);
+
+    if (p.valid) {
+      pc = p.postcode;
+      if (handleChange) handleChange(pc);
+    }
+
+    setPostcode(pc);
   };
 
   return (
     <HVCenterContainer>
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          set(state => {
-            state.data.postcode = postcode;
-          });
-        }}
-      >
-        <label htmlFor="postcode">The postcode of the property is </label>
-        <TextField
-          id="postcode"
-          autoFocus
-          value={postcode}
-          onChange={changePostcode}
-        />
-      </form>
+      <label htmlFor="postcode">The postcode of the property is </label>
+      <TextField
+        id="postcode"
+        autoFocus
+        value={_postcode}
+        onChange={handleLocalChange}
+      />
     </HVCenterContainer>
   );
 };

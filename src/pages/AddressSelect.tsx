@@ -2,12 +2,19 @@ import * as React from "react";
 
 import HVCenterContainer from "../components/HVCenterContainer";
 
-const AddressSelect = () => {
+const AddressSelect = ({ addresses = [], handleChange = undefined }) => {
   return (
     <HVCenterContainer>
       The address of the property is
-      <select>
-        <option>30 Lake Road</option>
+      <select onChange={handleChange}>
+        <option disabled />
+        {addresses.map(address => {
+          return (
+            <option key={address.id} value={address.uprn}>
+              {address.name}
+            </option>
+          );
+        })}
       </select>
       {/* <a href="#">It doesn't have an address</a> */}
     </HVCenterContainer>
