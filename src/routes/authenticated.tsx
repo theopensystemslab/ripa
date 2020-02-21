@@ -14,57 +14,67 @@ import { IContext } from ".";
 
 const App = () => {
   const set = useStore(state => state.set);
+  const postcode = useStore(state => state.data.postcode || "");
   const address = useStore(state => state.data.address);
   const addresses = useStore(state => state.data.addresses);
+  const continued = useStore(state => state.data.continued);
 
   return (
     <>
-      <PostcodeSearch
-        postcode={useStore(state => state.data.postcode || "")}
-        handleReset={() => {
-          set(state => {
-            delete state.data.postcode;
-            delete state.data.addresses;
-            delete state.data.localAuthority;
-          });
-        }}
-        handleChange={postcode => {
-          axios
-            .get(`https://api.planx.uk/v1/postcodes/${postcode}`)
-            .then(({ data }) => {
-              set(state => {
-                state.data.postcode = postcode;
-                state.data.addresses = data.results;
-                state.data.localAuthority = "Hampton";
-              });
+      {!continued && (
+        <PostcodeSearch
+          postcode={postcode}
+          handleReset={() => {
+            set(state => {
+              delete state.data.postcode;
+              delete state.data.addresses;
+              delete state.data.localAuthority;
             });
-        }}
-      />
-      {addresses && (
+          }}
+          handleChange={postcode => {
+            axios
+              .get(`https://api.planx.uk/v1/postcodes/${postcode}`)
+              .then(({ data }) => {
+                set(state => {
+                  state.data.postcode = postcode;
+                  state.data.addresses = data.results;
+                  state.data.localAuthority = "Hampton";
+                });
+              });
+          }}
+        />
+      )}
+      {!continued && addresses && (
         <AddressSelect
           addresses={addresses}
           handleChange={e => {
-            set(state => {});
+            set(state => {
+              state.data.address = state.data.addresses.find(
+                a => a.id === e.target.value
+              );
+              state.data.address.constraints = [];
+            });
           }}
         />
       )}
-      {address && (
+      {!continued && address && (
         <PropertyInformation
-          streetAddress="30 Lake Road"
+          streetAddress={address.name}
           information={{
-            District: "Southwark",
-            Postcode: "SE22 9HL",
-            "Property type": "Terrace",
-            "Site area": "100m2"
+            District: "Hampton",
+            Postcode: postcode,
+            "Property type": address.rawData.planx_description
+            // "Site area": "100m2"
           }}
-          constraints={[
-            "It is not in a Conservation area",
-            "It does not include any Listed buildings",
-            "It is not in a Flood Risk Area"
-          ]}
+          constraints={address.constraints}
+          handleContinue={() => {
+            set(state => {
+              state.data.continued = true;
+            });
+          }}
         />
       )}
-      {false && (
+      {continued && (
         <>
           <MyApplication
             sections={{

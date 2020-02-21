@@ -7,10 +7,10 @@ const AddressSelect = ({ addresses = [], handleChange = undefined }) => {
     <HVCenterContainer>
       The address of the property is
       <select onChange={handleChange}>
-        <option disabled />
+        <option />
         {addresses.map(address => {
           return (
-            <option key={address.id} value={address.uprn}>
+            <option key={address.id} value={address.id}>
               {address.name}
             </option>
           );
