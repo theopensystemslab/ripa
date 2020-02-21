@@ -1,6 +1,15 @@
+import AppBar from "@material-ui/core/AppBar";
+import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
+import Toolbar from "@material-ui/core/Toolbar";
+import ArrowForward from "@material-ui/icons/ArrowForward";
+import MenuIcon from "@material-ui/icons/Menu";
 import * as React from "react";
 
+import Stepper from "../components/Stepper";
 import logo from "./logo.png";
 
 const useStyles = makeStyles(theme => ({
@@ -42,19 +51,46 @@ export const Header = ({
 }) => {
   const classes = useStyles();
   return (
-    <header className={classes.header}>
-      <div>
-        <img src={logo} height={16} />
-        {team}
-      </div>
-      {address && <div>My planning applications / {address}</div>}
-      {currentUser && <a href="/logout">Logout</a>}
-      <ol className={classes.breadcrumbs}>
-        {breadcrumbs.map(breadcrumb => (
-          <li key={breadcrumb}>{breadcrumb}</li>
-        ))}
-      </ol>
-    </header>
+    <AppBar elevation={0} position="static">
+      <Toolbar>
+        <Box fontSize="h5.fontSize" px={1}>
+          <img src={logo} height={16} /> {team}
+        </Box>
+        <Box px={3} style={{ flexGrow: 1 }}>
+          <Grid container alignItems="center">
+            <Grid item>
+              <Box fontSize="h6.fontSize">
+                <Stepper
+                  list={["My planning applications", { address }]}
+                  active={2}
+                ></Stepper>
+              </Box>
+            </Grid>
+            <Grid item>
+              <Box fontSize="subtitle1.fontSize" pl={2}>
+                Saved 1m ago
+              </Box>
+            </Grid>
+          </Grid>
+        </Box>
+        <Box>
+          <IconButton color="inherit">
+            <MenuIcon />
+          </IconButton>
+          {currentUser && <a href="/logout">Logout</a>}
+        </Box>
+      </Toolbar>
+      <Container maxWidth="md">
+        <Box pt={8} pb={2}>
+          <Stepper
+            active={2}
+            numbered
+            list={breadcrumbs}
+            Divider={ArrowForward}
+          ></Stepper>
+        </Box>
+      </Container>
+    </AppBar>
   );
 };
 
@@ -87,7 +123,7 @@ const Application = ({
       </section>
       <footer className={classes.footer}>
         <a href="#">Privacy</a>
-        <a href="#">Terms & conditions</a>
+        <a href="#">Terms &amp; conditions</a>
         <a href="#">Help</a>
       </footer>
     </div>

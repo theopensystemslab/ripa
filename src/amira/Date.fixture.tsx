@@ -1,4 +1,9 @@
-import { Button, TextField } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
 import * as React from "react";
 
@@ -22,31 +27,38 @@ const Date: React.FC<IText> = ({ title, type, name, options, inputProps }) => {
     }
   });
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <h1>{title}</h1>
-      <div style={{ display: "flex" }}>
-        {options.map((el, index) => (
-          <div key={`${el}-${index}`}>
-            <label>{el}</label>
-            <TextField
-              required
-              onChange={formik.handleChange}
-              placeholder={el.toUpperCase()}
-              type={type}
-              name={`${name}-${el}`}
-              inputProps={inputProps[el]}
-            ></TextField>
-          </div>
-        ))}
-      </div>
-      <Button type="submit">Save and Continue</Button>
-    </form>
+    <Box bgcolor="background.paper" p={4}>
+      <form onSubmit={formik.handleSubmit}>
+        <Typography variant="h5" component="div" gutterBottom>
+          {title}
+        </Typography>
+        <Grid container spacing={1}>
+          {options.map((el, index) => (
+            <Grid item key={`${el}-${index}`}>
+              <InputLabel>{el}</InputLabel>
+              <Input
+                required
+                onChange={formik.handleChange}
+                type={type}
+                name={`${name}-${el}`}
+                inputProps={inputProps[el]}
+              ></Input>
+            </Grid>
+          ))}
+        </Grid>
+        <Box pt={3}>
+          <Button type="submit" variant="contained" color="primary">
+            Save and Continue
+          </Button>
+        </Box>
+      </form>
+    </Box>
   );
 };
 export default {
   default: (
     <Date
-      title="Long Text Input"
+      title="Date"
       type="number"
       name="date"
       options={["day", "month", "year"]}
