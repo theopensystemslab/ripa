@@ -1,15 +1,17 @@
 import { makeStyles } from "@material-ui/core";
 import { formatDistance } from "date-fns";
 import * as React from "react";
-import { Folder, Trash } from "react-feather";
+import { Folder, Plus, Trash } from "react-feather";
+import { Link } from "react-navi";
 
 import HVCenterContainer from "../components/HVCenterContainer";
 
 const useStyles = makeStyles({
   applications: {},
   application: {
+    color: "black",
+    background: "white",
     display: "inline-block",
-    border: "1px solid black",
     margin: 20,
     "& > img": {
       height: 100
@@ -18,6 +20,11 @@ const useStyles = makeStyles({
       display: "block",
       padding: "5px 10px"
     }
+  },
+  start: {
+    display: "inline-block",
+    border: "1px solid white",
+    padding: 30
   }
 });
 
@@ -38,7 +45,12 @@ const Dashboard = ({ applications = [] }) => {
             <span>{application.status}</span>
           </div>
         ))}
-        <div className={classes.application}>Start a new application</div>
+        <div className={classes.start}>
+          <Link href="/start">
+            <Plus />
+            Start a new application
+          </Link>
+        </div>
       </div>
       <hr />
       <ul>
