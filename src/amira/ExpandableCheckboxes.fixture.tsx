@@ -1,5 +1,3 @@
-import {} from "formik";
-
 import { Button } from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
@@ -22,7 +20,7 @@ interface IExpandableCheckboxes {
   }[];
 }
 
-const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
+export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
   title = "",
   panelsOptions = [
     {
@@ -63,12 +61,11 @@ const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <FormControl component="fieldset">
-              <FormLabel component="legend"></FormLabel>
+              <FormLabel component="legend" />
               <FormGroup>
                 {values.map((checkbox, index) => (
-                  <div>
+                  <div key={`${checkbox}-${index}`}>
                     <FormControlLabel
-                      key={`${checkbox}-${index}`}
                       control={
                         <Checkbox
                           checked={formik.values.selectedOptions.includes(
