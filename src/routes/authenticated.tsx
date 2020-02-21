@@ -46,6 +46,7 @@ const App = () => {
       )}
       {!continued && addresses && (
         <AddressSelect
+          address={address?.id}
           addresses={addresses}
           handleChange={e => {
             set(state => {
