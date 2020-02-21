@@ -55,7 +55,9 @@ const SignIn = () => {
             <Input name="password" type="password" fullWidth />
           </FormControl>
           <Box py={2}>
-            <Button variant="contained">Sign in</Button>
+            <Button variant="contained" type="submit">
+              Sign in
+            </Button>
             <Box pt={2}>
               <a href="#" className={classes.link}>
                 Forgot your password?

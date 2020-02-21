@@ -1,16 +1,15 @@
-import { gql } from "apollo-boost";
 import axios from "axios";
-import { compose, map, mount, route, withView } from "navi";
+import { compose, mount, route, withView } from "navi";
 import * as React from "react";
 import { View } from "react-navi";
 
 import { ExpandableCheckboxes } from "../amira/ExpandableCheckboxes.fixture";
 import { useStore } from "../lib/store";
 import AddressSelect from "../pages/AddressSelect";
+import Dashboard from "../pages/Dashboard";
 import MyApplication from "../pages/MyApplication";
 import PostcodeSearch from "../pages/PostcodeSearch";
 import PropertyInformation from "../pages/PropertyInformation";
-import { IContext } from ".";
 
 const App = () => {
   const set = useStore(state => state.set);
@@ -122,25 +121,25 @@ export default compose(
   withView(<View />),
 
   mount({
-    "/": map(async (req, context: IContext) => {
-      const { data } = await context.gqlClient.query({
-        query: gql`
-          query Flow($id: uuid!) {
-            flows_by_pk(id: $id) {
-              data
+    "/": route({
+      title: "Dashboard",
+      view: (
+        <Dashboard
+          applications={[
+            {
+              id: 1,
+              thumbnail: "https://i.imgur.com/S16hH4J.png",
+              description: "30 Lake Road",
+              updatedAt: new Date(2020, 1, 1),
+              status: "In progress"
             }
-          }
-        `,
-        variables: {
-          id: process.env.REACT_APP_FLOW_ID
-        }
-      });
-
-      console.log(data.flows_by_pk.data);
-
-      return route({
-        view: <App />
-      });
+          ]}
+        />
+      )
+    }),
+    "/start": route({
+      title: "Start",
+      view: <App />
     })
   })
 );

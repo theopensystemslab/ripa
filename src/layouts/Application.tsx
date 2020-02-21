@@ -49,6 +49,10 @@ export const Header = ({
   address = "",
   breadcrumbs = []
 }) => {
+  const nav = ["My planning applications"];
+  if (address) {
+    nav.push(address);
+  }
   const classes = useStyles();
   return (
     <AppBar elevation={0} position="static">
@@ -60,17 +64,14 @@ export const Header = ({
           <Grid container alignItems="center">
             <Grid item>
               <Box fontSize="h6.fontSize">
-                <Stepper
-                  list={["My planning applications", { address }]}
-                  active={2}
-                ></Stepper>
+                <Stepper list={nav} active={2}></Stepper>
               </Box>
             </Grid>
-            <Grid item>
+            {/* <Grid item>
               <Box fontSize="subtitle1.fontSize" pl={2}>
                 Saved 1m ago
               </Box>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Box>
         <Box>
