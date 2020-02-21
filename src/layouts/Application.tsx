@@ -47,7 +47,11 @@ export const Header = ({
         <img src={logo} height={16} />
         {team}
       </div>
-      {address && <div>My planning applications / {address}</div>}
+      {address && (
+        <div>
+          My planning applications / <strong>{address}</strong>
+        </div>
+      )}
       {currentUser && <a href="/logout">Logout</a>}
       <ol className={classes.breadcrumbs}>
         {breadcrumbs.map(breadcrumb => (
