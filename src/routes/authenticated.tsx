@@ -49,10 +49,16 @@ const App = () => {
           addresses={addresses}
           handleChange={e => {
             set(state => {
-              state.data.address = state.data.addresses.find(
+              const address = state.data.addresses.find(
                 a => a.id === e.target.value
               );
-              state.data.address.constraints = [];
+              if (address) {
+                state.data.address = address;
+                state.data.address.constraints = [];
+              } else {
+                delete state.data.address;
+                delete state.data.continued;
+              }
             });
           }}
         />

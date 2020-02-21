@@ -3,7 +3,7 @@ import * as React from "react";
 import { NotFoundBoundary, View } from "react-navi";
 
 import Application from "../layouts/Application";
-import { api } from "../lib/store";
+import { api, useStore } from "../lib/store";
 import Login from "../pages/SignIn";
 
 export type IContext = {
@@ -14,13 +14,20 @@ export type IContext = {
 
 const renderNotFound: React.FC<any> = () => <h1>404 - Not Found</h1>;
 
-export default compose(
-  withView((req, context: IContext) => (
-    <Application currentUser={context.currentUser}>
+const Layout = ({ currentUser }) => {
+  const address = useStore(state => state.data.address);
+  return (
+    <Application currentUser={currentUser} address={address?.name}>
       <NotFoundBoundary render={renderNotFound}>
         <View />
       </NotFoundBoundary>
     </Application>
+  );
+};
+
+export default compose(
+  withView((req, context: IContext) => (
+    <Layout currentUser={context.currentUser} />
   )),
 
   mount({

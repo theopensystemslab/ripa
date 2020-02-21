@@ -5,6 +5,7 @@ import { Header } from "./Application";
 export default (
   <Header
     team="Council"
+    address="30 Lake Road"
     breadcrumbs={[
       "Property location",
       "About the works",

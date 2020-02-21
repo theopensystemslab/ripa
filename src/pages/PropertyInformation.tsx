@@ -27,7 +27,7 @@ const PropertyInformation = ({
             </ul>
           </>
         )}
-        {constraints && Array.isArray(constraints) && (
+        {constraints && Array.isArray(constraints) && constraints.length > 0 && (
           <>
             <p>These are constraints that apply to this property</p>
             <ul>

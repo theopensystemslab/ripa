@@ -25,17 +25,31 @@ const useStyles = makeStyles(theme => ({
       textDecoration: "none",
       padding: "0 20px 0 0"
     }
+  },
+  breadcrumbs: {
+    "& > li": {
+      display: "inline-block",
+      marginRight: 20
+    }
   }
 }));
 
-export const Header = ({ team, currentUser = false, breadcrumbs = [] }) => {
+export const Header = ({
+  team,
+  currentUser = false,
+  address = "",
+  breadcrumbs = []
+}) => {
   const classes = useStyles();
   return (
     <header className={classes.header}>
-      <img src={logo} height={16} />
-      {team}
+      <div>
+        <img src={logo} height={16} />
+        {team}
+      </div>
+      {address && <div>My planning applications / {address}</div>}
       {currentUser && <a href="/logout">Logout</a>}
-      <ol>
+      <ol className={classes.breadcrumbs}>
         {breadcrumbs.map(breadcrumb => (
           <li key={breadcrumb}>{breadcrumb}</li>
         ))}
@@ -44,11 +58,26 @@ export const Header = ({ team, currentUser = false, breadcrumbs = [] }) => {
   );
 };
 
-const Application = ({ children, currentUser = false }) => {
+const Application = ({
+  children,
+  currentUser = false,
+  address = undefined
+}) => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      <Header team="Hampton" currentUser={currentUser} />
+      <Header
+        team="Hampton"
+        currentUser={currentUser}
+        address={address}
+        breadcrumbs={[
+          "Property location",
+          "About the works",
+          "My application",
+          "Declaration",
+          "Pay & submit"
+        ]}
+      />
       <section role="main" className={classes.main}>
         {children}
       </section>
