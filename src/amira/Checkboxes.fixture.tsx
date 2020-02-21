@@ -26,37 +26,6 @@ const useStyles = makeStyles(theme =>
     },
     formControlLabel: {
       fontWeight: 400
-    },
-    checkBoxRoot: {
-      borderRadius: 0,
-      padding: 0,
-      marginRight: theme.spacing(1.5),
-      height: 32,
-      width: 32,
-      "&:hover": {
-        backgroundColor: "transparent"
-      }
-    },
-    icon: {
-      height: 32,
-      width: 32,
-      border: "1px solid #000",
-      display: "block",
-      position: "relative"
-    },
-    checkedIcon: {
-      "&::before": {
-        content: "''",
-        display: "block",
-        position: "absolute",
-        height: 18,
-        width: 10,
-        borderBottom: "2.5px solid #000",
-        borderRight: "2.5px solid #000",
-        left: "50%",
-        top: "42%",
-        transform: "translate(-50%, -50%) rotate(45deg)"
-      }
     }
   })
 );

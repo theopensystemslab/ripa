@@ -283,18 +283,20 @@ const _default = {
     },
     MuiInput: {
       root: {
-        backgroundColor: "#fff",
+        color: "currentColor",
+        backgroundColor: "transparent",
         boxSizing: "border-box",
         "&:hover": {
           boxShadow: "inset 0 0 0 1px #ddd"
         },
         "&$focused": {
+          backgroundColor: "rgba(200,200,200,0.2)",
           boxShadow: "inset 0 0 0 1px #ccc"
         }
       },
       input: {
         height: 40,
-        border: "1px solid #000",
+        border: "1px solid currentColor",
         padding: "8px",
         boxSizing: "border-box",
         fontSize: 16,

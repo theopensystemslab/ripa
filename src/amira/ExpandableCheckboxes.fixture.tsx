@@ -1,5 +1,5 @@
 import { Button } from "@material-ui/core";
-import Checkbox from "@material-ui/core/Checkbox";
+import Box from "@material-ui/core/Box";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
@@ -7,9 +7,38 @@ import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormLabel from "@material-ui/core/FormLabel";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import { ExpandMore } from "@material-ui/icons";
 import { useFormik } from "formik";
 import * as React from "react";
+
+import Checkbox from "../components/Checkbox";
+
+const useStyles = makeStyles(theme => ({
+  formControlLabelRoot: {
+    marginLeft: 0,
+    marginBottom: theme.spacing(1.5)
+  },
+  formControlLabel: {
+    fontWeight: 400
+  },
+  expansionPanel: {
+    background: "none"
+  },
+  expandedPanel: {
+    backgroundColor: theme.palette.grey[100]
+  },
+  summary: {
+    padding: theme.spacing(1, 2)
+  },
+  summaryContent: {
+    margin: "0 !important"
+  },
+  details: {
+    padding: theme.spacing(0, 2, 1)
+  }
+}));
 
 interface IExpandableCheckboxes {
   title: string;
@@ -46,77 +75,98 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
       // }
     }
   });
+  const classes = useStyles();
   return (
     <form onSubmit={formik.handleSubmit}>
-      <h1>{title}</h1>
-      {panelsOptions.map(({ sectionTitle, values }, index) => (
-        <ExpansionPanel key={`${title}-${index}`}>
-          <ExpansionPanelSummary
-            expandIcon={<ExpandMore />}
-            aria-label="Expand"
-            aria-controls="additional-actions1-content"
-            id="additional-actions1-header"
+      <Box maxWidth={500}>
+        <Typography variant="h4" gutterBottom>
+          <strong>{title}</strong>
+        </Typography>
+        {panelsOptions.map(({ sectionTitle, values }, index) => (
+          <ExpansionPanel
+            key={`${title}-${index}`}
+            classes={{
+              root: classes.expansionPanel,
+              expanded: classes.expandedPanel
+            }}
           >
-            {sectionTitle}
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <FormControl component="fieldset">
-              <FormLabel component="legend" />
-              <FormGroup>
-                {values.map((checkbox, index) => (
-                  <div key={`${checkbox}-${index}`}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={formik.values.selectedOptions.includes(
-                            checkbox
-                          )}
-                          onChange={e => {
-                            if (e.target.checked) {
-                              formik.setFieldValue("selectedOptions", [
-                                ...formik.values.selectedOptions,
-                                checkbox
-                              ]);
-                              formik.setFieldValue("selectedSections", [
-                                ...formik.values.selectedSections,
-                                sectionTitle
-                              ]);
-                            } else {
-                              formik.setFieldValue(
-                                "selectedOptions",
-                                formik.values.selectedOptions.filter(
-                                  el => el !== checkbox
-                                )
-                              );
-                              formik.setFieldValue(
-                                "selectedSections",
-                                formik.values.selectedSections.filter(
-                                  el => el !== sectionTitle
-                                )
-                              );
-                            }
-                          }}
-                          value={checkbox}
-                          name={checkbox}
-                        />
-                      }
-                      label={checkbox}
-                    />
-                  </div>
-                ))}
-              </FormGroup>
-            </FormControl>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-      ))}
-      <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        style={{ margin: "10px 0" }}
-      >
-        Save and Continue
-      </Button>
+            <ExpansionPanelSummary
+              expandIcon={<ExpandMore />}
+              aria-label="Expand"
+              aria-controls="additional-actions1-content"
+              id="additional-actions1-header"
+              classes={{
+                root: classes.summary,
+                content: classes.summaryContent
+              }}
+            >
+              {sectionTitle}
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails className={classes.details}>
+              <FormControl component="fieldset">
+                <FormLabel component="legend" />
+                <FormGroup>
+                  {values.map((checkbox, index) => (
+                    <div key={`${checkbox}-${index}`}>
+                      <FormControlLabel
+                        classes={{
+                          root: classes.formControlLabelRoot,
+                          label: classes.formControlLabel
+                        }}
+                        control={
+                          <Checkbox
+                            checked={formik.values.selectedOptions.includes(
+                              checkbox
+                            )}
+                            onChange={e => {
+                              if (e.target.checked) {
+                                formik.setFieldValue("selectedOptions", [
+                                  ...formik.values.selectedOptions,
+                                  checkbox
+                                ]);
+                                formik.setFieldValue("selectedSections", [
+                                  ...formik.values.selectedSections,
+                                  sectionTitle
+                                ]);
+                              } else {
+                                formik.setFieldValue(
+                                  "selectedOptions",
+                                  formik.values.selectedOptions.filter(
+                                    el => el !== checkbox
+                                  )
+                                );
+                                formik.setFieldValue(
+                                  "selectedSections",
+                                  formik.values.selectedSections.filter(
+                                    el => el !== sectionTitle
+                                  )
+                                );
+                              }
+                            }}
+                            value={checkbox}
+                            name={checkbox}
+                          />
+                        }
+                        label={checkbox}
+                      />
+                    </div>
+                  ))}
+                </FormGroup>
+              </FormControl>
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+        ))}
+        <Box pt={3}>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            style={{ margin: "10px 0" }}
+          >
+            Save and Continue
+          </Button>
+        </Box>
+      </Box>
     </form>
   );
 };
