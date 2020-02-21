@@ -25,13 +25,14 @@ const AddressSelect = ({
   handleChange = undefined
 }) => {
   const classes = useStyles();
+
   return (
     <HVCenterContainer>
       <Box fontSize="h4.fontSize" fontWeight={700}>
         <InputLabel className={classes.inputLabel} id="select">
           The address of the property is
         </InputLabel>{" "}
-        <InlineSelect onChange={handleChange}>
+        <InlineSelect onChange={handleChange} value={address}>
           {addresses.map(address => {
             return (
               <MenuItem key={address.id} value={address.id}>

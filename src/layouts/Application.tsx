@@ -52,11 +52,8 @@ export const Header = ({
   address = "",
   breadcrumbs = []
 }) => {
-  const nav = ["My planning applications"];
-  if (address) {
-    nav.push(address);
-  }
-  const classes = useStyles();
+  const nav = ["My planning applications", address];
+
   return (
     <AppBar elevation={0} position="fixed" color="secondary">
       <Toolbar>
@@ -69,7 +66,7 @@ export const Header = ({
               <Grid container alignItems="center">
                 <Grid item>
                   <Box fontSize="h6.fontSize">
-                    <Stepper list={nav} active={2} />
+                    <Stepper list={nav.filter(Boolean)} active={nav.length} />
                   </Box>
                 </Grid>
                 {/* <Grid item>
