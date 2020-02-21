@@ -1,5 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import * as React from "react";
+import { Link } from "react-navi";
 
 import logo from "./logo.png";
 
@@ -10,7 +11,10 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column"
   },
   header: {
-    padding: 20
+    padding: 20,
+    "& a": {
+      textDecoration: "none"
+    }
   },
   main: {
     flex: 1,
@@ -49,7 +53,10 @@ export const Header = ({
       </div>
       {address && (
         <div>
-          My planning applications / <strong>{address}</strong>
+          <Link href="/" prefetch={false}>
+            My planning applications
+          </Link>{" "}
+          / <strong>{address}</strong>
         </div>
       )}
       {currentUser && <a href="/logout">Logout</a>}

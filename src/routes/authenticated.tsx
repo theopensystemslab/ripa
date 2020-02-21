@@ -4,7 +4,7 @@ import * as React from "react";
 import { View } from "react-navi";
 
 import { ExpandableCheckboxes } from "../amira/ExpandableCheckboxes.fixture";
-import { useStore } from "../lib/store";
+import { api, useStore } from "../lib/store";
 import AddressSelect from "../pages/AddressSelect";
 import Dashboard from "../pages/Dashboard";
 import MyApplication from "../pages/MyApplication";
@@ -25,9 +25,7 @@ const App = () => {
           postcode={postcode}
           handleReset={() => {
             set(state => {
-              delete state.data.postcode;
-              delete state.data.addresses;
-              delete state.data.localAuthority;
+              state.data = { currentUser: state.data.currentUser };
             });
           }}
           handleChange={postcode => {
@@ -121,21 +119,27 @@ export default compose(
   withView(<View />),
 
   mount({
-    "/": route({
-      title: "Dashboard",
-      view: (
-        <Dashboard
-          applications={[
-            {
-              id: 1,
-              thumbnail: "https://i.imgur.com/S16hH4J.png",
-              description: "30 Lake Road",
-              updatedAt: new Date(2020, 1, 1),
-              status: "In progress"
-            }
-          ]}
-        />
-      )
+    "/": route(() => {
+      api.getState().set(state => {
+        state.data = { currentUser: state.data.currentUser };
+      });
+
+      return {
+        title: "Dashboard",
+        view: (
+          <Dashboard
+            applications={[
+              {
+                id: 1,
+                thumbnail: "https://i.imgur.com/S16hH4J.png",
+                description: "30 Lake Road",
+                updatedAt: new Date(2020, 1, 1),
+                status: "In progress"
+              }
+            ]}
+          />
+        )
+      };
     }),
     "/start": route({
       title: "Start",
