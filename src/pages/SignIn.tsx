@@ -20,7 +20,8 @@ const SignIn = () => {
   const [email, setEmail] = React.useState("");
   const set = useStore(state => state.set);
 
-  const handleSubmit = () => {
+  const handleSubmit = e => {
+    e.preventDefault();
     set(state => {
       state.data.currentUser = email;
     });
@@ -52,7 +53,7 @@ const SignIn = () => {
           </FormControl>
           <FormControl fullWidth margin="normal">
             <InputLabel>Password</InputLabel>
-            <Input name="password" type="password" fullWidth />
+            <Input type="password" fullWidth />
           </FormControl>
           <Box py={2}>
             <Button variant="contained" type="submit">
