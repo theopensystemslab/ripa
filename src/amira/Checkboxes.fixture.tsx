@@ -1,15 +1,15 @@
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import Checkbox from "@material-ui/core/Checkbox";
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormLabel from "@material-ui/core/FormLabel";
-import { makeStyles } from "@material-ui/core/styles";
+import { createStyles, makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import classNames from "classnames";
 import { useFormik } from "formik";
 import * as React from "react";
+
+import Checkbox from "../components/Checkbox";
 
 interface ICheckboxes {
   title: string;
@@ -18,47 +18,48 @@ interface ICheckboxes {
   required?: boolean;
 }
 
-const useStyles = makeStyles({
-  formControlLabelRoot: {
-    marginLeft: 0,
-    marginBottom: 12
-  },
-  formControlLabel: {
-    fontWeight: 400,
-    fontSize: 12
-  },
-  checkBoxRoot: {
-    borderRadius: 0,
-    padding: 0,
-    marginRight: 12,
-    height: 32,
-    width: 32,
-    "&:hover": {
-      backgroundColor: "transparent"
-    }
-  },
-  icon: {
-    height: 32,
-    width: 32,
-    border: "1px solid #000",
-    display: "block",
-    position: "relative"
-  },
-  checkedIcon: {
-    "&::before": {
-      content: "''",
+const useStyles = makeStyles(theme =>
+  createStyles({
+    formControlLabelRoot: {
+      marginLeft: 0,
+      marginBottom: theme.spacing(1.5)
+    },
+    formControlLabel: {
+      fontWeight: 400
+    },
+    checkBoxRoot: {
+      borderRadius: 0,
+      padding: 0,
+      marginRight: theme.spacing(1.5),
+      height: 32,
+      width: 32,
+      "&:hover": {
+        backgroundColor: "transparent"
+      }
+    },
+    icon: {
+      height: 32,
+      width: 32,
+      border: "1px solid #000",
       display: "block",
-      position: "absolute",
-      height: 18,
-      width: 10,
-      borderBottom: "2.5px solid #000",
-      borderRight: "2.5px solid #000",
-      left: "50%",
-      top: "42%",
-      transform: "translate(-50%, -50%) rotate(45deg)"
+      position: "relative"
+    },
+    checkedIcon: {
+      "&::before": {
+        content: "''",
+        display: "block",
+        position: "absolute",
+        height: 18,
+        width: 10,
+        borderBottom: "2.5px solid #000",
+        borderRight: "2.5px solid #000",
+        left: "50%",
+        top: "42%",
+        transform: "translate(-50%, -50%) rotate(45deg)"
+      }
     }
-  }
-});
+  })
+);
 
 const Checkboxes: React.FC<ICheckboxes> = ({
   title = "Title",
@@ -106,17 +107,7 @@ const Checkboxes: React.FC<ICheckboxes> = ({
                   key={id}
                   control={
                     <Checkbox
-                      className={classes.checkBoxRoot}
                       checked={formik.values.selectedOptions.includes(id)}
-                      icon={<span className={classes.icon} />}
-                      checkedIcon={
-                        <span
-                          className={classNames(
-                            classes.icon,
-                            classes.checkedIcon
-                          )}
-                        />
-                      }
                       disableRipple
                       onChange={e => {
                         if (e.target.checked) {
