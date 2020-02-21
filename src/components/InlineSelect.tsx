@@ -95,6 +95,7 @@ const useStyles = makeStyles(theme =>
     formControl: {
       backgroundColor: "transparent",
       border: "0",
+      color: "currentColor",
       height: "auto",
       fontSize: "1em",
       borderBottom: `0.12em solid currentColor`,

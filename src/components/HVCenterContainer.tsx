@@ -1,32 +1,23 @@
-import { makeStyles } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
 import * as React from "react";
 
-const useStyles = makeStyles(theme => ({
-  container: {
-    width: "100%",
-    display: "flex",
-    "align-items": "center",
-    "justify-content": "center"
-  },
-  lightContainer: {
-    background: "white",
-    color: "black",
-    width: "100%",
-    display: "flex",
-    "align-items": "center",
-    "justify-content": "center"
-  },
-  innerContainer: {
-    margin: "0 auto"
-  }
-}));
-
-const HVCenterContainer = ({ children, light = false }) => {
-  const classes = useStyles();
+const HVCenterContainer = ({
+  children,
+  light = false,
+  verticalCenter = true
+}) => {
   return (
-    <div className={light ? classes.lightContainer : classes.container}>
-      <div>{children}</div>
-    </div>
+    <Box
+      color={light ? "#000" : "#fff"}
+      bgcolor={light ? "#fff" : "secondary.main"}
+      minHeight={"calc(100vh - 204px)"}
+      display={verticalCenter && "flex"}
+      alignItems={verticalCenter && "center"}
+      py={!verticalCenter && 3}
+    >
+      <Container maxWidth="md">{children}</Container>
+    </Box>
   );
 };
 

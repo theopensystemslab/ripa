@@ -10,8 +10,8 @@ const themePalette = {
     contrastText: "#fff"
   },
   secondary: {
-    main: "#21BA45", // bright lime green
-    contrastText: "#141414"
+    main: "#038521",
+    contrastText: "#fff"
   },
   grey: {
     main: "#999999"
@@ -285,7 +285,6 @@ const _default = {
       root: {
         backgroundColor: "#fff",
         boxSizing: "border-box",
-        color: "currentColor",
         "&:hover": {
           boxShadow: "inset 0 0 0 1px #ddd"
         },
