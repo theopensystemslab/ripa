@@ -361,7 +361,7 @@ const _default = {
     },
     MuiExpansionPanel: {
       root: {
-        //border: "1px solid #ECECEC",
+        // border: "1px solid #ECECEC",
         backgroundColor: "#f3f3f3",
         margin: "0 0 3px",
         "&:before": {

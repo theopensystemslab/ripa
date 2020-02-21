@@ -53,7 +53,7 @@ const StreetAddress: React.FC<IText> = ({ title, type, name, options }) => {
                   fullWidth
                   type={type}
                   name={`${name}-${el}`}
-                ></TextField>
+                />
               </Box>
             </div>
           ))}

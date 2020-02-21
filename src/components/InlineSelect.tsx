@@ -137,7 +137,7 @@ const SelectQuestion = (
         IconComponent={KeyboardArrowDown}
         onChange={onChange}
         inputProps={{
-          name: name,
+          name,
           classes: {
             selectMenu: classes.root,
             select: classes.selectInput,

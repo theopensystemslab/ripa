@@ -69,7 +69,7 @@ export const Header = ({
               <Grid container alignItems="center">
                 <Grid item>
                   <Box fontSize="h6.fontSize">
-                    <Stepper list={nav} active={2}></Stepper>
+                    <Stepper list={nav} active={2} />
                   </Box>
                 </Grid>
                 {/* <Grid item>
@@ -95,7 +95,7 @@ export const Header = ({
             numbered
             list={breadcrumbs}
             Divider={ArrowForward}
-          ></Stepper>
+          />
         </Box>
       </Container>
     </AppBar>

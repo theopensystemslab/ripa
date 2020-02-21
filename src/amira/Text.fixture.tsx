@@ -43,7 +43,7 @@ const Text: React.FC<IText> = ({
   }
 }) => {
   const [count, setCount] = React.useState(0);
-  let diff = maxWords - count;
+  const diff = maxWords - count;
   const formik = useFormik({
     initialValues: {
       [name]: ""

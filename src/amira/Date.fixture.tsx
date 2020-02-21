@@ -42,7 +42,7 @@ const Date: React.FC<IText> = ({ title, type, name, options, inputProps }) => {
                 type={type}
                 name={`${name}-${el}`}
                 inputProps={inputProps[el]}
-              ></Input>
+              />
             </Grid>
           ))}
         </Grid>
