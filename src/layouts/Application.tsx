@@ -57,7 +57,7 @@ export const Header = ({
   const active = useStore(state => state.data.activeStep + 1) || 1;
 
   return (
-    <AppBar elevation={0} position="fixed" color="secondary">
+    <AppBar elevation={0} color="secondary" position="static">
       <Toolbar>
         <Box fontSize="h5.fontSize" display="flex" alignItems="center" px={1}>
           <CouncilLogo /> {team}

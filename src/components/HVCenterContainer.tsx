@@ -7,7 +7,7 @@ import { scrollIn } from "../lib/scrollIn";
 const HVCenterContainer = ({
   children,
   light = false,
-  verticalCenter = true
+  verticalCenter = false
 }) => {
   const ref = React.useRef(null);
   React.useLayoutEffect(() => {

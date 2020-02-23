@@ -28,7 +28,7 @@ const PostcodeSearch = ({
   };
 
   return (
-    <HVCenterContainer>
+    <HVCenterContainer verticalCenter>
       <label htmlFor="postcode">The postcode of the property is </label>
       <TextField
         id="postcode"

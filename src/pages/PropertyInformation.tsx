@@ -32,7 +32,7 @@ const PropertyInformation = ({
 }) => {
   const classes = useStyles();
   return (
-    <HVCenterContainer light verticalCenter={false}>
+    <HVCenterContainer light>
       <Grid container spacing={3} direction="row-reverse">
         <Grid item xs={12} sm={6}>
           <Typography variant="h3" component="h2" gutterBottom>
