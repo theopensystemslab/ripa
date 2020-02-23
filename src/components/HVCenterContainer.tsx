@@ -18,10 +18,12 @@ const HVCenterContainer = ({
     <Box
       color={light ? "#000" : "#fff"}
       bgcolor={light ? "#fff" : "secondary.main"}
-      minHeight={"calc(100vh - 204px)"}
-      display={verticalCenter && "flex"}
-      alignItems={verticalCenter && "center"}
-      py={!verticalCenter && 3}
+      py={verticalCenter ? 0 : 3}
+      style={{
+        alignItems: verticalCenter && "center",
+        display: verticalCenter && "flex",
+        minHeight: "calc(100vh - 204px)"
+      }}
     >
       <Container maxWidth="md" ref={ref}>
         {children}
