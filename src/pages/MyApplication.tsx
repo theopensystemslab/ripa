@@ -5,6 +5,7 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
 import * as React from "react";
+import { Link } from "react-navi";
 
 import HVCenterContainer from "../components/HVCenterContainer";
 
@@ -34,6 +35,10 @@ const useStyles = makeStyles({
   },
   inProgress: {
     color: "#888"
+  },
+  link: {
+    textDecoration: "none",
+    color: "#000"
   }
 });
 
@@ -64,7 +69,11 @@ const MyApplication = ({ sections, percentageComplete = 100 }) => {
             py={1.5}
           >
             <Grid container justify="space-between">
-              <Grid item>{name}</Grid>
+              <Grid item>
+                <Link href="/" prefetch={false} className={classes.link}>
+                  {name}
+                </Link>
+              </Grid>
               <Grid
                 item
                 className={classNames(

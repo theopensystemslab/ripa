@@ -9,6 +9,7 @@ import HVCenterContainer from "../components/HVCenterContainer";
 import { api, useStore } from "../lib/store";
 import AddressSelect from "../pages/AddressSelect";
 import Dashboard from "../pages/Dashboard";
+import MyApplication from "../pages/MyApplication";
 import PostcodeSearch from "../pages/PostcodeSearch";
 import PropertyInformation from "../pages/PropertyInformation";
 import { IContext } from ".";
@@ -39,6 +40,20 @@ const Flow = ({ flow }) => {
       />
     </HVCenterContainer>
   );
+};
+
+const Flow2 = ({ flow }) => {
+  const id = "048a5ef5-fc45-492b-a123-f6894bd0a766";
+  const sections = flow.edges
+    .filter(([src]) => src === id)
+    .map(([, tgt]) => tgt)
+    .reduce((acc, curr) => {
+      const response = flow.nodes[curr];
+      acc[response.text] = "not started";
+      return acc;
+    }, {});
+
+  return <MyApplication sections={sections} />;
 };
 
 const App = ({ flow }) => {
@@ -111,6 +126,7 @@ const App = ({ flow }) => {
       {continued && (
         <>
           <Flow flow={flow} />
+          <Flow2 flow={flow} />
           {/* <MyApplication
             sections={{
               "About the property": "Complete",
