@@ -30,6 +30,7 @@ const useStyles = makeStyles({
     }
   },
   status: { color: "#ccc" },
+  notStarted: {},
   complete: {
     color: "limegreen"
   },
@@ -42,8 +43,28 @@ const useStyles = makeStyles({
   }
 });
 
-const MyApplication = ({ sections, percentageComplete = 100 }) => {
+export const STATUS = [
+  {
+    className: "notStarted",
+    text: "Not started"
+  },
+  {
+    className: "inProgress",
+    text: "In progress"
+  },
+  {
+    className: "complete",
+    text: "Complete"
+  }
+];
+
+const MyApplication = ({ sections = [] }) => {
   const classes = useStyles();
+
+  const percentageComplete = Math.round(
+    (sections.filter(s => s.status === 2).length / sections.length) * 100
+  );
+
   return (
     <HVCenterContainer light>
       <Typography variant="h3" component="h1" gutterBottom>
@@ -61,28 +82,31 @@ const MyApplication = ({ sections, percentageComplete = 100 }) => {
         value={percentageComplete}
       />
       <Box p={0}>
-        {Object.entries(sections).map(([name, status]) => (
+        {sections.map(({ id, text, status }) => (
           <Box
             className={classes.listItem}
-            key={name}
+            key={text}
             fontSize="h6.fontSize"
             py={1.5}
           >
             <Grid container justify="space-between">
               <Grid item>
-                <Link href="/" prefetch={false} className={classes.link}>
-                  {name}
+                <Link
+                  href={`/start/${id}`}
+                  prefetch={false}
+                  className={classes.link}
+                >
+                  {text}
                 </Link>
               </Grid>
               <Grid
                 item
                 className={classNames(
                   classes.status,
-                  status === "Complete" && classes.complete,
-                  status === "In progress" && classes.inProgress
+                  classes[STATUS[status].className]
                 )}
               >
-                {status}
+                {STATUS[status].text}
               </Grid>
             </Grid>
           </Box>

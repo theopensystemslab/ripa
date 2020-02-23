@@ -46,12 +46,14 @@ const Flow2 = ({ flow }) => {
   const id = "048a5ef5-fc45-492b-a123-f6894bd0a766";
   const sections = flow.edges
     .filter(([src]) => src === id)
-    .map(([, tgt]) => tgt)
-    .reduce((acc, curr) => {
-      const response = flow.nodes[curr];
-      acc[response.text] = "not started";
-      return acc;
-    }, {});
+    .map(([, tgt]) => {
+      const response = flow.nodes[tgt];
+      return {
+        id: response.id,
+        text: response.text,
+        status: 0
+      };
+    });
 
   return <MyApplication sections={sections} />;
 };
@@ -127,17 +129,6 @@ const App = ({ flow }) => {
         <>
           <Flow flow={flow} />
           <Flow2 flow={flow} />
-          {/* <MyApplication
-            sections={{
-              "About the property": "Complete",
-              Ownership: "Complete",
-              "Applicant details": "In progress",
-              "Agent details": "In progress",
-              "Materials & appearance": "Not started",
-              Heritage: "Not started"
-            }}
-            percentageComplete={12}
-          /> */}
         </>
       )}
     </>

@@ -4,14 +4,37 @@ import MyApplication from "./MyApplication";
 
 export default (
   <MyApplication
-    sections={{
-      "About the property": "Complete",
-      Ownership: "Complete",
-      "Applicant details": "In progress",
-      "Agent details": "In progress",
-      "Materials & appearance": "Not started",
-      Heritage: "Not started"
-    }}
-    percentageComplete={12}
+    sections={[
+      {
+        id: 100,
+        text: "About the property",
+        status: 2
+      },
+      {
+        id: 101,
+        text: "Ownership",
+        status: 2
+      },
+      {
+        id: 102,
+        text: "Applicant details",
+        status: 1
+      },
+      {
+        id: 103,
+        text: "Agent details",
+        status: 1
+      },
+      {
+        id: 104,
+        text: "Materials & appearance",
+        status: 0
+      },
+      {
+        id: 105,
+        text: "Heritage",
+        status: 1
+      }
+    ]}
   />
 );
