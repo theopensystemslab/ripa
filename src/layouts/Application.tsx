@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     // marginTop: -100
   },
   footer: {
-    padding: 20,
+    padding: "0 20px 10px",
     "& a": {
       textDecoration: "none",
       padding: "0 20px 0 0"

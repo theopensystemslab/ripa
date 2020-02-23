@@ -1,4 +1,3 @@
-import { gql } from "apollo-boost";
 import axios from "axios";
 import { compose, mount, route, withView } from "navi";
 import * as React from "react";
@@ -16,8 +15,10 @@ import Section from "../pages/Section";
 import { IContext } from ".";
 
 const Flow = () => {
-  const flow = useStore(state => state.data.flow);
+  const flow = useStore(state => state.flow);
   const set = useStore(state => state.set);
+
+  if (!flow) return null;
 
   const id = "d24ffc88-cf93-4f59-9c65-631cdd2c5f45";
   const panels = flow.edges.filter(([src]) => src === id).map(([, tgt]) => tgt);
@@ -50,7 +51,7 @@ const Flow = () => {
 };
 
 const Flow2 = () => {
-  const flow = useStore(state => state.data.flow);
+  const flow = useStore(state => state.flow);
   const id = "048a5ef5-fc45-492b-a123-f6894bd0a766";
   const sections = flow.edges
     .filter(([src]) => src === id)
@@ -68,7 +69,6 @@ const Flow2 = () => {
 
 const App = () => {
   const set = useStore(state => state.set);
-  const flow = useStore(state => state.data.flow);
   const postcode = useStore(state => state.data.postcode || "");
   const address = useStore(state => state.data.address);
   const addresses = useStore(state => state.data.addresses);
@@ -168,24 +168,24 @@ export default compose(
     }),
 
     "/start": route(async (_req, context: IContext) => {
-      if (!api.getState().data.flow) {
-        const { data } = await context.gqlClient.query({
-          query: gql`
-            query Flow($id: uuid!) {
-              flows_by_pk(id: $id) {
-                data
-              }
-            }
-          `,
-          variables: {
-            id: process.env.REACT_APP_FLOW_ID
-          }
-        });
+      // if (!api.getState().data.flow) {
+      //   const { data } = await context.gqlClient.query({
+      //     query: gql`
+      //       query Flow($id: uuid!) {
+      //         flows_by_pk(id: $id) {
+      //           data
+      //         }
+      //       }
+      //     `,
+      //     variables: {
+      //       id: process.env.REACT_APP_FLOW_ID
+      //     }
+      //   });
 
-        api.getState().set(state => {
-          state.data.flow = data.flows_by_pk.data;
-        });
-      }
+      //   api.getState().set(state => {
+      //     state.data.flow = data.flows_by_pk.data;
+      //   });
+      // }
 
       return {
         title: "Start",

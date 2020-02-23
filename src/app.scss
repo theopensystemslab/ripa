@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   min-height: 100%;
@@ -10,8 +14,8 @@ body,
 #root {
   background: #038521;
   -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
 }
+
 body {
   a {
     color: #ffffff;

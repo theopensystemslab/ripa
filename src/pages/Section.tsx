@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 });
 
 const Section = ({ id }) => {
-  const flow = useStore(state => state.data.flow);
+  const flow = useStore(state => state.flow);
   const classes = useStyles();
 
   return (

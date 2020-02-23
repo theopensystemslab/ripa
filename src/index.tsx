@@ -2,17 +2,17 @@ import "typeface-inter";
 
 import "./app.scss";
 
-import { ApolloProvider } from "@apollo/react-hooks";
+import { ApolloProvider, useQuery } from "@apollo/react-hooks";
 import { ThemeProvider } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import ApolloClient from "apollo-boost";
+import ApolloClient, { gql } from "apollo-boost";
 import { createBrowserNavigation } from "navi";
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { Router, View } from "react-navi";
 
 import defaultTheme from "./amira/themes/default";
-import { useStore } from "./lib/store";
+import { api, useStore } from "./lib/store";
 import routes from "./routes";
 import * as serviceWorker from "./serviceWorker";
 
@@ -34,6 +34,33 @@ const navigation = createBrowserNavigation({
   routes
 });
 
+const InnerApp = () => {
+  const { loading, error, data } = useQuery(
+    gql`
+      query Flow($id: uuid!) {
+        flows_by_pk(id: $id) {
+          data
+        }
+      }
+    `,
+    {
+      variables: {
+        id: process.env.REACT_APP_FLOW_ID
+      }
+    }
+  );
+  if (loading) return null;
+
+  const flow = data.flows_by_pk.data;
+  api.setState({ flow });
+
+  return (
+    <Suspense fallback={<div>Loading... </div>}>
+      <View />
+    </Suspense>
+  );
+};
+
 const App = () => {
   const currentUser = useStore(state => state.data.currentUser);
 
@@ -45,9 +72,7 @@ const App = () => {
           navigation={navigation}
           context={{ navigation, gqlClient, currentUser }}
         >
-          <Suspense fallback={<div>Loading... </div>}>
-            <View />
-          </Suspense>
+          <InnerApp />
         </Router>
       </ThemeProvider>
     </ApolloProvider>
