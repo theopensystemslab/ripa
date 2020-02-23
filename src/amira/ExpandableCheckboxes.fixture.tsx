@@ -18,6 +18,7 @@ interface IExpandableCheckboxes {
     sectionTitle: string;
     values: string[];
   }[];
+  callback?;
 }
 
 export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
@@ -28,7 +29,8 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
       values: []
     }
   ],
-  name = ""
+  name = "",
+  callback = undefined
 }) => {
   const formik = useFormik({
     initialValues: {
@@ -47,7 +49,7 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
     }
   });
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={callback || formik.handleSubmit}>
       <h1>{title}</h1>
       {panelsOptions.map(({ sectionTitle, values }, index) => (
         <ExpansionPanel key={`${title}-${index}`}>

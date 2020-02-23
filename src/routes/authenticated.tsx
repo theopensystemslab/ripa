@@ -12,10 +12,12 @@ import Dashboard from "../pages/Dashboard";
 import MyApplication from "../pages/MyApplication";
 import PostcodeSearch from "../pages/PostcodeSearch";
 import PropertyInformation from "../pages/PropertyInformation";
+import Section from "../pages/Section";
 import { IContext } from ".";
 
-const Flow = ({ flow }) => {
-  window["flow"] = flow;
+const Flow = () => {
+  const flow = useStore(state => state.data.flow);
+  const set = useStore(state => state.set);
 
   const id = "d24ffc88-cf93-4f59-9c65-631cdd2c5f45";
   const panels = flow.edges.filter(([src]) => src === id).map(([, tgt]) => tgt);
@@ -37,19 +39,25 @@ const Flow = ({ flow }) => {
         name="ExpandableCheckboxes"
         title={flow.nodes[id].text}
         panelsOptions={data}
+        callback={() =>
+          set(state => {
+            state.data.activeStep = 2;
+          })
+        }
       />
     </HVCenterContainer>
   );
 };
 
-const Flow2 = ({ flow }) => {
+const Flow2 = () => {
+  const flow = useStore(state => state.data.flow);
   const id = "048a5ef5-fc45-492b-a123-f6894bd0a766";
   const sections = flow.edges
     .filter(([src]) => src === id)
     .map(([, tgt]) => {
       const response = flow.nodes[tgt];
       return {
-        id: response.id,
+        id: tgt,
         text: response.text,
         status: 0
       };
@@ -58,16 +66,17 @@ const Flow2 = ({ flow }) => {
   return <MyApplication sections={sections} />;
 };
 
-const App = ({ flow }) => {
+const App = () => {
   const set = useStore(state => state.set);
+  const flow = useStore(state => state.data.flow);
   const postcode = useStore(state => state.data.postcode || "");
   const address = useStore(state => state.data.address);
   const addresses = useStore(state => state.data.addresses);
-  const continued = useStore(state => state.data.continued);
+  const activeStep = useStore(state => state.data.activeStep);
 
   return (
     <>
-      {!continued && (
+      {!activeStep && (
         <PostcodeSearch
           postcode={postcode}
           handleReset={() => {
@@ -88,7 +97,7 @@ const App = ({ flow }) => {
           }}
         />
       )}
-      {!continued && addresses && (
+      {!activeStep && addresses && (
         <AddressSelect
           address={address?.id}
           addresses={addresses}
@@ -102,13 +111,13 @@ const App = ({ flow }) => {
                 state.data.address.constraints = [];
               } else {
                 delete state.data.address;
-                delete state.data.continued;
+                delete state.data.activeStep;
               }
             });
           }}
         />
       )}
-      {!continued && address && (
+      {!activeStep && address && (
         <PropertyInformation
           streetAddress={address.name}
           information={{
@@ -120,17 +129,13 @@ const App = ({ flow }) => {
           constraints={address.constraints}
           handleContinue={() => {
             set(state => {
-              state.data.continued = true;
+              state.data.activeStep = 1;
             });
           }}
         />
       )}
-      {continued && (
-        <>
-          <Flow flow={flow} />
-          <Flow2 flow={flow} />
-        </>
-      )}
+      {activeStep === 1 && <Flow />}
+      {activeStep === 2 && <Flow2 />}
     </>
   );
 };
@@ -161,23 +166,37 @@ export default compose(
         )
       };
     }),
-    "/start": route(async (req, context: IContext) => {
-      const { data } = await context.gqlClient.query({
-        query: gql`
-          query Flow($id: uuid!) {
-            flows_by_pk(id: $id) {
-              data
+
+    "/start": route(async (_req, context: IContext) => {
+      if (!api.getState().data.flow) {
+        const { data } = await context.gqlClient.query({
+          query: gql`
+            query Flow($id: uuid!) {
+              flows_by_pk(id: $id) {
+                data
+              }
             }
+          `,
+          variables: {
+            id: process.env.REACT_APP_FLOW_ID
           }
-        `,
-        variables: {
-          id: process.env.REACT_APP_FLOW_ID
-        }
-      });
+        });
+
+        api.getState().set(state => {
+          state.data.flow = data.flows_by_pk.data;
+        });
+      }
 
       return {
         title: "Start",
-        view: <App flow={data.flows_by_pk.data} />
+        view: <App />
+      };
+    }),
+
+    "/start/:id": route(async (req, context: IContext) => {
+      const { id } = req.params;
+      return {
+        view: <Section id={id} />
       };
     })
   })

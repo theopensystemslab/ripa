@@ -16,10 +16,13 @@ const renderNotFound: React.FC<any> = () => <h1>404 - Not Found</h1>;
 
 const Layout = ({ currentUser }) => {
   const address = useStore(state => state.data.address);
-  const continued = useStore(state => state.data.continued);
+  const activeStep = useStore(state => state.data.activeStep);
 
   return (
-    <Application currentUser={currentUser} address={continued && address.name}>
+    <Application
+      currentUser={currentUser}
+      address={activeStep > 0 && address.name}
+    >
       <NotFoundBoundary render={renderNotFound}>
         <View />
       </NotFoundBoundary>

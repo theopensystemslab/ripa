@@ -11,6 +11,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import * as React from "react";
 
 import Stepper from "../components/Stepper";
+import { useStore } from "../lib/store";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -53,6 +54,7 @@ export const Header = ({
   breadcrumbs = []
 }) => {
   const nav = ["My planning applications", address];
+  const active = useStore(state => state.data.activeStep + 1) || 1;
 
   return (
     <AppBar elevation={0} position="fixed" color="secondary">
@@ -88,7 +90,7 @@ export const Header = ({
       <Container maxWidth="md">
         <Box pt={8} pb={2}>
           <Stepper
-            active={2}
+            active={active}
             numbered
             list={breadcrumbs}
             Divider={ArrowForward}
