@@ -11,7 +11,9 @@ const HVCenterContainer = ({
 }) => {
   const ref = React.useRef(null);
   React.useLayoutEffect(() => {
-    scrollIn(ref.current);
+    scrollIn(ref.current, {
+      block: verticalCenter ? "center" : "start"
+    });
   });
 
   return (

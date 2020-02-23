@@ -6,6 +6,7 @@ import { ApolloProvider, useQuery } from "@apollo/react-hooks";
 import { ThemeProvider } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import ApolloClient, { gql } from "apollo-boost";
+import { Graph } from "graphlib";
 import { createBrowserNavigation } from "navi";
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
@@ -52,7 +53,19 @@ const InnerApp = () => {
   if (loading) return null;
 
   const flow = data.flows_by_pk.data;
-  api.setState({ flow });
+
+  const graph = new Graph({ directed: true, multigraph: false });
+  graph.setNode("null");
+  flow.edges.forEach(([src, tgt]) => {
+    [src, tgt].forEach(id => {
+      if (!graph.hasNode(id)) {
+        graph.setNode(id);
+      }
+    });
+    graph.setEdge(src, tgt);
+  });
+
+  api.setState({ flow, graph });
 
   return (
     <Suspense fallback={<div>Loading... </div>}>

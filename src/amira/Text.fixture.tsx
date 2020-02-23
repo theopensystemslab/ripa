@@ -24,9 +24,10 @@ interface IText {
   max?: string;
   maxWords?: number;
   inputProps?: IMinMax;
+  includeSubmit?: boolean;
 }
 
-const Text: React.FC<IText> = ({
+export const Text: React.FC<IText> = ({
   title,
   label = false,
   fullWidth = true,
@@ -40,7 +41,8 @@ const Text: React.FC<IText> = ({
   inputProps = {
     min: 0,
     max: Infinity
-  }
+  },
+  includeSubmit = false
 }) => {
   const [count, setCount] = React.useState(0);
   const diff = maxWords - count;
@@ -77,7 +79,7 @@ const Text: React.FC<IText> = ({
               }
               formik.handleChange(e);
             }}
-            rows={multiline ? 10 : 1}
+            rows={multiline ? 5 : 1}
             value={formik.values[name]}
             required={required}
             {...inputProps}
@@ -103,9 +105,11 @@ const Text: React.FC<IText> = ({
             </Box>
           )}
         </Box>
-        <Button variant="contained" color="primary" type="submit">
-          Save and Continue
-        </Button>
+        {includeSubmit && (
+          <Button variant="contained" color="primary" type="submit">
+            Save and Continue
+          </Button>
+        )}
       </form>
     </Box>
   );

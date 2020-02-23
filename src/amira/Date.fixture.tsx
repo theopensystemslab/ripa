@@ -7,19 +7,27 @@ import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
 import * as React from "react";
 
-interface IText {
+interface IDate {
   title: string;
   name: string;
   type: string;
   options: string[];
   inputProps: ILimits;
+  includeSubmit?: boolean;
 }
 interface ILimits {
   day: { min: number; max: number };
   month: { min: number; max: number };
   year: { min: number; max: number };
 }
-const Date: React.FC<IText> = ({ title, type, name, options, inputProps }) => {
+export const Date: React.FC<IDate> = ({
+  title,
+  type,
+  name,
+  options,
+  inputProps,
+  includeSubmit = false
+}) => {
   const formik = useFormik({
     initialValues: {},
     onSubmit: values => {
@@ -46,11 +54,13 @@ const Date: React.FC<IText> = ({ title, type, name, options, inputProps }) => {
             </Grid>
           ))}
         </Grid>
-        <Box pt={3}>
-          <Button type="submit" variant="contained" color="primary">
-            Save and Continue
-          </Button>
-        </Box>
+        {includeSubmit && (
+          <Box pt={3}>
+            <Button type="submit" variant="contained" color="primary">
+              Save and Continue
+            </Button>
+          </Box>
+        )}
       </form>
     </Box>
   );

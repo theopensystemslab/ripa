@@ -13,7 +13,12 @@ interface IText {
   options: string[];
 }
 
-const StreetAddress: React.FC<IText> = ({ title, type, name, options }) => {
+export const StreetAddress: React.FC<IText> = ({
+  title,
+  type,
+  name,
+  options
+}) => {
   const formik = useFormik({
     initialValues: {},
     onSubmit: values => {

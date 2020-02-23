@@ -33,9 +33,15 @@ interface IFileUpload {
   title: string;
   accept: string[];
   maxSize: number;
+  includeSubmit?: boolean;
 }
 
-const FileUpload: React.FC<IFileUpload> = ({ title, maxSize, accept = [] }) => {
+export const FileUpload: React.FC<IFileUpload> = ({
+  title,
+  maxSize,
+  accept = [],
+  includeSubmit = false
+}) => {
   const [files, setFiles] = useState([]);
   const [stateText, setStateText] = useState("Click to select files");
 
@@ -100,11 +106,13 @@ const FileUpload: React.FC<IFileUpload> = ({ title, maxSize, accept = [] }) => {
           <p>{stateText}</p>
         </div>
         <small>Max size of file is {maxSize} Bytes</small>
-        <div>
-          <Button type="submit" variant="contained" color="primary">
-            Save and Continue
-          </Button>
-        </div>
+        {includeSubmit && (
+          <div>
+            <Button type="submit" variant="contained" color="primary">
+              Save and Continue
+            </Button>
+          </div>
+        )}
       </form>
     </Box>
   );
