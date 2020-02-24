@@ -35,7 +35,7 @@ const Flow = () => {
   });
 
   return (
-    <HVCenterContainer light>
+    <HVCenterContainer light verticalCenter={false}>
       <ExpandableCheckboxes
         name="ExpandableCheckboxes"
         title={flow.nodes[id].text}

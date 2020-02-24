@@ -29,7 +29,7 @@ const SignIn = () => {
   };
   const classes = useStyles();
   return (
-    <HVCenterContainer>
+    <HVCenterContainer verticalCenter>
       <Box maxWidth={400}>
         <Typography component="h1" variant="h3" gutterBottom>
           <strong>Sign in</strong>
