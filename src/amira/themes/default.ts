@@ -69,6 +69,9 @@ const _default = {
     MuiButtonBase: {
       elevation: 0
     },
+    MuiCard: {
+      elevation: 0
+    },
     MuiInput: {
       disableUnderline: true
     },
