@@ -1,8 +1,23 @@
-import TextField from "@material-ui/core/TextField";
+import Box from "@material-ui/core/Box";
+import InputLabel from "@material-ui/core/InputLabel";
+import { makeStyles } from "@material-ui/core/styles";
 import Postcode from "postcode";
 import * as React from "react";
 
 import HVCenterContainer from "../components/HVCenterContainer";
+import InlineText from "../components/InlineText";
+
+const useStyles = makeStyles({
+  link: {
+    color: "currentColor",
+    opacity: 0.5
+  },
+  inputLabel: {
+    fontSize: "1em",
+    fontWeight: 700,
+    display: "inline"
+  }
+});
 
 const PostcodeSearch = ({
   handleChange = undefined,
@@ -26,16 +41,21 @@ const PostcodeSearch = ({
 
     setPostcode(pc);
   };
+  const classes = useStyles();
 
   return (
     <HVCenterContainer verticalCenter>
-      <label htmlFor="postcode">The postcode of the property is </label>
-      <TextField
-        id="postcode"
-        autoFocus
-        value={_postcode}
-        onChange={handleLocalChange}
-      />
+      <Box fontSize="h4.fontSize" fontWeight={700}>
+        <InputLabel className={classes.inputLabel} id="postcode">
+          The postcode of the property is{" "}
+        </InputLabel>
+        <InlineText
+          id="postcode"
+          autoFocus
+          value={_postcode}
+          onChange={handleLocalChange}
+        />
+      </Box>
     </HVCenterContainer>
   );
 };
