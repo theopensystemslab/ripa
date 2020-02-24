@@ -18,7 +18,6 @@ const useStyles = makeStyles(theme => ({
     minHeight: "100vh",
     display: "flex",
     flexDirection: "column"
-    //paddingTop: "164px"
   },
   header: {
     padding: 20,
@@ -34,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     // marginTop: -100
   },
   footer: {
-    padding: "0 20px 10px",
+    padding: theme.spacing(2, 3),
     "& a": {
       textDecoration: "none",
       padding: "0 20px 0 0"
