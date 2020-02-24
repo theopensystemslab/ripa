@@ -51,7 +51,7 @@ const Checkboxes: React.FC<ICheckboxes> = ({
   });
   const classes = useStyles();
   return (
-    <Box p={4} bgcolor="background.paper">
+    <Box py={4}>
       <form onSubmit={formik.handleSubmit}>
         <Typography variant="h5" gutterBottom>
           {title}
@@ -114,16 +114,18 @@ const Checkboxes: React.FC<ICheckboxes> = ({
 
 export default {
   default: (
-    <Checkboxes
-      title="What types of street trees will you plant?"
-      name="default_boxes"
-      required
-      options={{
-        oak: "English Oak",
-        plane: "London Plane Tree",
-        redwood: "Redwood",
-        other: "Other species"
-      }}
-    />
+    <Box px={4} bgcolor="background.paper">
+      <Checkboxes
+        title="What types of street trees will you plant?"
+        name="default_boxes"
+        required
+        options={{
+          oak: "English Oak",
+          plane: "London Plane Tree",
+          redwood: "Redwood",
+          other: "Other species"
+        }}
+      />
+    </Box>
   )
 };

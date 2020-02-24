@@ -84,42 +84,42 @@ export const FileUpload: React.FC<IFileUpload> = ({
     maxSize
   });
   return (
-    <Box bgcolor="background.paper" p={4}>
-      <form onSubmit={formik.handleSubmit}>
-        <Typography variant="h5" component="h1" gutterBottom>
-          {title}
-        </Typography>
-        {files.map(file => {
-          return (
-            <div key={file.name} className={classes.box}>
-              <p>
-                Name: <strong>{file.name}</strong>
-              </p>
-              <p>Size: {file.size}</p>
-              <p>Type: {file.type}</p>
-              <p onClick={e => setFiles(files.filter(f => f !== file))}>x</p>
-            </div>
-          );
-        })}
-        <div className={classes.box} {...getRootProps({ isDragActive: true })}>
-          <input {...getInputProps()} />
-          <p>{stateText}</p>
-        </div>
-        <small>Max size of file is {maxSize} Bytes</small>
-        {includeSubmit && (
-          <div>
-            <Button type="submit" variant="contained" color="primary">
-              Save and Continue
-            </Button>
+    <form onSubmit={formik.handleSubmit}>
+      <Typography variant="h5" component="h1" gutterBottom>
+        {title}
+      </Typography>
+      {files.map(file => {
+        return (
+          <div key={file.name} className={classes.box}>
+            <p>
+              Name: <strong>{file.name}</strong>
+            </p>
+            <p>Size: {file.size}</p>
+            <p>Type: {file.type}</p>
+            <p onClick={e => setFiles(files.filter(f => f !== file))}>x</p>
           </div>
-        )}
-      </form>
-    </Box>
+        );
+      })}
+      <div className={classes.box} {...getRootProps({ isDragActive: true })}>
+        <input {...getInputProps()} />
+        <p>{stateText}</p>
+      </div>
+      <small>Max size of file is {maxSize} Bytes</small>
+      {includeSubmit && (
+        <div>
+          <Button type="submit" variant="contained" color="primary">
+            Save and Continue
+          </Button>
+        </div>
+      )}
+    </form>
   );
 };
 
 export default {
   default: (
-    <FileUpload maxSize={40000} accept={["image/*"]} title="File upload" />
+    <Box bgcolor="background.paper" p={4}>
+      <FileUpload maxSize={40000} accept={["image/*"]} title="File upload" />
+    </Box>
   )
 };

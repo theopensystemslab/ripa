@@ -35,7 +35,7 @@ export const Date: React.FC<IDate> = ({
     }
   });
   return (
-    <Box bgcolor="background.paper" p={4}>
+    <Box py={4}>
       <form onSubmit={formik.handleSubmit}>
         <Typography variant="h5" component="div" gutterBottom>
           {title}
@@ -67,25 +67,27 @@ export const Date: React.FC<IDate> = ({
 };
 export default {
   default: (
-    <Date
-      title="Date"
-      type="number"
-      name="date"
-      options={["day", "month", "year"]}
-      inputProps={{
-        day: {
-          min: 1,
-          max: 31
-        },
-        month: {
-          min: 1,
-          max: 12
-        },
-        year: {
-          min: 1920,
-          max: 2020
-        }
-      }}
-    />
+    <Box bgcolor="background.paper" px={4}>
+      <Date
+        title="Date"
+        type="number"
+        name="date"
+        options={["day", "month", "year"]}
+        inputProps={{
+          day: {
+            min: 1,
+            max: 31
+          },
+          month: {
+            min: 1,
+            max: 12
+          },
+          year: {
+            min: 1920,
+            max: 2020
+          }
+        }}
+      />
+    </Box>
   )
 };

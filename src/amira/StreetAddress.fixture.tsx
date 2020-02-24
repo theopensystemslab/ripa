@@ -1,6 +1,5 @@
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
@@ -41,44 +40,44 @@ export const StreetAddress: React.FC<IText> = ({
     }
   };
   return (
-    <Container maxWidth="md">
-      <Box bgcolor="background.paper" p={4} maxWidth={500}>
-        <form onSubmit={formik.handleSubmit}>
-          <Typography variant="h4" gutterBottom>
-            <strong>{title}</strong>
-          </Typography>
-          {options.map((el, index) => (
-            <div key={`${el}-${index}`}>
-              <Box mb={2.5}>
-                <TextField
-                  required={el === "street" || el === "city"}
-                  onChange={formik.handleChange}
-                  placeholder={el}
-                  label={renderLabels(el)}
-                  fullWidth
-                  type={type}
-                  name={`${name}-${el}`}
-                />
-              </Box>
-            </div>
-          ))}
-          <Box textAlign="right">
-            <Button type="submit" variant="contained" color="primary">
-              Look up address
-            </Button>
-          </Box>
-        </form>
-      </Box>
-    </Container>
+    <Box py={4} maxWidth={500}>
+      <form onSubmit={formik.handleSubmit}>
+        <Typography variant="h4" gutterBottom>
+          <strong>{title}</strong>
+        </Typography>
+        {options.map((el, index) => (
+          <div key={`${el}-${index}`}>
+            <Box mb={2.5}>
+              <TextField
+                required={el === "street" || el === "city"}
+                onChange={formik.handleChange}
+                placeholder={el}
+                label={renderLabels(el)}
+                fullWidth
+                type={type}
+                name={`${name}-${el}`}
+              />
+            </Box>
+          </div>
+        ))}
+        <Box textAlign="right">
+          <Button type="submit" variant="contained" color="primary">
+            Look up address
+          </Button>
+        </Box>
+      </form>
+    </Box>
   );
 };
 export default {
   default: (
-    <StreetAddress
-      title="Street Address"
-      type="text"
-      name="address"
-      options={["building", "street", "city", "county", "postcode"]}
-    />
+    <Box px={4} bgcolor="background.paper">
+      <StreetAddress
+        title="Street Address"
+        type="text"
+        name="address"
+        options={["building", "street", "city", "county", "postcode"]}
+      />
+    </Box>
   )
 };

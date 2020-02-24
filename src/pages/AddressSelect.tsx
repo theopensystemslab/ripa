@@ -27,7 +27,7 @@ const AddressSelect = ({
   const classes = useStyles();
 
   return (
-    <HVCenterContainer>
+    <HVCenterContainer verticalCenter>
       <Box fontSize="h4.fontSize" fontWeight={700}>
         <InputLabel className={classes.inputLabel} id="select">
           The address of the property is

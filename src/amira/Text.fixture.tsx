@@ -60,107 +60,113 @@ export const Text: React.FC<IText> = ({
   });
 
   return (
-    <Box bgcolor="background.paper" p={4}>
-      <form onSubmit={formik.handleSubmit}>
-        <Typography variant="h5" gutterBottom>
-          {title}
-        </Typography>
-        <Box mb={3} maxWidth={600}>
-          {label && <InputLabel>{label}</InputLabel>}
-          <Input
-            placeholder={placeholder}
-            fullWidth={fullWidth}
-            multiline={multiline}
-            name={name}
-            type={type}
-            onChange={e => {
-              if (maxWords) {
-                setCount(e.target.value.split(" ").length - 1);
-              }
-              formik.handleChange(e);
-            }}
-            rows={multiline ? 5 : 1}
-            value={formik.values[name]}
-            required={required}
-            {...inputProps}
-          />
-          {maxWords && (
-            <Box
-              fontSize="caption.fontSize"
-              color="text.secondary"
-              pt={1}
-              textAlign="right"
-            >
-              <span>{diff >= 0 ? `${diff}` : 0} words Remaining</span>
-            </Box>
-          )}
-          {unit && (
-            <Box
-              component="span"
-              fontSize="caption.fontSize"
-              style={{ verticalAlign: "bottom", lineHeight: "40px" }}
-              pl={1.5}
-            >
-              {unit}
-            </Box>
-          )}
-        </Box>
-        {includeSubmit && (
-          <Button variant="contained" color="primary" type="submit">
-            Save and Continue
-          </Button>
+    <form onSubmit={formik.handleSubmit}>
+      <Typography variant="h5" gutterBottom>
+        {title}
+      </Typography>
+      <Box mb={3} maxWidth={600}>
+        {label && <InputLabel>{label}</InputLabel>}
+        <Input
+          placeholder={placeholder}
+          fullWidth={fullWidth}
+          multiline={multiline}
+          name={name}
+          type={type}
+          onChange={e => {
+            if (maxWords) {
+              setCount(e.target.value.split(" ").length - 1);
+            }
+            formik.handleChange(e);
+          }}
+          rows={multiline ? 5 : 1}
+          value={formik.values[name]}
+          required={required}
+          {...inputProps}
+        />
+        {maxWords && (
+          <Box
+            fontSize="caption.fontSize"
+            color="text.secondary"
+            pt={1}
+            textAlign="right"
+          >
+            <span>{diff >= 0 ? `${diff}` : 0} words Remaining</span>
+          </Box>
         )}
-      </form>
-    </Box>
+        {unit && (
+          <Box
+            component="span"
+            fontSize="caption.fontSize"
+            style={{ verticalAlign: "bottom", lineHeight: "40px" }}
+            pl={1.5}
+          >
+            {unit}
+          </Box>
+        )}
+      </Box>
+      {includeSubmit && (
+        <Button variant="contained" color="primary" type="submit">
+          Save and Continue
+        </Button>
+      )}
+    </form>
   );
 };
 
 export default {
   "Short Text": (
-    <Text
-      title="Short Text Input"
-      multiline={false}
-      type="text"
-      name="textFieldShort"
-      label="label"
-      placeholder=""
-      required={false}
-    />
+    <Box p={4} bgcolor="background.paper">
+      <Text
+        title="Short Text Input"
+        multiline={false}
+        type="text"
+        name="textFieldShort"
+        label="label"
+        placeholder=""
+        required={false}
+      />
+    </Box>
   ),
   "Long Text": (
-    <Text
-      title="Long Text Input"
-      multiline
-      fullWidth
-      type="text"
-      name="textFieldLong"
-      label="label"
-      placeholder="instruction"
-      required={false}
-      maxWords={5}
-    />
+    <Box p={4} bgcolor="background.paper">
+      <Text
+        title="Long Text Input"
+        multiline
+        fullWidth
+        type="text"
+        name="textFieldLong"
+        label="label"
+        placeholder="instruction"
+        required={false}
+        maxWords={5}
+      />
+    </Box>
   ),
   Email: (
-    <Text
-      title="Email"
-      label="Email Address"
-      placeholder="you@example.com"
-      name="email"
-      type="email"
-      required={false}
-    />
+    <Box p={4} bgcolor="background.paper">
+      <Text
+        title="Email"
+        label="Email Address"
+        placeholder="you@example.com"
+        name="email"
+        type="email"
+        required={false}
+      />
+    </Box>
   ),
   Number: (
-    <Text
-      title="Number"
-      label="Number"
-      fullWidth={false}
-      placeholder="Number Input"
-      name="number"
-      type="number"
-      unit="specified unit"
-      required={false}
-      inputProps={{ min: 2, max: 10 }}
-    />
+    <Box p={4} bgcolor="background.paper">
+      <Text
+        title="Number"
+        label="Number"
+        fullWidth={false}
+        placeholder="Number Input"
+        name="number"
+        type="number"
+        unit="specified unit"
+        required={false}
+        inputProps={{ min: 2, max: 10 }}
+      />
+    </Box>
   )
 };
