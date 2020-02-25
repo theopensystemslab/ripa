@@ -141,7 +141,7 @@ export const Header = ({
         )}
       </Toolbar>
       <Container maxWidth="md">
-        <Box pt={8} pb={2}>
+        <Box fontSize="body1.fontSize" pt={8} pb={2}>
           <Stepper
             active={active}
             numbered
