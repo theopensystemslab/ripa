@@ -3,12 +3,17 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import ArrowForward from "@material-ui/icons/ArrowForward";
 import CouncilLogo from "@material-ui/icons/EcoOutlined";
 import MenuIcon from "@material-ui/icons/Menu";
 import * as React from "react";
+import { Clipboard, LogOut } from "react-feather";
 
 import Stepper from "../components/Stepper";
 import { useStore } from "../lib/store";
@@ -31,6 +36,9 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column"
     // marginTop: -100
+  },
+  menu: {
+    minWidth: "10rem"
   },
   footer: {
     padding: theme.spacing(2, 3),
@@ -56,6 +64,16 @@ export const Header = ({
   const nav = ["My planning applications", address];
   const active = useStore(state => state.data.activeStep + 1) || 1;
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const classes = useStyles();
   return (
     <AppBar elevation={0} color="secondary" position="static">
       <Toolbar>
@@ -79,10 +97,45 @@ export const Header = ({
               </Grid>
             </Box>
             <Box>
-              <IconButton color="inherit">
+              <IconButton
+                color="inherit"
+                aria-controls="nav-menu"
+                aria-haspopup="true"
+                onClick={handleClick}
+              >
                 <MenuIcon />
               </IconButton>
-              <a href="/logout">Logout</a>
+              <Menu
+                id="nav-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+                elevation={0}
+              >
+                <MenuItem
+                  className={classes.menu}
+                  component="a"
+                  href="/"
+                  onClick={handleClose}
+                >
+                  <ListItemIcon>
+                    <Clipboard />
+                  </ListItemIcon>
+                  <ListItemText primary="My applications" />
+                </MenuItem>
+                <MenuItem
+                  className={classes.menu}
+                  component="a"
+                  href="/logout"
+                  onClick={handleClose}
+                >
+                  <ListItemIcon>
+                    <LogOut />
+                  </ListItemIcon>
+                  <ListItemText primary="Log out" />
+                </MenuItem>
+              </Menu>
             </Box>
           </>
         )}
