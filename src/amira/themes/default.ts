@@ -23,10 +23,10 @@ const themePalette = {
     main: "#FA9507"
   },
   info: {
-    main: "#00A1B5"
+    main: "rgba(33, 133, 208, 0.2)"
   },
   success: {
-    main: "#21BA45"
+    main: "#2185D0"
   },
   text: {
     secondary: "rgba(0,0,0,0.45)"
