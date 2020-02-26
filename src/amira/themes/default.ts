@@ -16,7 +16,7 @@ const themePalette = {
   grey: {
     main: "#999999"
   },
-  danger: {
+  error: {
     main: "#E61E17"
   },
   warning: {

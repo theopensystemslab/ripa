@@ -28,12 +28,12 @@ export default (
       {
         id: 104,
         text: "Materials & appearance",
-        status: 0
+        status: 3
       },
       {
         id: 105,
         text: "Heritage",
-        status: 1
+        status: 0
       }
     ]}
   />

@@ -5,6 +5,12 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
 import * as React from "react";
+import {
+  AlertTriangle,
+  ArrowRight,
+  Check,
+  MoreHorizontal
+} from "react-feather";
 import { Link } from "react-navi";
 
 import HVCenterContainer from "../components/HVCenterContainer";
@@ -22,26 +28,43 @@ const BorderLinearProgress = withStyles({
   }
 })(LinearProgress);
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   listItem: {
     borderBottom: "1px solid #ccc",
     "&:first-child": {
       borderTop: "1px solid #ccc"
     }
   },
-  status: { color: "#ccc" },
+  status: {
+    color: theme.palette.grey[400],
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end"
+  },
+  statusText: {
+    display: "none",
+    [theme.breakpoints.up("sm")]: {
+      display: "inline-block"
+    },
+    "&:not(:last-child)": {
+      marginRight: theme.spacing(2)
+    }
+  },
   notStarted: {},
   complete: {
-    color: "limegreen"
+    color: theme.palette.primary.light
   },
-  inProgress: {
-    color: "#888"
+  incomplete: {
+    color: theme.palette.grey[400]
+  },
+  issue: {
+    color: theme.palette.error.main
   },
   link: {
     textDecoration: "none",
     color: "#000"
   }
-});
+}));
 
 export const STATUS = [
   {
@@ -49,12 +72,16 @@ export const STATUS = [
     text: "Not started"
   },
   {
-    className: "inProgress",
-    text: "In progress"
+    className: "incomplete",
+    text: "Incomplete"
   },
   {
     className: "complete",
     text: "Complete"
+  },
+  {
+    className: "issue",
+    text: "Issue"
   }
 ];
 
@@ -106,7 +133,13 @@ const MyApplication = ({ sections = [] }) => {
                   classes[STATUS[status].className]
                 )}
               >
-                {STATUS[status].text}
+                <span className={classes.statusText}>
+                  {STATUS[status].text}
+                </span>
+                {status === 0 && <ArrowRight></ArrowRight>}
+                {status === 1 && <MoreHorizontal></MoreHorizontal>}
+                {status === 2 && <Check></Check>}
+                {status === 3 && <AlertTriangle></AlertTriangle>}
               </Grid>
             </Grid>
           </Box>
