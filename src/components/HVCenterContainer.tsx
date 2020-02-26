@@ -36,7 +36,7 @@ const HVCenterContainer = ({
     <Box
       className={classes.root}
       color={light ? "#000" : "#fff"}
-      bgcolor={light ? "#fff" : "secondary.main"}
+      bgcolor={light ? "#fff" : "primary.main"}
       py={verticalCenter ? 0 : 3}
       style={{
         alignItems: verticalCenter && "center",

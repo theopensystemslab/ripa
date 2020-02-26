@@ -5,7 +5,7 @@ import Progress from "../components/Loading";
 
 const Loading = () => {
   return (
-    <Box bgcolor="secondary.main">
+    <Box bgcolor="primary.main">
       <Progress></Progress>
     </Box>
   );

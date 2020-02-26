@@ -75,7 +75,7 @@ export const Header = ({
   };
   const classes = useStyles();
   return (
-    <AppBar elevation={0} color="secondary" position="static">
+    <AppBar elevation={0} color="primary" position="static">
       <Toolbar>
         <Box fontSize="h5.fontSize" display="flex" alignItems="center" px={1}>
           <CouncilLogo /> {team}
