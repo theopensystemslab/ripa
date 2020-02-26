@@ -62,7 +62,11 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     textDecoration: "none",
-    color: "#000"
+    color: "#000",
+    display: "block",
+    "&:hover .sectionTitle": {
+      textDecoration: "underline"
+    }
   }
 }));
 
@@ -116,32 +120,32 @@ const MyApplication = ({ sections = [] }) => {
             fontSize="h6.fontSize"
             py={1.5}
           >
-            <Grid container justify="space-between">
-              <Grid item>
-                <Link
-                  href={`/start/${id}`}
-                  prefetch={false}
-                  className={classes.link}
-                >
+            <Link
+              href={`/start/${id}`}
+              prefetch={false}
+              className={classes.link}
+            >
+              <Grid container justify="space-between">
+                <Grid item className="sectionTitle">
                   {text}
-                </Link>
+                </Grid>
+                <Grid
+                  item
+                  className={classNames(
+                    classes.status,
+                    classes[STATUS[status].className]
+                  )}
+                >
+                  <span className={classes.statusText}>
+                    {STATUS[status].text}
+                  </span>
+                  {status === 0 && <ArrowRight></ArrowRight>}
+                  {status === 1 && <MoreHorizontal></MoreHorizontal>}
+                  {status === 2 && <Check></Check>}
+                  {status === 3 && <AlertTriangle></AlertTriangle>}
+                </Grid>
               </Grid>
-              <Grid
-                item
-                className={classNames(
-                  classes.status,
-                  classes[STATUS[status].className]
-                )}
-              >
-                <span className={classes.statusText}>
-                  {STATUS[status].text}
-                </span>
-                {status === 0 && <ArrowRight></ArrowRight>}
-                {status === 1 && <MoreHorizontal></MoreHorizontal>}
-                {status === 2 && <Check></Check>}
-                {status === 3 && <AlertTriangle></AlertTriangle>}
-              </Grid>
-            </Grid>
+            </Link>
           </Box>
         ))}
       </Box>
