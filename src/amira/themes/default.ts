@@ -5,12 +5,12 @@ import { defaultsDeep } from "lodash-es";
 
 const themePalette = {
   primary: {
-    main: "#141414", // basically black
+    main: "#038521", // basically black
     bodyText: "#141414",
     contrastText: "#fff"
   },
   secondary: {
-    main: "#038521",
+    main: "#141414",
     contrastText: "#fff"
   },
   grey: {
@@ -27,6 +27,9 @@ const themePalette = {
   },
   success: {
     main: "#21BA45"
+  },
+  text: {
+    secondary: "rgba(0,0,0,0.45)"
   },
   background: {
     main: "#F7F7F8"
@@ -65,6 +68,9 @@ const _default = {
     },
     MuiButton: {
       elevation: 0
+    },
+    MuiIconButton: {
+      color: "inherit"
     },
     MuiButtonBase: {
       elevation: 0

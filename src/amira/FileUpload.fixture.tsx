@@ -1,20 +1,32 @@
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import IconButton from "@material-ui/core/IconButton";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Typography from "@material-ui/core/Typography";
+import { Close } from "@material-ui/icons";
+import classNames from "classnames";
 import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 
 const styles = theme => ({
   box: {
-    width: 200,
-    height: 200,
+    width: 220,
+    height: 220,
     background: "#EAEAEA",
-    padding: theme.spacing(2),
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center"
+    justifyContent: "center",
+    cursor: "pointer"
+  },
+  uploaded: {
+    background: "#fff",
+    border: "1px solid #000",
+    cursor: "auto"
+  },
+  discardButton: {
+    borderRadius: 0
   },
   button: {
     textDecoration: "underline",
@@ -43,7 +55,9 @@ export const FileUpload: React.FC<IFileUpload> = ({
   includeSubmit = false
 }) => {
   const [files, setFiles] = useState([]);
-  const [stateText, setStateText] = useState("Click to select files");
+  const [stateText, setStateText] = useState(
+    "drag and drop here or choose file"
+  );
 
   const classes = useStyles();
 
@@ -88,23 +102,62 @@ export const FileUpload: React.FC<IFileUpload> = ({
       <Typography variant="h5" component="h1" gutterBottom>
         {title}
       </Typography>
-      {files.map(file => {
-        return (
-          <div key={file.name} className={classes.box}>
-            <p>
-              Name: <strong>{file.name}</strong>
-            </p>
-            <p>Size: {file.size}</p>
-            <p>Type: {file.type}</p>
-            <p onClick={e => setFiles(files.filter(f => f !== file))}>x</p>
+      <Grid container spacing={3}>
+        {files.map(file => {
+          return (
+            <Grid item>
+              <div
+                key={file.name}
+                className={classNames(classes.box, classes.uploaded)}
+              >
+                <Box
+                  flexGrow={1}
+                  p={3}
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                >
+                  <Typography variant="body2">{file.name}</Typography>
+                  <Typography variant="body2" color="textSecondary">
+                    {file.type}
+                  </Typography>
+                </Box>
+                <Box
+                  px={1.5}
+                  display="flex"
+                  justifyContent="space-between"
+                  alignItems="center"
+                >
+                  <IconButton
+                    className={classes.discardButton}
+                    edge="start"
+                    onClick={e => setFiles(files.filter(f => f !== file))}
+                  >
+                    <Close />
+                  </IconButton>
+                  {file.size} bytes
+                </Box>
+              </div>
+            </Grid>
+          );
+        })}
+        <Grid item>
+          <div
+            className={classes.box}
+            {...getRootProps({ isDragActive: true })}
+          >
+            <input {...getInputProps()} />
+            <Box p={3}>
+              <Typography variant="body2" gutterBottom>
+                {stateText}
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+                Max size of file is {maxSize} Bytes
+              </Typography>
+            </Box>
           </div>
-        );
-      })}
-      <div className={classes.box} {...getRootProps({ isDragActive: true })}>
-        <input {...getInputProps()} />
-        <p>{stateText}</p>
-      </div>
-      <small>Max size of file is {maxSize} Bytes</small>
+        </Grid>
+      </Grid>
       {includeSubmit && (
         <div>
           <Button type="submit" variant="contained" color="primary">

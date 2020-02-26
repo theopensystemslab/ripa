@@ -69,6 +69,8 @@ const useStyles = makeStyles(theme =>
       color: theme.palette.primary.contrastText,
       border: `2px solid ${theme.palette.primary.contrastText}`,
       boxShadow: "none",
+      maxHeight: "30vh",
+      minHeight: "10rem",
       "& ul": {
         padding: "0"
       },
