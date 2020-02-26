@@ -23,7 +23,8 @@ const themePalette = {
     main: "#FA9507"
   },
   info: {
-    main: "rgba(33, 133, 208, 0.2)"
+    main: "rgba(33, 133, 208, 0.2)",
+    contrastText: "#242424"
   },
   success: {
     main: "#2185D0"
