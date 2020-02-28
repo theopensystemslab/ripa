@@ -12,6 +12,12 @@ const useStyles = makeStyles({
     color: "currentColor",
     opacity: 0.5
   },
+  input: {
+    maxWidth: "6em",
+    "& input": {
+      textTransform: "uppercase"
+    }
+  },
   inputLabel: {
     fontSize: "1em",
     fontWeight: 700,
@@ -46,7 +52,7 @@ const PostcodeSearch = ({
   return (
     <HVCenterContainer verticalCenter>
       <Box fontSize="h4.fontSize" fontWeight={700}>
-        <InputLabel className={classes.inputLabel} id="postcode">
+        <InputLabel className={classes.inputLabel} htmlFor="postcode">
           The postcode of the property is{" "}
         </InputLabel>
         <InlineText
@@ -54,6 +60,7 @@ const PostcodeSearch = ({
           autoFocus
           value={_postcode}
           onChange={handleLocalChange}
+          className={classes.input}
         />
       </Box>
     </HVCenterContainer>

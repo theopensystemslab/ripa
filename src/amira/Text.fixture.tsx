@@ -19,6 +19,8 @@ interface IText {
   fullWidth?: boolean;
   required?: boolean;
   placeholder?: string;
+  inputMode?: string;
+  pattern?: string;
   unit?: string;
   min?: string;
   max?: string;
@@ -33,6 +35,8 @@ export const Text: React.FC<IText> = ({
   fullWidth = true,
   placeholder = "",
   multiline = false,
+  inputMode = "",
+  pattern = "",
   required = false,
   name = "",
   type = "",
@@ -72,6 +76,10 @@ export const Text: React.FC<IText> = ({
           multiline={multiline}
           name={name}
           type={type}
+          inputProps={{
+            inputmode: inputMode,
+            pattern: pattern
+          }}
           onChange={e => {
             if (maxWords) {
               setCount(e.target.value.split(" ").length - 1);
@@ -148,6 +156,7 @@ export default {
         title="Email"
         label="Email Address"
         placeholder="you@example.com"
+        inputMode="email"
         name="email"
         type="email"
         required={false}
@@ -162,7 +171,9 @@ export default {
         fullWidth={false}
         placeholder="Number Input"
         name="number"
-        type="number"
+        inputMode="numeric"
+        pattern="[0-9]*"
+        type="text"
         unit="specified unit"
         required={false}
         inputProps={{ min: 2, max: 10 }}

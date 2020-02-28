@@ -28,13 +28,15 @@ const useStyles = makeStyles(theme =>
         transformOrigin: "bottom",
         transition: "all 0.25s ease-out"
       },
-      "&:hover": {},
-      "&:focus": {
-        background: "none",
-        "&:before": {
-          opacity: "0.1",
-          transform: "scaleY(1)"
-        }
+      "&$focused": {
+        backgroundColor: "transparent"
+      }
+    },
+    focused: {
+      backgroundColor: "transparent",
+      "&:before": {
+        opacity: "0.1",
+        transform: "scaleY(1)"
       }
     },
     input: {
@@ -54,9 +56,14 @@ const TextQuestion = ({ value = "", children = null as any, ...props }) => {
   return (
     <Input
       disableUnderline
+      spellCheck="false"
+      autoCapitalize="off"
+      autoComplete="off"
+      autoCorrect="off"
       classes={{
         root: classes.root,
-        input: classes.input
+        input: classes.input,
+        focused: classes.focused
       }}
       {...props}
     >
