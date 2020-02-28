@@ -2,6 +2,7 @@ import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
 import * as React from "react";
+import { Link } from "react-navi";
 
 const useStyles = makeStyles({
   root: {
@@ -21,7 +22,14 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     fontWeight: 400,
-    opacity: 0.75
+    opacity: 0.75,
+    cursor: "default",
+    "&:hover": {
+      opacity: 1
+    },
+    "& a": {
+      textDecoration: "none"
+    }
   },
   active: {
     fontWeight: 700,
@@ -63,7 +71,21 @@ const Stepper = ({
           )}
           key={i}
         >
-          {numbered && `${i + 1}.`} {child}
+          {typeof child === "object" ? (
+            <>
+              {child.link ? (
+                <Link href={child.link}>
+                  {numbered && `${i + 1}.`} {child.text}
+                </Link>
+              ) : (
+                <>
+                  {numbered && `${i + 1}.`} {child.text}
+                </>
+              )}
+            </>
+          ) : (
+            child
+          )}
           {i + 1 < list.length && (
             <>
               {Divider ? (

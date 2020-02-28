@@ -61,7 +61,7 @@ export const Header = ({
   address = "",
   breadcrumbs = []
 }) => {
-  const nav = ["My planning applications", address];
+  const nav = [{ text: "My planning applications", link: "/" }, address];
   const active = useStore(state => state.data.activeStep + 1) || 1;
 
   const [anchorEl, setAnchorEl] = React.useState(null);
