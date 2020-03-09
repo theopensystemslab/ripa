@@ -118,8 +118,4 @@ export const FileUpload: React.FC<IFileUpload> = ({
   );
 };
 
-export default {
-  default: (
-    <FileUpload maxSize={40000} accept={["image/*"]} title="File upload" />
-  )
-};
+export default FileUpload;

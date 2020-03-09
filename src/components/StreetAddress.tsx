@@ -72,13 +72,5 @@ export const StreetAddress: React.FC<IText> = ({
     </Container>
   );
 };
-export default {
-  default: (
-    <StreetAddress
-      title="Street Address"
-      type="text"
-      name="address"
-      options={["building", "street", "city", "county", "postcode"]}
-    />
-  )
-};
+
+export default StreetAddress;

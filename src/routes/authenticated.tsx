@@ -3,7 +3,7 @@ import { compose, mount, route, withView } from "navi";
 import * as React from "react";
 import { View } from "react-navi";
 
-import { ExpandableCheckboxes } from "../amira/ExpandableCheckboxes.fixture";
+import ExpandableCheckboxes from "../components/ExpandableCheckboxes";
 import HVCenterContainer from "../components/HVCenterContainer";
 import { api, useStore } from "../lib/store";
 import AddressSelect from "../pages/AddressSelect";

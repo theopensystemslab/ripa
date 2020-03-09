@@ -12,10 +12,10 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { Router, View } from "react-navi";
 
-import defaultTheme from "./amira/themes/default";
 import { api, useStore } from "./lib/store";
 import routes from "./routes";
 import * as serviceWorker from "./serviceWorker";
+import defaultTheme from "./themes/default";
 
 const gqlClient = new ApolloClient({
   uri: process.env.REACT_APP_GRAPHQL_URL,

@@ -6,7 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import * as React from "react";
 
-import useForm from "./lib/useForm";
+import useForm from "../lib/useForm";
 
 interface IPayment {
   fee: number;
@@ -24,7 +24,7 @@ const Payment: React.FC<IPayment> = ({ fee }) => {
   );
 };
 
-const CardDetails: React.FC = () => {
+export const CardDetails: React.FC = () => {
   const defaults = {
     cardholderName: "",
     month: "",
@@ -126,7 +126,7 @@ interface IReceipt {
   paidOn: Date;
   reference: string;
 }
-const Receipt: React.FC<IReceipt> = ({ fee, paidOn }) => (
+export const Receipt: React.FC<IReceipt> = ({ fee, paidOn }) => (
   <Box bgcolor="#ddd" px={3} py={4} textAlign="center">
     <Typography variant="h5">Planning fee paid</Typography>
     <Typography variant="h4" gutterBottom>
@@ -139,10 +139,4 @@ const Receipt: React.FC<IReceipt> = ({ fee, paidOn }) => (
   </Box>
 );
 
-export default {
-  fee: <Payment fee={204} />,
-  cardDetails: <CardDetails />,
-  receipt: (
-    <Receipt fee={204} paidOn={new Date(2020, 0, 1)} reference={"0271911328"} />
-  )
-};
+export default Payment;
