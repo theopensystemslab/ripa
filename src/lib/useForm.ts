@@ -1,4 +1,4 @@
-import set from "lodash/set";
+import { set } from "lodash-es";
 import { useState } from "react";
 
 export default (initialState: object, callback: Function) => {
