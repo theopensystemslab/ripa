@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 
 const styles = theme => ({
@@ -56,27 +56,30 @@ export const FileUpload: React.FC<IFileUpload> = ({
     }
   });
 
-  const onDrop = React.useCallback(acceptedFiles => {
-    console.log(acceptedFiles);
-    if (acceptedFiles.length > 0) {
-      const reader = new FileReader();
-      reader.onprogress = () => {
-        setStateText("Loading");
-      };
-      reader.onload = () => {
-        setStateText("click to select files");
-      };
-      setFiles(acceptedFiles);
-    } else {
-      alert(`Please choose a file with max size ${maxSize} Bytes`);
-    }
-  }, []);
+  const onDrop = useCallback(
+    acceptedFiles => {
+      console.log(acceptedFiles);
+      if (acceptedFiles.length > 0) {
+        const reader = new FileReader();
+        reader.onprogress = () => {
+          setStateText("Loading");
+        };
+        reader.onload = () => {
+          setStateText("click to select files");
+        };
+        setFiles(acceptedFiles);
+      } else {
+        alert(`Please choose a file with max size ${maxSize} Bytes`);
+      }
+    },
+    [maxSize]
+  );
 
   useEffect(() => {
     if (files.length > 0) {
       formik.setFieldValue("path", files[0].path);
     }
-  }, [files]);
+  }, [files, formik]);
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
