@@ -25,7 +25,10 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column"
   },
   header: {
-    padding: 20,
+    [theme.breakpoints.up("lg")]: {
+      padding: 0
+    },
+    justifyContent: "space-between",
     "& a": {
       textDecoration: "none"
     }
@@ -35,10 +38,6 @@ const useStyles = makeStyles(theme => ({
     alignItems: "stretch",
     display: "flex",
     flexDirection: "column"
-    // marginTop: -100
-  },
-  menu: {
-    minWidth: "10rem"
   },
   footer: {
     padding: theme.spacing(2, 3),
@@ -52,6 +51,31 @@ const useStyles = makeStyles(theme => ({
       display: "inline-block",
       marginRight: 20
     }
+  },
+  logo: {
+    [theme.breakpoints.up("lg")]: {
+      position: "absolute",
+      left: theme.spacing(1)
+    }
+  },
+  topBarContent: {
+    display: "none",
+    [theme.breakpoints.up("lg")]: {
+      display: "block",
+      maxWidth: theme.breakpoints.values.md,
+      margin: "0 auto",
+      boxSizing: "border-box",
+      padding: theme.spacing(0, 3)
+    }
+  },
+  menu: {
+    [theme.breakpoints.up("lg")]: {
+      position: "absolute",
+      right: theme.spacing(2)
+    }
+  },
+  menuItem: {
+    minWidth: "10rem"
   }
 }));
 
@@ -76,13 +100,19 @@ export const Header = ({
   const classes = useStyles();
   return (
     <AppBar elevation={0} color="primary" position="sticky">
-      <Toolbar>
-        <Box fontSize="h5.fontSize" display="flex" alignItems="center" px={1}>
+      <Toolbar className={classes.header}>
+        <Box
+          className={classes.logo}
+          fontSize="h5.fontSize"
+          display="flex"
+          alignItems="center"
+          px={{ md: 1 }}
+        >
           <CouncilLogo /> {team}
         </Box>
         {currentUser && (
           <>
-            <Box px={3} style={{ flexGrow: 1 }}>
+            <Box px={3} flexGrow={1} className={classes.topBarContent}>
               <Grid container alignItems="center">
                 <Grid item>
                   <Box fontSize="h6.fontSize">
@@ -96,7 +126,7 @@ export const Header = ({
             </Grid> */}
               </Grid>
             </Box>
-            <Box>
+            <Box className={classes.menu}>
               <IconButton
                 color="inherit"
                 aria-controls="nav-menu"
@@ -114,7 +144,7 @@ export const Header = ({
                 elevation={0}
               >
                 <MenuItem
-                  className={classes.menu}
+                  className={classes.menuItem}
                   component="a"
                   href="/"
                   onClick={handleClose}
@@ -125,7 +155,7 @@ export const Header = ({
                   <ListItemText primary="My applications" />
                 </MenuItem>
                 <MenuItem
-                  className={classes.menu}
+                  className={classes.menuItem}
                   component="a"
                   href="/logout"
                   onClick={handleClose}
