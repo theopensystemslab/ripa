@@ -73,7 +73,7 @@ const useStyles = makeStyles(theme => ({
 const Dashboard = ({ applications = [] }) => {
   const classes = useStyles();
   return (
-    <HVCenterContainer>
+    <HVCenterContainer verticalCenter>
       <Typography variant="h3" gutterBottom>
         <strong>My planning applications</strong>
       </Typography>
