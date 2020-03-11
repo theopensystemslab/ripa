@@ -69,15 +69,5 @@ export const StreetAddress: React.FC<IText> = ({
     </Box>
   );
 };
-export default {
-  default: (
-    <Box px={4} bgcolor="background.paper">
-      <StreetAddress
-        title="Street Address"
-        type="text"
-        name="address"
-        options={["building", "street", "city", "county", "postcode"]}
-      />
-    </Box>
-  )
-};
+
+export default StreetAddress;

@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
 import * as React from "react";
 
-import Checkbox from "../components/Checkbox";
+import Checkbox from "./Checkbox";
 
 interface ICheckboxes {
   title: string;
@@ -112,20 +112,4 @@ const Checkboxes: React.FC<ICheckboxes> = ({
   );
 };
 
-export default {
-  default: (
-    <Box px={4} bgcolor="background.paper">
-      <Checkboxes
-        title="What types of street trees will you plant?"
-        name="default_boxes"
-        required
-        options={{
-          oak: "English Oak",
-          plane: "London Plane Tree",
-          redwood: "Redwood",
-          other: "Other species"
-        }}
-      />
-    </Box>
-  )
-};
+export default Checkboxes;

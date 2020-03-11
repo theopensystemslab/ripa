@@ -1,7 +1,7 @@
 import Box from "@material-ui/core/Box";
 import * as React from "react";
 
-import Progress from "../components/Loading";
+import Progress from "./Loading";
 
 const Loading = () => {
   return (

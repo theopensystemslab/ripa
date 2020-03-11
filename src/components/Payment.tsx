@@ -1,6 +1,5 @@
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
@@ -9,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import { Info } from "@material-ui/icons";
 import * as React from "react";
 
-import useForm from "./lib/useForm";
+import useForm from "../lib/useForm";
 
 const useStyles = makeStyles(theme => ({
   notificationCard: {
@@ -64,7 +63,7 @@ const Payment: React.FC<IPayment> = ({ fee }) => {
   );
 };
 
-const CardDetails: React.FC = () => {
+export const CardDetails: React.FC = () => {
   const defaults = {
     cardholderName: "",
     month: "",
@@ -164,59 +163,17 @@ interface IReceipt {
   paidOn: Date;
   reference: string;
 }
-const Receipt: React.FC<IReceipt> = ({ fee, paidOn }) => {
-  const classes = useStyles();
-  return (
-    <Box className={classes.notificationCard}>
-      <Typography variant="h5" component="p">
-        Planning fee paid
-      </Typography>
-      <Typography variant="h3" component="p">
-        <strong>£{fee}</strong>
-      </Typography>
-      <Grid container alignItems="flex-end" justify="space-between">
-        <Grid item>
-          <Box fontSize="caption.fontSize" pl={3} pt={3} textAlign="left">
-            It was paid on
-            <Typography variant="h6">{paidOn.toLocaleDateString()}</Typography>
-          </Box>
-          <Box fontSize="caption.fontSize" pl={3} pt={2} textAlign="left">
-            Reference
-            <Typography variant="h6">0271911328</Typography>
-          </Box>
-        </Grid>
-        <Grid item>
-          <Box pr={3}>
-            <a href="#">Request a refund</a>
-          </Box>
-        </Grid>
-      </Grid>
+export const Receipt: React.FC<IReceipt> = ({ fee, paidOn }) => (
+  <Box bgcolor="#ddd" px={3} py={4} textAlign="center">
+    <Typography variant="h5">Planning fee paid</Typography>
+    <Typography variant="h4" gutterBottom>
+      <strong>£{fee}</strong>
+    </Typography>
+    <Box fontSize="caption.fontSize" textAlign="left">
+      It was paid on
+      <Typography variant="h6">{paidOn.toLocaleDateString()}</Typography>
     </Box>
-  );
-};
+  </Box>
+);
 
-export default {
-  fee: (
-    <Container maxWidth="md">
-      <Box p={4}>
-        <Payment fee={204} />
-      </Box>
-    </Container>
-  ),
-  cardDetails: (
-    <Box px={4} bgcolor="background.paper">
-      <CardDetails />
-    </Box>
-  ),
-  receipt: (
-    <Container maxWidth="md">
-      <Box p={4}>
-        <Receipt
-          fee={204}
-          paidOn={new Date(2020, 0, 1)}
-          reference={"0271911328"}
-        />
-      </Box>
-    </Container>
-  )
-};
+export default Payment;

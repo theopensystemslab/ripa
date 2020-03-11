@@ -1,9 +1,8 @@
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
-import ArrowForward from "@material-ui/icons/ArrowForward";
 import * as React from "react";
 
-import Stepper from "../components/Stepper";
+import Stepper from "./Stepper";
 
 interface IBreadcrumbs {
   active?: number;
@@ -32,21 +31,4 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = ({
   );
 };
 
-export default {
-  default: (
-    <Breadcrumbs active={2} list={["My applications", "30 Lake Road"]} />
-  ),
-  stepper: (
-    <Breadcrumbs
-      numbered={true}
-      list={[
-        "Property location",
-        "About the works",
-        "Application",
-        "Declaration",
-        "Pay fee"
-      ]}
-      Divider={ArrowForward}
-    />
-  )
-};
+export default Breadcrumbs;

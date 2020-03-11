@@ -4,11 +4,11 @@ import { ArrowLeft } from "@material-ui/icons";
 import * as React from "react";
 import { Link } from "react-navi";
 
-import { Date } from "../amira/Date.fixture";
-import { FileUpload } from "../amira/FileUpload.fixture";
-import { StreetAddress } from "../amira/StreetAddress.fixture";
-import { Text } from "../amira/Text.fixture";
+import Date from "../components/Date";
+import FileUpload from "../components/FileUpload";
 import HVCenterContainer from "../components/HVCenterContainer";
+import StreetAddress from "../components/StreetAddress";
+import Text from "../components/Text";
 import { useStore } from "../lib/store";
 
 const useStyles = makeStyles({
