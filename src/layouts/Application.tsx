@@ -75,7 +75,7 @@ export const Header = ({
   };
   const classes = useStyles();
   return (
-    <AppBar elevation={0} color="primary" position="static">
+    <AppBar elevation={0} color="primary" position="sticky">
       <Toolbar>
         <Box fontSize="h5.fontSize" display="flex" alignItems="center" px={1}>
           <CouncilLogo /> {team}
@@ -140,16 +140,18 @@ export const Header = ({
           </>
         )}
       </Toolbar>
-      <Container maxWidth="md">
-        <Box fontSize="body1.fontSize" pt={8} pb={2}>
-          <Stepper
-            active={active}
-            numbered
-            list={breadcrumbs}
-            Divider={ArrowForward}
-          />
-        </Box>
-      </Container>
+      {address && (
+        <Container maxWidth="md">
+          <Box fontSize="body1.fontSize" pt={8} pb={2}>
+            <Stepper
+              active={active}
+              numbered
+              list={breadcrumbs}
+              Divider={ArrowForward}
+            />
+          </Box>
+        </Container>
+      )}
     </AppBar>
   );
 };
