@@ -12,6 +12,7 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { Router, View } from "react-navi";
 
+import Loading from "./components/Loading";
 import { api, useStore } from "./lib/store";
 import routes from "./routes";
 import * as serviceWorker from "./serviceWorker";
@@ -68,7 +69,7 @@ const InnerApp = () => {
   api.setState({ flow, graph });
 
   return (
-    <Suspense fallback={<div>Loading... </div>}>
+    <Suspense fallback={<Loading />}>
       <View />
     </Suspense>
   );

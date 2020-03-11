@@ -35,7 +35,7 @@ export const Date: React.FC<IDate> = ({
     }
   });
   return (
-    <Box bgcolor="background.paper" p={4}>
+    <Box py={4}>
       <form onSubmit={formik.handleSubmit}>
         <Typography variant="h5" component="div" gutterBottom>
           {title}

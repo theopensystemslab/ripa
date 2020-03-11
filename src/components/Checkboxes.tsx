@@ -51,7 +51,7 @@ const Checkboxes: React.FC<ICheckboxes> = ({
   });
   const classes = useStyles();
   return (
-    <Box p={4} bgcolor="background.paper">
+    <Box py={4}>
       <form onSubmit={formik.handleSubmit}>
         <Typography variant="h5" gutterBottom>
           {title}

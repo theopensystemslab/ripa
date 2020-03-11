@@ -1,5 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import { ArrowLeft } from "@material-ui/icons";
 import * as React from "react";
 import { Link } from "react-navi";
 
@@ -12,7 +13,18 @@ import { useStore } from "../lib/store";
 
 const useStyles = makeStyles({
   backLink: {
-    color: "#999"
+    color: "currentColor",
+    textDecoration: "none",
+    opacity: 0.5,
+    display: "inline-flex",
+    alignItems: "center",
+    marginTop: 12,
+    marginBottom: 32,
+    fontSize: 16,
+    marginLeft: -8,
+    "&:hover": {
+      opacity: 1
+    }
   }
 });
 
@@ -170,17 +182,17 @@ const Section = ({ id }) => {
   return (
     <HVCenterContainer light>
       <Link href="/start" className={classes.backLink}>
-        ← back
+        <ArrowLeft /> Back
       </Link>
       <Typography variant="h3" component="h1" gutterBottom>
         <strong>{flow.nodes[id].text}</strong>
-        {flow.edges
-          .filter(([src]) => src === id)
-          .map(([, tgt]) => tgt)
-          .map(i => (
-            <Card key={i} id={i} />
-          ))}
       </Typography>
+      {flow.edges
+        .filter(([src]) => src === id)
+        .map(([, tgt]) => tgt)
+        .map(i => (
+          <Card key={i} id={i} />
+        ))}
     </HVCenterContainer>
   );
 };
