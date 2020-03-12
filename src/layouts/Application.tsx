@@ -59,9 +59,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   topBarContent: {
-    display: "none",
     [theme.breakpoints.up("lg")]: {
-      display: "block",
       maxWidth: theme.breakpoints.values.md,
       margin: "0 auto",
       boxSizing: "border-box",
