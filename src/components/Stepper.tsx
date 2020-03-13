@@ -218,9 +218,10 @@ const Stepper = ({
           ))}
         </Popover>
         {numbered && (
-          <span className={(classes.breadcrumb, classes.active)}>
-            {`${active}. ${list[active - 1]}`}
-          </span>
+          <Box display="inline-block">
+            {`${active} of ${list.length} - `}
+            <strong>{list[active - 1]}</strong>
+          </Box>
         )}
       </Box>
     );
