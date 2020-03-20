@@ -1,4 +1,10 @@
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
 import * as React from "react";
+
+import Question from "../Question";
+import QuestionImage from "../QuestionImage";
+import Response from "../Response";
 
 interface IStatement {
   id;
@@ -20,25 +26,24 @@ interface IButtonCard {
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 const ButtonCard = ({ statement, responses, moreInfo }: IButtonCard) => {
+  const [selected, setSelected] = React.useState(null);
   return (
-    <>
-      <h1>
+    <Box>
+      <Question gutterBottom>
         {statement.text}
         {moreInfo && " (?)"}
-      </h1>
-      {statement.img && <img src={statement.img} />}
-      <ol>
+      </Question>
+      {statement.img && <QuestionImage src={statement.img}></QuestionImage>}
+      <Grid container spacing={2}>
         {responses.map((response, i) => (
-          <li key={response.id}>
-            {response.img && <img src={response.img} />}
-            <span>
-              {ALPHABET[i]}
-              {response.text}
-            </span>
-          </li>
+          <Response
+            response={response}
+            selected={selected === i}
+            handleClick={() => setSelected(i)}
+          />
         ))}
-      </ol>
-    </>
+      </Grid>
+    </Box>
   );
 };
 
