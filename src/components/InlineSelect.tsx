@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme =>
     root: {
       display: "flex",
       flexWrap: "wrap",
-      color: theme.palette.primary.contrastText,
+      color: "currentColor",
       fontWeight: "inherit",
       letterSpacing: "inherit",
       minWidth: "10rem",
