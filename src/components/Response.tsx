@@ -4,7 +4,12 @@ import React from "react";
 import ResponseButton from "./ResponseButton";
 import ResponseImageButton from "./ResponseImageButton";
 
-const Response = ({ selected = null, handleClick = null, response }) => {
+const Response = ({
+  selected = null,
+  handleClick = null,
+  response,
+  responseKey = "A"
+}) => {
   if (response.img) {
     return (
       <Grid item xs={6} sm={4} lg={3}>
@@ -12,6 +17,7 @@ const Response = ({ selected = null, handleClick = null, response }) => {
           key={response.id}
           selected={selected}
           handleClick={handleClick}
+          responseKey={responseKey}
           image={response.img && <img src={response.img} />}
         >
           {response.text}
@@ -25,6 +31,7 @@ const Response = ({ selected = null, handleClick = null, response }) => {
           key={response.id}
           selected={selected}
           handleClick={handleClick}
+          responseKey={responseKey}
         >
           {response.text}
         </ResponseButton>

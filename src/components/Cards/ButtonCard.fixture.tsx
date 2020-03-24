@@ -1,6 +1,8 @@
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
+import IconButton from "@material-ui/core/IconButton";
 import * as React from "react";
+import { HelpCircle } from "react-feather";
 
 import Question from "../Question";
 import QuestionImage from "../QuestionImage";
@@ -31,14 +33,22 @@ const ButtonCard = ({ statement, responses, moreInfo }: IButtonCard) => {
     <Box>
       <Question gutterBottom>
         {statement.text}
-        {moreInfo && " (?)"}
+        {moreInfo && (
+          <>
+            {" "}
+            <IconButton>
+              <HelpCircle />
+            </IconButton>
+          </>
+        )}
       </Question>
       {statement.img && <QuestionImage src={statement.img}></QuestionImage>}
-      <Grid container spacing={2}>
+      <Grid container spacing={1}>
         {responses.map((response, i) => (
           <Response
             response={response}
             selected={selected === i}
+            responseKey={ALPHABET[i]}
             handleClick={() => setSelected(i)}
           />
         ))}

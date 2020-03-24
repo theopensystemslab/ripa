@@ -94,6 +94,7 @@ const ResponseButton = ({
   selected = false,
   handleClick,
   image = null,
+  responseKey,
   ...props
 }) => {
   const classes = useStyles();
@@ -110,7 +111,7 @@ const ResponseButton = ({
       <Grid container wrap="nowrap" className={classes.text}>
         <Grid item className={classes.key}>
           <Typography className={classes.type} color="inherit">
-            A
+            {responseKey}
           </Typography>
         </Grid>
         <Grid item>

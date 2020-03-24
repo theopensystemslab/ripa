@@ -73,6 +73,7 @@ const ResponseButton = ({
   children,
   selected = false,
   handleClick,
+  responseKey,
   ...props
 }) => {
   const classes = useStyles();
@@ -84,7 +85,7 @@ const ResponseButton = ({
     >
       <Box className={classes.key}>
         <Typography color="inherit" align="left" component="span" variant="h6">
-          A
+          {responseKey}
         </Typography>
       </Box>
       <Box className={classes.text}>
