@@ -60,7 +60,7 @@ export const Text: React.FC<IText> = ({
   });
 
   return (
-    <Box bgcolor="background.paper" p={4}>
+    <Box py={4}>
       <form onSubmit={formik.handleSubmit}>
         <Typography variant="h5" gutterBottom>
           {title}
