@@ -12,6 +12,8 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 import Typography from "@material-ui/core/Typography";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { formatDistance } from "date-fns";
@@ -29,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   application: {
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: 300
+      width: 264
     },
     height: "100%",
     display: "flex",
@@ -41,7 +43,7 @@ const useStyles = makeStyles(theme => ({
   start: {
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: 300
+      width: 264
     },
     height: "100%",
     border: `1px solid ${theme.palette.primary.contrastText}`,
@@ -72,16 +74,41 @@ const useStyles = makeStyles(theme => ({
   },
   thumbnail: {
     height: 0,
-    paddingTop: "56.25%"
+    paddingTop: "56.25%",
+    cursor: "pointer"
+  },
+  menu: {
+    padding: 0
+  },
+  menuItem: {
+    minWidth: "10rem",
+    display: "flex",
+    justifyContent: "space-between",
+    backgroundColor: theme.palette.grey[800],
+    color: "#fff",
+    "&:hover": {
+      backgroundColor: theme.palette.grey[900]
+    }
   }
 }));
 
 const Dashboard = ({ applications = [] }) => {
   const classes = useStyles();
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <HVCenterContainer verticalCenter>
       <Box p={{ xs: 3, sm: 0 }}>
-        <Typography variant="h3" gutterBottom>
+        <Typography variant="h2" gutterBottom>
           <strong>My planning applications</strong>
         </Typography>
         <Grid
@@ -100,7 +127,7 @@ const Dashboard = ({ applications = [] }) => {
                   {/* <img src={application.thumbnail} /> */}
                 </CardMedia>
                 <CardContent className={classes.content}>
-                  <Box fontSize="h6.fontSize" mb={1}>
+                  <Box fontSize="subtitle1.fontSize">
                     <strong>{application.description}</strong>
                   </Box>
                   <Box fontSize="subtitle1.fontSize" color="grey.400" mb={3}>
@@ -113,13 +140,54 @@ const Dashboard = ({ applications = [] }) => {
                     pl={1}
                     flexGrow={1}
                     fontSize="subtitle1.fontSize"
-                    color="grey.500"
+                    color={
+                      application.status === "Submitted" ? "#000" : "grey.500"
+                    }
                   >
                     {application.status}
                   </Box>
-                  <IconButton>
+                  <IconButton onClick={handleClick}>
                     <MoreVertIcon></MoreVertIcon>
                   </IconButton>
+                  <Menu
+                    id="application-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                    MenuListProps={{
+                      classes: {
+                        root: classes.menu
+                      }
+                    }}
+                    elevation={0}
+                    getContentAnchorEl={null}
+                    anchorOrigin={{
+                      vertical: "center",
+                      horizontal: "center"
+                    }}
+                    transformOrigin={{
+                      horizontal: "right",
+                      vertical: "top"
+                    }}
+                  >
+                    <MenuItem
+                      className={classes.menuItem}
+                      component="a"
+                      onClick={handleClose}
+                    >
+                      <ListItemText primary="Archive" />
+                      <Folder size={20} />
+                    </MenuItem>
+                    <MenuItem
+                      className={classes.menuItem}
+                      component="a"
+                      onClick={handleClose}
+                    >
+                      <ListItemText primary="Delete" />
+                      <Trash size={20} />
+                    </MenuItem>
+                  </Menu>
                 </CardActions>
               </Card>
             </Grid>
@@ -128,12 +196,7 @@ const Dashboard = ({ applications = [] }) => {
             <Box height={"100%"}>
               <ButtonBase href="/start" className={classes.start}>
                 <Plus size={40} />
-                <Box
-                  pt={2}
-                  fontSize="h5.fontSize"
-                  fontFamily="h5.fontFamily"
-                  px={3}
-                >
+                <Box pt={2} fontSize="h6.fontSize" px={3}>
                   Start a new application
                 </Box>
               </ButtonBase>
