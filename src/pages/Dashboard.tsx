@@ -5,23 +5,24 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
+import Collapse from "@material-ui/core/Collapse";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Typography from "@material-ui/core/Typography";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import classNames from "classnames";
 import { formatDistance } from "date-fns";
 import * as React from "react";
-import { Folder, Plus, Trash } from "react-feather";
+import { ChevronDown, Folder, Plus, Trash } from "react-feather";
 
 //import { Link } from "react-navi";
 import HVCenterContainer from "../components/HVCenterContainer";
+
+//import { Link } from "react-navi";
 
 const useStyles = makeStyles(theme => ({
   applications: {
@@ -61,11 +62,6 @@ const useStyles = makeStyles(theme => ({
   list: {
     color: "currentColor"
   },
-  listIcon: {
-    minWidth: 0,
-    marginRight: theme.spacing(2),
-    color: "currentColor"
-  },
   divider: {
     backgroundColor: theme.palette.primary.contrastText
   },
@@ -89,12 +85,49 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       backgroundColor: theme.palette.grey[900]
     }
+  },
+  panelButton: {
+    display: "flex",
+    width: "100%",
+    fontSize: 17,
+    justifyContent: "flex-start",
+    padding: theme.spacing(2),
+    fontWeight: 700,
+    "&:hover": {
+      backgroundColor: "rgba(0,0,0,0.035)"
+    }
+  },
+  panelIcon: {
+    minWidth: 0,
+    marginRight: theme.spacing(2),
+    color: "currentColor"
+  },
+  collapseIcon: {
+    position: "absolute",
+    right: theme.spacing(2),
+    top: "50%",
+    transition: "transform 0.3s ease-out",
+    transform: "translateY(-50%)"
+  },
+  panelButtonActive: {
+    backgroundColor: "rgba(0,0,0,0.035)"
+  },
+  collapseIconActive: {
+    transform: "translateY(-50%) rotate(180deg)"
   }
 }));
 
-const Dashboard = ({ applications = [] }) => {
-  const classes = useStyles();
+interface IApplication {
+  thumbnail: string;
+  updatedAt: number;
+  description: string;
+  status: string;
+}
 
+const ApplicationCard = (
+  { thumbnail, description, updatedAt, status }: IApplication,
+  { ...props }
+) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = event => {
@@ -105,9 +138,109 @@ const Dashboard = ({ applications = [] }) => {
     setAnchorEl(null);
   };
 
+  const classes = useStyles();
+  return (
+    <Card className={classes.application} {...props}>
+      <CardMedia className={classes.thumbnail} image={thumbnail} />
+      <CardContent className={classes.content}>
+        <Box fontSize="subtitle1.fontSize">
+          <strong>{description}</strong>
+        </Box>
+        <Box fontSize="subtitle1.fontSize" color="grey.400" mb={3}>
+          Last edited {formatDistance(updatedAt, new Date())} ago
+        </Box>
+      </CardContent>
+      <CardActions>
+        <Box
+          pl={1}
+          flexGrow={1}
+          fontSize="subtitle1.fontSize"
+          color={status === "Submitted" ? "#000" : "grey.500"}
+        >
+          {status}
+        </Box>
+        <IconButton onClick={handleClick}>
+          <MoreVertIcon></MoreVertIcon>
+        </IconButton>
+        <Menu
+          id="application-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+          MenuListProps={{
+            classes: {
+              root: classes.menu
+            }
+          }}
+          elevation={0}
+          getContentAnchorEl={null}
+          anchorOrigin={{
+            vertical: "center",
+            horizontal: "center"
+          }}
+          transformOrigin={{
+            horizontal: "right",
+            vertical: "top"
+          }}
+        >
+          <MenuItem
+            className={classes.menuItem}
+            component="a"
+            onClick={handleClose}
+          >
+            <ListItemText primary="Archive" />
+            <Folder size={20} />
+          </MenuItem>
+          <MenuItem
+            className={classes.menuItem}
+            component="a"
+            onClick={handleClose}
+          >
+            <ListItemText primary="Delete" />
+            <Trash size={20} />
+          </MenuItem>
+        </Menu>
+      </CardActions>
+    </Card>
+  );
+};
+
+const CollapsePanel = ({ children, title = "Collapse Panel", Icon = null }) => {
+  const [panelOpen, setPanelOpen] = React.useState(false);
+  const classes = useStyles();
+  return (
+    <>
+      <ButtonBase
+        className={classNames(
+          classes.panelButton,
+          panelOpen && classes.panelButtonActive
+        )}
+        onClick={() => setPanelOpen(!panelOpen)}
+      >
+        {Icon && <Icon size={20} className={classes.panelIcon} />} {title}
+        <ChevronDown
+          className={classNames(
+            classes.collapseIcon,
+            panelOpen && classes.collapseIconActive
+          )}
+        />
+      </ButtonBase>
+      <Collapse in={panelOpen}>
+        <Box bgcolor="rgba(0,0,0,0.035)" px={3} pt={1} pb={3} mb={1}>
+          {children}
+        </Box>
+      </Collapse>
+    </>
+  );
+};
+
+const Dashboard = ({ applications = [] }) => {
+  const classes = useStyles();
+
   return (
     <HVCenterContainer verticalCenter>
-      <Box p={{ xs: 3, sm: 0 }}>
+      <Box px={{ xs: 3, sm: 0 }} py={3}>
         <Typography variant="h2" gutterBottom>
           <strong>My planning applications</strong>
         </Typography>
@@ -119,77 +252,7 @@ const Dashboard = ({ applications = [] }) => {
         >
           {applications.map(application => (
             <Grid item xs={12} sm={"auto"}>
-              <Card key={application.id} className={classes.application}>
-                <CardMedia
-                  className={classes.thumbnail}
-                  image={application.thumbnail}
-                >
-                  {/* <img src={application.thumbnail} /> */}
-                </CardMedia>
-                <CardContent className={classes.content}>
-                  <Box fontSize="subtitle1.fontSize">
-                    <strong>{application.description}</strong>
-                  </Box>
-                  <Box fontSize="subtitle1.fontSize" color="grey.400" mb={3}>
-                    Last edited{" "}
-                    {formatDistance(application.updatedAt, new Date())} ago
-                  </Box>
-                </CardContent>
-                <CardActions>
-                  <Box
-                    pl={1}
-                    flexGrow={1}
-                    fontSize="subtitle1.fontSize"
-                    color={
-                      application.status === "Submitted" ? "#000" : "grey.500"
-                    }
-                  >
-                    {application.status}
-                  </Box>
-                  <IconButton onClick={handleClick}>
-                    <MoreVertIcon></MoreVertIcon>
-                  </IconButton>
-                  <Menu
-                    id="application-menu"
-                    anchorEl={anchorEl}
-                    keepMounted
-                    open={Boolean(anchorEl)}
-                    onClose={handleClose}
-                    MenuListProps={{
-                      classes: {
-                        root: classes.menu
-                      }
-                    }}
-                    elevation={0}
-                    getContentAnchorEl={null}
-                    anchorOrigin={{
-                      vertical: "center",
-                      horizontal: "center"
-                    }}
-                    transformOrigin={{
-                      horizontal: "right",
-                      vertical: "top"
-                    }}
-                  >
-                    <MenuItem
-                      className={classes.menuItem}
-                      component="a"
-                      onClick={handleClose}
-                    >
-                      <ListItemText primary="Archive" />
-                      <Folder size={20} />
-                    </MenuItem>
-                    <MenuItem
-                      className={classes.menuItem}
-                      component="a"
-                      onClick={handleClose}
-                    >
-                      <ListItemText primary="Delete" />
-                      <Trash size={20} />
-                    </MenuItem>
-                  </Menu>
-                </CardActions>
-              </Card>
+              <ApplicationCard {...application}></ApplicationCard>
             </Grid>
           ))}
           <Grid item xs={12} sm={"auto"}>
@@ -203,21 +266,13 @@ const Dashboard = ({ applications = [] }) => {
             </Box>
           </Grid>
         </Grid>
-        <List>
-          <Divider className={classes.divider}></Divider>
-          <ListItem button>
-            <ListItemIcon className={classes.listIcon}>
-              <Folder size={20} />
-            </ListItemIcon>
-            <ListItemText primary="Archived" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon className={classes.listIcon}>
-              <Trash size={20} />
-            </ListItemIcon>
-            <ListItemText primary="Deleted" />
-          </ListItem>
-        </List>
+        <Divider className={classes.divider}></Divider>
+        <CollapsePanel title="Archived" Icon={Folder}>
+          Empty
+        </CollapsePanel>
+        <CollapsePanel title="Deleted" Icon={Trash}>
+          Empty
+        </CollapsePanel>
       </Box>
     </HVCenterContainer>
   );
