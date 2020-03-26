@@ -27,7 +27,10 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(2)
   },
   application: {
-    width: 300,
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: 300
+    },
     height: "100%",
     display: "flex",
     flexDirection: "column"
@@ -36,7 +39,10 @@ const useStyles = makeStyles(theme => ({
     textDecoration: "none"
   },
   start: {
-    width: 300,
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: 300
+    },
     height: "100%",
     border: `1px solid ${theme.palette.primary.contrastText}`,
     display: "flex",
@@ -74,75 +80,82 @@ const Dashboard = ({ applications = [] }) => {
   const classes = useStyles();
   return (
     <HVCenterContainer verticalCenter>
-      <Typography variant="h3" gutterBottom>
-        <strong>My planning applications</strong>
-      </Typography>
-      <Grid container spacing={3} wrap="wrap" className={classes.applications}>
-        {applications.map(application => (
-          <Grid item>
-            <Card key={application.id} className={classes.application}>
-              <CardMedia
-                className={classes.thumbnail}
-                image={application.thumbnail}
-              >
-                {/* <img src={application.thumbnail} /> */}
-              </CardMedia>
-              <CardContent className={classes.content}>
-                <Box fontSize="h6.fontSize" mb={1}>
-                  <strong>{application.description}</strong>
-                </Box>
-                <Box fontSize="subtitle1.fontSize" color="grey.400" mb={3}>
-                  Last edited{" "}
-                  {formatDistance(application.updatedAt, new Date())} ago
-                </Box>
-              </CardContent>
-              <CardActions>
-                <Box
-                  pl={1}
-                  flexGrow={1}
-                  fontSize="subtitle1.fontSize"
-                  color="grey.500"
+      <Box p={{ xs: 3, sm: 0 }}>
+        <Typography variant="h3" gutterBottom>
+          <strong>My planning applications</strong>
+        </Typography>
+        <Grid
+          container
+          spacing={3}
+          wrap="wrap"
+          className={classes.applications}
+        >
+          {applications.map(application => (
+            <Grid item xs={12} sm={"auto"}>
+              <Card key={application.id} className={classes.application}>
+                <CardMedia
+                  className={classes.thumbnail}
+                  image={application.thumbnail}
                 >
-                  {application.status}
+                  {/* <img src={application.thumbnail} /> */}
+                </CardMedia>
+                <CardContent className={classes.content}>
+                  <Box fontSize="h6.fontSize" mb={1}>
+                    <strong>{application.description}</strong>
+                  </Box>
+                  <Box fontSize="subtitle1.fontSize" color="grey.400" mb={3}>
+                    Last edited{" "}
+                    {formatDistance(application.updatedAt, new Date())} ago
+                  </Box>
+                </CardContent>
+                <CardActions>
+                  <Box
+                    pl={1}
+                    flexGrow={1}
+                    fontSize="subtitle1.fontSize"
+                    color="grey.500"
+                  >
+                    {application.status}
+                  </Box>
+                  <IconButton>
+                    <MoreVertIcon></MoreVertIcon>
+                  </IconButton>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+          <Grid item xs={12} sm={"auto"}>
+            <Box height={"100%"}>
+              <ButtonBase href="/start" className={classes.start}>
+                <Plus size={40} />
+                <Box
+                  pt={2}
+                  fontSize="h5.fontSize"
+                  fontFamily="h5.fontFamily"
+                  px={3}
+                >
+                  Start a new application
                 </Box>
-                <IconButton>
-                  <MoreVertIcon></MoreVertIcon>
-                </IconButton>
-              </CardActions>
-            </Card>
+              </ButtonBase>
+            </Box>
           </Grid>
-        ))}
-        <Grid item>
-          <Box height={"100%"}>
-            <ButtonBase href="/start" className={classes.start}>
-              <Plus size={40} />
-              <Box
-                pt={2}
-                fontSize="h5.fontSize"
-                fontFamily="h5.fontFamily"
-                px={3}
-              >
-                Start a new application
-              </Box>
-            </ButtonBase>
-          </Box>
         </Grid>
-      </Grid>
-      <List>
-        <Divider className={classes.divider}></Divider>
-        <ListItem button>
-          <ListItemIcon className={classes.listIcon}>
-            <Folder size={20} />
-          </ListItemIcon>
-          <ListItemText primary="Archived" />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon className={classes.listIcon}>
-            <Trash size={20} />
-          </ListItemIcon>
-          <ListItemText primary="Deleted" />
-        </ListItem>
-      </List>
+        <List>
+          <Divider className={classes.divider}></Divider>
+          <ListItem button>
+            <ListItemIcon className={classes.listIcon}>
+              <Folder size={20} />
+            </ListItemIcon>
+            <ListItemText primary="Archived" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon className={classes.listIcon}>
+              <Trash size={20} />
+            </ListItemIcon>
+            <ListItemText primary="Deleted" />
+          </ListItem>
+        </List>
+      </Box>
     </HVCenterContainer>
   );
 };
