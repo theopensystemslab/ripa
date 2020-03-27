@@ -1,26 +1,18 @@
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import ButtonBase from "@material-ui/core/ButtonBase";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import Collapse from "@material-ui/core/Collapse";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
-import IconButton from "@material-ui/core/IconButton";
-import ListItemText from "@material-ui/core/ListItemText";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
+import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import classNames from "classnames";
-import { formatDistance } from "date-fns";
 import * as React from "react";
 import { ChevronDown, Folder, Plus, Trash } from "react-feather";
 
 //import { Link } from "react-navi";
 import HVCenterContainer from "../components/HVCenterContainer";
+import ApplicationCard from "./ApplicationCard";
 
 //import { Link } from "react-navi";
 
@@ -28,15 +20,6 @@ const useStyles = makeStyles(theme => ({
   applications: {
     paddingTop: theme.spacing(2),
     marginBottom: theme.spacing(2)
-  },
-  application: {
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: 264
-    },
-    height: "100%",
-    display: "flex",
-    flexDirection: "column"
   },
   link: {
     textDecoration: "none"
@@ -60,7 +43,8 @@ const useStyles = makeStyles(theme => ({
     }
   },
   list: {
-    color: "currentColor"
+    color: "currentColor",
+    padding: 0
   },
   divider: {
     backgroundColor: theme.palette.primary.contrastText
@@ -68,22 +52,11 @@ const useStyles = makeStyles(theme => ({
   content: {
     flexGrow: 1
   },
-  thumbnail: {
-    height: 0,
-    paddingTop: "56.25%",
-    cursor: "pointer"
-  },
-  menu: {
-    padding: 0
-  },
-  menuItem: {
-    minWidth: "10rem",
-    display: "flex",
-    justifyContent: "space-between",
-    backgroundColor: theme.palette.grey[800],
-    color: "#fff",
-    "&:hover": {
-      backgroundColor: theme.palette.grey[900]
+  listedApplication: {
+    color: theme.palette.grey[900],
+    backgroundColor: "rgba(255, 255, 255, 0.6)",
+    "&:not(:last-child)": {
+      marginBottom: 2
     }
   },
   panelButton: {
@@ -117,97 +90,16 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-interface IApplication {
-  thumbnail: string;
-  updatedAt: number;
-  description: string;
-  status: string;
-}
-
-const ApplicationCard = (
-  { thumbnail, description, updatedAt, status }: IApplication,
-  { ...props }
-) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const classes = useStyles();
-  return (
-    <Card className={classes.application} {...props}>
-      <CardMedia className={classes.thumbnail} image={thumbnail} />
-      <CardContent className={classes.content}>
-        <Box fontSize="subtitle1.fontSize">
-          <strong>{description}</strong>
-        </Box>
-        <Box fontSize="subtitle1.fontSize" color="grey.400" mb={3}>
-          Last edited {formatDistance(updatedAt, new Date())} ago
-        </Box>
-      </CardContent>
-      <CardActions>
-        <Box
-          pl={1}
-          flexGrow={1}
-          fontSize="subtitle1.fontSize"
-          color={status === "Submitted" ? "#000" : "grey.500"}
-        >
-          {status}
-        </Box>
-        <IconButton onClick={handleClick}>
-          <MoreVertIcon></MoreVertIcon>
-        </IconButton>
-        <Menu
-          id="application-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-          MenuListProps={{
-            classes: {
-              root: classes.menu
-            }
-          }}
-          elevation={0}
-          getContentAnchorEl={null}
-          anchorOrigin={{
-            vertical: "center",
-            horizontal: "center"
-          }}
-          transformOrigin={{
-            horizontal: "right",
-            vertical: "top"
-          }}
-        >
-          <MenuItem
-            className={classes.menuItem}
-            component="a"
-            onClick={handleClose}
-          >
-            <ListItemText primary="Archive" />
-            <Folder size={20} />
-          </MenuItem>
-          <MenuItem
-            className={classes.menuItem}
-            component="a"
-            onClick={handleClose}
-          >
-            <ListItemText primary="Delete" />
-            <Trash size={20} />
-          </MenuItem>
-        </Menu>
-      </CardActions>
-    </Card>
-  );
-};
-
-const CollapsePanel = ({ children, title = "Collapse Panel", Icon = null }) => {
+const CollapsePanel = ({
+  children,
+  title = "Collapse Panel",
+  Icon = null,
+  openOnRender = false
+}) => {
   const [panelOpen, setPanelOpen] = React.useState(false);
+  React.useEffect(() => {
+    openOnRender && setPanelOpen(true);
+  }, []);
   const classes = useStyles();
   return (
     <>
@@ -227,7 +119,7 @@ const CollapsePanel = ({ children, title = "Collapse Panel", Icon = null }) => {
         />
       </ButtonBase>
       <Collapse in={panelOpen}>
-        <Box bgcolor="rgba(0,0,0,0.035)" px={3} pt={1} pb={3} mb={1}>
+        <Box bgcolor="rgba(0,0,0,0.035)" mb={1}>
           {children}
         </Box>
       </Collapse>
@@ -240,7 +132,7 @@ const Dashboard = ({ applications = [] }) => {
 
   return (
     <HVCenterContainer verticalCenter>
-      <Box px={{ xs: 3, sm: 0 }} py={3}>
+      <Box px={{ xs: 2, sm: 0 }} py={3}>
         <Typography variant="h2" gutterBottom>
           <strong>My planning applications</strong>
         </Typography>
@@ -268,10 +160,22 @@ const Dashboard = ({ applications = [] }) => {
         </Grid>
         <Divider className={classes.divider}></Divider>
         <CollapsePanel title="Archived" Icon={Folder}>
-          Empty
+          <Box
+            px={{ xs: 0, sm: 3 }}
+            pt={{ xs: 0, sm: 1 }}
+            pb={{ xs: 0, sm: 3 }}
+          >
+            <List className={classes.list}>
+              {applications.map(application => (
+                <ApplicationCard {...application} listView></ApplicationCard>
+              ))}
+            </List>
+          </Box>
         </CollapsePanel>
         <CollapsePanel title="Deleted" Icon={Trash}>
-          Empty
+          <Box px={3} pt={1} pb={3}>
+            Empty
+          </Box>
         </CollapsePanel>
       </Box>
     </HVCenterContainer>
