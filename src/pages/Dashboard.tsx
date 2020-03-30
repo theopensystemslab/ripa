@@ -10,9 +10,9 @@ import classNames from "classnames";
 import * as React from "react";
 import { ChevronDown, Folder, Plus, Trash } from "react-feather";
 
+import ApplicationCard from "../components/ApplicationCard";
 //import { Link } from "react-navi";
 import HVCenterContainer from "../components/HVCenterContainer";
-import ApplicationCard from "./ApplicationCard";
 
 //import { Link } from "react-navi";
 
