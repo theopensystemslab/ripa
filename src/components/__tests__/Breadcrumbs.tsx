@@ -5,22 +5,22 @@ import Breadcrumbs from "../Breadcrumbs";
 
 afterEach(cleanup);
 
-it("renders items correctly", async () => {
-  const list = [
-    "Property location",
-    "About the works",
-    "Application",
-    "Declaration",
-    "Pay fee"
-  ];
-  const active = 2;
-  const { getByText } = await render(
-    <Breadcrumbs active={active} list={list} />
-  );
-  expect(getByText("Property location")).toBeInTheDocument();
-});
+describe("Breadcrumbs Component", () => {
+  it("should render items correctly", () => {
+    const list = [
+      "Property location",
+      "About the works",
+      "Application",
+      "Declaration",
+      "Pay fee"
+    ];
+    const active = 2;
+    const { getByText } = render(<Breadcrumbs active={active} list={list} />);
+    expect(getByText(/Property location/i)).toBeInTheDocument();
+  });
 
-it("renders snapshot", () => {
-  const { asFragment } = render(<Breadcrumbs />);
-  expect(asFragment()).toMatchSnapshot();
+  it("render snapshot", () => {
+    const { asFragment } = render(<Breadcrumbs />);
+    expect(asFragment()).toMatchSnapshot();
+  });
 });
