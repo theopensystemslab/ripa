@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Date Component should render snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root MuiBox-root-2"
+  >
+    <form>
+      <div
+        class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      >
+         test title
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+          >
+            day
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline"
+            required=""
+          >
+            <input
+              class="MuiInputBase-input MuiInput-input"
+              max="31"
+              min="1"
+              name="test name-day"
+              required=""
+              type="number"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+          >
+            month
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline"
+            required=""
+          >
+            <input
+              class="MuiInputBase-input MuiInput-input"
+              max="12"
+              min="1"
+              name="test name-month"
+              required=""
+              type="number"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+          >
+            year
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline"
+            required=""
+          >
+            <input
+              class="MuiInputBase-input MuiInput-input"
+              max="2020"
+              min="1920"
+              name="test name-year"
+              required=""
+              type="number"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;

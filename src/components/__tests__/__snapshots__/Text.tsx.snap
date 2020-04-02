@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text Component should render snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root MuiBox-root-2"
+  >
+    <form>
+      <h5
+        class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      >
+         test title
+      </h5>
+      <div
+        class="MuiBox-root MuiBox-root-33"
+      >
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth"
+          max="Infinity"
+          min="0"
+        >
+          <input
+            class="MuiInputBase-input MuiInput-input"
+            name="test name"
+            placeholder=""
+            rows="1"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;
