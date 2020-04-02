@@ -24,3 +24,5 @@ yarn-error.log*
 
 /cosmos-export
 src/data/out.json
+
+.vscode
