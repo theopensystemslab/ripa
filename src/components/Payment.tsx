@@ -44,85 +44,83 @@ export const CardDetails: React.FC<ICardDetails> = () => {
   });
   return (
     <Box bgcolor="background.paper" py={6}>
-      <Container maxWidth="md">
-        <form onSubmit={formik.handleSubmit}>
-          <Box maxWidth={440}>
-            <Typography variant="h4" gutterBottom>
-              <strong>Enter card details</strong>
-            </Typography>
-            <Box pb={3}>
-              <TextField
-                type="number"
-                value={formik.values.cardNumber}
-                name="cardNumber"
-                fullWidth
-                onChange={formik.handleChange}
-                placeholder="Card number"
-                label="Card number"
-              />
-              <Box fontSize="body2.fontSize" color="grey.400" pt={1}>
-                Accepted credit and debit card types
-              </Box>
-            </Box>
-            <Box pb={3}>
-              <Typography variant="body2" component="div" gutterBottom>
-                Expiry date
-              </Typography>
-              <Box maxWidth={200}>
-                <Grid container spacing={1} alignItems="flex-end" wrap="nowrap">
-                  <Grid item>
-                    <TextField
-                      type="number"
-                      value={formik.values.month}
-                      name="month"
-                      onChange={formik.handleChange}
-                      placeholder="Month"
-                      label="Month"
-                    />
-                  </Grid>
-                  <Grid item>
-                    <Box fontSize="24px" fontWeight="400" lineHeight="40px">
-                      /
-                    </Box>
-                  </Grid>
-                  <Grid item>
-                    <TextField
-                      type="number"
-                      value={formik.values.year}
-                      name="year"
-                      onChange={formik.handleChange}
-                      placeholder="Year"
-                      label="Year"
-                    />
-                  </Grid>
-                </Grid>
-              </Box>
-            </Box>
-            <Box pb={3}>
-              <TextField
-                value={formik.values.cardholderName}
-                name="cardholderName"
-                onChange={formik.handleChange}
-                placeholder="Name"
-                label="Name on card"
-                fullWidth
-              />
-            </Box>
-            <Box pb={5}>
-              <TextField
-                value={formik.values.securityCode}
-                name="securityCode"
-                onChange={formik.handleChange}
-                placeholder="security code"
-                label="Card security code"
-              />
+      <form onSubmit={formik.handleSubmit}>
+        <Box maxWidth={440}>
+          <Typography variant="h4" gutterBottom>
+            <strong>Enter card details</strong>
+          </Typography>
+          <Box pb={3}>
+            <TextField
+              type="number"
+              value={formik.values.cardNumber}
+              name="cardNumber"
+              fullWidth
+              onChange={formik.handleChange}
+              placeholder="Card number"
+              label="Card number"
+            />
+            <Box fontSize="body2.fontSize" color="grey.400" pt={1}>
+              Accepted credit and debit card types
             </Box>
           </Box>
-          <Button type="submit" variant="contained" color="primary">
-            Save and Continue
-          </Button>
-        </form>
-      </Container>
+          <Box pb={3}>
+            <Typography variant="body2" component="div" gutterBottom>
+              Expiry date
+            </Typography>
+            <Box maxWidth={200}>
+              <Grid container spacing={1} alignItems="flex-end" wrap="nowrap">
+                <Grid item>
+                  <TextField
+                    type="number"
+                    value={formik.values.month}
+                    name="month"
+                    onChange={formik.handleChange}
+                    placeholder="Month"
+                    label="Month"
+                  />
+                </Grid>
+                <Grid item>
+                  <Box fontSize="24px" fontWeight="400" lineHeight="40px">
+                    /
+                  </Box>
+                </Grid>
+                <Grid item>
+                  <TextField
+                    type="number"
+                    value={formik.values.year}
+                    name="year"
+                    onChange={formik.handleChange}
+                    placeholder="Year"
+                    label="Year"
+                  />
+                </Grid>
+              </Grid>
+            </Box>
+          </Box>
+          <Box pb={3}>
+            <TextField
+              value={formik.values.cardholderName}
+              name="cardholderName"
+              onChange={formik.handleChange}
+              placeholder="Name"
+              label="Name on card"
+              fullWidth
+            />
+          </Box>
+          <Box pb={5}>
+            <TextField
+              value={formik.values.securityCode}
+              name="securityCode"
+              onChange={formik.handleChange}
+              placeholder="security code"
+              label="Card security code"
+            />
+          </Box>
+        </Box>
+        <Button type="submit" variant="contained" color="primary">
+          Save and Continue
+        </Button>
+      </form>
     </Box>
   );
 };

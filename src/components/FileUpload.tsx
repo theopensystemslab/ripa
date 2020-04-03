@@ -87,7 +87,7 @@ export const FileUpload: React.FC<IFileUpload> = ({
     maxSize
   });
   return (
-    <Box bgcolor="background.paper" p={4}>
+    <Box py={4}>
       <form onSubmit={formik.handleSubmit}>
         <Typography variant="h5" component="h1" gutterBottom>
           {title}

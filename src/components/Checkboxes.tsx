@@ -39,7 +39,7 @@ const Checkboxes: React.FC<ICheckboxes> = ({
   const formik = useFormik({
     initialValues: {
       [name]: "",
-      selectedOptions: ["redwood"]
+      selectedOptions: []
     },
     onSubmit: values => {
       if (required && values.selectedOptions.length === 0) {

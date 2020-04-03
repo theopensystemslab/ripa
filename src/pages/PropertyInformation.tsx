@@ -33,46 +33,48 @@ const PropertyInformation = ({
   const classes = useStyles();
   return (
     <HVCenterContainer light>
-      <Grid container spacing={3} direction="row-reverse">
-        <Grid item xs={12} sm={6}>
-          <Typography variant="h3" component="h2" gutterBottom>
-            <strong>{streetAddress}</strong>
-          </Typography>
-          {information && Object.keys(information).length > 0 && (
-            <>
-              <Box fontSize="h6.fontSize">
-                This is the information we have about this property
-              </Box>
-              <Box
-                component="ul"
-                fontSize="h6.fontSize"
-                className={classes.propertyInfo}
-              >
-                {Object.entries(information).map(([key, value]) => (
-                  <Box
-                    component="li"
-                    fontSize="subtitle1.fontSize"
-                    py={1}
-                    key={key}
-                  >
-                    <strong>{key}</strong> {value}
-                  </Box>
-                ))}
-              </Box>
-            </>
-          )}
+      <Box pb={3}>
+        <Grid container spacing={3} direction="row-reverse">
+          <Grid item xs={12} sm={6}>
+            <Typography variant="h3" component="h2" gutterBottom>
+              <strong>{streetAddress}</strong>
+            </Typography>
+            {information && Object.keys(information).length > 0 && (
+              <>
+                <Box fontSize="h6.fontSize">
+                  This is the information we have about this property
+                </Box>
+                <Box
+                  component="ul"
+                  fontSize="h6.fontSize"
+                  className={classes.propertyInfo}
+                >
+                  {Object.entries(information).map(([key, value]) => (
+                    <Box
+                      component="li"
+                      fontSize="subtitle1.fontSize"
+                      py={1}
+                      key={key}
+                    >
+                      <strong>{key}</strong> {value}
+                    </Box>
+                  ))}
+                </Box>
+              </>
+            )}
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <img src={map} width="100%" />
+            <Box fontSize="subtitle1.fontSize" pt={1} color="#c00">
+              <a href="#" className={classes.link}>
+                Redraw the site boundary
+              </a>
+            </Box>
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <img src={map} width="100%" />
-          <Box fontSize="subtitle1.fontSize" pt={1} color="#c00">
-            <a href="#" className={classes.link}>
-              Redraw the site boundary
-            </a>
-          </Box>
-        </Grid>
-      </Grid>
+      </Box>
       {constraints && Array.isArray(constraints) && constraints.length > 0 && (
-        <Box py={3}>
+        <Box pb={3}>
           <Box fontSize="h6.fontSize">
             These are constraints that apply to this property
           </Box>
