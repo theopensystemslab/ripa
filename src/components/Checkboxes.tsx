@@ -7,8 +7,9 @@ import FormLabel from "@material-ui/core/FormLabel";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
-import * as React from "react";
+import React, { useState } from "react";
 
+import Messages from "../shared/components/submit-messages";
 import Checkbox from "./Checkbox";
 
 interface ICheckboxes {
@@ -36,6 +37,9 @@ const Checkboxes: React.FC<ICheckboxes> = ({
   name = "",
   required = false
 }) => {
+  const [errorMessageVisible, setErrorMessageVisible] = useState(false);
+  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       [name]: "",
@@ -43,8 +47,11 @@ const Checkboxes: React.FC<ICheckboxes> = ({
     },
     onSubmit: values => {
       if (required && values.selectedOptions.length === 0) {
-        alert("Please choose at least one option");
+        setErrorMessageVisible(true);
+        setSuccessMessageVisible(false);
       } else {
+        setErrorMessageVisible(false);
+        setSuccessMessageVisible(true);
         console.log(JSON.stringify(values, null, 2));
       }
     }
@@ -102,10 +109,18 @@ const Checkboxes: React.FC<ICheckboxes> = ({
               ))}
             </FormGroup>
           </Box>
-
+          {errorMessageVisible && formik.touched ? (
+            <Messages
+              type="error"
+              message="Please choose at least one option"
+            />
+          ) : null}
           <Button type="submit" variant="contained" color="primary">
             Save and Continue
           </Button>
+          {successMessageVisible ? (
+            <Messages type="success" message="Form submitted successfully" />
+          ) : null}
         </FormControl>
       </form>
     </Box>
