@@ -51,6 +51,7 @@ export const CardDetails: React.FC = () => {
               onChange={handleChange}
               placeholder="card number"
               label="Card number"
+              required
             />
             <Box fontSize="body2.fontSize" color="grey.400" pt={1}>
               Accepted credit and debit card types
@@ -70,6 +71,7 @@ export const CardDetails: React.FC = () => {
                     onChange={handleChange}
                     placeholder="month"
                     label="Month"
+                    required
                   />
                 </Grid>
                 <Grid item>
@@ -85,6 +87,7 @@ export const CardDetails: React.FC = () => {
                     onChange={handleChange}
                     placeholder="year"
                     label="Year"
+                    required
                   />
                 </Grid>
               </Grid>
@@ -98,6 +101,7 @@ export const CardDetails: React.FC = () => {
               placeholder="name"
               label="Name on card"
               fullWidth
+              required
             />
           </Box>
           <Box pb={5}>
@@ -107,6 +111,7 @@ export const CardDetails: React.FC = () => {
               onChange={handleChange}
               placeholder="security code"
               label="Card security code"
+              required
             />
           </Box>
         </Box>

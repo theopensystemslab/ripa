@@ -64,7 +64,7 @@ const PropertyInformation = ({
             )}
           </Grid>
           <Grid item xs={12} sm={6}>
-            <img src={map} width="100%" />
+            <img src={map} width="100%" alt="" />
             <Box fontSize="subtitle1.fontSize" pt={1} color="#c00">
               <a href="#" className={classes.link}>
                 Redraw the site boundary
