@@ -1,11 +1,11 @@
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
+import { useFormik } from "formik";
 import * as React from "react";
-
-import useForm from "../lib/useForm";
 
 interface IPayment {
   fee: number;
@@ -22,22 +22,29 @@ const Payment: React.FC<IPayment> = ({ fee }) => {
     </Box>
   );
 };
-
-export const CardDetails: React.FC = () => {
-  const defaults = {
-    cardholderName: "",
-    month: "",
-    year: "",
-    securityCode: ""
-  };
-
-  const { values, handleChange, handleSubmit } = useForm(defaults, v => {
-    console.log(v);
+interface ICardDetails {
+  cardholderName?: string;
+  month?: number;
+  year?: number;
+  securityCode?: number;
+  cardNumber?: number;
+}
+export const CardDetails: React.FC<ICardDetails> = () => {
+  const formik = useFormik({
+    initialValues: {
+      cardNumber: "",
+      securityCode: "",
+      month: "",
+      year: "",
+      cardholderName: ""
+    },
+    onSubmit: values => {
+      console.log(JSON.stringify(values, null, 2));
+    }
   });
-
   return (
     <Box bgcolor="background.paper" py={6}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
         <Box maxWidth={440}>
           <Typography variant="h4" gutterBottom>
             <strong>Enter card details</strong>
@@ -45,11 +52,11 @@ export const CardDetails: React.FC = () => {
           <Box pb={3}>
             <TextField
               type="number"
-              value={values.month}
+              value={formik.values.cardNumber}
               name="cardNumber"
               fullWidth
-              onChange={handleChange}
-              placeholder="card number"
+              onChange={formik.handleChange}
+              placeholder="Card number"
               label="Card number"
               required
             />
@@ -66,10 +73,10 @@ export const CardDetails: React.FC = () => {
                 <Grid item>
                   <TextField
                     type="number"
-                    value={values.month}
+                    value={formik.values.month}
                     name="month"
-                    onChange={handleChange}
-                    placeholder="month"
+                    onChange={formik.handleChange}
+                    placeholder="Month"
                     label="Month"
                     required
                   />
@@ -82,10 +89,10 @@ export const CardDetails: React.FC = () => {
                 <Grid item>
                   <TextField
                     type="number"
-                    value={values.year}
+                    value={formik.values.year}
                     name="year"
-                    onChange={handleChange}
-                    placeholder="year"
+                    onChange={formik.handleChange}
+                    placeholder="Year"
                     label="Year"
                     required
                   />
@@ -95,10 +102,10 @@ export const CardDetails: React.FC = () => {
           </Box>
           <Box pb={3}>
             <TextField
-              value={values.cardholderName}
+              value={formik.values.cardholderName}
               name="cardholderName"
-              onChange={handleChange}
-              placeholder="name"
+              onChange={formik.handleChange}
+              placeholder="Name"
               label="Name on card"
               fullWidth
               required
@@ -106,9 +113,9 @@ export const CardDetails: React.FC = () => {
           </Box>
           <Box pb={5}>
             <TextField
-              value={values.securityCode}
+              value={formik.values.securityCode}
               name="securityCode"
-              onChange={handleChange}
+              onChange={formik.handleChange}
               placeholder="security code"
               label="Card security code"
               required
