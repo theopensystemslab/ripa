@@ -1,11 +1,12 @@
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
-import * as React from "react";
+import React, { useState } from "react";
+
+import Messages from "../shared/components/submit-messages";
 
 interface IPayment {
   fee: number;
@@ -58,7 +59,6 @@ export const CardDetails: React.FC<ICardDetails> = () => {
               onChange={formik.handleChange}
               placeholder="Card number"
               label="Card number"
-              required
             />
             <Box fontSize="body2.fontSize" color="grey.400" pt={1}>
               Accepted credit and debit card types
@@ -78,7 +78,6 @@ export const CardDetails: React.FC<ICardDetails> = () => {
                     onChange={formik.handleChange}
                     placeholder="Month"
                     label="Month"
-                    required
                   />
                 </Grid>
                 <Grid item>
@@ -94,7 +93,6 @@ export const CardDetails: React.FC<ICardDetails> = () => {
                     onChange={formik.handleChange}
                     placeholder="Year"
                     label="Year"
-                    required
                   />
                 </Grid>
               </Grid>
@@ -108,7 +106,6 @@ export const CardDetails: React.FC<ICardDetails> = () => {
               placeholder="Name"
               label="Name on card"
               fullWidth
-              required
             />
           </Box>
           <Box pb={5}>
@@ -118,7 +115,6 @@ export const CardDetails: React.FC<ICardDetails> = () => {
               onChange={formik.handleChange}
               placeholder="security code"
               label="Card security code"
-              required
             />
           </Box>
         </Box>
