@@ -6,6 +6,8 @@ import { useFormik } from "formik";
 import React, { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 
+import Messages from "../shared/components/submit-messages";
+
 const styles = theme => ({
   box: {
     width: 200,
@@ -46,6 +48,7 @@ export const FileUpload: React.FC<IFileUpload> = ({
   const [stateText, setStateText] = useState("Click to select files");
 
   const classes = useStyles();
+  const [errorMessageVisible, setErrorMessageVisible] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -58,6 +61,7 @@ export const FileUpload: React.FC<IFileUpload> = ({
 
   const onDrop = useCallback(
     acceptedFiles => {
+      setErrorMessageVisible(false);
       console.log(acceptedFiles);
       if (acceptedFiles.length > 0) {
         const reader = new FileReader();
@@ -69,7 +73,7 @@ export const FileUpload: React.FC<IFileUpload> = ({
         };
         setFiles(acceptedFiles);
       } else {
-        alert(`Please choose a file with max size ${maxSize} Bytes`);
+        setErrorMessageVisible(true);
       }
     },
     [maxSize]
@@ -79,7 +83,7 @@ export const FileUpload: React.FC<IFileUpload> = ({
     if (files.length > 0) {
       formik.setFieldValue("path", files[0].path);
     }
-  }, [files, formik]);
+  }, [files]);
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
@@ -104,11 +108,19 @@ export const FileUpload: React.FC<IFileUpload> = ({
             </div>
           );
         })}
-        <div className={classes.box} {...getRootProps({ isDragActive: true })}>
+        <div className={classes.box} {...getRootProps()}>
           <input {...getInputProps()} />
           <p>{stateText}</p>
         </div>
         <small>Max size of file is {maxSize} Bytes</small>
+        <div>
+          {errorMessageVisible && formik.touched ? (
+            <Messages
+              type="error"
+              message={`Please choose a file with max size ${maxSize} Bytes`}
+            />
+          ) : null}
+        </div>
         {includeSubmit && (
           <div>
             <Button type="submit" variant="contained" color="primary">

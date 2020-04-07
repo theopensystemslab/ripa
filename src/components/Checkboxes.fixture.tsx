@@ -8,7 +8,6 @@ export default (
     <Checkboxes
       title="What types of street trees will you plant?"
       name="default_boxes"
-      required
       options={{
         oak: "English Oak",
         plane: "London Plane Tree",

@@ -31,6 +31,8 @@ interface ICardDetails {
   cardNumber?: number;
 }
 export const CardDetails: React.FC<ICardDetails> = () => {
+  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       cardNumber: "",
@@ -39,8 +41,13 @@ export const CardDetails: React.FC<ICardDetails> = () => {
       year: "",
       cardholderName: ""
     },
-    onSubmit: values => {
+    onSubmit: (values, { resetForm }) => {
       console.log(JSON.stringify(values, null, 2));
+      setSuccessMessageVisible(true);
+      setTimeout(() => {
+        resetForm();
+        setSuccessMessageVisible(false);
+      }, 1000);
     }
   });
   return (
@@ -121,6 +128,11 @@ export const CardDetails: React.FC<ICardDetails> = () => {
         <Button type="submit" variant="contained" color="primary">
           Save and Continue
         </Button>
+        <div>
+          {successMessageVisible ? (
+            <Messages type="success" message="Form submitted successfully" />
+          ) : null}
+        </div>
       </form>
     </Box>
   );

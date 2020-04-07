@@ -85,7 +85,6 @@ const Card = ({ id }) => {
       <StreetAddress
         title={node.text.replace(/\[address\]/i, "").trim()}
         type="text"
-        name="address"
         options={["building", "street", "city", "county", "postcode"]}
       />
     );

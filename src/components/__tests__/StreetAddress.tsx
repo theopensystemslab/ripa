@@ -12,7 +12,7 @@ describe("Street Address Component", () => {
     const type = "text";
     const options = ["building", "street", "city", "county", "postcode"];
     const { asFragment } = render(
-      <StreetAddress title={title} name={name} type={type} options={options} />
+      <StreetAddress title={title} type={type} options={options} />
     );
     expect(asFragment()).toMatchSnapshot();
   });
