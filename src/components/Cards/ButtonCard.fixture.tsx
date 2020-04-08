@@ -5,6 +5,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import * as React from "react";
 import { HelpCircle } from "react-feather";
 
+import { keyBtnSelect, setResponseKey } from "../../lib/keyResponse";
 import InlineSelect from "../InlineSelect";
 import Question from "../Question";
 import QuestionImage from "../QuestionImage";
@@ -29,8 +30,6 @@ interface IButtonCard {
   moreInfo?: string;
 }
 
-const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-
 const ButtonCard = ({
   statement,
   responses,
@@ -40,7 +39,10 @@ const ButtonCard = ({
   const [selected, setSelected] = React.useState(null);
   if (!dropdown) {
     return (
-      <Box>
+      <Box
+        tabIndex={0}
+        onKeyDown={e => keyBtnSelect(e, responses, setSelected)}
+      >
         <Question gutterBottom>
           {statement.text}
           {moreInfo && (
@@ -54,14 +56,17 @@ const ButtonCard = ({
         </Question>
         {statement.img && <QuestionImage src={statement.img}></QuestionImage>}
         <Grid container spacing={1}>
-          {responses.map((response, i) => (
-            <Response
-              response={response}
-              selected={selected === i}
-              responseKey={ALPHABET[i]}
-              handleClick={() => setSelected(i)}
-            />
-          ))}
+          {responses.map((response, i) => {
+            const responseKey = setResponseKey(i);
+            return (
+              <Response
+                response={response}
+                selected={selected === i}
+                responseKey={responseKey}
+                handleClick={() => setSelected(i)}
+              />
+            );
+          })}
         </Grid>
       </Box>
     );
