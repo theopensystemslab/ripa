@@ -6,6 +6,7 @@ import * as React from "react";
 import { HelpCircle } from "react-feather";
 
 import { keyBtnSelect, setResponseKey } from "../../lib/keyResponse";
+import FocusHandler from "../FocusHandler";
 import InlineSelect from "../InlineSelect";
 import Question from "../Question";
 import QuestionImage from "../QuestionImage";
@@ -39,7 +40,7 @@ const ButtonCard = ({
   const [selected, setSelected] = React.useState(null);
   if (!dropdown) {
     return (
-      <Box
+      <FocusHandler
         tabIndex={0}
         onKeyDown={e => keyBtnSelect(e, responses, setSelected)}
       >
@@ -68,7 +69,7 @@ const ButtonCard = ({
             );
           })}
         </Grid>
-      </Box>
+      </FocusHandler>
     );
   } else {
     return (
