@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text Question Component should render snapshot 1`] = `
+<DocumentFragment>
+  <div
+    autocapitalize="off"
+    autocorrect="off"
+    class="MuiInputBase-root MuiInput-root makeStyles-root-1"
+    spellcheck="false"
+  >
+    <input
+      autocomplete="off"
+      class="MuiInputBase-input MuiInput-input makeStyles-input-3"
+      type="text"
+      value=""
+    />
+  </div>
+</DocumentFragment>
+`;

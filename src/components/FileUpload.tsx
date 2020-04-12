@@ -104,7 +104,7 @@ export const FileUpload: React.FC<IFileUpload> = ({
             </div>
           );
         })}
-        <div className={classes.box} {...getRootProps({ isDragActive: true })}>
+        <div className={classes.box} {...getRootProps()}>
           <input {...getInputProps()} />
           <p>{stateText}</p>
         </div>
