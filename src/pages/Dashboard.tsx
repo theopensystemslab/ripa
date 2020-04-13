@@ -18,7 +18,7 @@ import { formatDistance } from "date-fns";
 import * as React from "react";
 import { Folder, Plus, Trash } from "react-feather";
 
-//import { Link } from "react-navi";
+// import { Link } from "react-navi";
 import HVCenterContainer from "../components/HVCenterContainer";
 
 const useStyles = makeStyles(theme => ({
@@ -106,7 +106,7 @@ const Dashboard = ({ applications = [] }) => {
                   {application.status}
                 </Box>
                 <IconButton>
-                  <MoreVertIcon></MoreVertIcon>
+                  <MoreVertIcon />
                 </IconButton>
               </CardActions>
             </Card>
@@ -129,7 +129,7 @@ const Dashboard = ({ applications = [] }) => {
         </Grid>
       </Grid>
       <List>
-        <Divider className={classes.divider}></Divider>
+        <Divider className={classes.divider} />
         <ListItem button>
           <ListItemIcon className={classes.listIcon}>
             <Folder size={20} />

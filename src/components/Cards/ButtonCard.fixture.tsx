@@ -52,7 +52,7 @@ const ButtonCard = ({
             </>
           )}
         </Question>
-        {statement.img && <QuestionImage src={statement.img}></QuestionImage>}
+        {statement.img && <QuestionImage src={statement.img} />}
         <Grid container spacing={1}>
           {responses.map((response, i) => (
             <Response
@@ -65,27 +65,26 @@ const ButtonCard = ({
         </Grid>
       </Box>
     );
-  } else {
-    return (
-      <Box>
-        {statement.img && <QuestionImage src={statement.img}></QuestionImage>}
-        <Question>
-          {statement.text}{" "}
-          <InlineSelect
-            onChange={e => setSelected(e.target.value)}
-            value={selected}
-          >
-            {responses.map(response => (
-              <MenuItem key={response.id} value={response.id}>
-                {response.text}
-              </MenuItem>
-            ))}
-          </InlineSelect>{" "}
-          {statement.textEnd}
-        </Question>
-      </Box>
-    );
   }
+  return (
+    <Box>
+      {statement.img && <QuestionImage src={statement.img} />}
+      <Question>
+        {statement.text}{" "}
+        <InlineSelect
+          onChange={e => setSelected(e.target.value)}
+          value={selected}
+        >
+          {responses.map(response => (
+            <MenuItem key={response.id} value={response.id}>
+              {response.text}
+            </MenuItem>
+          ))}
+        </InlineSelect>{" "}
+        {statement.textEnd}
+      </Question>
+    </Box>
+  );
 };
 
 export default {
