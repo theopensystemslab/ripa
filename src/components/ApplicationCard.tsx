@@ -116,7 +116,6 @@ const ApplicationCard = (
   };
 
   const handleClose = () => {
-    console.log("wedwdw");
     setAnchorEl(null);
   };
 
