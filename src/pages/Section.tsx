@@ -4,6 +4,7 @@ import { ArrowLeft } from "@material-ui/icons";
 import * as React from "react";
 import { Link } from "react-navi";
 
+import { ButtonCard } from "../components/Cards/ButtonCard.fixture";
 import Date from "../components/Date";
 import FileUpload from "../components/FileUpload";
 import HVCenterContainer from "../components/HVCenterContainer";
@@ -157,17 +158,22 @@ const Card = ({ id }) => {
     );
   }
 
+  if (node.$t === 100) {
+    const responses = flow.edges
+      .filter(([src]) => src === id)
+      .map(([, tgt]) => ({
+        id: tgt,
+        ...flow.nodes[tgt]
+      }));
+
+    return <ButtonCard statement={node} responses={responses} />;
+  }
+
   return (
     <div>
       <Typography variant="h4" component="h2" gutterBottom>
-        {node.text}
+        {JSON.stringify(node)}
       </Typography>
-      {flow.edges
-        .filter(([src]) => src === id)
-        .map(([, tgt]) => tgt)
-        .map(i => (
-          <Card key={i} id={i} />
-        ))}
     </div>
   );
 };
@@ -176,7 +182,10 @@ const Section = ({ id }) => {
   const flow = useStore(state => state.flow);
   const classes = useStyles();
 
-  // console.log(alg.preorder(graph, id).map(i => flow.nodes[i].text));
+  const roots = flow.edges
+    .filter(([src]) => src === id)
+    .map(([, tgt]) => tgt)
+    .filter(tgt => flow.edges.filter(([src]) => src === tgt).length > 0);
 
   return (
     <HVCenterContainer light>
@@ -186,12 +195,10 @@ const Section = ({ id }) => {
       <Typography variant="h3" component="h1" gutterBottom>
         <strong>{flow.nodes[id].text}</strong>
       </Typography>
-      {flow.edges
-        .filter(([src]) => src === id)
-        .map(([, tgt]) => tgt)
-        .map(i => (
-          <Card key={i} id={i} />
-        ))}
+
+      {roots.map(i => (
+        <Card key={i} id={i} />
+      ))}
     </HVCenterContainer>
   );
 };

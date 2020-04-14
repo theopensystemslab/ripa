@@ -31,7 +31,7 @@ interface IButtonCard {
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-const ButtonCard = ({
+export const ButtonCard = ({
   statement,
   responses,
   dropdown,
