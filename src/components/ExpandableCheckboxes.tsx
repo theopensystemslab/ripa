@@ -72,7 +72,7 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
       selectedOptions: []
     },
     validate: values => {
-      let unDuplicatedSections = Array.from(new Set(values.selectedSections));
+      const unDuplicatedSections = Array.from(new Set(values.selectedSections));
       if (unDuplicatedSections.length !== values.noOfPanels) {
         setSubmitButtonDisabled(true);
       } else {
