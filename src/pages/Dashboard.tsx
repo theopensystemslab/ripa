@@ -11,10 +11,10 @@ import * as React from "react";
 import { ChevronDown, Folder, Plus, Trash } from "react-feather";
 
 import ApplicationCard from "../components/ApplicationCard";
-//import { Link } from "react-navi";
+// import { Link } from "react-navi";
 import HVCenterContainer from "../components/HVCenterContainer";
 
-//import { Link } from "react-navi";
+// import { Link } from "react-navi";
 
 const useStyles = makeStyles(theme => ({
   applications: {
@@ -99,7 +99,7 @@ const CollapsePanel = ({
   const [panelOpen, setPanelOpen] = React.useState(false);
   React.useEffect(() => {
     openOnRender && setPanelOpen(true);
-  }, []);
+  }, [openOnRender]);
   const classes = useStyles();
   return (
     <>
@@ -142,9 +142,9 @@ const Dashboard = ({ applications = [] }) => {
           wrap="wrap"
           className={classes.applications}
         >
-          {applications.map(application => (
-            <Grid item xs={12} sm={"auto"}>
-              <ApplicationCard {...application}></ApplicationCard>
+          {applications.map((application, i) => (
+            <Grid key={i} item xs={12} sm={"auto"}>
+              <ApplicationCard {...application} />
             </Grid>
           ))}
           <Grid item xs={12} sm={"auto"}>
@@ -158,7 +158,7 @@ const Dashboard = ({ applications = [] }) => {
             </Box>
           </Grid>
         </Grid>
-        <Divider className={classes.divider}></Divider>
+        <Divider className={classes.divider} />
         <CollapsePanel title="Archived" Icon={Folder}>
           <Box
             px={{ xs: 0, sm: 3 }}
@@ -166,8 +166,8 @@ const Dashboard = ({ applications = [] }) => {
             pb={{ xs: 0, sm: 3 }}
           >
             <List className={classes.list}>
-              {applications.map(application => (
-                <ApplicationCard {...application} listView></ApplicationCard>
+              {applications.map((application, i) => (
+                <ApplicationCard key={i} {...application} listView />
               ))}
             </List>
           </Box>

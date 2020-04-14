@@ -142,7 +142,7 @@ const ApplicationCard = (
             {status}
           </Box>
           <IconButton onClick={handleClick}>
-            <MoreVertIcon></MoreVertIcon>
+            <MoreVertIcon />
           </IconButton>
           <Menu
             id="application-menu"
@@ -186,60 +186,59 @@ const ApplicationCard = (
         </CardActions>
       </Card>
     );
-  } else {
-    return (
-      <ListItem className={classes.listedApplication}>
-        <ListItemText
-          primary={description}
-          secondary={`Last edited ${formatDistance(updatedAt, new Date())} ago`}
-        ></ListItemText>
-        <ListItemSecondaryAction>
-          <IconButton onClick={handleClick} color="default">
-            <MoreVertIcon></MoreVertIcon>
-          </IconButton>
-          <Menu
-            id="application-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-            MenuListProps={{
-              classes: {
-                root: classes.menu
-              }
-            }}
-            elevation={0}
-            getContentAnchorEl={null}
-            anchorOrigin={{
-              vertical: "center",
-              horizontal: "center"
-            }}
-            transformOrigin={{
-              horizontal: "right",
-              vertical: "top"
-            }}
-          >
-            <MenuItem
-              className={classes.menuItem}
-              component="a"
-              onClick={handleClose}
-            >
-              <ListItemText primary="Restore" />
-              <CornerRightUp size={20} />
-            </MenuItem>
-            <MenuItem
-              className={classes.menuItem}
-              component="a"
-              onClick={handleClose}
-            >
-              <ListItemText primary="Delete" />
-              <Trash size={20} />
-            </MenuItem>
-          </Menu>
-        </ListItemSecondaryAction>
-      </ListItem>
-    );
   }
+  return (
+    <ListItem className={classes.listedApplication}>
+      <ListItemText
+        primary={description}
+        secondary={`Last edited ${formatDistance(updatedAt, new Date())} ago`}
+      />
+      <ListItemSecondaryAction>
+        <IconButton onClick={handleClick} color="default">
+          <MoreVertIcon />
+        </IconButton>
+        <Menu
+          id="application-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+          MenuListProps={{
+            classes: {
+              root: classes.menu
+            }
+          }}
+          elevation={0}
+          getContentAnchorEl={null}
+          anchorOrigin={{
+            vertical: "center",
+            horizontal: "center"
+          }}
+          transformOrigin={{
+            horizontal: "right",
+            vertical: "top"
+          }}
+        >
+          <MenuItem
+            className={classes.menuItem}
+            component="a"
+            onClick={handleClose}
+          >
+            <ListItemText primary="Restore" />
+            <CornerRightUp size={20} />
+          </MenuItem>
+          <MenuItem
+            className={classes.menuItem}
+            component="a"
+            onClick={handleClose}
+          >
+            <ListItemText primary="Delete" />
+            <Trash size={20} />
+          </MenuItem>
+        </Menu>
+      </ListItemSecondaryAction>
+    </ListItem>
+  );
 };
 
 export default ApplicationCard;

@@ -37,7 +37,7 @@ const navigation = createBrowserNavigation({
 });
 
 const InnerApp = () => {
-  const { loading, error, data } = useQuery(
+  const { loading, data } = useQuery(
     gql`
       query Flow($id: uuid!) {
         flows_by_pk(id: $id) {

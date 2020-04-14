@@ -6,12 +6,12 @@ import List from "./List";
 export default {
   "Default list": (
     <Box bgcolor="background.paper" p={3}>
-      <List></List>
+      <List />
     </Box>
   ),
   "List With total bar": (
     <Box bgcolor="background.paper" p={3}>
-      <List total></List>
+      <List total />
     </Box>
   )
 };

@@ -56,6 +56,7 @@ const ButtonCard = ({
         <Grid container spacing={1}>
           {responses.map((response, i) => (
             <Response
+              key={i}
               response={response}
               selected={selected === i}
               responseKey={ALPHABET[i]}

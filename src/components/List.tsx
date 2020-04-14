@@ -69,7 +69,7 @@ const InputCell = ({ colSpan = 1, ...props }) => {
   const classes = useStyles();
   return (
     <TableCell colSpan={colSpan} className={classes.inputCell}>
-      <InputBase classes={{ root: classes.input }} {...props}></InputBase>
+      <InputBase classes={{ root: classes.input }} {...props} />
     </TableCell>
   );
 };
@@ -122,7 +122,7 @@ const List = ({ total = false }) => {
     ]);
   };
   const deleteRow = () => {
-    let val = rows;
+    const val = rows;
     val.pop();
     setRows([...val]);
   };
@@ -131,7 +131,7 @@ const List = ({ total = false }) => {
       <Table className={classes.table}>
         <TableHead>
           <TableRow hover={false}>
-            <TableCell className={classes.rowCount}></TableCell>
+            <TableCell className={classes.rowCount} />
             <TableCell>Building description</TableCell>
             <TableCell>
               Internal area in m<sup>2</sup>
@@ -143,7 +143,7 @@ const List = ({ total = false }) => {
         <TableBody>
           {rows.map((row, i) => {
             return (
-              <TableRow className={rowFocus === i && classes.rowFocus}>
+              <TableRow key={i} className={rowFocus === i && classes.rowFocus}>
                 <TableCell className={classes.rowCount}>{i + 1}</TableCell>
                 <InputCell
                   placeholder="Add another"
@@ -178,7 +178,7 @@ const List = ({ total = false }) => {
                 />
                 <TableCell className={classes.deleteRow}>
                   <IconButton size="small" onClick={() => deleteRow()}>
-                    <CloseIcon></CloseIcon>
+                    <CloseIcon />
                   </IconButton>
                 </TableCell>
               </TableRow>
@@ -225,15 +225,15 @@ const List = ({ total = false }) => {
         {total && (
           <TableFooter>
             <TableRow hover={false}>
-              <TableCell className={classes.rowCount}></TableCell>
+              <TableCell className={classes.rowCount} />
               <TableCell>
                 <strong>Total</strong>
               </TableCell>
               <TableCell>
                 200 m<sup>2</sup>
               </TableCell>
-              <TableCell></TableCell>
-              <TableCell colSpan={2}></TableCell>
+              <TableCell />
+              <TableCell colSpan={2} />
             </TableRow>
           </TableFooter>
         )}

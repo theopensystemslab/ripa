@@ -13,7 +13,7 @@ describe("Text Component", () => {
   let multiline: boolean;
   let maxWords: number;
   let label: string;
-  let unit: string;
+  // let unit: string;
 
   beforeEach(() => {
     title = "test title";

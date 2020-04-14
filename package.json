@@ -78,7 +78,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn type-check && pretty-quick --staged --pattern 'src/**/*.*'"
+      "pre-commit": "yarn type-check && yarn lint:fix && pretty-quick --staged --pattern 'src/**/*.*'",
+      "pre-push": "yarn test"
     }
   },
   "lint-staged": {

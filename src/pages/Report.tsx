@@ -132,7 +132,7 @@ const Report = () => {
   return (
     <Box bgcolor="#fff" className={classes.report}>
       <Map />
-      <Box bgcolor={"#ccc"} height="1em"></Box>
+      <Box bgcolor={"#ccc"} height="1em" />
       <Box p={5} pb={4}>
         <Box fontSize="subtitle1.fontSize" mb={2}>
           Report name
@@ -148,16 +148,16 @@ const Report = () => {
           Reasons
         </Box>
         <Box pb={3}>
-          <ExpansionPanelDemo flag="#bbb"></ExpansionPanelDemo>
-          <ExpansionPanelDemo isExpandable={false}></ExpansionPanelDemo>
+          <ExpansionPanelDemo flag="#bbb" />
+          <ExpansionPanelDemo isExpandable={false} />
         </Box>
         <CollapsePanel title="See all reasons" titleClosed="Show less">
           <Box py={2}>
-            <ExpansionPanelDemo flag="#bbb"></ExpansionPanelDemo>
-            <ExpansionPanelDemo isExpandable={false}></ExpansionPanelDemo>
-            <ExpansionPanelDemo isExpandable={false}></ExpansionPanelDemo>
-            <ExpansionPanelDemo isExpandable={false}></ExpansionPanelDemo>
-            <ExpansionPanelDemo flag="#bbb"></ExpansionPanelDemo>
+            <ExpansionPanelDemo flag="#bbb" />
+            <ExpansionPanelDemo isExpandable={false} />
+            <ExpansionPanelDemo isExpandable={false} />
+            <ExpansionPanelDemo isExpandable={false} />
+            <ExpansionPanelDemo flag="#bbb" />
           </Box>
         </CollapsePanel>
       </Box>
