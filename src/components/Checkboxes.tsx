@@ -34,28 +34,37 @@ const useStyles = makeStyles(theme =>
 const Checkboxes: React.FC<ICheckboxes> = ({
   title = "Title",
   options = {},
-  name = "",
-  required = false
+  name = ""
 }) => {
   const [errorMessageVisible, setErrorMessageVisible] = useState(false);
   const [successMessageVisible, setSuccessMessageVisible] = useState(false);
+  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(true);
 
   const formik = useFormik({
     initialValues: {
       [name]: "",
       selectedOptions: []
     },
-    onSubmit: values => {
-      if (required && values.selectedOptions.length === 0) {
+    validate: values => {
+      if (values.selectedOptions.length === 0) {
         setErrorMessageVisible(true);
-        setSuccessMessageVisible(false);
+        setSubmitButtonDisabled(true);
       } else {
         setErrorMessageVisible(false);
-        setSuccessMessageVisible(true);
-        console.log(JSON.stringify(values, null, 2));
+        setSubmitButtonDisabled(false);
       }
+    },
+    onSubmit: (values, { resetForm }) => {
+      console.log(JSON.stringify(values, null, 2));
+      setSuccessMessageVisible(true);
+      setTimeout(() => {
+        resetForm();
+        setSuccessMessageVisible(false);
+        setSubmitButtonDisabled(true);
+      }, 1000);
     }
   });
+
   const classes = useStyles();
   return (
     <Box py={4}>
@@ -115,7 +124,12 @@ const Checkboxes: React.FC<ICheckboxes> = ({
               message="Please choose at least one option"
             />
           ) : null}
-          <Button type="submit" variant="contained" color="primary">
+          <Button
+            type="submit"
+            disabled={submitButtonDisabled}
+            variant="contained"
+            color="primary"
+          >
             Save and Continue
           </Button>
           {successMessageVisible ? (

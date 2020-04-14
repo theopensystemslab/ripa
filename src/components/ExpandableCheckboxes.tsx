@@ -11,8 +11,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { ExpandMore } from "@material-ui/icons";
 import { useFormik } from "formik";
-import * as React from "react";
+import React, { useState } from "react";
 
+import Messages from "../shared/components/submit-messages";
 import Checkbox from "./Checkbox";
 
 const useStyles = makeStyles(theme => ({
@@ -61,6 +62,8 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
   name = "",
   callback = undefined
 }) => {
+  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
+  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(true);
   const formik = useFormik({
     initialValues: {
       [name]: "",
@@ -68,13 +71,22 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
       selectedSections: [],
       selectedOptions: []
     },
-    onSubmit: values => {
-      // let unDuplicatedSections = Array.from(new Set(values.selectedSections));
-      // if (unDuplicatedSections.length !== values.noOfPanels) {
-      //   alert("Please select at least one of each section");
-      // } else {
-      //   alert(JSON.stringify(values, null, 2));
-      // }
+    validate: values => {
+      let unDuplicatedSections = Array.from(new Set(values.selectedSections));
+      if (unDuplicatedSections.length !== values.noOfPanels) {
+        setSubmitButtonDisabled(true);
+      } else {
+        setSubmitButtonDisabled(false);
+      }
+    },
+    onSubmit: (values, { resetForm }) => {
+      console.log(JSON.stringify(values, null, 2));
+      setSuccessMessageVisible(true);
+      setTimeout(() => {
+        resetForm();
+        setSuccessMessageVisible(false);
+        setSubmitButtonDisabled(true);
+      }, 1000);
     }
   });
   const classes = useStyles();
@@ -163,11 +175,17 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
             type="submit"
             variant="contained"
             color="primary"
+            disabled={submitButtonDisabled}
             style={{ margin: "10px 0" }}
           >
             Save and Continue
           </Button>
         </Box>
+        <div>
+          {successMessageVisible ? (
+            <Messages type="success" message="Form submitted successfully" />
+          ) : null}
+        </div>
       </Box>
     </form>
   );
