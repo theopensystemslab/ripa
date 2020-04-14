@@ -1,38 +1,62 @@
-import { cleanup, render } from "@testing-library/react";
+import { cleanup, fireEvent, render } from "@testing-library/react";
 import * as React from "react";
 
 import Checkboxes from "../Checkboxes";
 
 afterEach(cleanup);
 
-/* TO DO 
-  1 - Add test for the success scenario when form submits and there is a success message
-  2- Add test for the fail scenario when the form doesn't submit and thee is an error message
-*/
-
 describe("Checkboxes Component", () => {
-  it("should render items correctly", async () => {
-    const title = "test title";
-    const name = "test name";
-    const options = {};
-    const { findByText } = render(
-      <Checkboxes title={title} options={options} name={name} />
-    );
-    expect(await findByText(/test title/i)).toBeInTheDocument();
-  });
-
-  it("should render snapshot", () => {
-    const title = "test title";
-    const name = "test name";
-    const options = {
+  let title: string;
+  let name: string;
+  let options: object;
+  beforeEach(() => {
+    title = "test title";
+    name = "test name";
+    options = {
       oak: "option 1",
       plane: "option 2",
       redwood: "option 3",
       other: "option 4"
     };
+  });
+  it("should render items correctly", () => {
+    const { getByText } = render(
+      <Checkboxes title={title} options={options} name={name} />
+    );
+    expect(getByText(/test title/i)).toBeInTheDocument();
+  });
+
+  it("should render snapshot", () => {
     const { asFragment } = render(
       <Checkboxes title={title} options={options} name={name} />
     );
     expect(asFragment()).toMatchSnapshot();
+  });
+  it("should render success message when selected and enable the submit button", async () => {
+    const { getByTestId, getByLabelText, findByText, getByText } = render(
+      <Checkboxes title={title} options={options} name={name} />
+    );
+    expect(getByText(/save and continue/i).closest("button")).toHaveAttribute(
+      "disabled"
+    );
+    fireEvent.click(getByLabelText("option 2"));
+    expect(
+      getByText(/save and continue/i).closest("button")
+    ).not.toHaveAttribute("disabled");
+    fireEvent.submit(getByTestId("checkboxesComponent"));
+    expect(await findByText("Form submitted successfully")).toBeInTheDocument();
+  });
+  it("should render fail message when nothing is selected and disable the submit button", async () => {
+    const { getByTestId, getByLabelText, findByText, getByText } = render(
+      <Checkboxes title={title} options={options} name={name} />
+    );
+    fireEvent.click(getByLabelText("option 2"));
+    fireEvent.click(getByLabelText("option 2"));
+    expect(getByText(/save and continue/i).closest("button")).toHaveAttribute(
+      "disabled"
+    );
+    expect(
+      await findByText("Please choose at least one option")
+    ).toBeInTheDocument();
   });
 });

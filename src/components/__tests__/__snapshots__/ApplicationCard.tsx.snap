@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Application Card Component of type list view should render snapshot 1`] = `
+<DocumentFragment>
+  <li
+    class="MuiListItem-container"
+  >
+    <div
+      class="MuiListItem-root makeStyles-listedApplication-10 MuiListItem-gutters MuiListItem-secondaryAction"
+      data-testid="listViewCard"
+    >
+      <div
+        class="MuiListItemText-root MuiListItemText-multiline"
+      >
+        <span
+          class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+        >
+          description
+        </span>
+        <p
+          class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+        >
+          Last edited over 50 years ago
+        </p>
+      </div>
+    </div>
+    <div
+      class="MuiListItemSecondaryAction-root"
+    >
+      <button
+        class="MuiButtonBase-root MuiIconButton-root"
+        data-testid="moreButtonList"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </li>
+</DocumentFragment>
+`;
+
+exports[`Application Card Component of type standard view should render snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root MuiCard-root makeStyles-application-270 MuiPaper-elevation1 MuiPaper-rounded"
+    data-testid="standardCard"
+  >
+    <div
+      class="MuiCardMedia-root makeStyles-thumbnail-275"
+      style="background-image: url(pic.png);"
+    />
+    <div
+      class="MuiCardContent-root makeStyles-content-274"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-318"
+      >
+        <strong>
+          description
+        </strong>
+      </div>
+      <div
+        class="MuiBox-root MuiBox-root-319"
+      >
+        Last edited over 50 years ago
+      </div>
+    </div>
+    <div
+      class="MuiCardActions-root MuiCardActions-spacing"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-322"
+      >
+        Submitted
+      </div>
+      <button
+        class="MuiButtonBase-root MuiIconButton-root"
+        data-testid="moreButtonStandard"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

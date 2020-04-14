@@ -19,6 +19,7 @@ exports[`Date Component should render snapshot 1`] = `
         >
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+            for="test name"
           >
             day
           </label>
@@ -28,6 +29,7 @@ exports[`Date Component should render snapshot 1`] = `
           >
             <input
               class="MuiInputBase-input MuiInput-input"
+              id="test name"
               max="31"
               min="1"
               name="test name-day"
@@ -42,6 +44,7 @@ exports[`Date Component should render snapshot 1`] = `
         >
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+            for="test name"
           >
             month
           </label>
@@ -51,6 +54,7 @@ exports[`Date Component should render snapshot 1`] = `
           >
             <input
               class="MuiInputBase-input MuiInput-input"
+              id="test name"
               max="12"
               min="1"
               name="test name-month"
@@ -65,6 +69,7 @@ exports[`Date Component should render snapshot 1`] = `
         >
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+            for="test name"
           >
             year
           </label>
@@ -74,6 +79,7 @@ exports[`Date Component should render snapshot 1`] = `
           >
             <input
               class="MuiInputBase-input MuiInput-input"
+              id="test name"
               max="2020"
               min="1920"
               name="test name-year"

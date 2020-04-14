@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stepper Component should render snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root MuiBox-root-13 makeStyles-root-1"
+  >
+    <button
+      aria-controls="mobile-menu"
+      aria-haspopup="true"
+      class="MuiButtonBase-root makeStyles-moreBtn-7"
+      tabindex="0"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+        />
+      </svg>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+    <span
+      class="makeStyles-active-4"
+    >
+      1. Property location
+    </span>
+  </div>
+</DocumentFragment>
+`;

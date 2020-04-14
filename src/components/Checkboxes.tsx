@@ -55,20 +55,19 @@ const Checkboxes: React.FC<ICheckboxes> = ({
       }
     },
     onSubmit: (values, { resetForm }) => {
-      console.log(JSON.stringify(values, null, 2));
       setSuccessMessageVisible(true);
       setTimeout(() => {
         resetForm();
         setSuccessMessageVisible(false);
         setSubmitButtonDisabled(true);
-      }, 1000);
+      }, 10000);
     }
   });
 
   const classes = useStyles();
   return (
     <Box py={4}>
-      <form onSubmit={formik.handleSubmit}>
+      <form data-testid="checkboxesComponent" onSubmit={formik.handleSubmit}>
         <Typography variant="h5" gutterBottom>
           {title}
         </Typography>
