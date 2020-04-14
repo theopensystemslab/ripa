@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, wait } from "@testing-library/react";
+import { cleanup, render } from "@testing-library/react";
 import * as React from "react";
 
 import Date from "../Date";
