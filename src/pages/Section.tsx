@@ -33,9 +33,7 @@ const Card = ({ id }) => {
   const flow = useStore(state => state.flow);
   const node = flow.nodes[id];
 
-  if (node.text.toLowerCase().includes(["[location card]"])) return null;
-
-  if (node.text.toLowerCase().includes(["[text]"])) {
+  if (node.$t === 110 || node.text.toLowerCase().includes(["[text]"])) {
     return (
       <Text
         title={node.text.replace(/\[text\]/i, "").trim()}
@@ -47,7 +45,7 @@ const Card = ({ id }) => {
     );
   }
 
-  if (node.text.toLowerCase().includes(["[number]"])) {
+  if (node.$t === 150 || node.text.toLowerCase().includes(["[number]"])) {
     return (
       <Text
         title={node.text.replace(/\[number\]/i, "").trim()}
@@ -58,7 +56,10 @@ const Card = ({ id }) => {
     );
   }
 
-  if (node.text.toLowerCase().includes(["[short text field]"])) {
+  if (
+    node.$t === 110 ||
+    node.text.toLowerCase().includes(["[short text field]"])
+  ) {
     return (
       <Text
         title={node.text.replace(/\[short text field\]/i, "").trim()}
@@ -69,7 +70,7 @@ const Card = ({ id }) => {
     );
   }
 
-  if (node.text.toLowerCase().includes(["[long text]"])) {
+  if (node.$t === 110 || node.text.toLowerCase().includes(["[long text]"])) {
     return (
       <Text
         title={node.text.replace(/\[long text\]/i, "").trim()}
@@ -81,7 +82,9 @@ const Card = ({ id }) => {
     );
   }
 
-  if (node.text.toLowerCase().includes(["[address]"])) {
+  if (node.text.toLowerCase().includes(["[location card]"])) return null;
+
+  if (node.$t === 130 || node.text.toLowerCase().includes(["[address]"])) {
     return (
       <StreetAddress
         title={node.text.replace(/\[address\]/i, "").trim()}
@@ -185,7 +188,13 @@ const Section = ({ id }) => {
   const roots = flow.edges
     .filter(([src]) => src === id)
     .map(([, tgt]) => tgt)
-    .filter(tgt => flow.edges.filter(([src]) => src === tgt).length > 0);
+    .filter(tgt => {
+      const isStatement = flow.nodes[tgt].$t === 100;
+
+      const hasResponses = flow.edges.filter(([src]) => src === tgt).length > 0;
+
+      return (isStatement && hasResponses) || !isStatement;
+    });
 
   return (
     <HVCenterContainer light>
