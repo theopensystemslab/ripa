@@ -30,6 +30,7 @@ exports[`File Upload Component should render snapshot 1`] = `
       <small>
         Max size of file is 40000 Bytes
       </small>
+      <div />
     </form>
   </div>
 </DocumentFragment>

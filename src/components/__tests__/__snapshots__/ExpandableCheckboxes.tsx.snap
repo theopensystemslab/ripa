@@ -43,7 +43,6 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                 aria-hidden="true"
                 class="MuiSvgIcon-root"
                 focusable="false"
-                role="presentation"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -223,7 +222,6 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                 aria-hidden="true"
                 class="MuiSvgIcon-root"
                 focusable="false"
-                role="presentation"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -403,7 +401,6 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                 aria-hidden="true"
                 class="MuiSvgIcon-root"
                 focusable="false"
-                role="presentation"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -557,9 +554,10 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
         class="MuiBox-root MuiBox-root-138"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled Mui-disabled"
+          disabled=""
           style="margin: 10px 0px;"
-          tabindex="0"
+          tabindex="-1"
           type="submit"
         >
           <span
@@ -567,11 +565,9 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
           >
             Save and Continue
           </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
         </button>
       </div>
+      <div />
     </div>
   </form>
 </DocumentFragment>
