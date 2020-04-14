@@ -38,7 +38,6 @@ const Card = ({ id }) => {
       <Text
         title={node.text.replace(/\[text\]/i, "").trim()}
         name={node.id}
-        multiline
         type="text"
         required={false}
       />
