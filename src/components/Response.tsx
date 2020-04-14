@@ -24,19 +24,18 @@ const Response = ({
         </ResponseImageButton>
       </Grid>
     );
-  } else {
-    return (
-      <Grid item xs={12}>
-        <ResponseButton
-          key={response.id}
-          selected={selected}
-          handleClick={handleClick}
-          responseKey={responseKey}
-        >
-          {response.text}
-        </ResponseButton>
-      </Grid>
-    );
   }
+  return (
+    <Grid item xs={12}>
+      <ResponseButton
+        key={response.id}
+        selected={selected}
+        handleClick={handleClick}
+        responseKey={responseKey}
+      >
+        {response.text}
+      </ResponseButton>
+    </Grid>
+  );
 };
 export default Response;

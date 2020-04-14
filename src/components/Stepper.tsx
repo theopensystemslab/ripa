@@ -164,67 +164,66 @@ const Stepper = ({
         ))}
       </ol>
     );
-  } else {
-    return (
-      <Box component="div" className={classes.root} p={0}>
-        <ButtonBase
-          className={classes.moreBtn}
-          aria-controls="mobile-menu"
-          aria-haspopup="true"
-          onClick={handleClick}
-        >
-          {numbered ? <MoreIcon /> : <ExpandIcon />}
-        </ButtonBase>
-        <Popover
-          id="mobile-menu"
-          anchorEl={anchorEl}
-          anchorOrigin={{
-            vertical: numbered ? "top" : "bottom",
-            horizontal: numbered ? "right" : "left"
-          }}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-          elevation={0}
-          PaperProps={{
-            classes: {
-              root: classes.menu
-            }
-          }}
-        >
-          {list.map((child, i) => (
-            <ButtonBase
-              classes={{
-                root: classNames(
-                  classes.menuBtn,
-                  i + 1 === active && classes.menuBtnActive
-                ),
-                disabled: classes.menuBtnDisabled
-              }}
-              onClick={handleClose}
-              disabled={i + 1 >= active}
-              key={i}
-            >
-              {typeof child !== "object" ? (
-                <>
-                  {numbered && `${i + 1}.`} {child}
-                </>
-              ) : (
-                <>
-                  {numbered && `${i + 1}.`} {child.text}
-                </>
-              )}
-            </ButtonBase>
-          ))}
-        </Popover>
-        {numbered && (
-          <span className={(classes.breadcrumb, classes.active)}>
-            {`${active}. ${list[active - 1]}`}
-          </span>
-        )}
-      </Box>
-    );
   }
+  return (
+    <Box component="div" className={classes.root} p={0}>
+      <ButtonBase
+        className={classes.moreBtn}
+        aria-controls="mobile-menu"
+        aria-haspopup="true"
+        onClick={handleClick}
+      >
+        {numbered ? <MoreIcon /> : <ExpandIcon />}
+      </ButtonBase>
+      <Popover
+        id="mobile-menu"
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: numbered ? "top" : "bottom",
+          horizontal: numbered ? "right" : "left"
+        }}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+        elevation={0}
+        PaperProps={{
+          classes: {
+            root: classes.menu
+          }
+        }}
+      >
+        {list.map((child, i) => (
+          <ButtonBase
+            classes={{
+              root: classNames(
+                classes.menuBtn,
+                i + 1 === active && classes.menuBtnActive
+              ),
+              disabled: classes.menuBtnDisabled
+            }}
+            onClick={handleClose}
+            disabled={i + 1 >= active}
+            key={i}
+          >
+            {typeof child !== "object" ? (
+              <>
+                {numbered && `${i + 1}.`} {child}
+              </>
+            ) : (
+              <>
+                {numbered && `${i + 1}.`} {child.text}
+              </>
+            )}
+          </ButtonBase>
+        ))}
+      </Popover>
+      {numbered && (
+        <span className={(classes.breadcrumb, classes.active)}>
+          {`${active}. ${list[active - 1]}`}
+        </span>
+      )}
+    </Box>
+  );
 };
 
 export default Stepper;
