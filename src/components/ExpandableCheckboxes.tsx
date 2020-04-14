@@ -49,6 +49,7 @@ interface IExpandableCheckboxes {
     values: string[];
   }[];
   callback?;
+  required?: boolean;
 }
 
 export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
@@ -60,10 +61,12 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
     }
   ],
   name = "",
-  callback = undefined
+  callback = undefined,
+  required = false
 }) => {
   const [successMessageVisible, setSuccessMessageVisible] = useState(false);
-  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(true);
+  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(required);
+
   const formik = useFormik({
     initialValues: {
       [name]: "",
@@ -72,6 +75,8 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
       selectedOptions: []
     },
     validate: values => {
+      if (!required) return;
+
       const unDuplicatedSections = Array.from(new Set(values.selectedSections));
       if (unDuplicatedSections.length !== values.noOfPanels) {
         setSubmitButtonDisabled(true);

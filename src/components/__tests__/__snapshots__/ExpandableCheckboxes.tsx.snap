@@ -554,10 +554,9 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
         class="MuiBox-root MuiBox-root-138"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled Mui-disabled"
-          disabled=""
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
           style="margin: 10px 0px;"
-          tabindex="-1"
+          tabindex="0"
           type="submit"
         >
           <span
@@ -565,6 +564,9 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
           >
             Save and Continue
           </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
         </button>
       </div>
       <div />
