@@ -40,7 +40,7 @@ export const ButtonCard = ({
   const [selected, setSelected] = React.useState(null);
   if (!dropdown) {
     return (
-      <Box>
+      <Box pb={4}>
         <Question gutterBottom>
           {statement.text}
           {moreInfo && (

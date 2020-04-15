@@ -61,7 +61,7 @@ export const StreetAddress: React.FC<IText> = ({ title, type, options }) => {
     }
   };
   return (
-    <Box py={4}>
+    <Box py={4} maxWidth={480}>
       <form onSubmit={formik.handleSubmit}>
         <Typography variant="h4" gutterBottom>
           <strong>{title}</strong>
