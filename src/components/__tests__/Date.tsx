@@ -57,15 +57,17 @@ describe("Date Component", () => {
         inputProps={inputProps}
       />
     );
-    fireEvent.change(getByLabelText("day"), { target: { value: "test text" } });
-    expect(getByLabelText("day")).not.toHaveValue("test text");
-    fireEvent.change(getByLabelText("month"), {
+    fireEvent.change(getByLabelText(/day/i), {
       target: { value: "test text" }
     });
-    expect(getByLabelText("month")).not.toHaveValue("test text");
-    fireEvent.change(getByLabelText("year"), {
+    expect(getByLabelText(/day/i)).not.toHaveValue("test text");
+    fireEvent.change(getByLabelText(/month/i), {
       target: { value: "test text" }
     });
-    expect(getByLabelText("year")).not.toHaveValue("test text");
+    expect(getByLabelText(/month/i)).not.toHaveValue("test text");
+    fireEvent.change(getByLabelText(/year/i), {
+      target: { value: "test text" }
+    });
+    expect(getByLabelText(/year/i)).not.toHaveValue("test text");
   });
 });

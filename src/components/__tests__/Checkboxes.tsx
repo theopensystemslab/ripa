@@ -39,24 +39,26 @@ describe("Checkboxes Component", () => {
     expect(getByText(/save and continue/i).closest("button")).toHaveAttribute(
       "disabled"
     );
-    fireEvent.click(getByLabelText("option 2"));
+    fireEvent.click(getByLabelText(/option 2/i));
     expect(
       getByText(/save and continue/i).closest("button")
     ).not.toHaveAttribute("disabled");
     fireEvent.submit(getByTestId("checkboxesComponent"));
-    expect(await findByText("Form submitted successfully")).toBeInTheDocument();
+    expect(
+      await findByText(/form submitted successfully/i)
+    ).toBeInTheDocument();
   });
   it("should render fail message when nothing is selected and disable the submit button", async () => {
     const { getByTestId, getByLabelText, findByText, getByText } = render(
       <Checkboxes title={title} options={options} name={name} />
     );
-    fireEvent.click(getByLabelText("option 2"));
-    fireEvent.click(getByLabelText("option 2"));
+    fireEvent.click(getByLabelText(/option 2/i));
+    fireEvent.click(getByLabelText(/option 2/i));
     expect(getByText(/save and continue/i).closest("button")).toHaveAttribute(
       "disabled"
     );
     expect(
-      await findByText("Please choose at least one option")
+      await findByText(/please choose at least one option/i)
     ).toBeInTheDocument();
   });
 });

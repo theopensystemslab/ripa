@@ -54,7 +54,7 @@ describe("Response Button Component", () => {
         {children}
       </ResponseImageButton>
     );
-    fireEvent.click(getByText("Inner text"));
+    fireEvent.click(getByText(/inner text/i));
     expect(handleClick).toHaveBeenCalled();
   });
 });

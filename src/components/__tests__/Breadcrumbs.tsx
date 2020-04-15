@@ -16,7 +16,7 @@ describe("Breadcrumbs Component", () => {
     ];
     const active = 2;
     const { getByText } = render(<Breadcrumbs active={active} list={list} />);
-    expect(getByText(/Property location/i)).toBeInTheDocument();
+    expect(getByText(/property location/i)).toBeInTheDocument();
   });
 
   it("render snapshot", () => {
