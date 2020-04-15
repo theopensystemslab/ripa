@@ -56,5 +56,6 @@ describe("Response Button Component", () => {
     );
     fireEvent.click(getByText("inner text"));
     expect(handleClick).toHaveBeenCalled();
+    expect(handleClick).toHaveBeenCalledTimes(1);
   });
 });
