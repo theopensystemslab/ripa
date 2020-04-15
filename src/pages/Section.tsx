@@ -4,6 +4,7 @@ import { ArrowLeft } from "@material-ui/icons";
 import * as React from "react";
 import { Link } from "react-navi";
 
+import { ButtonCard } from "../components/Cards/ButtonCard.fixture";
 import Date from "../components/Date";
 import FileUpload from "../components/FileUpload";
 import HVCenterContainer from "../components/HVCenterContainer";
@@ -32,21 +33,18 @@ const Card = ({ id }) => {
   const flow = useStore(state => state.flow);
   const node = flow.nodes[id];
 
-  if (node.text.toLowerCase().includes(["[location card]"])) return null;
-
-  if (node.text.toLowerCase().includes(["[text]"])) {
+  if (node.$t === 110 || node.text.toLowerCase().includes(["[text]"])) {
     return (
       <Text
         title={node.text.replace(/\[text\]/i, "").trim()}
         name={node.id}
-        multiline
         type="text"
         required={false}
       />
     );
   }
 
-  if (node.text.toLowerCase().includes(["[number]"])) {
+  if (node.$t === 150 || node.text.toLowerCase().includes(["[number]"])) {
     return (
       <Text
         title={node.text.replace(/\[number\]/i, "").trim()}
@@ -57,7 +55,10 @@ const Card = ({ id }) => {
     );
   }
 
-  if (node.text.toLowerCase().includes(["[short text field]"])) {
+  if (
+    node.$t === 110 ||
+    node.text.toLowerCase().includes(["[short text field]"])
+  ) {
     return (
       <Text
         title={node.text.replace(/\[short text field\]/i, "").trim()}
@@ -68,7 +69,7 @@ const Card = ({ id }) => {
     );
   }
 
-  if (node.text.toLowerCase().includes(["[long text]"])) {
+  if (node.$t === 110 || node.text.toLowerCase().includes(["[long text]"])) {
     return (
       <Text
         title={node.text.replace(/\[long text\]/i, "").trim()}
@@ -80,12 +81,13 @@ const Card = ({ id }) => {
     );
   }
 
-  if (node.text.toLowerCase().includes(["[address]"])) {
+  if (node.text.toLowerCase().includes(["[location card]"])) return null;
+
+  if (node.$t === 130 || node.text.toLowerCase().includes(["[address]"])) {
     return (
       <StreetAddress
         title={node.text.replace(/\[address\]/i, "").trim()}
         type="text"
-        name="address"
         options={["building", "street", "city", "county", "postcode"]}
       />
     );
@@ -158,17 +160,22 @@ const Card = ({ id }) => {
     );
   }
 
+  if (node.$t === 100) {
+    const responses = flow.edges
+      .filter(([src]) => src === id)
+      .map(([, tgt]) => ({
+        id: tgt,
+        ...flow.nodes[tgt]
+      }));
+
+    return <ButtonCard statement={node} responses={responses} />;
+  }
+
   return (
     <div>
       <Typography variant="h4" component="h2" gutterBottom>
-        {node.text}
+        {JSON.stringify(node)}
       </Typography>
-      {flow.edges
-        .filter(([src]) => src === id)
-        .map(([, tgt]) => tgt)
-        .map(i => (
-          <Card key={i} id={i} />
-        ))}
     </div>
   );
 };
@@ -177,7 +184,16 @@ const Section = ({ id }) => {
   const flow = useStore(state => state.flow);
   const classes = useStyles();
 
-  // console.log(alg.preorder(graph, id).map(i => flow.nodes[i].text));
+  const roots = flow.edges
+    .filter(([src]) => src === id)
+    .map(([, tgt]) => tgt)
+    .filter(tgt => {
+      const isStatement = flow.nodes[tgt].$t === 100;
+
+      const hasResponses = flow.edges.filter(([src]) => src === tgt).length > 0;
+
+      return (isStatement && hasResponses) || !isStatement;
+    });
 
   return (
     <HVCenterContainer light>
@@ -187,12 +203,10 @@ const Section = ({ id }) => {
       <Typography variant="h3" component="h1" gutterBottom>
         <strong>{flow.nodes[id].text}</strong>
       </Typography>
-      {flow.edges
-        .filter(([src]) => src === id)
-        .map(([, tgt]) => tgt)
-        .map(i => (
-          <Card key={i} id={i} />
-        ))}
+
+      {roots.map(i => (
+        <Card key={i} id={i} />
+      ))}
     </HVCenterContainer>
   );
 };

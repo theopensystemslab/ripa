@@ -66,12 +66,13 @@ export const Text: React.FC<IText> = ({
           {title}
         </Typography>
         <Box mb={3} maxWidth={600}>
-          {label && <InputLabel>{label}</InputLabel>}
+          {label && <InputLabel htmlFor={name}>{label}</InputLabel>}
           <Input
             placeholder={placeholder}
             fullWidth={fullWidth}
             multiline={multiline}
             name={name}
+            id={name}
             type={type}
             onChange={e => {
               if (maxWords) {
@@ -91,7 +92,12 @@ export const Text: React.FC<IText> = ({
               pt={1}
               textAlign="right"
             >
-              <span>{diff >= 0 ? `${diff}` : 0} words Remaining</span>
+              <span>
+                {" "}
+                {diff >= 0
+                  ? `${diff} words Remaining`
+                  : `0 words Remaining`}{" "}
+              </span>
             </Box>
           )}
           {unit && (

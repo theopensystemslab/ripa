@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Question Component render snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiTypography-root makeStyles-question-1 MuiTypography-h2"
+  >
+    This is a question
+  </div>
+</DocumentFragment>
+`;

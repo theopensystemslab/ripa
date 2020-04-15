@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select Question Component should render snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiFormControl-root makeStyles-container-1"
+  >
+    <div
+      class="MuiInputBase-root MuiInput-root makeStyles-formControl-7 MuiInputBase-formControl MuiInput-formControl"
+    >
+      <div
+        aria-haspopup="listbox"
+        aria-labelledby="mui-component-select-select"
+        class="MuiSelect-root MuiSelect-select makeStyles-selectInput-3 MuiSelect-selectMenu makeStyles-root-2 MuiInputBase-input MuiInput-input"
+        id="mui-component-select-select"
+        role="button"
+        tabindex="0"
+      >
+        <span>
+          ​
+        </span>
+      </div>
+      <input
+        name="select"
+        type="hidden"
+        value=""
+      />
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSelect-icon makeStyles-icon-6"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+        />
+      </svg>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -43,7 +43,6 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                 aria-hidden="true"
                 class="MuiSvgIcon-root"
                 focusable="false"
-                role="presentation"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -223,7 +222,6 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                 aria-hidden="true"
                 class="MuiSvgIcon-root"
                 focusable="false"
-                role="presentation"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -403,7 +401,6 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                 aria-hidden="true"
                 class="MuiSvgIcon-root"
                 focusable="false"
-                role="presentation"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -572,6 +569,7 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
           />
         </button>
       </div>
+      <div />
     </div>
   </form>
 </DocumentFragment>

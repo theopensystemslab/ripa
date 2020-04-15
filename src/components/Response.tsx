@@ -8,10 +8,10 @@ const Response = ({
   selected = null,
   handleClick = null,
   response,
-  responseKey = []
+  responseKey = [],
 }) => {
   const responseChar =
-    responseKey && responseKey.map(c => String.fromCharCode(c)).join("");
+    responseKey && responseKey.map((c) => String.fromCharCode(c)).join("");
   if (response.img) {
     return (
       <Grid item xs={6} sm={4} lg={3}>
@@ -26,7 +26,7 @@ const Response = ({
         </ResponseImageButton>
       </Grid>
     );
-  } else {
+  } 
     return (
       <Grid item xs={12}>
         <ResponseButton
@@ -39,6 +39,6 @@ const Response = ({
         </ResponseButton>
       </Grid>
     );
-  }
+  
 };
 export default Response;

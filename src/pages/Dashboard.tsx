@@ -1,42 +1,34 @@
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import ButtonBase from "@material-ui/core/ButtonBase";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
+import Collapse from "@material-ui/core/Collapse";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
-import IconButton from "@material-ui/core/IconButton";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import { formatDistance } from "date-fns";
+import classNames from "classnames";
 import * as React from "react";
-import { Folder, Plus, Trash } from "react-feather";
+import { ChevronDown, Folder, Plus, Trash } from "react-feather";
 
-//import { Link } from "react-navi";
+import ApplicationCard from "../components/ApplicationCard";
+// import { Link } from "react-navi";
 import HVCenterContainer from "../components/HVCenterContainer";
+
+// import { Link } from "react-navi";
 
 const useStyles = makeStyles(theme => ({
   applications: {
     paddingTop: theme.spacing(2),
     marginBottom: theme.spacing(2)
   },
-  application: {
-    width: 300,
-    height: "100%",
-    display: "flex",
-    flexDirection: "column"
-  },
   link: {
     textDecoration: "none"
   },
   start: {
-    width: 300,
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: 264
+    },
     height: "100%",
     border: `1px solid ${theme.palette.primary.contrastText}`,
     display: "flex",
@@ -51,12 +43,8 @@ const useStyles = makeStyles(theme => ({
     }
   },
   list: {
-    color: "currentColor"
-  },
-  listIcon: {
-    minWidth: 0,
-    marginRight: theme.spacing(2),
-    color: "currentColor"
+    color: "currentColor",
+    padding: 0
   },
   divider: {
     backgroundColor: theme.palette.primary.contrastText
@@ -64,85 +52,132 @@ const useStyles = makeStyles(theme => ({
   content: {
     flexGrow: 1
   },
-  thumbnail: {
-    height: 0,
-    paddingTop: "56.25%"
+  listedApplication: {
+    color: theme.palette.grey[900],
+    backgroundColor: "rgba(255, 255, 255, 0.6)",
+    "&:not(:last-child)": {
+      marginBottom: 2
+    }
+  },
+  panelButton: {
+    display: "flex",
+    width: "100%",
+    fontSize: 17,
+    justifyContent: "flex-start",
+    padding: theme.spacing(2),
+    fontWeight: 700,
+    "&:hover": {
+      backgroundColor: "rgba(0,0,0,0.035)"
+    }
+  },
+  panelIcon: {
+    minWidth: 0,
+    marginRight: theme.spacing(2),
+    color: "currentColor"
+  },
+  collapseIcon: {
+    position: "absolute",
+    right: theme.spacing(2),
+    top: "50%",
+    transition: "transform 0.3s ease-out",
+    transform: "translateY(-50%)"
+  },
+  panelButtonActive: {
+    backgroundColor: "rgba(0,0,0,0.035)"
+  },
+  collapseIconActive: {
+    transform: "translateY(-50%) rotate(180deg)"
   }
 }));
 
-const Dashboard = ({ applications = [] }) => {
+const CollapsePanel = ({
+  children,
+  title = "Collapse Panel",
+  Icon = null,
+  openOnRender = false
+}) => {
+  const [panelOpen, setPanelOpen] = React.useState(false);
+  React.useEffect(() => {
+    openOnRender && setPanelOpen(true);
+  }, [openOnRender]);
   const classes = useStyles();
   return (
+    <>
+      <ButtonBase
+        className={classNames(
+          classes.panelButton,
+          panelOpen && classes.panelButtonActive
+        )}
+        onClick={() => setPanelOpen(!panelOpen)}
+      >
+        {Icon && <Icon size={20} className={classes.panelIcon} />} {title}
+        <ChevronDown
+          className={classNames(
+            classes.collapseIcon,
+            panelOpen && classes.collapseIconActive
+          )}
+        />
+      </ButtonBase>
+      <Collapse in={panelOpen}>
+        <Box bgcolor="rgba(0,0,0,0.035)" mb={1}>
+          {children}
+        </Box>
+      </Collapse>
+    </>
+  );
+};
+
+const Dashboard = ({ applications = [] }) => {
+  const classes = useStyles();
+
+  return (
     <HVCenterContainer verticalCenter>
-      <Typography variant="h3" gutterBottom>
-        <strong>My planning applications</strong>
-      </Typography>
-      <Grid container spacing={3} wrap="wrap" className={classes.applications}>
-        {applications.map(application => (
-          <Grid item>
-            <Card key={application.id} className={classes.application}>
-              <CardMedia
-                className={classes.thumbnail}
-                image={application.thumbnail}
-              >
-                {/* <img src={application.thumbnail} /> */}
-              </CardMedia>
-              <CardContent className={classes.content}>
-                <Box fontSize="h6.fontSize" mb={1}>
-                  <strong>{application.description}</strong>
+      <Box px={{ xs: 2, sm: 0 }} py={3}>
+        <Typography variant="h2" gutterBottom>
+          <strong>My planning applications</strong>
+        </Typography>
+        <Grid
+          container
+          spacing={3}
+          wrap="wrap"
+          className={classes.applications}
+        >
+          {applications.map((application, i) => (
+            <Grid key={i} item xs={12} sm={"auto"}>
+              <ApplicationCard {...application} />
+            </Grid>
+          ))}
+          <Grid item xs={12} sm={"auto"}>
+            <Box height={"100%"}>
+              <ButtonBase href="/start" className={classes.start}>
+                <Plus size={40} />
+                <Box pt={2} fontSize="h6.fontSize" px={3}>
+                  Start a new application
                 </Box>
-                <Box fontSize="subtitle1.fontSize" color="grey.400" mb={3}>
-                  Last edited{" "}
-                  {formatDistance(application.updatedAt, new Date())} ago
-                </Box>
-              </CardContent>
-              <CardActions>
-                <Box
-                  pl={1}
-                  flexGrow={1}
-                  fontSize="subtitle1.fontSize"
-                  color="grey.500"
-                >
-                  {application.status}
-                </Box>
-                <IconButton>
-                  <MoreVertIcon></MoreVertIcon>
-                </IconButton>
-              </CardActions>
-            </Card>
+              </ButtonBase>
+            </Box>
           </Grid>
-        ))}
-        <Grid item>
-          <Box height={"100%"}>
-            <ButtonBase href="/start" className={classes.start}>
-              <Plus size={40} />
-              <Box
-                pt={2}
-                fontSize="h5.fontSize"
-                fontFamily="h5.fontFamily"
-                px={3}
-              >
-                Start a new application
-              </Box>
-            </ButtonBase>
-          </Box>
         </Grid>
-      </Grid>
-      <List>
-        <Divider className={classes.divider}></Divider>
-        <ListItem button>
-          <ListItemIcon className={classes.listIcon}>
-            <Folder size={20} />
-          </ListItemIcon>
-          <ListItemText primary="Archived" />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon className={classes.listIcon}>
-            <Trash size={20} />
-          </ListItemIcon>
-          <ListItemText primary="Deleted" />
-        </ListItem>
-      </List>
+        <Divider className={classes.divider} />
+        <CollapsePanel title="Archived" Icon={Folder}>
+          <Box
+            px={{ xs: 0, sm: 3 }}
+            pt={{ xs: 0, sm: 1 }}
+            pb={{ xs: 0, sm: 3 }}
+          >
+            <List className={classes.list}>
+              {applications.map((application, i) => (
+                <ApplicationCard key={i} {...application} listView />
+              ))}
+            </List>
+          </Box>
+        </CollapsePanel>
+        <CollapsePanel title="Deleted" Icon={Trash}>
+          <Box px={3} pt={1} pb={3}>
+            Empty
+          </Box>
+        </CollapsePanel>
+      </Box>
     </HVCenterContainer>
   );
 };

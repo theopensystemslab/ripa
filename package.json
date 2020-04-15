@@ -1,8 +1,9 @@
 {
   "name": "ripa",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "homepage": "https://demo.ripa.digital",
+  "license": "https://docs.google.com/document/d/1i1dYO81Nv6v02I1dNIyhl80DEaAtEYAZnuQaoieqhrA/edit?usp=sharing",
   "repository": {
     "url": "https://github.com/theopensystemslab/ripa"
   },
@@ -22,13 +23,7 @@
     "@apollo/react-hooks": "^3.1.3",
     "@material-ui/core": "^4.8.3",
     "@material-ui/icons": "^4.9.1",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.17",
-    "@types/react-dom": "^16.9.4",
+    "@material-ui/styles": "^4.9.10",
     "apollo-boost": "^0.4.7",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
@@ -52,13 +47,18 @@
     "scroll-into-view-if-needed": "^2.2.24",
     "smooth-scroll-into-view-if-needed": "^1.1.27",
     "typeface-inter": "^3.12.0",
-    "typescript": "~3.7.2",
-    "yup": "^0.28.1",
     "zustand": "^2.2.2"
   },
   "devDependencies": {
     "@testing-library/dom": ">=5",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
     "@types/graphlib": "^2.1.5",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
     "husky": "^4.0.10",
     "import-sort-style-module": "^6.0.0",
     "lint-staged": "^10.0.0",
@@ -70,14 +70,15 @@
     "tslint": "^5.20.1",
     "tslint-config-airbnb": "^5.11.2",
     "tslint-config-prettier": "^1.18.0",
-    "tslint-react": "^4.1.0"
+    "tslint-react": "^4.1.0",
+    "typescript": "~3.7.2"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn type-check && pretty-quick --staged --pattern 'src/**/*.*'"
+      "pre-commit": "yarn type-check && yarn lint:fix && pretty-quick --staged --pattern 'src/**/*.*'"
     }
   },
   "lint-staged": {

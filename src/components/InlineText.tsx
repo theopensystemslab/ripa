@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme =>
   })
 );
 
-const TextQuestion = ({ value = "", children = null as any, ...props }) => {
+const TextQuestion = ({ value = "", ...props }) => {
   const classes = useStyles();
   return (
     <Input
@@ -66,9 +66,7 @@ const TextQuestion = ({ value = "", children = null as any, ...props }) => {
         focused: classes.focused
       }}
       {...props}
-    >
-      {children}
-    </Input>
+    />
   );
 };
 

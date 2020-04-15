@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Response Button Component should render snapshot when selected is false 1`] = `
+<DocumentFragment>
+  <button
+    class="MuiButtonBase-root makeStyles-root-51"
+    tabindex="0"
+    type="button"
+  >
+    <div
+      class="MuiBox-root MuiBox-root-59 makeStyles-key-52"
+    >
+      <span
+        class="MuiTypography-root MuiTypography-h6 MuiTypography-colorInherit MuiTypography-alignLeft"
+      >
+        A
+      </span>
+    </div>
+    <div
+      class="MuiBox-root MuiBox-root-90 makeStyles-text-54"
+    >
+      <span
+        class="MuiTypography-root MuiTypography-h6 MuiTypography-colorInherit MuiTypography-alignLeft"
+      >
+        inner text
+      </span>
+    </div>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Response Button Component should render snapshot when selected is true 1`] = `
+<DocumentFragment>
+  <button
+    class="MuiButtonBase-root makeStyles-root-1 makeStyles-selected-3"
+    tabindex="0"
+    type="button"
+  >
+    <div
+      class="MuiBox-root MuiBox-root-9 makeStyles-key-2"
+    >
+      <span
+        class="MuiTypography-root MuiTypography-h6 MuiTypography-colorInherit MuiTypography-alignLeft"
+      >
+        A
+      </span>
+    </div>
+    <div
+      class="MuiBox-root MuiBox-root-40 makeStyles-text-4"
+    >
+      <span
+        class="MuiTypography-root MuiTypography-h6 MuiTypography-colorInherit MuiTypography-alignLeft"
+      >
+        inner text
+      </span>
+    </div>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+</DocumentFragment>
+`;

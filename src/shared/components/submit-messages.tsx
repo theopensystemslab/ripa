@@ -3,7 +3,7 @@ import React from "react";
 
 export const Messages = ({ message, type }) => {
   const renderColor = () => {
-    return type == "error" ? "error" : "primary";
+    return type === "error" ? "error" : "primary";
   };
   return (
     <Typography

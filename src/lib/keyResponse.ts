@@ -51,7 +51,7 @@ export const keyBtnSelect = (e, options, setSelection) => {
       }
     } else {
       if (keysPressed.length < Math.ceil(options.length / max)) {
-        //check if list length is longer than max to see how many keypresses are allowed
+        // check if list length is longer than max to see how many keypresses are allowed
         if (e.keyCode !== keysPressed[0]) {
           keysPressed = [e.keyCode];
         } else {

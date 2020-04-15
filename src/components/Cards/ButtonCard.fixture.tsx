@@ -31,18 +31,18 @@ interface IButtonCard {
   moreInfo?: string;
 }
 
-const ButtonCard = ({
+export const ButtonCard = ({
   statement,
   responses,
   dropdown,
-  moreInfo
+  moreInfo,
 }: IButtonCard) => {
   const [selected, setSelected] = React.useState(null);
   if (!dropdown) {
     return (
       <FocusHandler
         tabIndex={0}
-        onKeyDown={e => keyBtnSelect(e, responses, setSelected)}
+        onKeyDown={(e) => keyBtnSelect(e, responses, setSelected)}
       >
         <Question gutterBottom>
           {statement.text}
@@ -55,7 +55,7 @@ const ButtonCard = ({
             </>
           )}
         </Question>
-        {statement.img && <QuestionImage src={statement.img}></QuestionImage>}
+        {statement.img && <QuestionImage src={statement.img} />}
         <Grid container spacing={1}>
           {responses.map((response, i) => {
             const responseKey = setResponseKey(i);
@@ -71,27 +71,26 @@ const ButtonCard = ({
         </Grid>
       </FocusHandler>
     );
-  } else {
-    return (
-      <Box>
-        {statement.img && <QuestionImage src={statement.img}></QuestionImage>}
-        <Question>
-          {statement.text}{" "}
-          <InlineSelect
-            onChange={e => setSelected(e.target.value)}
-            value={selected}
-          >
-            {responses.map(response => (
-              <MenuItem key={response.id} value={response.id}>
-                {response.text}
-              </MenuItem>
-            ))}
-          </InlineSelect>{" "}
-          {statement.textEnd}
-        </Question>
-      </Box>
-    );
   }
+  return (
+    <Box>
+      {statement.img && <QuestionImage src={statement.img} />}
+      <Question>
+        {statement.text}{" "}
+        <InlineSelect
+          onChange={(e) => setSelected(e.target.value)}
+          value={selected}
+        >
+          {responses.map((response) => (
+            <MenuItem key={response.id} value={response.id}>
+              {response.text}
+            </MenuItem>
+          ))}
+        </InlineSelect>{" "}
+        {statement.textEnd}
+      </Question>
+    </Box>
+  );
 };
 
 export default {
@@ -100,17 +99,17 @@ export default {
       <ButtonCard
         statement={{
           id: "s1",
-          text: "The house has"
+          text: "The house has",
         }}
         responses={[
           {
             id: "r1",
-            text: "1 storey"
+            text: "1 storey",
           },
           {
             id: "r2",
-            text: "2 or more storeys"
-          }
+            text: "2 or more storeys",
+          },
         ]}
       />
     </Box>
@@ -122,17 +121,17 @@ export default {
           id: "s1",
           text: "The full width of all extensions will be",
           img:
-            "https://planx-infrastructure.s3.amazonaws.com/uploads/88a24749-e678-49e3-98a1-7ee8bd3bdc53_outrigger_1storey_widthmorethanhalf%20copy.svg"
+            "https://planx-infrastructure.s3.amazonaws.com/uploads/88a24749-e678-49e3-98a1-7ee8bd3bdc53_outrigger_1storey_widthmorethanhalf%20copy.svg",
         }}
         responses={[
           {
             id: "r1",
-            text: "1/2 the width of the original house, or less"
+            text: "1/2 the width of the original house, or less",
           },
           {
             id: "r2",
-            text: "more than 1/2 the width of the original house"
-          }
+            text: "more than 1/2 the width of the original house",
+          },
         ]}
       />
     </Box>
@@ -142,7 +141,7 @@ export default {
       <ButtonCard
         statement={{
           id: "s1",
-          text: "The house has"
+          text: "The house has",
         }}
         moreInfo="blah blah"
         responses={[
@@ -150,14 +149,14 @@ export default {
             id: "r1",
             text: "1 storey",
             img:
-              "https://planx-infrastructure.s3.amazonaws.com/uploads/1a72ac9b-e061-4007-b316-7eac494e621d_4.2_side-extensions_SemiD_sideextension_originalhouse_1storey.svg"
+              "https://planx-infrastructure.s3.amazonaws.com/uploads/1a72ac9b-e061-4007-b316-7eac494e621d_4.2_side-extensions_SemiD_sideextension_originalhouse_1storey.svg",
           },
           {
             id: "r2",
             text: "2 or more storeys",
             img:
-              "https://planx-infrastructure.s3.amazonaws.com/uploads/ac8bd053-a4e8-42a5-90f6-59f56e9bacf5_4.2_side-extensions_SemiD_sideextension_originalhouse_2storeys.svg"
-          }
+              "https://planx-infrastructure.s3.amazonaws.com/uploads/ac8bd053-a4e8-42a5-90f6-59f56e9bacf5_4.2_side-extensions_SemiD_sideextension_originalhouse_2storeys.svg",
+          },
         ]}
       />
     </Box>
@@ -170,20 +169,20 @@ export default {
           text: "The full width of all extensions will be",
           textEnd: "of the original house",
           img:
-            "https://planx-infrastructure.s3.amazonaws.com/uploads/88a24749-e678-49e3-98a1-7ee8bd3bdc53_outrigger_1storey_widthmorethanhalf%20copy.svg"
+            "https://planx-infrastructure.s3.amazonaws.com/uploads/88a24749-e678-49e3-98a1-7ee8bd3bdc53_outrigger_1storey_widthmorethanhalf%20copy.svg",
         }}
         dropdown={true}
         responses={[
           {
             id: "r1",
-            text: "1/2 the width or less"
+            text: "1/2 the width or less",
           },
           {
             id: "r2",
-            text: "more than 1/2 the width"
-          }
+            text: "more than 1/2 the width",
+          },
         ]}
       />
     </Box>
-  )
+  ),
 };
