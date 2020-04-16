@@ -12,6 +12,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import ArrowForward from "@material-ui/icons/ArrowForward";
 import CouncilLogo from "@material-ui/icons/EcoOutlined";
 import MenuIcon from "@material-ui/icons/Menu";
+import classNames from "classnames";
 import * as React from "react";
 import { Clipboard, LogOut } from "react-feather";
 import Headroom from "react-headroom";
@@ -24,6 +25,18 @@ const useStyles = makeStyles(theme => ({
     minHeight: "100vh",
     display: "flex",
     flexDirection: "column"
+  },
+  appBar: {
+    [theme.breakpoints.up("lg")]: {
+      height: 64,
+      boxSizing: "border-box"
+    }
+  },
+  appBarStepper: {
+    [theme.breakpoints.up("lg")]: {
+      height: 168,
+      boxSizing: "border-box"
+    }
   },
   header: {
     [theme.breakpoints.up("lg")]: {
@@ -38,10 +51,12 @@ const useStyles = makeStyles(theme => ({
     flex: 1,
     alignItems: "stretch",
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    justifyContent: "center"
   },
   footer: {
     padding: theme.spacing(2, 3),
+    height: 52,
     "& a": {
       textDecoration: "none",
       padding: "0 20px 0 0"
@@ -98,8 +113,13 @@ export const Header = ({
   };
   const classes = useStyles();
   return (
-    <Headroom>
-      <AppBar elevation={0} color="primary" position="static">
+    <Headroom style={{ zIndex: 1000 }}>
+      <AppBar
+        className={classNames(classes.appBar, address && classes.appBarStepper)}
+        elevation={0}
+        color="primary"
+        position={address ? "static" : "fixed"}
+      >
         <Toolbar className={classes.header}>
           <Box
             className={classes.logo}
@@ -120,10 +140,10 @@ export const Header = ({
                     </Box>
                   </Grid>
                   {/* <Grid item>
-                <Box fontSize="subtitle1.fontSize" pl={2}>
-                  Saved 1m ago
-                </Box>
-              </Grid> */}
+                  <Box fontSize="subtitle1.fontSize" pl={2}>
+                    Saved 1m ago
+                  </Box>
+                </Grid> */}
                 </Grid>
               </Box>
               <Box className={classes.menu}>
