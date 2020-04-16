@@ -1,10 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Expandable Checkboxes Component render snapshot 1`] = `
+exports[`Expandable Checkboxes Component should render snapshot 1`] = `
 <DocumentFragment>
-  <form>
+  <form
+    data-testid="expandableForm"
+  >
     <div
-      class="MuiBox-root MuiBox-root-9"
+      class="MuiBox-root MuiBox-root-186"
     >
       <h4
         class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
@@ -14,20 +16,20 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
         </strong>
       </h4>
       <div
-        class="MuiPaper-root MuiExpansionPanel-root makeStyles-expansionPanel-3 MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
+        class="MuiPaper-root MuiExpansionPanel-root makeStyles-expansionPanel-180 MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
       >
         <div
           aria-controls="additional-actions1-content"
           aria-disabled="false"
           aria-expanded="false"
           aria-label="Expand"
-          class="MuiButtonBase-root MuiExpansionPanelSummary-root makeStyles-summary-5"
+          class="MuiButtonBase-root MuiExpansionPanelSummary-root makeStyles-summary-182"
           id="additional-actions1-header"
           role="button"
           tabindex="0"
         >
           <div
-            class="MuiExpansionPanelSummary-content makeStyles-summaryContent-6"
+            class="MuiExpansionPanelSummary-content makeStyles-summaryContent-183"
           >
             section A
           </div>
@@ -71,7 +73,7 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                 role="region"
               >
                 <div
-                  class="MuiExpansionPanelDetails-root makeStyles-details-7"
+                  class="MuiExpansionPanelDetails-root makeStyles-details-184"
                 >
                   <fieldset
                     class="MuiFormControl-root"
@@ -84,24 +86,24 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                     >
                       <div>
                         <label
-                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-1"
+                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-178"
                         >
                           <span
                             aria-disabled="false"
-                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-134 MuiCheckbox-root makeStyles-checkBoxRoot-125 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-311 MuiCheckbox-root makeStyles-checkBoxRoot-302 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                           >
                             <span
                               class="MuiIconButton-label"
                             >
                               <input
-                                class="PrivateSwitchBase-input-137"
+                                class="PrivateSwitchBase-input-314"
                                 data-indeterminate="false"
                                 name="Response A1"
                                 type="checkbox"
                                 value="Response A1"
                               />
                               <span
-                                class="makeStyles-icon-126"
+                                class="makeStyles-icon-303"
                                 font-size="default"
                               />
                             </span>
@@ -110,7 +112,7 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                             />
                           </span>
                           <span
-                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-2 MuiTypography-body1"
+                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-179 MuiTypography-body1"
                           >
                             Response A1
                           </span>
@@ -118,24 +120,24 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                       </div>
                       <div>
                         <label
-                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-1"
+                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-178"
                         >
                           <span
                             aria-disabled="false"
-                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-134 MuiCheckbox-root makeStyles-checkBoxRoot-125 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-311 MuiCheckbox-root makeStyles-checkBoxRoot-302 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                           >
                             <span
                               class="MuiIconButton-label"
                             >
                               <input
-                                class="PrivateSwitchBase-input-137"
+                                class="PrivateSwitchBase-input-314"
                                 data-indeterminate="false"
                                 name="Response A2"
                                 type="checkbox"
                                 value="Response A2"
                               />
                               <span
-                                class="makeStyles-icon-126"
+                                class="makeStyles-icon-303"
                                 font-size="default"
                               />
                             </span>
@@ -144,7 +146,7 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                             />
                           </span>
                           <span
-                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-2 MuiTypography-body1"
+                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-179 MuiTypography-body1"
                           >
                             Response A2
                           </span>
@@ -152,24 +154,24 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                       </div>
                       <div>
                         <label
-                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-1"
+                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-178"
                         >
                           <span
                             aria-disabled="false"
-                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-134 MuiCheckbox-root makeStyles-checkBoxRoot-125 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-311 MuiCheckbox-root makeStyles-checkBoxRoot-302 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                           >
                             <span
                               class="MuiIconButton-label"
                             >
                               <input
-                                class="PrivateSwitchBase-input-137"
+                                class="PrivateSwitchBase-input-314"
                                 data-indeterminate="false"
                                 name="Response A3"
                                 type="checkbox"
                                 value="Response A3"
                               />
                               <span
-                                class="makeStyles-icon-126"
+                                class="makeStyles-icon-303"
                                 font-size="default"
                               />
                             </span>
@@ -178,7 +180,7 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                             />
                           </span>
                           <span
-                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-2 MuiTypography-body1"
+                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-179 MuiTypography-body1"
                           >
                             Response A3
                           </span>
@@ -193,20 +195,20 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
         </div>
       </div>
       <div
-        class="MuiPaper-root MuiExpansionPanel-root makeStyles-expansionPanel-3 MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
+        class="MuiPaper-root MuiExpansionPanel-root makeStyles-expansionPanel-180 MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
       >
         <div
           aria-controls="additional-actions1-content"
           aria-disabled="false"
           aria-expanded="false"
           aria-label="Expand"
-          class="MuiButtonBase-root MuiExpansionPanelSummary-root makeStyles-summary-5"
+          class="MuiButtonBase-root MuiExpansionPanelSummary-root makeStyles-summary-182"
           id="additional-actions1-header"
           role="button"
           tabindex="0"
         >
           <div
-            class="MuiExpansionPanelSummary-content makeStyles-summaryContent-6"
+            class="MuiExpansionPanelSummary-content makeStyles-summaryContent-183"
           >
             section B
           </div>
@@ -250,7 +252,7 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                 role="region"
               >
                 <div
-                  class="MuiExpansionPanelDetails-root makeStyles-details-7"
+                  class="MuiExpansionPanelDetails-root makeStyles-details-184"
                 >
                   <fieldset
                     class="MuiFormControl-root"
@@ -263,24 +265,24 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                     >
                       <div>
                         <label
-                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-1"
+                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-178"
                         >
                           <span
                             aria-disabled="false"
-                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-134 MuiCheckbox-root makeStyles-checkBoxRoot-125 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-311 MuiCheckbox-root makeStyles-checkBoxRoot-302 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                           >
                             <span
                               class="MuiIconButton-label"
                             >
                               <input
-                                class="PrivateSwitchBase-input-137"
+                                class="PrivateSwitchBase-input-314"
                                 data-indeterminate="false"
                                 name="Response B1"
                                 type="checkbox"
                                 value="Response B1"
                               />
                               <span
-                                class="makeStyles-icon-126"
+                                class="makeStyles-icon-303"
                                 font-size="default"
                               />
                             </span>
@@ -289,7 +291,7 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                             />
                           </span>
                           <span
-                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-2 MuiTypography-body1"
+                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-179 MuiTypography-body1"
                           >
                             Response B1
                           </span>
@@ -297,24 +299,24 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                       </div>
                       <div>
                         <label
-                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-1"
+                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-178"
                         >
                           <span
                             aria-disabled="false"
-                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-134 MuiCheckbox-root makeStyles-checkBoxRoot-125 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-311 MuiCheckbox-root makeStyles-checkBoxRoot-302 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                           >
                             <span
                               class="MuiIconButton-label"
                             >
                               <input
-                                class="PrivateSwitchBase-input-137"
+                                class="PrivateSwitchBase-input-314"
                                 data-indeterminate="false"
                                 name="Response B2"
                                 type="checkbox"
                                 value="Response B2"
                               />
                               <span
-                                class="makeStyles-icon-126"
+                                class="makeStyles-icon-303"
                                 font-size="default"
                               />
                             </span>
@@ -323,7 +325,7 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                             />
                           </span>
                           <span
-                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-2 MuiTypography-body1"
+                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-179 MuiTypography-body1"
                           >
                             Response B2
                           </span>
@@ -331,24 +333,24 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                       </div>
                       <div>
                         <label
-                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-1"
+                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-178"
                         >
                           <span
                             aria-disabled="false"
-                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-134 MuiCheckbox-root makeStyles-checkBoxRoot-125 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-311 MuiCheckbox-root makeStyles-checkBoxRoot-302 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                           >
                             <span
                               class="MuiIconButton-label"
                             >
                               <input
-                                class="PrivateSwitchBase-input-137"
+                                class="PrivateSwitchBase-input-314"
                                 data-indeterminate="false"
                                 name="Response B3"
                                 type="checkbox"
                                 value="Response B3"
                               />
                               <span
-                                class="makeStyles-icon-126"
+                                class="makeStyles-icon-303"
                                 font-size="default"
                               />
                             </span>
@@ -357,7 +359,7 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                             />
                           </span>
                           <span
-                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-2 MuiTypography-body1"
+                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-179 MuiTypography-body1"
                           >
                             Response B3
                           </span>
@@ -372,20 +374,20 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
         </div>
       </div>
       <div
-        class="MuiPaper-root MuiExpansionPanel-root makeStyles-expansionPanel-3 MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
+        class="MuiPaper-root MuiExpansionPanel-root makeStyles-expansionPanel-180 MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
       >
         <div
           aria-controls="additional-actions1-content"
           aria-disabled="false"
           aria-expanded="false"
           aria-label="Expand"
-          class="MuiButtonBase-root MuiExpansionPanelSummary-root makeStyles-summary-5"
+          class="MuiButtonBase-root MuiExpansionPanelSummary-root makeStyles-summary-182"
           id="additional-actions1-header"
           role="button"
           tabindex="0"
         >
           <div
-            class="MuiExpansionPanelSummary-content makeStyles-summaryContent-6"
+            class="MuiExpansionPanelSummary-content makeStyles-summaryContent-183"
           >
             section C
           </div>
@@ -429,7 +431,7 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                 role="region"
               >
                 <div
-                  class="MuiExpansionPanelDetails-root makeStyles-details-7"
+                  class="MuiExpansionPanelDetails-root makeStyles-details-184"
                 >
                   <fieldset
                     class="MuiFormControl-root"
@@ -442,24 +444,24 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                     >
                       <div>
                         <label
-                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-1"
+                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-178"
                         >
                           <span
                             aria-disabled="false"
-                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-134 MuiCheckbox-root makeStyles-checkBoxRoot-125 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-311 MuiCheckbox-root makeStyles-checkBoxRoot-302 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                           >
                             <span
                               class="MuiIconButton-label"
                             >
                               <input
-                                class="PrivateSwitchBase-input-137"
+                                class="PrivateSwitchBase-input-314"
                                 data-indeterminate="false"
                                 name="Response C1"
                                 type="checkbox"
                                 value="Response C1"
                               />
                               <span
-                                class="makeStyles-icon-126"
+                                class="makeStyles-icon-303"
                                 font-size="default"
                               />
                             </span>
@@ -468,7 +470,7 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                             />
                           </span>
                           <span
-                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-2 MuiTypography-body1"
+                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-179 MuiTypography-body1"
                           >
                             Response C1
                           </span>
@@ -476,24 +478,24 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                       </div>
                       <div>
                         <label
-                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-1"
+                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-178"
                         >
                           <span
                             aria-disabled="false"
-                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-134 MuiCheckbox-root makeStyles-checkBoxRoot-125 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-311 MuiCheckbox-root makeStyles-checkBoxRoot-302 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                           >
                             <span
                               class="MuiIconButton-label"
                             >
                               <input
-                                class="PrivateSwitchBase-input-137"
+                                class="PrivateSwitchBase-input-314"
                                 data-indeterminate="false"
                                 name="Response C2"
                                 type="checkbox"
                                 value="Response C2"
                               />
                               <span
-                                class="makeStyles-icon-126"
+                                class="makeStyles-icon-303"
                                 font-size="default"
                               />
                             </span>
@@ -502,7 +504,7 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                             />
                           </span>
                           <span
-                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-2 MuiTypography-body1"
+                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-179 MuiTypography-body1"
                           >
                             Response C2
                           </span>
@@ -510,24 +512,24 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                       </div>
                       <div>
                         <label
-                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-1"
+                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-178"
                         >
                           <span
                             aria-disabled="false"
-                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-134 MuiCheckbox-root makeStyles-checkBoxRoot-125 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-311 MuiCheckbox-root makeStyles-checkBoxRoot-302 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                           >
                             <span
                               class="MuiIconButton-label"
                             >
                               <input
-                                class="PrivateSwitchBase-input-137"
+                                class="PrivateSwitchBase-input-314"
                                 data-indeterminate="false"
                                 name="Response C3"
                                 type="checkbox"
                                 value="Response C3"
                               />
                               <span
-                                class="makeStyles-icon-126"
+                                class="makeStyles-icon-303"
                                 font-size="default"
                               />
                             </span>
@@ -536,7 +538,7 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
                             />
                           </span>
                           <span
-                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-2 MuiTypography-body1"
+                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-179 MuiTypography-body1"
                           >
                             Response C3
                           </span>
@@ -551,7 +553,7 @@ exports[`Expandable Checkboxes Component render snapshot 1`] = `
         </div>
       </div>
       <div
-        class="MuiBox-root MuiBox-root-138"
+        class="MuiBox-root MuiBox-root-315"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"

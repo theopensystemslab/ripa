@@ -90,13 +90,16 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
       setTimeout(() => {
         resetForm();
         setSuccessMessageVisible(false);
-        setSubmitButtonDisabled(true);
+        setSubmitButtonDisabled(false);
       }, 1000);
     }
   });
   const classes = useStyles();
   return (
-    <form onSubmit={callback || formik.handleSubmit}>
+    <form
+      data-testid="expandableForm"
+      onSubmit={callback || formik.handleSubmit}
+    >
       <Box maxWidth={500}>
         <Typography variant="h4" gutterBottom>
           <strong>{title}</strong>
