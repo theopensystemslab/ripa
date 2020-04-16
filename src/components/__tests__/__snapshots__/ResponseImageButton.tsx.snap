@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Response Button Component should render snapshot when selected is false 1`] = `
+<DocumentFragment>
+  <button
+    class="MuiButtonBase-root makeStyles-root-144"
+    tabindex="0"
+    type="button"
+  >
+    <div
+      class="makeStyles-imageContainer-145"
+    >
+      img.png
+    </div>
+    <div
+      class="MuiGrid-root makeStyles-text-149 MuiGrid-container MuiGrid-wrap-xs-nowrap"
+    >
+      <div
+        class="MuiGrid-root makeStyles-key-148 MuiGrid-item"
+      >
+        <p
+          class="MuiTypography-root makeStyles-type-150 MuiTypography-body1 MuiTypography-colorInherit"
+        >
+          A
+        </p>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item"
+      >
+        <p
+          class="MuiTypography-root makeStyles-type-150 MuiTypography-body1 MuiTypography-colorInherit"
+        >
+          Inner text
+        </p>
+      </div>
+    </div>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Response Button Component should render snapshot when selected is true 1`] = `
+<DocumentFragment>
+  <button
+    class="MuiButtonBase-root makeStyles-root-1 makeStyles-selected-3"
+    tabindex="0"
+    type="button"
+  >
+    <div
+      class="makeStyles-imageContainer-2"
+    >
+      img.png
+    </div>
+    <div
+      class="MuiGrid-root makeStyles-text-6 MuiGrid-container MuiGrid-wrap-xs-nowrap"
+    >
+      <div
+        class="MuiGrid-root makeStyles-key-5 MuiGrid-item"
+      >
+        <p
+          class="MuiTypography-root makeStyles-type-7 MuiTypography-body1 MuiTypography-colorInherit"
+        >
+          A
+        </p>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item"
+      >
+        <p
+          class="MuiTypography-root makeStyles-type-7 MuiTypography-body1 MuiTypography-colorInherit"
+        >
+          Inner text
+        </p>
+      </div>
+    </div>
+  </button>
+</DocumentFragment>
+`;

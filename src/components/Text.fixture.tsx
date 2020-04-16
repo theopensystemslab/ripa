@@ -1,53 +1,62 @@
+import Box from "@material-ui/core/Box";
 import * as React from "react";
 
 import Text from "./Text";
 
 export default {
   "Short Text": (
-    <Text
-      title="Short Text Input"
-      multiline={false}
-      type="text"
-      name="textFieldShort"
-      label="label"
-      placeholder=""
-      required={false}
-    />
+    <Box bgcolor="background.paper" px={4}>
+      <Text
+        title="Short Text Input"
+        multiline={false}
+        type="text"
+        name="textFieldShort"
+        label="label"
+        placeholder=""
+        required={false}
+      />
+    </Box>
   ),
   "Long Text": (
-    <Text
-      title="Long Text Input"
-      multiline
-      fullWidth
-      type="text"
-      name="textFieldLong"
-      label="label"
-      placeholder="instruction"
-      required={false}
-      maxWords={5}
-    />
+    <Box bgcolor="background.paper" px={4}>
+      <Text
+        title="Long Text Input"
+        multiline
+        fullWidth
+        type="text"
+        name="textFieldLong"
+        label="label"
+        placeholder="instruction"
+        required={false}
+        maxWords={5}
+      />
+    </Box>
   ),
   Email: (
-    <Text
-      title="Email"
-      label="Email Address"
-      placeholder="you@example.com"
-      name="email"
-      type="email"
-      required={false}
-    />
+    <Box bgcolor="background.paper" px={4}>
+      <Text
+        title="Email"
+        label="Email Address"
+        placeholder="you@example.com"
+        name="email"
+        type="email"
+        required={false}
+      />
+    </Box>
   ),
   Number: (
-    <Text
-      title="Number"
-      label="Number"
-      fullWidth={false}
-      placeholder="Number Input"
-      name="number"
-      type="number"
-      unit="specified unit"
-      required={false}
-      inputProps={{ min: 2, max: 10 }}
-    />
+    <Box bgcolor="background.paper" px={4}>
+      <Text
+        title="Number"
+        label="Number"
+        fullWidth={false}
+        placeholder="Number Input"
+        name="number"
+        type="number"
+        unit="specified unit"
+        required={false}
+        inputProps={{ min: 2, max: 10 }}
+      />
+    </Box>
   )
 };

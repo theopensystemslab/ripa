@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text Component Of type long text should render snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root MuiBox-root-257"
+  >
+    <form>
+      <h5
+        class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      >
+        test title
+      </h5>
+      <div
+        class="MuiBox-root MuiBox-root-288"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+          for="test name"
+        >
+          long text input label
+        </label>
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-multiline MuiInput-multiline"
+          max="Infinity"
+          min="0"
+        >
+          <textarea
+            class="MuiInputBase-input MuiInput-input MuiInputBase-inputMultiline MuiInput-inputMultiline"
+            id="test name"
+            name="test name"
+            placeholder="long text input placeholder"
+            rows="5"
+          />
+        </div>
+        <div
+          class="MuiBox-root MuiBox-root-341"
+        >
+          <span>
+             10 words Remaining 
+          </span>
+        </div>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Text Component of type Email should render snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root MuiBox-root-601"
+  >
+    <form>
+      <h5
+        class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      >
+        test title
+      </h5>
+      <div
+        class="MuiBox-root MuiBox-root-632"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+          for="test name"
+        >
+          Email text input label
+        </label>
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth"
+          max="Infinity"
+          min="0"
+        >
+          <input
+            class="MuiInputBase-input MuiInput-input"
+            id="test name"
+            name="test name"
+            placeholder="Email text input placeholder"
+            rows="1"
+            type="email"
+            value=""
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Text Component of type Number should render snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root MuiBox-root-856"
+  >
+    <form>
+      <h5
+        class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      >
+        test title
+      </h5>
+      <div
+        class="MuiBox-root MuiBox-root-887"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+          for="test name"
+        >
+          number input label
+        </label>
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth"
+          max="Infinity"
+          min="0"
+        >
+          <input
+            class="MuiInputBase-input MuiInput-input"
+            id="test name"
+            name="test name"
+            placeholder="number input placeholder"
+            rows="1"
+            type="number"
+            value=""
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Text Component of type short text should render snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root MuiBox-root-2"
+  >
+    <form>
+      <h5
+        class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      >
+        test title
+      </h5>
+      <div
+        class="MuiBox-root MuiBox-root-33"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+          for="test name"
+        >
+          short text input label
+        </label>
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth"
+          max="Infinity"
+          min="0"
+        >
+          <input
+            class="MuiInputBase-input MuiInput-input"
+            id="test name"
+            name="test name"
+            placeholder="short text input placeholder"
+            rows="1"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;

@@ -90,6 +90,9 @@ const _default = {
     },
     MuiInputLabel: {
       shrink: true
+    },
+    MuiTableRow: {
+      hover: true
     }
   },
   overrides: {
@@ -475,6 +478,31 @@ const _default = {
           margin: "1rem 0",
           minHeight: "0"
         }
+      }
+    },
+    MuiTableRow: {
+      footer: {
+        backgroundColor: "#e9e9e9"
+      }
+    },
+    MuiTableCell: {
+      root: {
+        fontSize: "1rem",
+        padding: "10px 12px",
+        borderBottom: 0,
+        borderRight: 0,
+        "&:not(:first-child)": {
+          borderLeft: "1px solid currentColor"
+        }
+      },
+      head: {
+        borderBottom: "1px solid currentColor",
+        fontWeight: 700
+      },
+      footer: {
+        borderBottom: 0,
+        fontSize: 16,
+        color: "currentColor"
       }
     }
   }

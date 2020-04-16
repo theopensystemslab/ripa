@@ -139,10 +139,10 @@ const MyApplication = ({ sections = [] }) => {
                   <span className={classes.statusText}>
                     {STATUS[status].text}
                   </span>
-                  {status === 0 && <ArrowRight></ArrowRight>}
-                  {status === 1 && <MoreHorizontal></MoreHorizontal>}
-                  {status === 2 && <Check></Check>}
-                  {status === 3 && <AlertTriangle></AlertTriangle>}
+                  {status === 0 && <ArrowRight />}
+                  {status === 1 && <MoreHorizontal />}
+                  {status === 2 && <Check />}
+                  {status === 3 && <AlertTriangle />}
                 </Grid>
               </Grid>
             </Link>

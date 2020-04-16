@@ -60,18 +60,19 @@ export const Text: React.FC<IText> = ({
   });
 
   return (
-    <Box bgcolor="background.paper" p={4}>
+    <Box pb={4} maxWidth={480}>
       <form onSubmit={formik.handleSubmit}>
-        <Typography variant="h5" gutterBottom>
-          {title}
+        <Typography variant="h4" gutterBottom>
+          <strong>{title}</strong>
         </Typography>
-        <Box mb={3} maxWidth={600}>
-          {label && <InputLabel>{label}</InputLabel>}
+        <Box mb={3}>
+          {label && <InputLabel htmlFor={name}>{label}</InputLabel>}
           <Input
             placeholder={placeholder}
             fullWidth={fullWidth}
             multiline={multiline}
             name={name}
+            id={name}
             type={type}
             onChange={e => {
               if (maxWords) {
@@ -91,7 +92,12 @@ export const Text: React.FC<IText> = ({
               pt={1}
               textAlign="right"
             >
-              <span>{diff >= 0 ? `${diff}` : 0} words Remaining</span>
+              <span>
+                {" "}
+                {diff >= 0
+                  ? `${diff} words Remaining`
+                  : `0 words Remaining`}{" "}
+              </span>
             </Box>
           )}
           {unit && (

@@ -1,12 +1,12 @@
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
-import * as React from "react";
+import { useFormik } from "formik";
+import React, { useState } from "react";
 
-import useForm from "../lib/useForm";
+import Messages from "../shared/components/submit-messages";
 
 interface IPayment {
   fee: number;
@@ -23,100 +23,117 @@ const Payment: React.FC<IPayment> = ({ fee }) => {
     </Box>
   );
 };
+interface ICardDetails {
+  cardholderName?: string;
+  month?: number;
+  year?: number;
+  securityCode?: number;
+  cardNumber?: number;
+}
+export const CardDetails: React.FC<ICardDetails> = () => {
+  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
 
-export const CardDetails: React.FC = () => {
-  const defaults = {
-    cardholderName: "",
-    month: "",
-    year: "",
-    securityCode: ""
-  };
-
-  const { values, handleChange, handleSubmit } = useForm(defaults, v => {
-    console.log(v);
+  const formik = useFormik({
+    initialValues: {
+      cardNumber: "",
+      securityCode: "",
+      month: "",
+      year: "",
+      cardholderName: ""
+    },
+    onSubmit: (values, { resetForm }) => {
+      console.log(JSON.stringify(values, null, 2));
+      setSuccessMessageVisible(true);
+      setTimeout(() => {
+        resetForm();
+        setSuccessMessageVisible(false);
+      }, 1000);
+    }
   });
-
   return (
     <Box bgcolor="background.paper" py={6}>
-      <Container maxWidth="md">
-        <form onSubmit={handleSubmit}>
-          <Box maxWidth={440}>
-            <Typography variant="h4" gutterBottom>
-              <strong>Enter card details</strong>
-            </Typography>
-            <Box pb={3}>
-              <TextField
-                type="number"
-                value={values.month}
-                name="cardNumber"
-                fullWidth
-                onChange={handleChange}
-                placeholder="card number"
-                label="Card number"
-              />
-              <Box fontSize="body2.fontSize" color="grey.400" pt={1}>
-                Accepted credit and debit card types
-              </Box>
-            </Box>
-            <Box pb={3}>
-              <Typography variant="body2" component="div" gutterBottom>
-                Expiry date
-              </Typography>
-              <Box maxWidth={200}>
-                <Grid container spacing={1} alignItems="flex-end" wrap="nowrap">
-                  <Grid item>
-                    <TextField
-                      type="number"
-                      value={values.month}
-                      name="month"
-                      onChange={handleChange}
-                      placeholder="month"
-                      label="Month"
-                    />
-                  </Grid>
-                  <Grid item>
-                    <Box fontSize="24px" fontWeight="400" lineHeight="40px">
-                      /
-                    </Box>
-                  </Grid>
-                  <Grid item>
-                    <TextField
-                      type="number"
-                      value={values.year}
-                      name="year"
-                      onChange={handleChange}
-                      placeholder="year"
-                      label="Year"
-                    />
-                  </Grid>
-                </Grid>
-              </Box>
-            </Box>
-            <Box pb={3}>
-              <TextField
-                value={values.cardholderName}
-                name="cardholderName"
-                onChange={handleChange}
-                placeholder="name"
-                label="Name on card"
-                fullWidth
-              />
-            </Box>
-            <Box pb={5}>
-              <TextField
-                value={values.securityCode}
-                name="securityCode"
-                onChange={handleChange}
-                placeholder="security code"
-                label="Card security code"
-              />
+      <form onSubmit={formik.handleSubmit}>
+        <Box maxWidth={440}>
+          <Typography variant="h4" gutterBottom>
+            <strong>Enter card details</strong>
+          </Typography>
+          <Box pb={3}>
+            <TextField
+              type="number"
+              value={formik.values.cardNumber}
+              name="cardNumber"
+              fullWidth
+              onChange={formik.handleChange}
+              placeholder="Card number"
+              label="Card number"
+            />
+            <Box fontSize="body2.fontSize" color="grey.400" pt={1}>
+              Accepted credit and debit card types
             </Box>
           </Box>
-          <Button type="submit" variant="contained" color="primary">
-            Save and Continue
-          </Button>
-        </form>
-      </Container>
+          <Box pb={3}>
+            <Typography variant="body2" component="div" gutterBottom>
+              Expiry date
+            </Typography>
+            <Box maxWidth={200}>
+              <Grid container spacing={1} alignItems="flex-end" wrap="nowrap">
+                <Grid item>
+                  <TextField
+                    type="number"
+                    value={formik.values.month}
+                    name="month"
+                    onChange={formik.handleChange}
+                    placeholder="Month"
+                    label="Month"
+                  />
+                </Grid>
+                <Grid item>
+                  <Box fontSize="24px" fontWeight="400" lineHeight="40px">
+                    /
+                  </Box>
+                </Grid>
+                <Grid item>
+                  <TextField
+                    type="number"
+                    value={formik.values.year}
+                    name="year"
+                    onChange={formik.handleChange}
+                    placeholder="Year"
+                    label="Year"
+                  />
+                </Grid>
+              </Grid>
+            </Box>
+          </Box>
+          <Box pb={3}>
+            <TextField
+              value={formik.values.cardholderName}
+              name="cardholderName"
+              onChange={formik.handleChange}
+              placeholder="Name"
+              label="Name on card"
+              fullWidth
+            />
+          </Box>
+          <Box pb={5}>
+            <TextField
+              value={formik.values.securityCode}
+              name="securityCode"
+              onChange={formik.handleChange}
+              placeholder="security code"
+              label="Card security code"
+            />
+          </Box>
+        </Box>
+        <Button type="submit" variant="contained" color="primary">
+          Save and Continue
+        </Button>
+        <div>
+          {successMessageVisible ? (
+            <Messages type="success" message="Form submitted successfully" />
+          ) : null}
+        </div>
+      </form>
     </Box>
   );
 };
