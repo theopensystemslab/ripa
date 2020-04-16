@@ -60,12 +60,12 @@ export const Text: React.FC<IText> = ({
   });
 
   return (
-    <Box py={4}>
+    <Box pb={4} maxWidth={480}>
       <form onSubmit={formik.handleSubmit}>
-        <Typography variant="h5" gutterBottom>
-          {title}
+        <Typography variant="h4" gutterBottom>
+          <strong>{title}</strong>
         </Typography>
-        <Box mb={3} maxWidth={600}>
+        <Box mb={3}>
           {label && <InputLabel htmlFor={name}>{label}</InputLabel>}
           <Input
             placeholder={placeholder}

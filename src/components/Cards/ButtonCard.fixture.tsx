@@ -31,7 +31,7 @@ interface IButtonCard {
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-const ButtonCard = ({
+export const ButtonCard = ({
   statement,
   responses,
   dropdown,
@@ -40,7 +40,7 @@ const ButtonCard = ({
   const [selected, setSelected] = React.useState(null);
   if (!dropdown) {
     return (
-      <Box>
+      <Box pb={4}>
         <Question gutterBottom>
           {statement.text}
           {moreInfo && (
