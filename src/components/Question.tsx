@@ -16,11 +16,11 @@ const Question = ({ children, ...props }) => {
   return (
     <Typography
       className={classes.question}
-      variant="h2"
+      variant="h4"
       component="div"
       {...props}
     >
-      {children}
+      <strong>{children}</strong>
     </Typography>
   );
 };
