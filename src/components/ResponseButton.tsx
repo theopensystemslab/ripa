@@ -1,7 +1,6 @@
 import Box from "@material-ui/core/Box";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
 import React from "react";
 
@@ -15,7 +14,8 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "flex-start",
     width: "100%",
     position: "relative",
-    wordBreak: "break-word",
+    fontSize: 20,
+    fontFamily: "inherit",
     transition: "background-color 0.3s ease-out",
     maxWidth: theme.spacing(1) * 60,
     padding: theme.spacing(2, 3),
@@ -48,6 +48,9 @@ const useStyles = makeStyles(theme => ({
   },
   key: {
     opacity: 0.5,
+    width: "1em",
+    wordBreak: "keep-all",
+    textAlign: "center",
     flexShrink: 1,
     marginRight: theme.spacing(3)
   },
@@ -65,7 +68,8 @@ const useStyles = makeStyles(theme => ({
   },
   text: {
     color: "currentColor",
-    zIndex: 1
+    zIndex: 1,
+    wordBreak: "break-word"
   }
 }));
 
@@ -73,7 +77,7 @@ const ResponseButton = ({
   children,
   selected = false,
   handleClick,
-  responseKey,
+  responseKey = "",
   ...props
 }) => {
   const classes = useStyles();
@@ -83,16 +87,8 @@ const ResponseButton = ({
       onClick={handleClick}
       {...props}
     >
-      <Box className={classes.key}>
-        <Typography color="inherit" align="left" component="span" variant="h6">
-          {responseKey}
-        </Typography>
-      </Box>
-      <Box className={classes.text}>
-        <Typography color="inherit" align="left" component="span" variant="h6">
-          {children}
-        </Typography>
-      </Box>
+      <Box className={classes.key}>{responseKey}</Box>
+      <Box className={classes.text}>{children}</Box>
     </ButtonBase>
   );
 };

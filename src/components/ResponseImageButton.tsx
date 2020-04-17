@@ -69,7 +69,7 @@ const useStyles = makeStyles(theme => ({
   },
   key: {
     opacity: 0.5,
-    paddingRight: 20
+    paddingRight: 16
   },
   text: {
     padding: `8px 12px`,
@@ -86,6 +86,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("md")]: {
       fontSize: theme.typography.pxToRem(20)
     }
+  },
+  buttonContent: {
+    height: "100%"
   }
 }));
 
@@ -107,19 +110,21 @@ const ResponseButton = ({
       })}
       {...props}
     >
-      <div className={classNames(classes.imageContainer)}>{image}</div>
-      <Grid container wrap="nowrap" className={classes.text}>
-        <Grid item className={classes.key}>
-          <Typography className={classes.type} color="inherit">
-            {responseKey}
-          </Typography>
+      <div className={classes.buttonContent}>
+        <div className={classNames(classes.imageContainer)}>{image}</div>
+        <Grid container wrap="nowrap" className={classes.text}>
+          <Grid item className={classes.key}>
+            <Typography className={classes.type} color="inherit">
+              {responseKey}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography className={classes.type} color="inherit">
+              {children}
+            </Typography>
+          </Grid>
         </Grid>
-        <Grid item>
-          <Typography className={classes.type} color="inherit">
-            {children}
-          </Typography>
-        </Grid>
-      </Grid>
+      </div>
     </ButtonBase>
   );
 };
