@@ -9,7 +9,7 @@ export const scrollIntoViewSmoothly =
 export const scrollIn = (node, overrides = {}) => {
   scrollIntoViewSmoothly(node, {
     behavior: "smooth",
-    block: "center",
+    block: "start",
     inline: "center",
     ...overrides
   });
