@@ -4,6 +4,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuItem from "@material-ui/core/MenuItem";
 import * as React from "react";
 import { HelpCircle } from "react-feather";
+import FocusWithin from "react-focus-within";
 
 import { keyBtnSelect, setResponseKey } from "../../lib/keyResponse";
 import FocusHandler from "../FocusHandler";
@@ -40,39 +41,43 @@ export const ButtonCard = ({
   const [selected, setSelected] = React.useState(null);
   if (!dropdown) {
     return (
-      <FocusHandler
-        tabIndex={0}
-        onKeyDown={e => keyBtnSelect(e, responses, setSelected)}
-      >
-        <Box mb={1.5}>
-          <Question>
-            {statement.text}
-            {moreInfo && (
-              <>
-                {" "}
-                <IconButton>
-                  <HelpCircle />
-                </IconButton>
-              </>
-            )}
-          </Question>
-        </Box>
-        {statement.img && <QuestionImage src={statement.img} />}
-        <Grid container spacing={1}>
-          {responses.map((response, i) => {
-            const responseKey = setResponseKey(i);
-            return (
-              <Response
-                response={response}
-                selected={selected === i}
-                responseKey={responseKey}
-                key={i}
-                handleClick={() => setSelected(i)}
-              />
-            );
-          })}
-        </Grid>
-      </FocusHandler>
+      <FocusWithin>
+        {({ isFocused, getFocusProps }) => (
+          <FocusHandler
+            {...getFocusProps()}
+            onKeyDown={e => keyBtnSelect(e, responses, setSelected)}
+          >
+            <Box mb={1.5}>
+              <Question inFocus={isFocused}>
+                {statement.text}
+                {moreInfo && (
+                  <>
+                    {" "}
+                    <IconButton>
+                      <HelpCircle />
+                    </IconButton>
+                  </>
+                )}
+              </Question>
+            </Box>
+            {statement.img && <QuestionImage src={statement.img} />}
+            <Grid container spacing={1}>
+              {responses.map((response, i) => {
+                const responseKey = setResponseKey(i);
+                return (
+                  <Response
+                    response={response}
+                    selected={selected === i}
+                    responseKey={responseKey}
+                    key={i}
+                    handleClick={() => setSelected(i)}
+                  />
+                );
+              })}
+            </Grid>
+          </FocusHandler>
+        )}
+      </FocusWithin>
     );
   }
   return (
