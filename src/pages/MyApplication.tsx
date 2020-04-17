@@ -112,7 +112,7 @@ const MyApplication = ({ sections = [] }) => {
         color="secondary"
         value={percentageComplete}
       />
-      <Box p={0}>
+      <Box pb={4}>
         {sections.map(({ id, text, status }) => (
           <Box
             className={classes.listItem}

@@ -6,7 +6,7 @@ export const setResponseKey = i => {
     const iterations = Math.floor(i / max);
     const remainder = i % max;
     responseKey = [65 + remainder];
-    for (let j = 0; j < iterations; j++) {
+    for (let j = 0; j < iterations; j = j + 1) {
       responseKey.push(65 + remainder);
     }
   } else {
@@ -39,7 +39,7 @@ export const keyBtnSelect = (e, options, setSelection) => {
 
       if (options.length > max) {
         // if length of options list is longer than max set timeout to allow double key press
-        setTimeout(function() {
+        setTimeout(() => {
           // when timer runs out key presses are done. run select function
           selectResponse(); // select the response
           keysPressed = []; // reset array

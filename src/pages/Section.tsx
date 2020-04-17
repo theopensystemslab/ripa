@@ -1,3 +1,4 @@
+import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { ArrowLeft } from "@material-ui/icons";
@@ -168,7 +169,11 @@ const Card = ({ id }) => {
         ...flow.nodes[tgt]
       }));
 
-    return <ButtonCard statement={node} responses={responses} />;
+    return (
+      <Box py={4}>
+        <ButtonCard statement={node} responses={responses} />
+      </Box>
+    );
   }
 
   return (

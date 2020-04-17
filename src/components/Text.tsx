@@ -2,9 +2,10 @@ import { Button } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
-import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
 import * as React from "react";
+
+import Question from "./Question";
 
 interface IMinMax {
   min?: number;
@@ -60,12 +61,12 @@ export const Text: React.FC<IText> = ({
   });
 
   return (
-    <Box pb={4} maxWidth={480}>
+    <Box py={4} maxWidth={480}>
       <form onSubmit={formik.handleSubmit}>
-        <Typography variant="h4" gutterBottom>
-          <strong>{title}</strong>
-        </Typography>
-        <Box mb={3}>
+        <Box mb={1.5}>
+          <Question>{title}</Question>
+        </Box>
+        <Box>
           {label && <InputLabel htmlFor={name}>{label}</InputLabel>}
           <Input
             placeholder={placeholder}
