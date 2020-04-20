@@ -109,7 +109,7 @@ export const FileUpload: React.FC<IFileUpload> = ({
           );
         })}
         <div className={classes.box} {...getRootProps()}>
-          <input {...getInputProps()} />
+          <input data-testid="fileupload" {...getInputProps()} />
           <p>{stateText}</p>
         </div>
         <small>Max size of file is {maxSize} Bytes</small>

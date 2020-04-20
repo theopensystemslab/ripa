@@ -3,7 +3,7 @@
 exports[`File Upload Component should render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root MuiBox-root-4"
+    class="MuiBox-root MuiBox-root-72"
   >
     <form>
       <h1
@@ -12,12 +12,13 @@ exports[`File Upload Component should render snapshot 1`] = `
         File upload
       </h1>
       <div
-        class="makeStyles-box-1"
+        class="makeStyles-box-69"
         tabindex="0"
       >
         <input
           accept="image/*"
           autocomplete="off"
+          data-testid="fileupload"
           multiple=""
           style="display: none;"
           tabindex="-1"
