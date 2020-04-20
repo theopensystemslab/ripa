@@ -8,6 +8,7 @@ export default (
     <ExpandableCheckboxes
       title="Expandable Checkboxes"
       name="ExpandableCheckboxes"
+      required
       panelsOptions={[
         {
           sectionTitle: "section A",

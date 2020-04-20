@@ -47,7 +47,7 @@ describe("Checkboxes Component", () => {
     ).toBeInTheDocument();
   });
   it("should render fail message when nothing is selected and disable the submit button", async () => {
-    const { getByTestId, getByLabelText, findByText, getByText } = render(
+    const { getByLabelText, findByText, getByText } = render(
       <Checkboxes title={title} options={options} name={name} />
     );
     fireEvent.click(getByLabelText(/option 2/i));

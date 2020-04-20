@@ -85,7 +85,6 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
       }
     },
     onSubmit: (values, { resetForm }) => {
-      console.log(JSON.stringify(values, null, 2));
       setSuccessMessageVisible(true);
       setTimeout(() => {
         resetForm();

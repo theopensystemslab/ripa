@@ -25,7 +25,7 @@ describe("Expandable Checkboxes Component", () => {
       }
     ];
   });
-  it("should render success message when submitted ", async () => {
+  it("should render success message when submitted and component is not required", async () => {
     const { getByLabelText, findByText, getByTestId } = render(
       <ExpandableCheckboxes
         title={title}
@@ -34,8 +34,34 @@ describe("Expandable Checkboxes Component", () => {
       />
     );
     fireEvent.click(getByLabelText("Response A1"));
+    fireEvent.click(getByLabelText("Response B2"));
+    fireEvent.click(getByLabelText("Response C2"));
+    fireEvent.click(getByLabelText("Response A1"));
     fireEvent.submit(getByTestId("expandableForm"));
     expect(await findByText(/form submitted successfully/i)).toBeInTheDocument;
+  });
+  it("should render error message when submitted and component is required", async () => {
+    const { getByLabelText, findByText, getByText, getByTestId } = render(
+      <ExpandableCheckboxes
+        title={title}
+        name={name}
+        required
+        panelsOptions={panelsOptions}
+      />
+    );
+    expect(getByText(/save and continue/i).closest("button")).toHaveAttribute(
+      "disabled"
+    );
+    fireEvent.click(getByLabelText("Response A1"));
+    fireEvent.click(getByLabelText("Response B1"));
+    fireEvent.click(getByLabelText("Response C1"));
+    expect(
+      getByText(/save and continue/i).closest("button")
+    ).not.toHaveAttribute("disabled");
+    fireEvent.submit(getByTestId("expandableForm"));
+    expect(
+      await findByText(/form submitted successfully/i)
+    ).toBeInTheDocument();
   });
   it("should render snapshot", () => {
     const { asFragment } = render(
