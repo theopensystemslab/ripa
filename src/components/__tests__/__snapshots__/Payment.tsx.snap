@@ -1,0 +1,253 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Payment Component of type Card Details should render snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root MuiBox-root-308"
+  >
+    <form
+      data-testid="cardDetailsForm"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-309"
+      >
+        <h4
+          class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
+        >
+          <strong>
+            Enter card details
+          </strong>
+        </h4>
+        <div
+          class="MuiBox-root MuiBox-root-340"
+        >
+          <div
+            class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+              data-shrink="false"
+            >
+              Card number
+            </label>
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiInput-input"
+                name="cardNumber"
+                placeholder="Card number"
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="MuiBox-root MuiBox-root-398"
+          >
+            Accepted credit and debit card types
+          </div>
+        </div>
+        <div
+          class="MuiBox-root MuiBox-root-399"
+        >
+          <div
+            class="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom"
+          >
+            Expiry date
+          </div>
+          <div
+            class="MuiBox-root MuiBox-root-400"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-wrap-xs-nowrap MuiGrid-align-items-xs-flex-end"
+            >
+              <div
+                class="MuiGrid-root MuiGrid-item"
+              >
+                <div
+                  class="MuiFormControl-root MuiTextField-root"
+                >
+                  <label
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+                    data-shrink="false"
+                  >
+                    Month
+                  </label>
+                  <div
+                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                  >
+                    <input
+                      aria-invalid="false"
+                      class="MuiInputBase-input MuiInput-input"
+                      name="month"
+                      placeholder="Month"
+                      type="number"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-item"
+              >
+                <div
+                  class="MuiBox-root MuiBox-root-504"
+                >
+                  /
+                </div>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-item"
+              >
+                <div
+                  class="MuiFormControl-root MuiTextField-root"
+                >
+                  <label
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+                    data-shrink="false"
+                  >
+                    Year
+                  </label>
+                  <div
+                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                  >
+                    <input
+                      aria-invalid="false"
+                      class="MuiInputBase-input MuiInput-input"
+                      name="year"
+                      placeholder="Year"
+                      type="number"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root MuiBox-root-505"
+        >
+          <div
+            class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+              data-shrink="false"
+            >
+              Name on card
+            </label>
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiInput-input"
+                name="cardholderName"
+                placeholder="Name"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root MuiBox-root-506"
+        >
+          <div
+            class="MuiFormControl-root MuiTextField-root"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+              data-shrink="false"
+            >
+              Card security code
+            </label>
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiInput-input"
+                name="securityCode"
+                placeholder="security code"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+        tabindex="0"
+        type="submit"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Save and Continue
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+      <div />
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Payment Component of type Receipt should render snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root MuiBox-root-583"
+  >
+    <h5
+      class="MuiTypography-root MuiTypography-h5"
+    >
+      Planning fee paid
+    </h5>
+    <h4
+      class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
+    >
+      <strong>
+        £204
+      </strong>
+    </h4>
+    <div
+      class="MuiBox-root MuiBox-root-614"
+    >
+      It was paid on
+      <h6
+        class="MuiTypography-root MuiTypography-h6"
+      >
+        1/1/2020
+      </h6>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Payment Component of type payment should render snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root MuiBox-root-34"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-h5"
+    >
+      The planning fee for this project is
+    </p>
+    <p
+      class="MuiTypography-root MuiTypography-h4"
+    >
+      <strong>
+        £204
+      </strong>
+    </p>
+  </div>
+</DocumentFragment>
+`;

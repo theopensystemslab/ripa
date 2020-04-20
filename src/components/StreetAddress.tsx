@@ -53,7 +53,7 @@ export const StreetAddress: React.FC<IText> = ({ title, type, options }) => {
         return "";
       case "city":
         return "Town or City";
-      case "county":
+      case "country":
       case "postcode":
         return el;
       default:
@@ -62,7 +62,7 @@ export const StreetAddress: React.FC<IText> = ({ title, type, options }) => {
   };
   return (
     <Box py={4} maxWidth={480}>
-      <form onSubmit={formik.handleSubmit}>
+      <form data-testid="streetAddressForm" onSubmit={formik.handleSubmit}>
         <Typography variant="h4" gutterBottom>
           <strong>{title}</strong>
         </Typography>

@@ -3,19 +3,21 @@
 exports[`Street Address Component should render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root MuiBox-root-2"
+    class="MuiBox-root MuiBox-root-266"
   >
-    <form>
+    <form
+      data-testid="streetAddressForm"
+    >
       <h4
         class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
       >
         <strong>
-           test title
+          test title
         </strong>
       </h4>
       <div>
         <div
-          class="MuiBox-root MuiBox-root-33"
+          class="MuiBox-root MuiBox-root-297"
         >
           <div
             class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -43,7 +45,7 @@ exports[`Street Address Component should render snapshot 1`] = `
       </div>
       <div>
         <div
-          class="MuiBox-root MuiBox-root-91"
+          class="MuiBox-root MuiBox-root-355"
         >
           <div
             class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -65,7 +67,7 @@ exports[`Street Address Component should render snapshot 1`] = `
       </div>
       <div>
         <div
-          class="MuiBox-root MuiBox-root-92"
+          class="MuiBox-root MuiBox-root-356"
         >
           <div
             class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -93,7 +95,7 @@ exports[`Street Address Component should render snapshot 1`] = `
       </div>
       <div>
         <div
-          class="MuiBox-root MuiBox-root-93"
+          class="MuiBox-root MuiBox-root-357"
         >
           <div
             class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -102,7 +104,7 @@ exports[`Street Address Component should render snapshot 1`] = `
               class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
               data-shrink="false"
             >
-              county
+              country
             </label>
             <div
               class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
@@ -110,8 +112,8 @@ exports[`Street Address Component should render snapshot 1`] = `
               <input
                 aria-invalid="false"
                 class="MuiInputBase-input MuiInput-input"
-                name="county"
-                placeholder="county"
+                name="country"
+                placeholder="country"
                 type="text"
                 value=""
               />
@@ -121,7 +123,7 @@ exports[`Street Address Component should render snapshot 1`] = `
       </div>
       <div>
         <div
-          class="MuiBox-root MuiBox-root-94"
+          class="MuiBox-root MuiBox-root-358"
         >
           <div
             class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -148,7 +150,7 @@ exports[`Street Address Component should render snapshot 1`] = `
         </div>
       </div>
       <div
-        class="MuiBox-root MuiBox-root-95"
+        class="MuiBox-root MuiBox-root-359"
       >
         <div />
         <button

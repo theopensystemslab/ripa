@@ -168,6 +168,7 @@ const Stepper = ({
   return (
     <Box component="div" className={classes.root} p={0}>
       <ButtonBase
+        data-testid="stepperButton"
         className={classes.moreBtn}
         aria-controls="mobile-menu"
         aria-haspopup="true"

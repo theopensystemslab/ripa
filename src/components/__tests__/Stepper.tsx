@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import * as React from "react";
 
 import Stepper from "../Stepper";
@@ -23,5 +23,12 @@ describe("Stepper Component", () => {
       <Stepper active={active} list={list} numbered={numbered} />
     );
     expect(asFragment()).toMatchSnapshot();
+  });
+  it("should render the menu when the arrow is clicked", async () => {
+    const { getByTestId, findByText } = render(
+      <Stepper active={active} list={list} numbered={numbered} />
+    );
+    fireEvent.click(getByTestId("stepperButton"));
+    expect(await findByText(/pay fee/i)).toBeInTheDocument();
   });
 });

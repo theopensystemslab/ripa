@@ -52,7 +52,7 @@ export const CardDetails: React.FC<ICardDetails> = () => {
   });
   return (
     <Box bgcolor="background.paper" py={6}>
-      <form onSubmit={formik.handleSubmit}>
+      <form data-testid="cardDetailsForm" onSubmit={formik.handleSubmit}>
         <Box maxWidth={440}>
           <Typography variant="h4" gutterBottom>
             <strong>Enter card details</strong>

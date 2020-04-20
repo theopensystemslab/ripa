@@ -9,6 +9,7 @@ exports[`Stepper Component should render snapshot 1`] = `
       aria-controls="mobile-menu"
       aria-haspopup="true"
       class="MuiButtonBase-root makeStyles-moreBtn-7"
+      data-testid="stepperButton"
       tabindex="0"
       type="button"
     >
