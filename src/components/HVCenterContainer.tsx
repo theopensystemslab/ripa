@@ -51,7 +51,7 @@ const HVCenterContainer = ({
       }}
     >
       <Container
-        className={!verticalCenter && classes.py}
+        className={verticalCenter ? "vertical-center" : classes.py}
         maxWidth="md"
         ref={ref}
       >

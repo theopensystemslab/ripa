@@ -11,32 +11,34 @@ exports[`Response Component should render snapshot when image is available 1`] =
       type="button"
     >
       <div
-        class="makeStyles-imageContainer-105"
-      >
-        <img
-          src="img.png"
-        />
-      </div>
-      <div
-        class="MuiGrid-root makeStyles-text-109 MuiGrid-container MuiGrid-wrap-xs-nowrap"
+        class="makeStyles-buttonContent-111"
       >
         <div
-          class="MuiGrid-root makeStyles-key-108 MuiGrid-item"
+          class="makeStyles-imageContainer-105"
         >
-          <p
-            class="MuiTypography-root makeStyles-type-110 MuiTypography-body1 MuiTypography-colorInherit"
-          >
-            A
-          </p>
+          <img
+            src="img.png"
+          />
         </div>
         <div
-          class="MuiGrid-root MuiGrid-item"
+          class="MuiGrid-root makeStyles-text-109 MuiGrid-container MuiGrid-wrap-xs-nowrap"
         >
-          <p
-            class="MuiTypography-root makeStyles-type-110 MuiTypography-body1 MuiTypography-colorInherit"
+          <div
+            class="MuiGrid-root makeStyles-key-108 MuiGrid-item"
           >
-            example text
-          </p>
+            <p
+              class="MuiTypography-root makeStyles-type-110 MuiTypography-body1 MuiTypography-colorInherit"
+            />
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item"
+          >
+            <p
+              class="MuiTypography-root makeStyles-type-110 MuiTypography-body1 MuiTypography-colorInherit"
+            >
+              example text
+            </p>
+          </div>
         </div>
       </div>
       <span
@@ -53,27 +55,17 @@ exports[`Response Component should render snapshot when image is not available 1
     class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
   >
     <button
-      class="MuiButtonBase-root makeStyles-root-257"
+      class="MuiButtonBase-root makeStyles-root-258"
       tabindex="0"
       type="button"
     >
       <div
-        class="MuiBox-root MuiBox-root-265 makeStyles-key-258"
-      >
-        <span
-          class="MuiTypography-root MuiTypography-h6 MuiTypography-colorInherit MuiTypography-alignLeft"
-        >
-          A
-        </span>
-      </div>
+        class="MuiBox-root MuiBox-root-266 makeStyles-key-259"
+      />
       <div
-        class="MuiBox-root MuiBox-root-296 makeStyles-text-260"
+        class="MuiBox-root MuiBox-root-267 makeStyles-text-261"
       >
-        <span
-          class="MuiTypography-root MuiTypography-h6 MuiTypography-colorInherit MuiTypography-alignLeft"
-        >
-          example text
-        </span>
+        example text
       </div>
       <span
         class="MuiTouchRipple-root"
