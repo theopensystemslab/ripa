@@ -11,7 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { ExpandMore } from "@material-ui/icons";
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React from "react";
 
 import Messages from "../shared/components/submit-messages";
 import Checkbox from "./Checkbox";
@@ -64,8 +64,12 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
   callback = undefined,
   required = false
 }) => {
-  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
-  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(required);
+  const [successMessageVisible, setSuccessMessageVisible] = React.useState(
+    false
+  );
+  const [submitButtonDisabled, setSubmitButtonDisabled] = React.useState(
+    required
+  );
 
   const formik = useFormik({
     initialValues: {

@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import { useDropzone } from "react-dropzone";
 
 import Messages from "../shared/components/submit-messages";
@@ -44,11 +44,11 @@ export const FileUpload: React.FC<IFileUpload> = ({
   accept = [],
   includeSubmit = false
 }) => {
-  const [files, setFiles] = useState([]);
-  const [stateText, setStateText] = useState("Click to select files");
+  const [files, setFiles] = React.useState([]);
+  const [stateText, setStateText] = React.useState("Click to select files");
 
   const classes = useStyles();
-  const [errorMessageVisible, setErrorMessageVisible] = useState(false);
+  const [errorMessageVisible, setErrorMessageVisible] = React.useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -59,7 +59,7 @@ export const FileUpload: React.FC<IFileUpload> = ({
     }
   });
 
-  const onDrop = useCallback(
+  const onDrop = React.useCallback(
     acceptedFiles => {
       setErrorMessageVisible(false);
       console.log(acceptedFiles);
@@ -79,7 +79,7 @@ export const FileUpload: React.FC<IFileUpload> = ({
     [maxSize]
   );
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (files.length > 0) {
       formik.setFieldValue("path", files[0].path);
     }

@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React from "react";
 
 import Messages from "../shared/components/submit-messages";
 
@@ -14,9 +14,11 @@ interface IText {
 }
 
 export const StreetAddress: React.FC<IText> = ({ title, type, options }) => {
-  const [errorMessageVisible, setErrorMessageVisible] = useState(false);
-  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
-  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(true);
+  const [errorMessageVisible, setErrorMessageVisible] = React.useState(false);
+  const [successMessageVisible, setSuccessMessageVisible] = React.useState(
+    false
+  );
+  const [submitButtonDisabled, setSubmitButtonDisabled] = React.useState(true);
   const formik = useFormik({
     initialValues: {},
     validate: values => {

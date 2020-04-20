@@ -5,6 +5,11 @@ import FileUpload from "./FileUpload";
 
 export default (
   <Box bgcolor="background.paper" px={4}>
-    <FileUpload maxSize={400000} accept={["image/*"]} title="File upload" />
+    <FileUpload
+      maxSize={400000}
+      includeSubmit={false}
+      accept={["image/*"]}
+      title="File upload"
+    />
   </Box>
 );

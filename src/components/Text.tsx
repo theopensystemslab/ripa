@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
 import * as React from "react";
 
+import Messages from "../shared/components/submit-messages";
+
 interface IMinMax {
   min?: number;
   max?: number;
@@ -44,6 +46,10 @@ export const Text: React.FC<IText> = ({
   },
   includeSubmit = false
 }) => {
+  const [errorMessageVisible, setErrorMessageVisible] = React.useState(false);
+  const [successMessageVisible, setSuccessMessageVisible] = React.useState(
+    false
+  );
   const [count, setCount] = React.useState(0);
   const diff = maxWords - count;
   const formik = useFormik({
@@ -53,15 +59,18 @@ export const Text: React.FC<IText> = ({
     onSubmit: values => {
       if (diff > 0) {
         console.log(JSON.stringify(values, null, 2));
+        setSuccessMessageVisible(true);
+        setErrorMessageVisible(false);
       } else {
-        alert("You exceeded the max number of words allowed!");
+        setSuccessMessageVisible(false);
+        setErrorMessageVisible(true);
       }
     }
   });
 
   return (
     <Box pb={4} maxWidth={480}>
-      <form onSubmit={formik.handleSubmit}>
+      <form data-testid="textForm" onSubmit={formik.handleSubmit}>
         <Typography variant="h4" gutterBottom>
           <strong>{title}</strong>
         </Typography>
@@ -110,12 +119,25 @@ export const Text: React.FC<IText> = ({
               {unit}
             </Box>
           )}
+          <div>
+            {errorMessageVisible && formik.touched ? (
+              <Messages
+                type="error"
+                message="You exceeded the max number of words allowed!"
+              />
+            ) : null}
+          </div>
         </Box>
         {includeSubmit && (
           <Button variant="contained" color="primary" type="submit">
             Save and Continue
           </Button>
         )}
+        <div>
+          {successMessageVisible ? (
+            <Messages type="success" message="Form submitted successfully" />
+          ) : null}
+        </div>
       </form>
     </Box>
   );

@@ -5,7 +5,9 @@ exports[`Text Component Of type long text should render snapshot 1`] = `
   <div
     class="MuiBox-root MuiBox-root-257"
   >
-    <form>
+    <form
+      data-testid="textForm"
+    >
       <h4
         class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
       >
@@ -42,7 +44,9 @@ exports[`Text Component Of type long text should render snapshot 1`] = `
              10 words Remaining 
           </span>
         </div>
+        <div />
       </div>
+      <div />
     </form>
   </div>
 </DocumentFragment>
@@ -51,9 +55,11 @@ exports[`Text Component Of type long text should render snapshot 1`] = `
 exports[`Text Component of type Email should render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root MuiBox-root-601"
+    class="MuiBox-root MuiBox-root-857"
   >
-    <form>
+    <form
+      data-testid="textForm"
+    >
       <h4
         class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
       >
@@ -62,7 +68,7 @@ exports[`Text Component of type Email should render snapshot 1`] = `
         </strong>
       </h4>
       <div
-        class="MuiBox-root MuiBox-root-632"
+        class="MuiBox-root MuiBox-root-888"
       >
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
@@ -85,7 +91,9 @@ exports[`Text Component of type Email should render snapshot 1`] = `
             value=""
           />
         </div>
+        <div />
       </div>
+      <div />
     </form>
   </div>
 </DocumentFragment>
@@ -94,9 +102,11 @@ exports[`Text Component of type Email should render snapshot 1`] = `
 exports[`Text Component of type Number should render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root MuiBox-root-856"
+    class="MuiBox-root MuiBox-root-1112"
   >
-    <form>
+    <form
+      data-testid="textForm"
+    >
       <h4
         class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
       >
@@ -105,7 +115,7 @@ exports[`Text Component of type Number should render snapshot 1`] = `
         </strong>
       </h4>
       <div
-        class="MuiBox-root MuiBox-root-887"
+        class="MuiBox-root MuiBox-root-1143"
       >
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
@@ -128,7 +138,9 @@ exports[`Text Component of type Number should render snapshot 1`] = `
             value=""
           />
         </div>
+        <div />
       </div>
+      <div />
     </form>
   </div>
 </DocumentFragment>
@@ -139,7 +151,9 @@ exports[`Text Component of type short text should render snapshot 1`] = `
   <div
     class="MuiBox-root MuiBox-root-2"
   >
-    <form>
+    <form
+      data-testid="textForm"
+    >
       <h4
         class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
       >
@@ -171,7 +185,9 @@ exports[`Text Component of type short text should render snapshot 1`] = `
             value=""
           />
         </div>
+        <div />
       </div>
+      <div />
     </form>
   </div>
 </DocumentFragment>

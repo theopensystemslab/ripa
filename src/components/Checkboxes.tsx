@@ -7,7 +7,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React from "react";
 
 import Messages from "../shared/components/submit-messages";
 import Checkbox from "./Checkbox";
@@ -36,9 +36,11 @@ const Checkboxes: React.FC<ICheckboxes> = ({
   options = {},
   name = ""
 }) => {
-  const [errorMessageVisible, setErrorMessageVisible] = useState(false);
-  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
-  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(true);
+  const [errorMessageVisible, setErrorMessageVisible] = React.useState(false);
+  const [successMessageVisible, setSuccessMessageVisible] = React.useState(
+    false
+  );
+  const [submitButtonDisabled, setSubmitButtonDisabled] = React.useState(true);
 
   const formik = useFormik({
     initialValues: {

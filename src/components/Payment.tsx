@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React from "react";
 
 import Messages from "../shared/components/submit-messages";
 
@@ -31,7 +31,9 @@ interface ICardDetails {
   cardNumber?: number;
 }
 export const CardDetails: React.FC<ICardDetails> = () => {
-  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
+  const [successMessageVisible, setSuccessMessageVisible] = React.useState(
+    false
+  );
 
   const formik = useFormik({
     initialValues: {
