@@ -1,9 +1,7 @@
-import { cleanup, fireEvent, render, wait } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import * as React from "react";
 
 import ApplicationCard from "../ApplicationCard";
-
-afterEach(cleanup);
 
 describe("Application Card Component", () => {
   let thumbnail: string;

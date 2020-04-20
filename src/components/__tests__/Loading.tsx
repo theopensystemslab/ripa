@@ -1,9 +1,7 @@
-import { cleanup, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import * as React from "react";
 
 import Loading from "../Loading";
-
-afterEach(cleanup);
 
 describe("Loading Component", () => {
   it("should have loading text in document", async () => {

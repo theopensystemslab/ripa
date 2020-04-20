@@ -1,9 +1,7 @@
-import { cleanup, fireEvent, render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import * as React from "react";
 
 import Checkboxes from "../Checkboxes";
-
-afterEach(cleanup);
 
 describe("Checkboxes Component", () => {
   let title: string;

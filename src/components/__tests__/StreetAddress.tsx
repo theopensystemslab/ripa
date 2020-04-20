@@ -1,9 +1,7 @@
-import { cleanup, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import * as React from "react";
 
 import StreetAddress from "../StreetAddress";
-
-afterEach(cleanup);
 
 describe("Street Address Component", () => {
   it("should render snapshot", () => {

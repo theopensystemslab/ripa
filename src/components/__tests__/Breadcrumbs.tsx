@@ -1,9 +1,7 @@
-import { cleanup, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import * as React from "react";
 
 import Breadcrumbs from "../Breadcrumbs";
-
-afterEach(cleanup);
 
 describe("Breadcrumbs Component", () => {
   it("should render items correctly", () => {

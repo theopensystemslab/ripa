@@ -1,9 +1,7 @@
-import { cleanup, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import * as React from "react";
 
 import HVCenterContainer from "../HVCenterContainer";
-
-afterEach(cleanup);
 
 describe("HVCenterContainer Component", () => {
   it("should render snapshot", () => {

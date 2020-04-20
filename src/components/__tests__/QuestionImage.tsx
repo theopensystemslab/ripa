@@ -1,9 +1,7 @@
-import { cleanup, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import * as React from "react";
 
 import StatementImage from "../QuestionImage";
-
-afterEach(cleanup);
 
 describe("Statement Image Component", () => {
   it("should render snapshot when image is available", () => {

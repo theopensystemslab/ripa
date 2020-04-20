@@ -1,9 +1,7 @@
-import { cleanup, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import * as React from "react";
 
 import FileUpload from "../FileUpload";
-
-afterEach(cleanup);
 
 describe("File Upload Component", () => {
   it("should render snapshot", () => {

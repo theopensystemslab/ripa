@@ -1,9 +1,7 @@
-import { cleanup, fireEvent, render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import * as React from "react";
 
 import Text from "../Text";
-
-afterEach(cleanup);
 
 describe("Text Component", () => {
   let title: string;

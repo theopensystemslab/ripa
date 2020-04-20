@@ -1,9 +1,7 @@
-import { cleanup, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import * as React from "react";
 
 import Question from "../Question";
-
-afterEach(cleanup);
 
 describe("Question Component", () => {
   it("render snapshot", () => {
