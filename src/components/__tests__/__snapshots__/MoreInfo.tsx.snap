@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`More Info Component should render snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiDrawer-root MuiDrawer-docked makeStyles-drawer-1"
+  >
+    <div
+      class="MuiPaper-root MuiDrawer-paper makeStyles-drawerPaper-5 MuiDrawer-paperAnchorRight MuiDrawer-paperAnchorDockedRight MuiPaper-elevation0"
+      style="visibility: hidden; webkit-transform: translateX(1024px) translateX(-0px); transform: translateX(1024px) translateX(-0px);"
+    >
+      <div
+        class="makeStyles-close-6"
+      >
+        <button
+          aria-label="Close Panel"
+          class="MuiButtonBase-root MuiIconButton-root"
+          data-testid="closeBtn"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+      <div
+        class="makeStyles-drawerContent-4"
+      >
+        <div>
+          <h2
+            id="why-it-matters"
+          >
+            Why it matters
+          </h2>
+          
+
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
