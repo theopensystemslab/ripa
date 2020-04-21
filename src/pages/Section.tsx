@@ -171,7 +171,11 @@ const Card = ({ id }) => {
 
     return (
       <Box py={4}>
-        <ButtonCard statement={node} responses={responses} />
+        <ButtonCard
+          statement={node}
+          responses={responses}
+          handleClick={r => alert(JSON.stringify(r))}
+        />
       </Box>
     );
   }

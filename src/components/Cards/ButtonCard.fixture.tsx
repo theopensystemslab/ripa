@@ -29,15 +29,23 @@ interface IButtonCard {
   responses: IResponse[];
   dropdown?: boolean;
   moreInfo?: string;
+  handleClick?;
 }
 
 export const ButtonCard = ({
   statement,
   responses,
   dropdown,
-  moreInfo
+  moreInfo,
+  handleClick
 }: IButtonCard) => {
   const [selected, setSelected] = React.useState(null);
+
+  const clickHandler = i => {
+    setSelected(i);
+    if (handleClick) handleClick(i);
+  };
+
   if (!dropdown) {
     return (
       <FocusHandler
@@ -67,7 +75,7 @@ export const ButtonCard = ({
                 selected={selected === i}
                 responseKey={responseKey}
                 key={i}
-                handleClick={() => setSelected(i)}
+                handleClick={() => clickHandler(response)}
               />
             );
           })}
