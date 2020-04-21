@@ -12,8 +12,10 @@ import Toolbar from "@material-ui/core/Toolbar";
 import ArrowForward from "@material-ui/icons/ArrowForward";
 import CouncilLogo from "@material-ui/icons/EcoOutlined";
 import MenuIcon from "@material-ui/icons/Menu";
+import classNames from "classnames";
 import * as React from "react";
 import { Clipboard, LogOut } from "react-feather";
+import Headroom from "react-headroom";
 
 import Stepper from "../components/Stepper";
 import { useStore } from "../lib/store";
@@ -23,6 +25,18 @@ const useStyles = makeStyles(theme => ({
     minHeight: "100vh",
     display: "flex",
     flexDirection: "column"
+  },
+  appBar: {
+    [theme.breakpoints.up("lg")]: {
+      height: 64,
+      boxSizing: "border-box"
+    }
+  },
+  appBarStepper: {
+    [theme.breakpoints.up("lg")]: {
+      height: 168,
+      boxSizing: "border-box"
+    }
   },
   header: {
     [theme.breakpoints.up("lg")]: {
@@ -37,10 +51,12 @@ const useStyles = makeStyles(theme => ({
     flex: 1,
     alignItems: "stretch",
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    justifyContent: "center"
   },
   footer: {
     padding: theme.spacing(2, 3),
+    height: 52,
     "& a": {
       textDecoration: "none",
       padding: "0 20px 0 0"
@@ -97,90 +113,97 @@ export const Header = ({
   };
   const classes = useStyles();
   return (
-    <AppBar elevation={0} color="primary" position="sticky">
-      <Toolbar className={classes.header}>
-        <Box
-          className={classes.logo}
-          fontSize="h5.fontSize"
-          display="flex"
-          alignItems="center"
-          px={{ md: 1 }}
-        >
-          <CouncilLogo /> {team}
-        </Box>
-        {currentUser && (
-          <>
-            <Box px={3} flexGrow={1} className={classes.topBarContent}>
-              <Grid container alignItems="center">
-                <Grid item>
-                  <Box fontSize="h6.fontSize">
-                    <Stepper list={nav.filter(Boolean)} active={nav.length} />
-                  </Box>
-                </Grid>
-                {/* <Grid item>
-              <Box fontSize="subtitle1.fontSize" pl={2}>
-                Saved 1m ago
-              </Box>
-            </Grid> */}
-              </Grid>
-            </Box>
-            <Box className={classes.menu}>
-              <IconButton
-                color="inherit"
-                aria-controls="nav-menu"
-                aria-haspopup="true"
-                onClick={handleClick}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="nav-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-                elevation={0}
-              >
-                <MenuItem
-                  className={classes.menuItem}
-                  component="a"
-                  href="/"
-                  onClick={handleClose}
-                >
-                  <ListItemIcon>
-                    <Clipboard />
-                  </ListItemIcon>
-                  <ListItemText primary="My applications" />
-                </MenuItem>
-                <MenuItem
-                  className={classes.menuItem}
-                  component="a"
-                  href="/logout"
-                  onClick={handleClose}
-                >
-                  <ListItemIcon>
-                    <LogOut />
-                  </ListItemIcon>
-                  <ListItemText primary="Log out" />
-                </MenuItem>
-              </Menu>
-            </Box>
-          </>
-        )}
-      </Toolbar>
-      {address && (
-        <Container maxWidth="md">
-          <Box fontSize="body1.fontSize" pt={8} pb={2}>
-            <Stepper
-              active={active}
-              numbered
-              list={breadcrumbs}
-              Divider={ArrowForward}
-            />
+    <Headroom style={{ zIndex: 1000 }}>
+      <AppBar
+        className={classNames(classes.appBar, address && classes.appBarStepper)}
+        elevation={0}
+        color="primary"
+        position={address ? "static" : "fixed"}
+      >
+        <Toolbar className={classes.header}>
+          <Box
+            className={classes.logo}
+            fontSize="h5.fontSize"
+            display="flex"
+            alignItems="center"
+            px={{ md: 1 }}
+          >
+            <CouncilLogo /> {team}
           </Box>
-        </Container>
-      )}
-    </AppBar>
+          {currentUser && (
+            <>
+              <Box px={3} flexGrow={1} className={classes.topBarContent}>
+                <Grid container alignItems="center">
+                  <Grid item>
+                    <Box fontSize="h6.fontSize">
+                      <Stepper list={nav.filter(Boolean)} active={nav.length} />
+                    </Box>
+                  </Grid>
+                  {/* <Grid item>
+                  <Box fontSize="subtitle1.fontSize" pl={2}>
+                    Saved 1m ago
+                  </Box>
+                </Grid> */}
+                </Grid>
+              </Box>
+              <Box className={classes.menu}>
+                <IconButton
+                  color="inherit"
+                  aria-controls="nav-menu"
+                  aria-haspopup="true"
+                  onClick={handleClick}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Menu
+                  id="nav-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                  elevation={0}
+                >
+                  <MenuItem
+                    className={classes.menuItem}
+                    component="a"
+                    href="/"
+                    onClick={handleClose}
+                  >
+                    <ListItemIcon>
+                      <Clipboard />
+                    </ListItemIcon>
+                    <ListItemText primary="My applications" />
+                  </MenuItem>
+                  <MenuItem
+                    className={classes.menuItem}
+                    component="a"
+                    href="/logout"
+                    onClick={handleClose}
+                  >
+                    <ListItemIcon>
+                      <LogOut />
+                    </ListItemIcon>
+                    <ListItemText primary="Log out" />
+                  </MenuItem>
+                </Menu>
+              </Box>
+            </>
+          )}
+        </Toolbar>
+        {address && (
+          <Container maxWidth="md">
+            <Box fontSize="body1.fontSize" pt={8} pb={2}>
+              <Stepper
+                active={active}
+                numbered
+                list={breadcrumbs}
+                Divider={ArrowForward}
+              />
+            </Box>
+          </Container>
+        )}
+      </AppBar>
+    </Headroom>
   );
 };
 

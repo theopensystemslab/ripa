@@ -3,27 +3,19 @@
 exports[`Response Button Component should render snapshot when selected is false 1`] = `
 <DocumentFragment>
   <button
-    class="MuiButtonBase-root makeStyles-root-51"
+    class="MuiButtonBase-root makeStyles-root-21"
     tabindex="0"
     type="button"
   >
     <div
-      class="MuiBox-root MuiBox-root-59 makeStyles-key-52"
+      class="MuiBox-root MuiBox-root-29 makeStyles-key-22"
     >
-      <span
-        class="MuiTypography-root MuiTypography-h6 MuiTypography-colorInherit MuiTypography-alignLeft"
-      >
-        A
-      </span>
+      A
     </div>
     <div
-      class="MuiBox-root MuiBox-root-90 makeStyles-text-54"
+      class="MuiBox-root MuiBox-root-30 makeStyles-text-24"
     >
-      <span
-        class="MuiTypography-root MuiTypography-h6 MuiTypography-colorInherit MuiTypography-alignLeft"
-      >
-        inner text
-      </span>
+      inner text
     </div>
     <span
       class="MuiTouchRipple-root"
@@ -42,20 +34,12 @@ exports[`Response Button Component should render snapshot when selected is true 
     <div
       class="MuiBox-root MuiBox-root-9 makeStyles-key-2"
     >
-      <span
-        class="MuiTypography-root MuiTypography-h6 MuiTypography-colorInherit MuiTypography-alignLeft"
-      >
-        A
-      </span>
+      A
     </div>
     <div
-      class="MuiBox-root MuiBox-root-40 makeStyles-text-4"
+      class="MuiBox-root MuiBox-root-10 makeStyles-text-4"
     >
-      <span
-        class="MuiTypography-root MuiTypography-h6 MuiTypography-colorInherit MuiTypography-alignLeft"
-      >
-        inner text
-      </span>
+      inner text
     </div>
     <span
       class="MuiTouchRipple-root"

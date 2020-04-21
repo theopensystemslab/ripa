@@ -1,11 +1,11 @@
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
 import React from "react";
 
 import Messages from "../shared/components/submit-messages";
+import Question from "./Question";
 
 interface IText {
   title: string;
@@ -65,9 +65,11 @@ export const StreetAddress: React.FC<IText> = ({ title, type, options }) => {
   return (
     <Box py={4} maxWidth={480}>
       <form data-testid="streetAddressForm" onSubmit={formik.handleSubmit}>
-        <Typography variant="h4" gutterBottom>
-          <strong>{title}</strong>
-        </Typography>
+        <Box mb={1.5}>
+          <Question>
+            <strong>{title}</strong>
+          </Question>
+        </Box>
         {options.map((el, index) => (
           <div key={`${el}-${index}`}>
             <Box mb={2.5}>

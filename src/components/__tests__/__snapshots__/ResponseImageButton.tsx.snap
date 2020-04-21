@@ -3,35 +3,39 @@
 exports[`Response Button Component should render snapshot when selected is false 1`] = `
 <DocumentFragment>
   <button
-    class="MuiButtonBase-root makeStyles-root-144"
+    class="MuiButtonBase-root makeStyles-root-145"
     tabindex="0"
     type="button"
   >
     <div
-      class="makeStyles-imageContainer-145"
-    >
-      img.png
-    </div>
-    <div
-      class="MuiGrid-root makeStyles-text-149 MuiGrid-container MuiGrid-wrap-xs-nowrap"
+      class="makeStyles-buttonContent-152"
     >
       <div
-        class="MuiGrid-root makeStyles-key-148 MuiGrid-item"
+        class="makeStyles-imageContainer-146"
       >
-        <p
-          class="MuiTypography-root makeStyles-type-150 MuiTypography-body1 MuiTypography-colorInherit"
-        >
-          A
-        </p>
+        img.png
       </div>
       <div
-        class="MuiGrid-root MuiGrid-item"
+        class="MuiGrid-root makeStyles-text-150 MuiGrid-container MuiGrid-wrap-xs-nowrap"
       >
-        <p
-          class="MuiTypography-root makeStyles-type-150 MuiTypography-body1 MuiTypography-colorInherit"
+        <div
+          class="MuiGrid-root makeStyles-key-149 MuiGrid-item"
         >
-          Inner text
-        </p>
+          <p
+            class="MuiTypography-root makeStyles-type-151 MuiTypography-body1 MuiTypography-colorInherit"
+          >
+            A
+          </p>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <p
+            class="MuiTypography-root makeStyles-type-151 MuiTypography-body1 MuiTypography-colorInherit"
+          >
+            Inner text
+          </p>
+        </div>
       </div>
     </div>
     <span
@@ -49,30 +53,34 @@ exports[`Response Button Component should render snapshot when selected is true 
     type="button"
   >
     <div
-      class="makeStyles-imageContainer-2"
-    >
-      img.png
-    </div>
-    <div
-      class="MuiGrid-root makeStyles-text-6 MuiGrid-container MuiGrid-wrap-xs-nowrap"
+      class="makeStyles-buttonContent-8"
     >
       <div
-        class="MuiGrid-root makeStyles-key-5 MuiGrid-item"
+        class="makeStyles-imageContainer-2"
       >
-        <p
-          class="MuiTypography-root makeStyles-type-7 MuiTypography-body1 MuiTypography-colorInherit"
-        >
-          A
-        </p>
+        img.png
       </div>
       <div
-        class="MuiGrid-root MuiGrid-item"
+        class="MuiGrid-root makeStyles-text-6 MuiGrid-container MuiGrid-wrap-xs-nowrap"
       >
-        <p
-          class="MuiTypography-root makeStyles-type-7 MuiTypography-body1 MuiTypography-colorInherit"
+        <div
+          class="MuiGrid-root makeStyles-key-5 MuiGrid-item"
         >
-          Inner text
-        </p>
+          <p
+            class="MuiTypography-root makeStyles-type-7 MuiTypography-body1 MuiTypography-colorInherit"
+          >
+            A
+          </p>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          <p
+            class="MuiTypography-root makeStyles-type-7 MuiTypography-body1 MuiTypography-colorInherit"
+          >
+            Inner text
+          </p>
+        </div>
       </div>
     </div>
   </button>

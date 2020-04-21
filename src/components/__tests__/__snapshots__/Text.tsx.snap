@@ -3,20 +3,24 @@
 exports[`Text Component Of type long text should render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root MuiBox-root-257"
+    class="MuiBox-root MuiBox-root-263"
   >
     <form
       data-testid="textForm"
     >
-      <h4
-        class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
-      >
-        <strong>
-          test title
-        </strong>
-      </h4>
       <div
-        class="MuiBox-root MuiBox-root-288"
+        class="MuiBox-root MuiBox-root-264"
+      >
+        <div
+          class="MuiTypography-root makeStyles-question-265 MuiTypography-h4"
+        >
+          <strong>
+            test title
+          </strong>
+        </div>
+      </div>
+      <div
+        class="MuiBox-root MuiBox-root-296"
       >
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
@@ -38,7 +42,7 @@ exports[`Text Component Of type long text should render snapshot 1`] = `
           />
         </div>
         <div
-          class="MuiBox-root MuiBox-root-341"
+          class="MuiBox-root MuiBox-root-349"
         >
           <span>
              10 words Remaining 
@@ -55,20 +59,24 @@ exports[`Text Component Of type long text should render snapshot 1`] = `
 exports[`Text Component of type Email should render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root MuiBox-root-857"
+    class="MuiBox-root MuiBox-root-875"
   >
     <form
       data-testid="textForm"
     >
-      <h4
-        class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
-      >
-        <strong>
-          test title
-        </strong>
-      </h4>
       <div
-        class="MuiBox-root MuiBox-root-888"
+        class="MuiBox-root MuiBox-root-876"
+      >
+        <div
+          class="MuiTypography-root makeStyles-question-877 MuiTypography-h4"
+        >
+          <strong>
+            test title
+          </strong>
+        </div>
+      </div>
+      <div
+        class="MuiBox-root MuiBox-root-908"
       >
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
@@ -102,20 +110,24 @@ exports[`Text Component of type Email should render snapshot 1`] = `
 exports[`Text Component of type Number should render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root MuiBox-root-1112"
+    class="MuiBox-root MuiBox-root-1136"
   >
     <form
       data-testid="textForm"
     >
-      <h4
-        class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
-      >
-        <strong>
-          test title
-        </strong>
-      </h4>
       <div
-        class="MuiBox-root MuiBox-root-1143"
+        class="MuiBox-root MuiBox-root-1137"
+      >
+        <div
+          class="MuiTypography-root makeStyles-question-1138 MuiTypography-h4"
+        >
+          <strong>
+            test title
+          </strong>
+        </div>
+      </div>
+      <div
+        class="MuiBox-root MuiBox-root-1169"
       >
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
@@ -154,15 +166,19 @@ exports[`Text Component of type short text should render snapshot 1`] = `
     <form
       data-testid="textForm"
     >
-      <h4
-        class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
-      >
-        <strong>
-          test title
-        </strong>
-      </h4>
       <div
-        class="MuiBox-root MuiBox-root-33"
+        class="MuiBox-root MuiBox-root-3"
+      >
+        <div
+          class="MuiTypography-root makeStyles-question-4 MuiTypography-h4"
+        >
+          <strong>
+            test title
+          </strong>
+        </div>
+      </div>
+      <div
+        class="MuiBox-root MuiBox-root-35"
       >
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"

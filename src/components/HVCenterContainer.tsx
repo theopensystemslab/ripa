@@ -9,27 +9,35 @@ const useStyles = makeStyles(theme => ({
   root: {
     minHeight: "100vh",
     "&:first-child": {
-      minHeight: "calc(100vh - 144px)"
+      minHeight: "calc(100vh - 168px)" // 100vh - header
     },
-    "&:last-child:first-child": {
-      minHeight: "calc(100vh - 196px)"
+    "&:only-child": {
+      minHeight: "calc(100vh - 220px)" // 100vh - header + footer
     },
     "&:last-child:not(:first-child)": {
-      minHeight: "calc(100vh - 52px)"
+      minHeight: "calc(100vh - 116px)" // 100vh - small header + footer
     }
+  },
+  py: {
+    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(3),
+    [theme.breakpoints.up("lg")]: {}
   }
 }));
 
 const HVCenterContainer = ({
   children,
   light = false,
-  verticalCenter = false
+  verticalCenter = false,
+  disableScroll = false
 }) => {
   const ref = React.useRef(null);
   React.useLayoutEffect(() => {
-    scrollIn(ref.current, {
-      block: verticalCenter ? "center" : "start"
-    });
+    if (!disableScroll) {
+      scrollIn(ref.current, {
+        block: verticalCenter ? "center" : "start"
+      });
+    }
   });
   const classes = useStyles();
   return (
@@ -37,13 +45,16 @@ const HVCenterContainer = ({
       className={classes.root}
       color={light ? "#000" : "#fff"}
       bgcolor={light ? "#fff" : "primary.main"}
-      py={verticalCenter ? 0 : 3}
       style={{
         alignItems: verticalCenter && "center",
         display: verticalCenter && "flex"
       }}
     >
-      <Container maxWidth="md" ref={ref}>
+      <Container
+        className={verticalCenter ? "vertical-center" : classes.py}
+        maxWidth="md"
+        ref={ref}
+      >
         {children}
       </Container>
     </Box>

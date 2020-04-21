@@ -7,7 +7,10 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     padding: 0,
     zIndex: 10,
-    position: "relative"
+    position: "relative",
+    [theme.breakpoints.only("xs")]: {
+      fontSize: 18
+    }
   }
 }));
 

@@ -5,6 +5,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import * as React from "react";
 import { HelpCircle } from "react-feather";
 
+import { keyBtnSelect, setResponseKey } from "../../lib/keyResponse";
+import FocusHandler from "../FocusHandler";
 import InlineSelect from "../InlineSelect";
 import Question from "../Question";
 import QuestionImage from "../QuestionImage";
@@ -29,8 +31,6 @@ interface IButtonCard {
   moreInfo?: string;
 }
 
-const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-
 export const ButtonCard = ({
   statement,
   responses,
@@ -40,31 +40,39 @@ export const ButtonCard = ({
   const [selected, setSelected] = React.useState(null);
   if (!dropdown) {
     return (
-      <Box pb={4}>
-        <Question gutterBottom>
-          {statement.text}
-          {moreInfo && (
-            <>
-              {" "}
-              <IconButton>
-                <HelpCircle />
-              </IconButton>
-            </>
-          )}
-        </Question>
+      <FocusHandler
+        tabIndex={0}
+        onKeyDown={e => keyBtnSelect(e, responses, setSelected)}
+      >
+        <Box mb={1.5}>
+          <Question>
+            {statement.text}
+            {moreInfo && (
+              <>
+                {" "}
+                <IconButton>
+                  <HelpCircle />
+                </IconButton>
+              </>
+            )}
+          </Question>
+        </Box>
         {statement.img && <QuestionImage src={statement.img} />}
         <Grid container spacing={1}>
-          {responses.map((response, i) => (
-            <Response
-              key={i}
-              response={response}
-              selected={selected === i}
-              responseKey={ALPHABET[i]}
-              handleClick={() => setSelected(i)}
-            />
-          ))}
+          {responses.map((response, i) => {
+            const responseKey = setResponseKey(i);
+            return (
+              <Response
+                response={response}
+                selected={selected === i}
+                responseKey={responseKey}
+                key={i}
+                handleClick={() => setSelected(i)}
+              />
+            );
+          })}
         </Grid>
-      </Box>
+      </FocusHandler>
     );
   }
   return (
