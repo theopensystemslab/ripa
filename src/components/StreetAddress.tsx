@@ -7,13 +7,19 @@ import React, { useState } from "react";
 import Messages from "../shared/components/submit-messages";
 import Question from "./Question";
 
-interface IText {
+interface IStreetAddress {
   title: string;
   type: string;
   options: string[];
+  includeLookup?: boolean;
 }
 
-export const StreetAddress: React.FC<IText> = ({ title, type, options }) => {
+export const StreetAddress: React.FC<IStreetAddress> = ({
+  title,
+  type,
+  options,
+  includeLookup = false
+}) => {
   const [errorMessageVisible, setErrorMessageVisible] = useState(false);
   const [successMessageVisible, setSuccessMessageVisible] = useState(false);
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(true);
@@ -93,14 +99,17 @@ export const StreetAddress: React.FC<IText> = ({ title, type, options }) => {
             ) : null}
           </div>
 
-          <Button
-            type="submit"
-            disabled={submitButtonDisabled}
-            variant="contained"
-            color="primary"
-          >
-            Look up address
-          </Button>
+          {includeLookup && (
+            <Button
+              type="submit"
+              disabled={submitButtonDisabled}
+              variant="contained"
+              color="primary"
+            >
+              Look up address
+            </Button>
+          )}
+
           <div>
             {successMessageVisible ? (
               <Messages type="success" message="Form submitted successfully" />
