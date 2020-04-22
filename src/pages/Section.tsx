@@ -6,6 +6,7 @@ import * as React from "react";
 import { Link } from "react-navi";
 
 import { ButtonCard } from "../components/Cards/ButtonCard.fixture";
+import Checkboxes from "../components/Checkboxes";
 import Date from "../components/Date";
 import FileUpload from "../components/FileUpload";
 import HVCenterContainer from "../components/HVCenterContainer";
@@ -32,7 +33,23 @@ const useStyles = makeStyles({
 
 const Card = ({ id }) => {
   const flow = useStore(state => state.flow);
-  const node = flow.nodes[id];
+  const set = useStore(state => state.set);
+  const node = { id, ...flow.nodes[id] };
+
+  if (node.$t === 105) {
+    const options = flow.edges
+      .filter(([src]) => src === id)
+      .map(([, tgt]) => ({
+        id: tgt,
+        ...flow.nodes[tgt]
+      }))
+      .reduce((acc, curr) => {
+        acc[curr.id] = curr.text;
+        return acc;
+      }, {});
+
+    return <Checkboxes title={node.text} name={node.id} options={options} />;
+  }
 
   if (node.$t === 110 || node.text.toLowerCase().includes(["[text]"])) {
     return (
@@ -113,7 +130,7 @@ const Card = ({ id }) => {
     );
   }
 
-  if (node.text.toLowerCase().includes(["[date]"])) {
+  if (node.$t === 120 || node.text.toLowerCase().includes(["[date]"])) {
     return (
       <Date
         title={node.text.replace(/\[date\]/i, "").trim()}
@@ -174,7 +191,31 @@ const Card = ({ id }) => {
         <ButtonCard
           statement={node}
           responses={responses}
-          handleClick={r => alert(JSON.stringify(r))}
+          handleClick={(s, r) => {
+            set(state => {
+              console.log(Object.keys(state.data.responsesGiven));
+
+              state.data.responsesGiven = state.data.responsesGiven || {};
+
+              let found = false;
+
+              state.data.responsesGiven = Object.keys(
+                state.data.responsesGiven
+              ).reduce((acc, curr) => {
+                if (!found) {
+                  acc[s.id] = state.data.responsesGiven[s.id];
+                }
+
+                if (curr === s.id) found = true;
+
+                return acc;
+              }, {});
+
+              state.data.responsesGiven[s.id] = [r.id];
+
+              console.log(Object.keys(state.data.responsesGiven));
+            });
+          }}
         />
       </Box>
     );
@@ -191,21 +232,37 @@ const Card = ({ id }) => {
 
 const Section = ({ id }) => {
   const flow = useStore(state => state.flow);
+  const responsesGiven = useStore(state => state.data.responsesGiven);
+
   const classes = useStyles();
 
-  const roots = flow.edges
-    .filter(([src]) => src === id)
-    .map(([, tgt]) => tgt)
-    .filter(tgt => {
-      const isStatement = flow.nodes[tgt].$t === 100;
+  const getStatements = id => {
+    return flow.edges
+      .filter(([src]) => src === id)
+      .map(([, tgt]) => tgt)
+      .filter(tgt => {
+        const isStatement = flow.nodes[tgt].$t === 100;
 
-      const hasResponses = flow.edges.filter(([src]) => src === tgt).length > 0;
+        const hasResponses =
+          flow.edges.filter(([src]) => src === tgt).length > 0;
 
-      return (isStatement && hasResponses) || !isStatement;
+        return (isStatement && hasResponses) || !isStatement;
+      });
+  };
+
+  let roots = getStatements(id);
+
+  if (responsesGiven) {
+    Object.values(responsesGiven).map((responseIds: string[]) => {
+      responseIds.reverse().forEach(rId => {
+        roots = roots.concat(getStatements(rId));
+      });
     });
+  }
 
   return (
     <HVCenterContainer light>
+      {JSON.stringify(responsesGiven)}
       <Link href="/start" className={classes.backLink}>
         <ArrowLeft /> Back
       </Link>

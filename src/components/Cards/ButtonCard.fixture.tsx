@@ -41,9 +41,9 @@ export const ButtonCard = ({
 }: IButtonCard) => {
   const [selected, setSelected] = React.useState(null);
 
-  const clickHandler = i => {
+  const clickHandler = (i, statement, response) => {
     setSelected(i);
-    if (handleClick) handleClick(i);
+    if (handleClick) handleClick(statement, response);
   };
 
   if (!dropdown) {
@@ -75,7 +75,7 @@ export const ButtonCard = ({
                 selected={selected === i}
                 responseKey={responseKey}
                 key={i}
-                handleClick={() => clickHandler(response)}
+                handleClick={() => clickHandler(i, statement, response)}
               />
             );
           })}
