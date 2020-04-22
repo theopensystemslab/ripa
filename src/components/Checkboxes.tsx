@@ -17,6 +17,7 @@ interface ICheckboxes {
   options: object;
   name: string;
   required?: boolean;
+  includeSubmit?: boolean;
 }
 
 const useStyles = makeStyles(theme =>
@@ -34,7 +35,8 @@ const useStyles = makeStyles(theme =>
 const Checkboxes: React.FC<ICheckboxes> = ({
   title = "Title",
   options = {},
-  name = ""
+  name = "",
+  includeSubmit = false
 }) => {
   const [errorMessageVisible, setErrorMessageVisible] = useState(false);
   const [successMessageVisible, setSuccessMessageVisible] = useState(false);
@@ -124,14 +126,16 @@ const Checkboxes: React.FC<ICheckboxes> = ({
               message="Please choose at least one option"
             />
           ) : null}
-          <Button
-            type="submit"
-            disabled={submitButtonDisabled}
-            variant="contained"
-            color="primary"
-          >
-            Save and Continue
-          </Button>
+          {includeSubmit && (
+            <Button
+              type="submit"
+              disabled={submitButtonDisabled}
+              variant="contained"
+              color="primary"
+            >
+              Save and Continue
+            </Button>
+          )}
           {successMessageVisible ? (
             <Messages type="success" message="Form submitted successfully" />
           ) : null}

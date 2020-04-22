@@ -3,7 +3,7 @@
 exports[`Checkboxes Component should render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root MuiBox-root-86"
+    class="MuiBox-root MuiBox-root-54"
   >
     <form>
       <h5
@@ -15,150 +15,138 @@ exports[`Checkboxes Component should render snapshot 1`] = `
         class="MuiFormControl-root"
       >
         <legend
-          class="MuiFormLabel-root makeStyles-formControlLabelRoot-83"
+          class="MuiFormLabel-root makeStyles-formControlLabelRoot-51"
         >
           <div
-            class="MuiBox-root MuiBox-root-129"
+            class="MuiBox-root MuiBox-root-97"
           >
             Select all that apply
           </div>
         </legend>
         <div
-          class="MuiBox-root MuiBox-root-130"
+          class="MuiBox-root MuiBox-root-98"
         >
           <div
             class="MuiFormGroup-root"
           >
             <label
-              class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-83"
+              class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-51"
             >
               <span
                 aria-disabled="false"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-148 MuiCheckbox-root makeStyles-checkBoxRoot-139 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-116 MuiCheckbox-root makeStyles-checkBoxRoot-107 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
               >
                 <span
                   class="MuiIconButton-label"
                 >
                   <input
-                    class="PrivateSwitchBase-input-151"
+                    class="PrivateSwitchBase-input-119"
                     data-indeterminate="false"
                     name="oak"
                     type="checkbox"
                     value="oak"
                   />
                   <span
-                    class="makeStyles-icon-140"
+                    class="makeStyles-icon-108"
                     font-size="default"
                   />
                 </span>
               </span>
               <span
-                class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-84 MuiTypography-body1"
+                class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-52 MuiTypography-body1"
               >
                 option 1
               </span>
             </label>
             <label
-              class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-83"
+              class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-51"
             >
               <span
                 aria-disabled="false"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-148 MuiCheckbox-root makeStyles-checkBoxRoot-139 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-116 MuiCheckbox-root makeStyles-checkBoxRoot-107 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
               >
                 <span
                   class="MuiIconButton-label"
                 >
                   <input
-                    class="PrivateSwitchBase-input-151"
+                    class="PrivateSwitchBase-input-119"
                     data-indeterminate="false"
                     name="plane"
                     type="checkbox"
                     value="plane"
                   />
                   <span
-                    class="makeStyles-icon-140"
+                    class="makeStyles-icon-108"
                     font-size="default"
                   />
                 </span>
               </span>
               <span
-                class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-84 MuiTypography-body1"
+                class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-52 MuiTypography-body1"
               >
                 option 2
               </span>
             </label>
             <label
-              class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-83"
+              class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-51"
             >
               <span
                 aria-disabled="false"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-148 MuiCheckbox-root makeStyles-checkBoxRoot-139 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-116 MuiCheckbox-root makeStyles-checkBoxRoot-107 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
               >
                 <span
                   class="MuiIconButton-label"
                 >
                   <input
-                    class="PrivateSwitchBase-input-151"
+                    class="PrivateSwitchBase-input-119"
                     data-indeterminate="false"
                     name="redwood"
                     type="checkbox"
                     value="redwood"
                   />
                   <span
-                    class="makeStyles-icon-140"
+                    class="makeStyles-icon-108"
                     font-size="default"
                   />
                 </span>
               </span>
               <span
-                class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-84 MuiTypography-body1"
+                class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-52 MuiTypography-body1"
               >
                 option 3
               </span>
             </label>
             <label
-              class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-83"
+              class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-51"
             >
               <span
                 aria-disabled="false"
-                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-148 MuiCheckbox-root makeStyles-checkBoxRoot-139 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-116 MuiCheckbox-root makeStyles-checkBoxRoot-107 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
               >
                 <span
                   class="MuiIconButton-label"
                 >
                   <input
-                    class="PrivateSwitchBase-input-151"
+                    class="PrivateSwitchBase-input-119"
                     data-indeterminate="false"
                     name="other"
                     type="checkbox"
                     value="other"
                   />
                   <span
-                    class="makeStyles-icon-140"
+                    class="makeStyles-icon-108"
                     font-size="default"
                   />
                 </span>
               </span>
               <span
-                class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-84 MuiTypography-body1"
+                class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-52 MuiTypography-body1"
               >
                 option 4
               </span>
             </label>
           </div>
         </div>
-        <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary Mui-disabled Mui-disabled"
-          disabled=""
-          tabindex="-1"
-          type="submit"
-        >
-          <span
-            class="MuiButton-label"
-          >
-            Save and Continue
-          </span>
-        </button>
       </fieldset>
     </form>
   </div>
