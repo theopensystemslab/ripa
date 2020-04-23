@@ -7,18 +7,11 @@ import FormLabel from "@material-ui/core/FormLabel";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
+import { findIndex, sortBy } from "lodash-es";
 import React, { useState } from "react";
 
 import Messages from "../shared/components/submit-messages";
 import Checkbox from "./Checkbox";
-
-interface ICheckboxes {
-  title: string;
-  options: object;
-  name: string;
-  required?: boolean;
-  includeSubmit?: boolean;
-}
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -32,15 +25,44 @@ const useStyles = makeStyles(theme =>
   })
 );
 
+interface ICheckboxes {
+  title: string;
+  options: object;
+  name: string;
+  required?: boolean;
+  includeSubmit?: boolean;
+  handleChange?;
+}
+
 const Checkboxes: React.FC<ICheckboxes> = ({
   title = "Title",
   options = {},
   name = "",
-  includeSubmit = false
+  includeSubmit = false,
+  handleChange
 }) => {
   const [errorMessageVisible, setErrorMessageVisible] = useState(false);
   const [successMessageVisible, setSuccessMessageVisible] = useState(false);
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(true);
+
+  const changeHandler = (e, optionId) => {
+    let selected = [];
+
+    if (e.target.checked) {
+      selected = [...formik.values.selectedOptions, optionId];
+    } else {
+      selected = formik.values.selectedOptions.filter(el => el !== optionId);
+    }
+
+    // sort selected values to match the order of the original options
+    selected = sortBy(selected, x =>
+      findIndex(Object.keys(options), y => x === y)
+    );
+
+    formik.setFieldValue("selectedOptions", selected);
+
+    if (handleChange) handleChange(selected);
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -85,34 +107,22 @@ const Checkboxes: React.FC<ICheckboxes> = ({
           </FormLabel>
           <Box mb={3}>
             <FormGroup>
-              {Object.entries(options).map(([id, label]) => (
+              {Object.entries(options).map(([optionId, label]) => (
                 <FormControlLabel
                   classes={{
                     root: classes.formControlLabelRoot,
                     label: classes.formControlLabel
                   }}
-                  key={id}
+                  key={optionId}
                   control={
                     <Checkbox
-                      checked={formik.values.selectedOptions.includes(id)}
+                      checked={formik.values.selectedOptions.includes(optionId)}
                       disableRipple
                       onChange={e => {
-                        if (e.target.checked) {
-                          formik.setFieldValue("selectedOptions", [
-                            ...formik.values.selectedOptions,
-                            id
-                          ]);
-                        } else {
-                          formik.setFieldValue(
-                            "selectedOptions",
-                            formik.values.selectedOptions.filter(
-                              el => el !== id
-                            )
-                          );
-                        }
+                        changeHandler(e, optionId);
                       }}
-                      value={id}
-                      name={id}
+                      value={optionId}
+                      name={optionId}
                     />
                   }
                   label={label}

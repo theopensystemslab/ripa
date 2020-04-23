@@ -48,7 +48,34 @@ const Card = ({ id }) => {
         return acc;
       }, {});
 
-    return <Checkboxes title={node.text} name={node.id} options={options} />;
+    return (
+      <Checkboxes
+        title={node.text}
+        name={node.id}
+        options={options}
+        handleChange={selected => {
+          set(state => {
+            state.data.responsesGiven = state.data.responsesGiven || {};
+            // console.log(Object.keys(state.data.responsesGiven));
+
+            let found = false;
+
+            state.data.responsesGiven = Object.keys(
+              state.data.responsesGiven
+            ).reduce((acc, curr) => {
+              if (curr === node.id) found = true;
+
+              if (!found) {
+                acc[curr] = state.data.responsesGiven[curr];
+              }
+
+              return acc;
+            }, {});
+            state.data.responsesGiven[node.id] = selected;
+          });
+        }}
+      />
+    );
   }
 
   if (node.$t === 110 || node.text.toLowerCase().includes(["[text]"])) {
@@ -191,29 +218,25 @@ const Card = ({ id }) => {
         <ButtonCard
           statement={node}
           responses={responses}
-          handleClick={(s, r) => {
+          handleClick={responseId => {
             set(state => {
-              console.log(Object.keys(state.data.responsesGiven));
-
               state.data.responsesGiven = state.data.responsesGiven || {};
+              // console.log(Object.keys(state.data.responsesGiven));
 
               let found = false;
 
               state.data.responsesGiven = Object.keys(
                 state.data.responsesGiven
               ).reduce((acc, curr) => {
-                if (!found) {
-                  acc[s.id] = state.data.responsesGiven[s.id];
-                }
+                if (curr === node.id) found = true;
 
-                if (curr === s.id) found = true;
+                if (!found) {
+                  acc[curr] = state.data.responsesGiven[curr];
+                }
 
                 return acc;
               }, {});
-
-              state.data.responsesGiven[s.id] = [r.id];
-
-              console.log(Object.keys(state.data.responsesGiven));
+              state.data.responsesGiven[node.id] = [responseId];
             });
           }}
         />
@@ -232,12 +255,14 @@ const Card = ({ id }) => {
 
 const Section = ({ id }) => {
   const flow = useStore(state => state.flow);
-  const responsesGiven = useStore(state => state.data.responsesGiven);
+  const responsesGiven = useStore(state => state.data.responsesGiven || {});
 
   const classes = useStyles();
 
+  let statements = [];
+
   const getStatements = id => {
-    return flow.edges
+    flow.edges
       .filter(([src]) => src === id)
       .map(([, tgt]) => tgt)
       .filter(tgt => {
@@ -246,23 +271,29 @@ const Section = ({ id }) => {
         const hasResponses =
           flow.edges.filter(([src]) => src === tgt).length > 0;
 
-        return (isStatement && hasResponses) || !isStatement;
+        if ((isStatement && hasResponses) || !isStatement) {
+          statements = statements.concat(tgt);
+        }
+
+        if (Object.keys(responsesGiven).includes(tgt)) {
+          responsesGiven[tgt].forEach(t => getStatements(t));
+        }
       });
   };
 
-  let roots = getStatements(id);
+  getStatements(id);
 
-  if (responsesGiven) {
-    Object.values(responsesGiven).map((responseIds: string[]) => {
-      responseIds.reverse().forEach(rId => {
-        roots = roots.concat(getStatements(rId));
-      });
-    });
-  }
+  // Object.values(responsesGiven).map((responseIds: string[]) => {
+  //   responseIds.forEach((rId) => {
+  //     getStatements(rId)
+  //     roots = roots.concat();
+  //   });
+  // });
+
+  const roots = Array.from(new Set(statements));
 
   return (
-    <HVCenterContainer light>
-      {JSON.stringify(responsesGiven)}
+    <HVCenterContainer light disableScroll>
       <Link href="/start" className={classes.backLink}>
         <ArrowLeft /> Back
       </Link>
