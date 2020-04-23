@@ -7,7 +7,8 @@ import FormLabel from "@material-ui/core/FormLabel";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
-import { findIndex, sortBy } from "lodash-es";
+import findIndex from "lodash/findIndex";
+import sortBy from "lodash/sortBy";
 import React, { useState } from "react";
 
 import Messages from "../shared/components/submit-messages";
