@@ -18,7 +18,12 @@ describe("Street Address Component", () => {
   });
   it("should render success message when all required fields are filled", async () => {
     const { getByPlaceholderText, getByText, getByTestId, findByText } = render(
-      <StreetAddress title={title} type={type} options={options} />
+      <StreetAddress
+        title={title}
+        includeLookup={true}
+        type={type}
+        options={options}
+      />
     );
     expect(getByText(/look up address/i).closest("button")).toHaveAttribute(
       "disabled"
@@ -49,7 +54,12 @@ describe("Street Address Component", () => {
   });
   it("should render fail message when all required fields are not filled", async () => {
     const { getByPlaceholderText, getByText, getByTestId, findByText } = render(
-      <StreetAddress title={title} type={type} options={options} />
+      <StreetAddress
+        title={title}
+        includeLookup={true}
+        type={type}
+        options={options}
+      />
     );
     expect(getByText(/look up address/i).closest("button")).toHaveAttribute(
       "disabled"

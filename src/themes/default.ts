@@ -1,5 +1,5 @@
 import { createMuiTheme } from "@material-ui/core/styles";
-import { defaultsDeep } from "lodash-es";
+import defaultsDeep from "lodash/defaultsDeep";
 
 // see default values here https://material-ui.com/customization/default-theme
 

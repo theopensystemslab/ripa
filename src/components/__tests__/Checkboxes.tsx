@@ -32,7 +32,12 @@ describe("Checkboxes Component", () => {
   });
   it("should render success message when selected and enable the submit button", async () => {
     const { getByTestId, getByLabelText, findByText, getByText } = render(
-      <Checkboxes title={title} options={options} name={name} />
+      <Checkboxes
+        title={title}
+        includeSubmit={true}
+        options={options}
+        name={name}
+      />
     );
     expect(getByText(/save and continue/i).closest("button")).toHaveAttribute(
       "disabled"
@@ -48,7 +53,12 @@ describe("Checkboxes Component", () => {
   });
   it("should render fail message when nothing is selected and disable the submit button", async () => {
     const { getByLabelText, findByText, getByText } = render(
-      <Checkboxes title={title} options={options} name={name} />
+      <Checkboxes
+        title={title}
+        includeSubmit={true}
+        options={options}
+        name={name}
+      />
     );
     fireEvent.click(getByLabelText(/option 2/i));
     fireEvent.click(getByLabelText(/option 2/i));

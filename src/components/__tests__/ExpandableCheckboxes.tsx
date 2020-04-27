@@ -30,6 +30,7 @@ describe("Expandable Checkboxes Component", () => {
       <ExpandableCheckboxes
         title={title}
         name={name}
+        includeSubmit={true}
         panelsOptions={panelsOptions}
       />
     );
@@ -46,6 +47,7 @@ describe("Expandable Checkboxes Component", () => {
         title={title}
         name={name}
         required
+        includeSubmit={true}
         panelsOptions={panelsOptions}
       />
     );
@@ -67,6 +69,7 @@ describe("Expandable Checkboxes Component", () => {
     const { asFragment } = render(
       <ExpandableCheckboxes
         title={title}
+        includeSubmit={true}
         name={name}
         panelsOptions={panelsOptions}
       />
