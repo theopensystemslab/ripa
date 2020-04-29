@@ -6,6 +6,7 @@ import * as React from "react";
 import { Link } from "react-navi";
 
 import { ButtonCard } from "../components/Cards/ButtonCard.fixture";
+import Checkboxes from "../components/Checkboxes";
 import Date from "../components/Date";
 import FileUpload from "../components/FileUpload";
 import HVCenterContainer from "../components/HVCenterContainer";
@@ -32,7 +33,50 @@ const useStyles = makeStyles({
 
 const Card = ({ id }) => {
   const flow = useStore(state => state.flow);
-  const node = flow.nodes[id];
+  const set = useStore(state => state.set);
+  const node = { id, ...flow.nodes[id] };
+
+  if (node.$t === 105) {
+    const options = flow.edges
+      .filter(([src]) => src === id)
+      .map(([, tgt]) => ({
+        id: tgt,
+        ...flow.nodes[tgt]
+      }))
+      .reduce((acc, curr) => {
+        acc[curr.id] = curr.text;
+        return acc;
+      }, {});
+
+    return (
+      <Checkboxes
+        title={node.text}
+        name={node.id}
+        options={options}
+        handleChange={selected => {
+          set(state => {
+            state.data.responsesGiven = state.data.responsesGiven || {};
+            // console.log(Object.keys(state.data.responsesGiven));
+
+            let found = false;
+
+            state.data.responsesGiven = Object.keys(
+              state.data.responsesGiven
+            ).reduce((acc, curr) => {
+              if (curr === node.id) found = true;
+
+              if (!found) {
+                acc[curr] = state.data.responsesGiven[curr];
+              }
+
+              return acc;
+            }, {});
+            state.data.responsesGiven[node.id] = selected;
+          });
+        }}
+      />
+    );
+  }
 
   if (node.$t === 110 || node.text.toLowerCase().includes(["[text]"])) {
     return (
@@ -113,7 +157,7 @@ const Card = ({ id }) => {
     );
   }
 
-  if (node.text.toLowerCase().includes(["[date]"])) {
+  if (node.$t === 120 || node.text.toLowerCase().includes(["[date]"])) {
     return (
       <Date
         title={node.text.replace(/\[date\]/i, "").trim()}
@@ -171,7 +215,31 @@ const Card = ({ id }) => {
 
     return (
       <Box py={4}>
-        <ButtonCard statement={node} responses={responses} />
+        <ButtonCard
+          statement={node}
+          responses={responses}
+          handleClick={responseId => {
+            set(state => {
+              state.data.responsesGiven = state.data.responsesGiven || {};
+              // console.log(Object.keys(state.data.responsesGiven));
+
+              let found = false;
+
+              state.data.responsesGiven = Object.keys(
+                state.data.responsesGiven
+              ).reduce((acc, curr) => {
+                if (curr === node.id) found = true;
+
+                if (!found) {
+                  acc[curr] = state.data.responsesGiven[curr];
+                }
+
+                return acc;
+              }, {});
+              state.data.responsesGiven[node.id] = [responseId];
+            });
+          }}
+        />
       </Box>
     );
   }
@@ -187,21 +255,45 @@ const Card = ({ id }) => {
 
 const Section = ({ id }) => {
   const flow = useStore(state => state.flow);
+  const responsesGiven = useStore(state => state.data.responsesGiven || {});
+
   const classes = useStyles();
 
-  const roots = flow.edges
-    .filter(([src]) => src === id)
-    .map(([, tgt]) => tgt)
-    .filter(tgt => {
-      const isStatement = flow.nodes[tgt].$t === 100;
+  let statements = [];
 
-      const hasResponses = flow.edges.filter(([src]) => src === tgt).length > 0;
+  const getStatements = id => {
+    flow.edges
+      .filter(([src]) => src === id)
+      .map(([, tgt]) => tgt)
+      .filter(tgt => {
+        const isStatement = flow.nodes[tgt].$t === 100;
 
-      return (isStatement && hasResponses) || !isStatement;
-    });
+        const hasResponses =
+          flow.edges.filter(([src]) => src === tgt).length > 0;
+
+        if ((isStatement && hasResponses) || !isStatement) {
+          statements = statements.concat(tgt);
+        }
+
+        if (Object.keys(responsesGiven).includes(tgt)) {
+          responsesGiven[tgt].forEach(t => getStatements(t));
+        }
+      });
+  };
+
+  getStatements(id);
+
+  // Object.values(responsesGiven).map((responseIds: string[]) => {
+  //   responseIds.forEach((rId) => {
+  //     getStatements(rId)
+  //     roots = roots.concat();
+  //   });
+  // });
+
+  const roots = Array.from(new Set(statements));
 
   return (
-    <HVCenterContainer light>
+    <HVCenterContainer light disableScroll>
       <Link href="/start" className={classes.backLink}>
         <ArrowLeft /> Back
       </Link>

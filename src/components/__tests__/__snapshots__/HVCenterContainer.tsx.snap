@@ -3,11 +3,11 @@
 exports[`HVCenterContainer Component should render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root MuiBox-root-3 makeStyles-root-1"
+    class="MuiBox-root MuiBox-root-4 makeStyles-root-1"
     style="align-items: center; display: flex;"
   >
     <div
-      class="MuiContainer-root MuiContainer-maxWidthMd"
+      class="MuiContainer-root vertical-center MuiContainer-maxWidthMd"
     >
       This should be rendered inside
     </div>

@@ -3,9 +3,11 @@
 exports[`Question Component render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiTypography-root makeStyles-question-1 MuiTypography-h2"
+    class="MuiTypography-root makeStyles-question-1 MuiTypography-h4"
   >
-    This is a question
+    <strong>
+      This is a question
+    </strong>
   </div>
 </DocumentFragment>
 `;

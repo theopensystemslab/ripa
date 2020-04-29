@@ -45,6 +45,7 @@ const Flow = () => {
             state.data.activeStep = 2;
           })
         }
+        includeSubmit
       />
     </HVCenterContainer>
   );

@@ -31,8 +31,11 @@ interface ICardDetails {
   year?: number;
   securityCode?: number;
   cardNumber?: number;
+  includeSubmit?: boolean;
 }
-export const CardDetails: React.FC<ICardDetails> = () => {
+export const CardDetails: React.FC<ICardDetails> = ({
+  includeSubmit = false
+}) => {
   const [successMessageVisible, setSuccessMessageVisible] = useState(false);
 
   const formik = useFormik({
@@ -134,9 +137,11 @@ export const CardDetails: React.FC<ICardDetails> = () => {
                 />
               </Box>
             </Box>
-            <Button type="submit" variant="contained" color="primary">
-              Save and Continue
-            </Button>
+            {includeSubmit && (
+              <Button type="submit" variant="contained" color="primary">
+                Save and Continue
+              </Button>
+            )}
             <div>
               {successMessageVisible ? (
                 <Messages

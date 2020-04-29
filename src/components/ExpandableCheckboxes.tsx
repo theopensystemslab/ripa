@@ -52,6 +52,7 @@ interface IExpandableCheckboxes {
   }[];
   callback?;
   required?: boolean;
+  includeSubmit?: boolean;
 }
 
 export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
@@ -64,7 +65,8 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
   ],
   name = "",
   callback = undefined,
-  required = false
+  required = false,
+  includeSubmit = false
 }) => {
   const [successMessageVisible, setSuccessMessageVisible] = useState(false);
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(required);
@@ -180,17 +182,19 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
                   </ExpansionPanelDetails>
                 </ExpansionPanel>
               ))}
-              <Box pt={3}>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  disabled={submitButtonDisabled}
-                  style={{ margin: "10px 0" }}
-                >
-                  Save and Continue
-                </Button>
-              </Box>
+              {includeSubmit && (
+                <Box pt={3}>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    disabled={submitButtonDisabled}
+                    style={{ margin: "10px 0" }}
+                  >
+                    Save and Continue
+                  </Button>
+                </Box>
+              )}
               <div>
                 {successMessageVisible ? (
                   <Messages
