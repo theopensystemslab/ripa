@@ -7,9 +7,19 @@ exports[`Date Component should render snapshot 1`] = `
   >
     <form>
       <div
-        class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+        class="MuiBox-root MuiBox-root-3"
       >
-         test title
+        <div
+          class="makeStyles-root-4"
+        >
+          <div
+            class="MuiTypography-root makeStyles-question-5 MuiTypography-h4"
+          >
+            <strong>
+               test title
+            </strong>
+          </div>
+        </div>
       </div>
       <div
         class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1"

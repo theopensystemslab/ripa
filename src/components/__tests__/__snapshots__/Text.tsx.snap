@@ -2,193 +2,217 @@
 
 exports[`Text Component Of type long text should render snapshot 1`] = `
 <DocumentFragment>
-  <div
-    class="MuiBox-root MuiBox-root-263"
-  >
-    <form>
-      <div
-        class="MuiBox-root MuiBox-root-264"
-      >
+  <div>
+    <div
+      class="MuiBox-root MuiBox-root-269"
+    >
+      <form>
         <div
-          class="MuiTypography-root makeStyles-question-265 MuiTypography-h4"
+          class="MuiBox-root MuiBox-root-270"
         >
-          <strong>
-            test title
-          </strong>
-        </div>
-      </div>
-      <div
-        class="MuiBox-root MuiBox-root-296"
-      >
-        <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
-          for="test name"
-        >
-          long text input label
-        </label>
-        <div
-          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-multiline MuiInput-multiline"
-          max="Infinity"
-          min="0"
-        >
-          <textarea
-            class="MuiInputBase-input MuiInput-input MuiInputBase-inputMultiline MuiInput-inputMultiline"
-            id="test name"
-            name="test name"
-            placeholder="long text input placeholder"
-            rows="5"
-          />
+          <div
+            class="makeStyles-root-271"
+          >
+            <div
+              class="MuiTypography-root makeStyles-question-272 MuiTypography-h4"
+            >
+              <strong>
+                test title
+              </strong>
+            </div>
+          </div>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-349"
+          class="MuiBox-root MuiBox-root-304"
         >
-          <span>
-             10 words Remaining 
-          </span>
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+            for="test name"
+          >
+            long text input label
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-multiline MuiInput-multiline"
+            max="Infinity"
+            min="0"
+          >
+            <textarea
+              class="MuiInputBase-input MuiInput-input MuiInputBase-inputMultiline MuiInput-inputMultiline"
+              id="test name"
+              name="test name"
+              placeholder="long text input placeholder"
+              rows="5"
+            />
+          </div>
+          <div
+            class="MuiBox-root MuiBox-root-357"
+          >
+            <span>
+               10 words Remaining 
+            </span>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </DocumentFragment>
 `;
 
 exports[`Text Component of type Email should render snapshot 1`] = `
 <DocumentFragment>
-  <div
-    class="MuiBox-root MuiBox-root-615"
-  >
-    <form>
-      <div
-        class="MuiBox-root MuiBox-root-616"
-      >
+  <div>
+    <div
+      class="MuiBox-root MuiBox-root-629"
+    >
+      <form>
         <div
-          class="MuiTypography-root makeStyles-question-617 MuiTypography-h4"
+          class="MuiBox-root MuiBox-root-630"
         >
-          <strong>
-            test title
-          </strong>
+          <div
+            class="makeStyles-root-631"
+          >
+            <div
+              class="MuiTypography-root makeStyles-question-632 MuiTypography-h4"
+            >
+              <strong>
+                test title
+              </strong>
+            </div>
+          </div>
         </div>
-      </div>
-      <div
-        class="MuiBox-root MuiBox-root-648"
-      >
-        <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
-          for="test name"
-        >
-          Email text input label
-        </label>
         <div
-          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth"
-          max="Infinity"
-          min="0"
+          class="MuiBox-root MuiBox-root-664"
         >
-          <input
-            class="MuiInputBase-input MuiInput-input"
-            id="test name"
-            name="test name"
-            placeholder="Email text input placeholder"
-            rows="1"
-            type="email"
-            value=""
-          />
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+            for="test name"
+          >
+            Email text input label
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth"
+            max="Infinity"
+            min="0"
+          >
+            <input
+              class="MuiInputBase-input MuiInput-input"
+              id="test name"
+              name="test name"
+              placeholder="Email text input placeholder"
+              rows="1"
+              type="email"
+              value=""
+            />
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </DocumentFragment>
 `;
 
 exports[`Text Component of type Number should render snapshot 1`] = `
 <DocumentFragment>
-  <div
-    class="MuiBox-root MuiBox-root-876"
-  >
-    <form>
-      <div
-        class="MuiBox-root MuiBox-root-877"
-      >
+  <div>
+    <div
+      class="MuiBox-root MuiBox-root-896"
+    >
+      <form>
         <div
-          class="MuiTypography-root makeStyles-question-878 MuiTypography-h4"
+          class="MuiBox-root MuiBox-root-897"
         >
-          <strong>
-            test title
-          </strong>
+          <div
+            class="makeStyles-root-898"
+          >
+            <div
+              class="MuiTypography-root makeStyles-question-899 MuiTypography-h4"
+            >
+              <strong>
+                test title
+              </strong>
+            </div>
+          </div>
         </div>
-      </div>
-      <div
-        class="MuiBox-root MuiBox-root-909"
-      >
-        <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
-          for="test name"
-        >
-          number input label
-        </label>
         <div
-          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth"
-          max="Infinity"
-          min="0"
+          class="MuiBox-root MuiBox-root-931"
         >
-          <input
-            class="MuiInputBase-input MuiInput-input"
-            id="test name"
-            name="test name"
-            placeholder="number input placeholder"
-            rows="1"
-            type="number"
-            value=""
-          />
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+            for="test name"
+          >
+            number input label
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth"
+            max="Infinity"
+            min="0"
+          >
+            <input
+              class="MuiInputBase-input MuiInput-input"
+              id="test name"
+              name="test name"
+              placeholder="number input placeholder"
+              rows="1"
+              type="number"
+              value=""
+            />
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </DocumentFragment>
 `;
 
 exports[`Text Component of type short text should render snapshot 1`] = `
 <DocumentFragment>
-  <div
-    class="MuiBox-root MuiBox-root-2"
-  >
-    <form>
-      <div
-        class="MuiBox-root MuiBox-root-3"
-      >
+  <div>
+    <div
+      class="MuiBox-root MuiBox-root-2"
+    >
+      <form>
         <div
-          class="MuiTypography-root makeStyles-question-4 MuiTypography-h4"
+          class="MuiBox-root MuiBox-root-3"
         >
-          <strong>
-            test title
-          </strong>
+          <div
+            class="makeStyles-root-4"
+          >
+            <div
+              class="MuiTypography-root makeStyles-question-5 MuiTypography-h4"
+            >
+              <strong>
+                test title
+              </strong>
+            </div>
+          </div>
         </div>
-      </div>
-      <div
-        class="MuiBox-root MuiBox-root-35"
-      >
-        <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
-          for="test name"
-        >
-          short text input label
-        </label>
         <div
-          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth"
-          max="Infinity"
-          min="0"
+          class="MuiBox-root MuiBox-root-37"
         >
-          <input
-            class="MuiInputBase-input MuiInput-input"
-            id="test name"
-            name="test name"
-            placeholder="short text input placeholder"
-            rows="1"
-            type="text"
-            value=""
-          />
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+            for="test name"
+          >
+            short text input label
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth"
+            max="Infinity"
+            min="0"
+          >
+            <input
+              class="MuiInputBase-input MuiInput-input"
+              id="test name"
+              name="test name"
+              placeholder="short text input placeholder"
+              rows="1"
+              type="text"
+              value=""
+            />
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </DocumentFragment>
 `;
