@@ -3,16 +3,26 @@
 exports[`File Upload Component should render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root MuiBox-root-72"
+    class="MuiBox-root MuiBox-root-80"
   >
     <form>
-      <h1
-        class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
-      >
-        File upload
-      </h1>
       <div
-        class="makeStyles-box-69"
+        class="MuiBox-root MuiBox-root-81"
+      >
+        <div
+          class="makeStyles-root-82"
+        >
+          <div
+            class="MuiTypography-root makeStyles-question-83 MuiTypography-h4"
+          >
+            <strong>
+              File upload
+            </strong>
+          </div>
+        </div>
+      </div>
+      <div
+        class="makeStyles-box-77"
         tabindex="0"
       >
         <input

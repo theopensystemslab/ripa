@@ -2,7 +2,8 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { useFormik } from "formik";
-import React from "react";
+import React, { useState } from "react";
+import FocusWithin from "react-focus-within";
 
 import Messages from "../shared/components/submit-messages";
 import Question from "./Question";
@@ -68,58 +69,70 @@ export const StreetAddress: React.FC<IStreetAddress> = ({
         break;
     }
   };
+
   return (
-    <Box py={4} maxWidth={480}>
-      <form data-testid="streetAddressForm" onSubmit={formik.handleSubmit}>
-        <Box mb={1.5}>
-          <Question>
-            <strong>{title}</strong>
-          </Question>
-        </Box>
-        {options.map((el, index) => (
-          <div key={`${el}-${index}`}>
-            <Box mb={2.5}>
-              <TextField
-                onChange={formik.handleChange}
-                placeholder={el}
-                label={renderLabels(el)}
-                fullWidth
-                value={formik.values[el] || ""}
-                type={type}
-                name={el}
-              />
-            </Box>
-          </div>
-        ))}
-        <Box textAlign="right">
-          <div>
-            {errorMessageVisible && formik.touched ? (
-              <Messages
-                type="error"
-                message="Please Fill the Building, Street and Town fields"
-              />
-            ) : null}
-          </div>
-
-          {includeLookup && (
-            <Button
-              type="submit"
-              disabled={submitButtonDisabled}
-              variant="contained"
-              color="primary"
+    <FocusWithin>
+      {({ isFocused, getFocusProps }) => (
+        <div {...getFocusProps()}>
+          <Box py={4} maxWidth={480}>
+            <form
+              data-testid="streetAddressForm"
+              onSubmit={formik.handleSubmit}
             >
-              Look up address
-            </Button>
-          )}
+              <Box mb={1.5}>
+                <Question inFocus={isFocused}>
+                  <strong>{title}</strong>
+                </Question>
+              </Box>
+              {options.map((el, index) => (
+                <div key={`${el}-${index}`}>
+                  <Box mb={2.5}>
+                    <TextField
+                      onChange={formik.handleChange}
+                      placeholder={el}
+                      label={renderLabels(el)}
+                      fullWidth
+                      value={formik.values[el] || ""}
+                      type={type}
+                      name={el}
+                    />
+                  </Box>
+                </div>
+              ))}
+              <Box textAlign="right">
+                <div>
+                  {errorMessageVisible && formik.touched ? (
+                    <Messages
+                      type="error"
+                      message="Please Fill the Building, Street and Town fields"
+                    />
+                  ) : null}
+                </div>
 
-          <div>
-            {successMessageVisible ? (
-              <Messages type="success" message="Form submitted successfully" />
-            ) : null}
-          </div>
-        </Box>
-      </form>
-    </Box>
+                {includeLookup && (
+                  <Button
+                    type="submit"
+                    disabled={submitButtonDisabled}
+                    variant="contained"
+                    color="primary"
+                  >
+                    Look up address
+                  </Button>
+                )}
+                <div>
+                  {successMessageVisible ? (
+                    <Messages
+                      type="success"
+                      message="Form submitted successfully"
+                    />
+                  ) : null}
+                </div>
+              </Box>
+            </form>
+          </Box>
+        </div>
+      )}
+    </FocusWithin>
   );
 };
 

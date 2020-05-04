@@ -2,577 +2,590 @@
 
 exports[`Expandable Checkboxes Component should render snapshot 1`] = `
 <DocumentFragment>
-  <form
-    data-testid="expandableForm"
+  <div
+    class="makeStyles-root-372"
+    tabindex="0"
   >
-    <div
-      class="MuiBox-root MuiBox-root-363"
+    <form
+      data-testid="expandableForm"
     >
-      <h4
-        class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
-      >
-        <strong>
-          Expandable Checkboxes
-        </strong>
-      </h4>
       <div
-        class="MuiPaper-root MuiExpansionPanel-root makeStyles-expansionPanel-357 MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
+        class="MuiBox-root MuiBox-root-374"
       >
         <div
-          aria-controls="additional-actions1-content"
-          aria-disabled="false"
-          aria-expanded="false"
-          aria-label="Expand"
-          class="MuiButtonBase-root MuiExpansionPanelSummary-root makeStyles-summary-359"
-          id="additional-actions1-header"
-          role="button"
-          tabindex="0"
+          class="MuiBox-root MuiBox-root-375"
         >
           <div
-            class="MuiExpansionPanelSummary-content makeStyles-summaryContent-360"
+            class="makeStyles-root-376"
           >
-            section A
-          </div>
-          <div
-            aria-disabled="false"
-            aria-hidden="true"
-            class="MuiButtonBase-root MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
-          >
-            <span
-              class="MuiIconButton-label"
+            <div
+              class="MuiTypography-root makeStyles-question-377 MuiTypography-h4"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-                />
-              </svg>
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
+              <strong>
+                Expandable Checkboxes
+              </strong>
+            </div>
           </div>
         </div>
         <div
-          class="MuiCollapse-container MuiCollapse-hidden"
-          style="min-height: 0px;"
+          class="MuiPaper-root MuiExpansionPanel-root makeStyles-expansionPanel-367 MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
-            class="MuiCollapse-wrapper"
+            aria-controls="additional-actions1-content"
+            aria-disabled="false"
+            aria-expanded="false"
+            aria-label="Expand"
+            class="MuiButtonBase-root MuiExpansionPanelSummary-root makeStyles-summary-369"
+            id="additional-actions1-header"
+            role="button"
+            tabindex="0"
           >
             <div
-              class="MuiCollapse-wrapperInner"
+              class="MuiExpansionPanelSummary-content makeStyles-summaryContent-370"
+            >
+              section A
+            </div>
+            <div
+              aria-disabled="false"
+              aria-hidden="true"
+              class="MuiButtonBase-root MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </div>
+          </div>
+          <div
+            class="MuiCollapse-container MuiCollapse-hidden"
+            style="min-height: 0px;"
+          >
+            <div
+              class="MuiCollapse-wrapper"
             >
               <div
-                aria-labelledby="additional-actions1-header"
-                id="additional-actions1-content"
-                role="region"
+                class="MuiCollapse-wrapperInner"
               >
                 <div
-                  class="MuiExpansionPanelDetails-root makeStyles-details-361"
+                  aria-labelledby="additional-actions1-header"
+                  id="additional-actions1-content"
+                  role="region"
                 >
-                  <fieldset
-                    class="MuiFormControl-root"
+                  <div
+                    class="MuiExpansionPanelDetails-root makeStyles-details-371"
                   >
-                    <legend
-                      class="MuiFormLabel-root"
-                    />
-                    <div
-                      class="MuiFormGroup-root"
+                    <fieldset
+                      class="MuiFormControl-root"
                     >
-                      <div>
-                        <label
-                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-355"
-                        >
-                          <span
-                            aria-disabled="false"
-                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-488 MuiCheckbox-root makeStyles-checkBoxRoot-479 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                      <legend
+                        class="MuiFormLabel-root"
+                      />
+                      <div
+                        class="MuiFormGroup-root"
+                      >
+                        <div>
+                          <label
+                            class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-365"
                           >
                             <span
-                              class="MuiIconButton-label"
+                              aria-disabled="false"
+                              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-503 MuiCheckbox-root makeStyles-checkBoxRoot-494 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                             >
-                              <input
-                                class="PrivateSwitchBase-input-491"
-                                data-indeterminate="false"
-                                name="Response A1"
-                                type="checkbox"
-                                value="Response A1"
-                              />
                               <span
-                                class="makeStyles-icon-480"
-                                font-size="default"
+                                class="MuiIconButton-label"
+                              >
+                                <input
+                                  class="PrivateSwitchBase-input-506"
+                                  data-indeterminate="false"
+                                  name="Response A1"
+                                  type="checkbox"
+                                  value="Response A1"
+                                />
+                                <span
+                                  class="makeStyles-icon-495"
+                                  font-size="default"
+                                />
+                              </span>
+                              <span
+                                class="MuiTouchRipple-root"
                               />
                             </span>
                             <span
-                              class="MuiTouchRipple-root"
-                            />
-                          </span>
-                          <span
-                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-356 MuiTypography-body1"
-                          >
-                            Response A1
-                          </span>
-                        </label>
-                      </div>
-                      <div>
-                        <label
-                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-355"
-                        >
-                          <span
-                            aria-disabled="false"
-                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-488 MuiCheckbox-root makeStyles-checkBoxRoot-479 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                              class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-366 MuiTypography-body1"
+                            >
+                              Response A1
+                            </span>
+                          </label>
+                        </div>
+                        <div>
+                          <label
+                            class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-365"
                           >
                             <span
-                              class="MuiIconButton-label"
+                              aria-disabled="false"
+                              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-503 MuiCheckbox-root makeStyles-checkBoxRoot-494 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                             >
-                              <input
-                                class="PrivateSwitchBase-input-491"
-                                data-indeterminate="false"
-                                name="Response A2"
-                                type="checkbox"
-                                value="Response A2"
-                              />
                               <span
-                                class="makeStyles-icon-480"
-                                font-size="default"
+                                class="MuiIconButton-label"
+                              >
+                                <input
+                                  class="PrivateSwitchBase-input-506"
+                                  data-indeterminate="false"
+                                  name="Response A2"
+                                  type="checkbox"
+                                  value="Response A2"
+                                />
+                                <span
+                                  class="makeStyles-icon-495"
+                                  font-size="default"
+                                />
+                              </span>
+                              <span
+                                class="MuiTouchRipple-root"
                               />
                             </span>
                             <span
-                              class="MuiTouchRipple-root"
-                            />
-                          </span>
-                          <span
-                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-356 MuiTypography-body1"
-                          >
-                            Response A2
-                          </span>
-                        </label>
-                      </div>
-                      <div>
-                        <label
-                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-355"
-                        >
-                          <span
-                            aria-disabled="false"
-                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-488 MuiCheckbox-root makeStyles-checkBoxRoot-479 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                              class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-366 MuiTypography-body1"
+                            >
+                              Response A2
+                            </span>
+                          </label>
+                        </div>
+                        <div>
+                          <label
+                            class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-365"
                           >
                             <span
-                              class="MuiIconButton-label"
+                              aria-disabled="false"
+                              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-503 MuiCheckbox-root makeStyles-checkBoxRoot-494 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                             >
-                              <input
-                                class="PrivateSwitchBase-input-491"
-                                data-indeterminate="false"
-                                name="Response A3"
-                                type="checkbox"
-                                value="Response A3"
-                              />
                               <span
-                                class="makeStyles-icon-480"
-                                font-size="default"
+                                class="MuiIconButton-label"
+                              >
+                                <input
+                                  class="PrivateSwitchBase-input-506"
+                                  data-indeterminate="false"
+                                  name="Response A3"
+                                  type="checkbox"
+                                  value="Response A3"
+                                />
+                                <span
+                                  class="makeStyles-icon-495"
+                                  font-size="default"
+                                />
+                              </span>
+                              <span
+                                class="MuiTouchRipple-root"
                               />
                             </span>
                             <span
-                              class="MuiTouchRipple-root"
-                            />
-                          </span>
-                          <span
-                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-356 MuiTypography-body1"
-                          >
-                            Response A3
-                          </span>
-                        </label>
+                              class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-366 MuiTypography-body1"
+                            >
+                              Response A3
+                            </span>
+                          </label>
+                        </div>
                       </div>
-                    </div>
-                  </fieldset>
+                    </fieldset>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        class="MuiPaper-root MuiExpansionPanel-root makeStyles-expansionPanel-357 MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
-      >
         <div
-          aria-controls="additional-actions1-content"
-          aria-disabled="false"
-          aria-expanded="false"
-          aria-label="Expand"
-          class="MuiButtonBase-root MuiExpansionPanelSummary-root makeStyles-summary-359"
-          id="additional-actions1-header"
-          role="button"
-          tabindex="0"
+          class="MuiPaper-root MuiExpansionPanel-root makeStyles-expansionPanel-367 MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
-            class="MuiExpansionPanelSummary-content makeStyles-summaryContent-360"
-          >
-            section B
-          </div>
-          <div
+            aria-controls="additional-actions1-content"
             aria-disabled="false"
-            aria-hidden="true"
-            class="MuiButtonBase-root MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
-          >
-            <span
-              class="MuiIconButton-label"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-                />
-              </svg>
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </div>
-        </div>
-        <div
-          class="MuiCollapse-container MuiCollapse-hidden"
-          style="min-height: 0px;"
-        >
-          <div
-            class="MuiCollapse-wrapper"
+            aria-expanded="false"
+            aria-label="Expand"
+            class="MuiButtonBase-root MuiExpansionPanelSummary-root makeStyles-summary-369"
+            id="additional-actions1-header"
+            role="button"
+            tabindex="0"
           >
             <div
-              class="MuiCollapse-wrapperInner"
+              class="MuiExpansionPanelSummary-content makeStyles-summaryContent-370"
+            >
+              section B
+            </div>
+            <div
+              aria-disabled="false"
+              aria-hidden="true"
+              class="MuiButtonBase-root MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </div>
+          </div>
+          <div
+            class="MuiCollapse-container MuiCollapse-hidden"
+            style="min-height: 0px;"
+          >
+            <div
+              class="MuiCollapse-wrapper"
             >
               <div
-                aria-labelledby="additional-actions1-header"
-                id="additional-actions1-content"
-                role="region"
+                class="MuiCollapse-wrapperInner"
               >
                 <div
-                  class="MuiExpansionPanelDetails-root makeStyles-details-361"
+                  aria-labelledby="additional-actions1-header"
+                  id="additional-actions1-content"
+                  role="region"
                 >
-                  <fieldset
-                    class="MuiFormControl-root"
+                  <div
+                    class="MuiExpansionPanelDetails-root makeStyles-details-371"
                   >
-                    <legend
-                      class="MuiFormLabel-root"
-                    />
-                    <div
-                      class="MuiFormGroup-root"
+                    <fieldset
+                      class="MuiFormControl-root"
                     >
-                      <div>
-                        <label
-                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-355"
-                        >
-                          <span
-                            aria-disabled="false"
-                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-488 MuiCheckbox-root makeStyles-checkBoxRoot-479 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                      <legend
+                        class="MuiFormLabel-root"
+                      />
+                      <div
+                        class="MuiFormGroup-root"
+                      >
+                        <div>
+                          <label
+                            class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-365"
                           >
                             <span
-                              class="MuiIconButton-label"
+                              aria-disabled="false"
+                              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-503 MuiCheckbox-root makeStyles-checkBoxRoot-494 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                             >
-                              <input
-                                class="PrivateSwitchBase-input-491"
-                                data-indeterminate="false"
-                                name="Response B1"
-                                type="checkbox"
-                                value="Response B1"
-                              />
                               <span
-                                class="makeStyles-icon-480"
-                                font-size="default"
+                                class="MuiIconButton-label"
+                              >
+                                <input
+                                  class="PrivateSwitchBase-input-506"
+                                  data-indeterminate="false"
+                                  name="Response B1"
+                                  type="checkbox"
+                                  value="Response B1"
+                                />
+                                <span
+                                  class="makeStyles-icon-495"
+                                  font-size="default"
+                                />
+                              </span>
+                              <span
+                                class="MuiTouchRipple-root"
                               />
                             </span>
                             <span
-                              class="MuiTouchRipple-root"
-                            />
-                          </span>
-                          <span
-                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-356 MuiTypography-body1"
-                          >
-                            Response B1
-                          </span>
-                        </label>
-                      </div>
-                      <div>
-                        <label
-                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-355"
-                        >
-                          <span
-                            aria-disabled="false"
-                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-488 MuiCheckbox-root makeStyles-checkBoxRoot-479 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                              class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-366 MuiTypography-body1"
+                            >
+                              Response B1
+                            </span>
+                          </label>
+                        </div>
+                        <div>
+                          <label
+                            class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-365"
                           >
                             <span
-                              class="MuiIconButton-label"
+                              aria-disabled="false"
+                              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-503 MuiCheckbox-root makeStyles-checkBoxRoot-494 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                             >
-                              <input
-                                class="PrivateSwitchBase-input-491"
-                                data-indeterminate="false"
-                                name="Response B2"
-                                type="checkbox"
-                                value="Response B2"
-                              />
                               <span
-                                class="makeStyles-icon-480"
-                                font-size="default"
+                                class="MuiIconButton-label"
+                              >
+                                <input
+                                  class="PrivateSwitchBase-input-506"
+                                  data-indeterminate="false"
+                                  name="Response B2"
+                                  type="checkbox"
+                                  value="Response B2"
+                                />
+                                <span
+                                  class="makeStyles-icon-495"
+                                  font-size="default"
+                                />
+                              </span>
+                              <span
+                                class="MuiTouchRipple-root"
                               />
                             </span>
                             <span
-                              class="MuiTouchRipple-root"
-                            />
-                          </span>
-                          <span
-                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-356 MuiTypography-body1"
-                          >
-                            Response B2
-                          </span>
-                        </label>
-                      </div>
-                      <div>
-                        <label
-                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-355"
-                        >
-                          <span
-                            aria-disabled="false"
-                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-488 MuiCheckbox-root makeStyles-checkBoxRoot-479 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                              class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-366 MuiTypography-body1"
+                            >
+                              Response B2
+                            </span>
+                          </label>
+                        </div>
+                        <div>
+                          <label
+                            class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-365"
                           >
                             <span
-                              class="MuiIconButton-label"
+                              aria-disabled="false"
+                              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-503 MuiCheckbox-root makeStyles-checkBoxRoot-494 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                             >
-                              <input
-                                class="PrivateSwitchBase-input-491"
-                                data-indeterminate="false"
-                                name="Response B3"
-                                type="checkbox"
-                                value="Response B3"
-                              />
                               <span
-                                class="makeStyles-icon-480"
-                                font-size="default"
+                                class="MuiIconButton-label"
+                              >
+                                <input
+                                  class="PrivateSwitchBase-input-506"
+                                  data-indeterminate="false"
+                                  name="Response B3"
+                                  type="checkbox"
+                                  value="Response B3"
+                                />
+                                <span
+                                  class="makeStyles-icon-495"
+                                  font-size="default"
+                                />
+                              </span>
+                              <span
+                                class="MuiTouchRipple-root"
                               />
                             </span>
                             <span
-                              class="MuiTouchRipple-root"
-                            />
-                          </span>
-                          <span
-                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-356 MuiTypography-body1"
-                          >
-                            Response B3
-                          </span>
-                        </label>
+                              class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-366 MuiTypography-body1"
+                            >
+                              Response B3
+                            </span>
+                          </label>
+                        </div>
                       </div>
-                    </div>
-                  </fieldset>
+                    </fieldset>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        class="MuiPaper-root MuiExpansionPanel-root makeStyles-expansionPanel-357 MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
-      >
         <div
-          aria-controls="additional-actions1-content"
-          aria-disabled="false"
-          aria-expanded="false"
-          aria-label="Expand"
-          class="MuiButtonBase-root MuiExpansionPanelSummary-root makeStyles-summary-359"
-          id="additional-actions1-header"
-          role="button"
-          tabindex="0"
+          class="MuiPaper-root MuiExpansionPanel-root makeStyles-expansionPanel-367 MuiExpansionPanel-rounded MuiPaper-elevation1 MuiPaper-rounded"
         >
           <div
-            class="MuiExpansionPanelSummary-content makeStyles-summaryContent-360"
-          >
-            section C
-          </div>
-          <div
+            aria-controls="additional-actions1-content"
             aria-disabled="false"
-            aria-hidden="true"
-            class="MuiButtonBase-root MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
-          >
-            <span
-              class="MuiIconButton-label"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
-                />
-              </svg>
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </div>
-        </div>
-        <div
-          class="MuiCollapse-container MuiCollapse-hidden"
-          style="min-height: 0px;"
-        >
-          <div
-            class="MuiCollapse-wrapper"
+            aria-expanded="false"
+            aria-label="Expand"
+            class="MuiButtonBase-root MuiExpansionPanelSummary-root makeStyles-summary-369"
+            id="additional-actions1-header"
+            role="button"
+            tabindex="0"
           >
             <div
-              class="MuiCollapse-wrapperInner"
+              class="MuiExpansionPanelSummary-content makeStyles-summaryContent-370"
+            >
+              section C
+            </div>
+            <div
+              aria-disabled="false"
+              aria-hidden="true"
+              class="MuiButtonBase-root MuiIconButton-root MuiExpansionPanelSummary-expandIcon MuiIconButton-edgeEnd"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </div>
+          </div>
+          <div
+            class="MuiCollapse-container MuiCollapse-hidden"
+            style="min-height: 0px;"
+          >
+            <div
+              class="MuiCollapse-wrapper"
             >
               <div
-                aria-labelledby="additional-actions1-header"
-                id="additional-actions1-content"
-                role="region"
+                class="MuiCollapse-wrapperInner"
               >
                 <div
-                  class="MuiExpansionPanelDetails-root makeStyles-details-361"
+                  aria-labelledby="additional-actions1-header"
+                  id="additional-actions1-content"
+                  role="region"
                 >
-                  <fieldset
-                    class="MuiFormControl-root"
+                  <div
+                    class="MuiExpansionPanelDetails-root makeStyles-details-371"
                   >
-                    <legend
-                      class="MuiFormLabel-root"
-                    />
-                    <div
-                      class="MuiFormGroup-root"
+                    <fieldset
+                      class="MuiFormControl-root"
                     >
-                      <div>
-                        <label
-                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-355"
-                        >
-                          <span
-                            aria-disabled="false"
-                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-488 MuiCheckbox-root makeStyles-checkBoxRoot-479 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                      <legend
+                        class="MuiFormLabel-root"
+                      />
+                      <div
+                        class="MuiFormGroup-root"
+                      >
+                        <div>
+                          <label
+                            class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-365"
                           >
                             <span
-                              class="MuiIconButton-label"
+                              aria-disabled="false"
+                              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-503 MuiCheckbox-root makeStyles-checkBoxRoot-494 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                             >
-                              <input
-                                class="PrivateSwitchBase-input-491"
-                                data-indeterminate="false"
-                                name="Response C1"
-                                type="checkbox"
-                                value="Response C1"
-                              />
                               <span
-                                class="makeStyles-icon-480"
-                                font-size="default"
+                                class="MuiIconButton-label"
+                              >
+                                <input
+                                  class="PrivateSwitchBase-input-506"
+                                  data-indeterminate="false"
+                                  name="Response C1"
+                                  type="checkbox"
+                                  value="Response C1"
+                                />
+                                <span
+                                  class="makeStyles-icon-495"
+                                  font-size="default"
+                                />
+                              </span>
+                              <span
+                                class="MuiTouchRipple-root"
                               />
                             </span>
                             <span
-                              class="MuiTouchRipple-root"
-                            />
-                          </span>
-                          <span
-                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-356 MuiTypography-body1"
-                          >
-                            Response C1
-                          </span>
-                        </label>
-                      </div>
-                      <div>
-                        <label
-                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-355"
-                        >
-                          <span
-                            aria-disabled="false"
-                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-488 MuiCheckbox-root makeStyles-checkBoxRoot-479 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                              class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-366 MuiTypography-body1"
+                            >
+                              Response C1
+                            </span>
+                          </label>
+                        </div>
+                        <div>
+                          <label
+                            class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-365"
                           >
                             <span
-                              class="MuiIconButton-label"
+                              aria-disabled="false"
+                              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-503 MuiCheckbox-root makeStyles-checkBoxRoot-494 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                             >
-                              <input
-                                class="PrivateSwitchBase-input-491"
-                                data-indeterminate="false"
-                                name="Response C2"
-                                type="checkbox"
-                                value="Response C2"
-                              />
                               <span
-                                class="makeStyles-icon-480"
-                                font-size="default"
+                                class="MuiIconButton-label"
+                              >
+                                <input
+                                  class="PrivateSwitchBase-input-506"
+                                  data-indeterminate="false"
+                                  name="Response C2"
+                                  type="checkbox"
+                                  value="Response C2"
+                                />
+                                <span
+                                  class="makeStyles-icon-495"
+                                  font-size="default"
+                                />
+                              </span>
+                              <span
+                                class="MuiTouchRipple-root"
                               />
                             </span>
                             <span
-                              class="MuiTouchRipple-root"
-                            />
-                          </span>
-                          <span
-                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-356 MuiTypography-body1"
-                          >
-                            Response C2
-                          </span>
-                        </label>
-                      </div>
-                      <div>
-                        <label
-                          class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-355"
-                        >
-                          <span
-                            aria-disabled="false"
-                            class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-488 MuiCheckbox-root makeStyles-checkBoxRoot-479 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+                              class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-366 MuiTypography-body1"
+                            >
+                              Response C2
+                            </span>
+                          </label>
+                        </div>
+                        <div>
+                          <label
+                            class="MuiFormControlLabel-root makeStyles-formControlLabelRoot-365"
                           >
                             <span
-                              class="MuiIconButton-label"
+                              aria-disabled="false"
+                              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-503 MuiCheckbox-root makeStyles-checkBoxRoot-494 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                             >
-                              <input
-                                class="PrivateSwitchBase-input-491"
-                                data-indeterminate="false"
-                                name="Response C3"
-                                type="checkbox"
-                                value="Response C3"
-                              />
                               <span
-                                class="makeStyles-icon-480"
-                                font-size="default"
+                                class="MuiIconButton-label"
+                              >
+                                <input
+                                  class="PrivateSwitchBase-input-506"
+                                  data-indeterminate="false"
+                                  name="Response C3"
+                                  type="checkbox"
+                                  value="Response C3"
+                                />
+                                <span
+                                  class="makeStyles-icon-495"
+                                  font-size="default"
+                                />
+                              </span>
+                              <span
+                                class="MuiTouchRipple-root"
                               />
                             </span>
                             <span
-                              class="MuiTouchRipple-root"
-                            />
-                          </span>
-                          <span
-                            class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-356 MuiTypography-body1"
-                          >
-                            Response C3
-                          </span>
-                        </label>
+                              class="MuiTypography-root MuiFormControlLabel-label makeStyles-formControlLabel-366 MuiTypography-body1"
+                            >
+                              Response C3
+                            </span>
+                          </label>
+                        </div>
                       </div>
-                    </div>
-                  </fieldset>
+                    </fieldset>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        class="MuiBox-root MuiBox-root-492"
-      >
-        <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-          style="margin: 10px 0px;"
-          tabindex="0"
-          type="submit"
+        <div
+          class="MuiBox-root MuiBox-root-507"
         >
-          <span
-            class="MuiButton-label"
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+            style="margin: 10px 0px;"
+            tabindex="0"
+            type="submit"
           >
-            Save and Continue
-          </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
-        </button>
+            <span
+              class="MuiButton-label"
+            >
+              Save and Continue
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <div />
       </div>
-      <div />
-    </div>
-  </form>
+    </form>
+  </div>
 </DocumentFragment>
 `;

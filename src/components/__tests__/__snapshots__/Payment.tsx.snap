@@ -3,23 +3,31 @@
 exports[`Payment Component of type Card Details should render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root MuiBox-root-266"
+    class="MuiBox-root MuiBox-root-270"
   >
     <form
       data-testid="cardDetailsForm"
     >
       <div
-        class="MuiBox-root MuiBox-root-267"
+        class="MuiBox-root MuiBox-root-271"
       >
-        <h4
-          class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom"
-        >
-          <strong>
-            Enter card details
-          </strong>
-        </h4>
         <div
-          class="MuiBox-root MuiBox-root-298"
+          class="MuiBox-root MuiBox-root-272"
+        >
+          <div
+            class="makeStyles-root-273"
+          >
+            <div
+              class="MuiTypography-root makeStyles-question-274 MuiTypography-h4"
+            >
+              <strong>
+                Enter card details
+              </strong>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root MuiBox-root-306"
         >
           <div
             class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -44,13 +52,13 @@ exports[`Payment Component of type Card Details should render snapshot 1`] = `
             </div>
           </div>
           <div
-            class="MuiBox-root MuiBox-root-356"
+            class="MuiBox-root MuiBox-root-364"
           >
             Accepted credit and debit card types
           </div>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-357"
+          class="MuiBox-root MuiBox-root-365"
         >
           <div
             class="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom"
@@ -58,7 +66,7 @@ exports[`Payment Component of type Card Details should render snapshot 1`] = `
             Expiry date
           </div>
           <div
-            class="MuiBox-root MuiBox-root-358"
+            class="MuiBox-root MuiBox-root-366"
           >
             <div
               class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-wrap-xs-nowrap MuiGrid-align-items-xs-flex-end"
@@ -93,7 +101,7 @@ exports[`Payment Component of type Card Details should render snapshot 1`] = `
                 class="MuiGrid-root MuiGrid-item"
               >
                 <div
-                  class="MuiBox-root MuiBox-root-462"
+                  class="MuiBox-root MuiBox-root-470"
                 >
                   /
                 </div>
@@ -128,7 +136,7 @@ exports[`Payment Component of type Card Details should render snapshot 1`] = `
           </div>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-463"
+          class="MuiBox-root MuiBox-root-471"
         >
           <div
             class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -154,7 +162,7 @@ exports[`Payment Component of type Card Details should render snapshot 1`] = `
           </div>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-464"
+          class="MuiBox-root MuiBox-root-472"
         >
           <div
             class="MuiFormControl-root MuiTextField-root"
@@ -189,7 +197,7 @@ exports[`Payment Component of type Card Details should render snapshot 1`] = `
 exports[`Payment Component of type Receipt should render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root MuiBox-root-499"
+    class="MuiBox-root MuiBox-root-507"
   >
     <h5
       class="MuiTypography-root MuiTypography-h5"
@@ -204,7 +212,7 @@ exports[`Payment Component of type Receipt should render snapshot 1`] = `
       </strong>
     </h4>
     <div
-      class="MuiBox-root MuiBox-root-530"
+      class="MuiBox-root MuiBox-root-538"
     >
       It was paid on
       <h6

@@ -3,9 +3,11 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
-import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
 import * as React from "react";
+import FocusWithin from "react-focus-within";
+
+import Question from "./Question";
 
 interface IDate {
   title: string;
@@ -36,33 +38,37 @@ export const Date: React.FC<IDate> = ({
   });
   return (
     <Box py={4}>
-      <form onSubmit={formik.handleSubmit}>
-        <Typography variant="h5" component="div" gutterBottom>
-          {title}
-        </Typography>
-        <Grid container spacing={1}>
-          {options.map((el, index) => (
-            <Grid item key={`${el}-${index}`}>
-              <InputLabel htmlFor={name}>{el}</InputLabel>
-              <Input
-                required
-                onChange={formik.handleChange}
-                type={type}
-                id={name}
-                name={`${name}-${el}`}
-                inputProps={inputProps[el]}
-              />
+      <FocusWithin>
+        {({ isFocused, getFocusProps }) => (
+          <form onSubmit={formik.handleSubmit} {...getFocusProps()}>
+            <Box pb={1}>
+              <Question inFocus={isFocused}>{title}</Question>
+            </Box>
+            <Grid container spacing={1}>
+              {options.map((el, index) => (
+                <Grid item key={`${el}-${index}`}>
+                  <InputLabel htmlFor={name}>{el}</InputLabel>
+                  <Input
+                    required
+                    id={name}
+                    onChange={formik.handleChange}
+                    type={type}
+                    name={`${name}-${el}`}
+                    inputProps={inputProps[el]}
+                  />
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
-        {includeSubmit && (
-          <Box pt={3}>
-            <Button type="submit" variant="contained" color="primary">
-              Save and Continue
-            </Button>
-          </Box>
+            {includeSubmit && (
+              <Box pt={3}>
+                <Button type="submit" variant="contained" color="primary">
+                  Save and Continue
+                </Button>
+              </Box>
+            )}
+          </form>
         )}
-      </form>
+      </FocusWithin>
     </Box>
   );
 };

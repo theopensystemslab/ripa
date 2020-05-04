@@ -1,12 +1,13 @@
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
 import React from "react";
 import { useDropzone } from "react-dropzone";
+import FocusWithin from "react-focus-within";
 
 import Messages from "../shared/components/submit-messages";
+import Question from "./Question";
 
 const styles = theme => ({
   box: {
@@ -92,43 +93,49 @@ export const FileUpload: React.FC<IFileUpload> = ({
   });
   return (
     <Box py={4}>
-      <form onSubmit={formik.handleSubmit}>
-        <Typography variant="h5" component="h1" gutterBottom>
-          {title}
-        </Typography>
-        {files.map(file => {
-          return (
-            <div key={file.name} className={classes.box}>
-              <p>
-                Name: <strong>{file.name}</strong>
-              </p>
-              <p>Size: {file.size}</p>
-              <p>Type: {file.type}</p>
-              <p onClick={e => setFiles(files.filter(f => f !== file))}>x</p>
+      <FocusWithin>
+        {({ isFocused, getFocusProps }) => (
+          <form onSubmit={formik.handleSubmit} {...getFocusProps()}>
+            <Box pb={1}>
+              <Question inFocus={isFocused}>{title}</Question>
+            </Box>
+            {files.map(file => {
+              return (
+                <div key={file.name} className={classes.box}>
+                  <p>
+                    Name: <strong>{file.name}</strong>
+                  </p>
+                  <p>Size: {file.size}</p>
+                  <p>Type: {file.type}</p>
+                  <p onClick={e => setFiles(files.filter(f => f !== file))}>
+                    x
+                  </p>
+                </div>
+              );
+            })}
+            <div className={classes.box} {...getRootProps()}>
+              <input data-testid="fileupload" {...getInputProps()} />
+              <p>{stateText}</p>
             </div>
-          );
-        })}
-        <div className={classes.box} {...getRootProps()}>
-          <input data-testid="fileupload" {...getInputProps()} />
-          <p>{stateText}</p>
-        </div>
-        <small>Max size of file is {maxSize} Bytes</small>
-        <div>
-          {errorMessageVisible && formik.touched ? (
-            <Messages
-              type="error"
-              message={`Please choose a file with max size ${maxSize} Bytes`}
-            />
-          ) : null}
-        </div>
-        {includeSubmit && (
-          <div>
-            <Button type="submit" variant="contained" color="primary">
-              Save and Continue
-            </Button>
-          </div>
+            <small>Max size of file is {maxSize} Bytes</small>
+            <div>
+              {errorMessageVisible && formik.touched ? (
+                <Messages
+                  type="error"
+                  message={`Please choose a file with max size ${maxSize} Bytes`}
+                />
+              ) : null}
+            </div>
+            {includeSubmit && (
+              <div>
+                <Button type="submit" variant="contained" color="primary">
+                  Save and Continue
+                </Button>
+              </div>
+            )}
+          </form>
         )}
-      </form>
+      </FocusWithin>
     </Box>
   );
 };
