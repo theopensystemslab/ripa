@@ -2,164 +2,170 @@
 
 exports[`Street Address Component should render snapshot 1`] = `
 <DocumentFragment>
-  <div
-    class="MuiBox-root MuiBox-root-2"
-  >
-    <form>
-      <div
-        class="MuiBox-root MuiBox-root-3"
-      >
+  <div>
+    <div
+      class="MuiBox-root MuiBox-root-2"
+    >
+      <form>
         <div
-          class="MuiTypography-root makeStyles-question-4 MuiTypography-h4"
-        >
-          <strong>
-            <strong>
-               test title
-            </strong>
-          </strong>
-        </div>
-      </div>
-      <div>
-        <div
-          class="MuiBox-root MuiBox-root-35"
+          class="MuiBox-root MuiBox-root-3"
         >
           <div
-            class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+            class="makeStyles-root-4"
           >
-            <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
-              data-shrink="false"
-            >
-              Building and street
-            </label>
             <div
-              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+              class="MuiTypography-root makeStyles-question-5 MuiTypography-h4"
             >
-              <input
-                aria-invalid="false"
-                class="MuiInputBase-input MuiInput-input"
-                name="building"
-                placeholder="building"
-                type="text"
-                value=""
-              />
+              <strong>
+                <strong>
+                   test title
+                </strong>
+              </strong>
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <div
-          class="MuiBox-root MuiBox-root-93"
-        >
+        <div>
           <div
-            class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+            class="MuiBox-root MuiBox-root-37"
           >
             <div
-              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+              class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
             >
-              <input
-                aria-invalid="false"
-                class="MuiInputBase-input MuiInput-input"
-                name="street"
-                placeholder="street"
-                type="text"
-                value=""
-              />
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+                data-shrink="false"
+              >
+                Building and street
+              </label>
+              <div
+                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiInput-input"
+                  name="building"
+                  placeholder="building"
+                  type="text"
+                  value=""
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <div
-          class="MuiBox-root MuiBox-root-94"
-        >
+        <div>
           <div
-            class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+            class="MuiBox-root MuiBox-root-95"
           >
-            <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
-              data-shrink="false"
-            >
-              Town or City
-            </label>
             <div
-              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+              class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
             >
-              <input
-                aria-invalid="false"
-                class="MuiInputBase-input MuiInput-input"
-                name="city"
-                placeholder="city"
-                type="text"
-                value=""
-              />
+              <div
+                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiInput-input"
+                  name="street"
+                  placeholder="street"
+                  type="text"
+                  value=""
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <div
-          class="MuiBox-root MuiBox-root-95"
-        >
+        <div>
           <div
-            class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+            class="MuiBox-root MuiBox-root-96"
           >
-            <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
-              data-shrink="false"
-            >
-              county
-            </label>
             <div
-              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+              class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
             >
-              <input
-                aria-invalid="false"
-                class="MuiInputBase-input MuiInput-input"
-                name="county"
-                placeholder="county"
-                type="text"
-                value=""
-              />
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+                data-shrink="false"
+              >
+                Town or City
+              </label>
+              <div
+                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiInput-input"
+                  name="city"
+                  placeholder="city"
+                  type="text"
+                  value=""
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <div
-          class="MuiBox-root MuiBox-root-96"
-        >
+        <div>
           <div
-            class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+            class="MuiBox-root MuiBox-root-97"
           >
-            <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
-              data-shrink="false"
-            >
-              postcode
-            </label>
             <div
-              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+              class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
             >
-              <input
-                aria-invalid="false"
-                class="MuiInputBase-input MuiInput-input"
-                name="postcode"
-                placeholder="postcode"
-                type="text"
-                value=""
-              />
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+                data-shrink="false"
+              >
+                county
+              </label>
+              <div
+                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiInput-input"
+                  name="county"
+                  placeholder="county"
+                  type="text"
+                  value=""
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        class="MuiBox-root MuiBox-root-97"
-      >
-        <div />
-        <div />
-      </div>
-    </form>
+        <div>
+          <div
+            class="MuiBox-root MuiBox-root-98"
+          >
+            <div
+              class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+            >
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+                data-shrink="false"
+              >
+                postcode
+              </label>
+              <div
+                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiInput-input"
+                  name="postcode"
+                  placeholder="postcode"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root MuiBox-root-99"
+        >
+          <div />
+          <div />
+        </div>
+      </form>
+    </div>
   </div>
 </DocumentFragment>
 `;

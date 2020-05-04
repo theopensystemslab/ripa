@@ -5,8 +5,10 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
 import React, { useState } from "react";
+import FocusWithin from "react-focus-within";
 
 import Messages from "../shared/components/submit-messages";
+import Question from "./Question";
 
 interface IPayment {
   fee: number;
@@ -55,90 +57,102 @@ export const CardDetails: React.FC<ICardDetails> = ({
   });
   return (
     <Box bgcolor="background.paper" py={6}>
-      <form onSubmit={formik.handleSubmit}>
-        <Box maxWidth={440}>
-          <Typography variant="h4" gutterBottom>
-            <strong>Enter card details</strong>
-          </Typography>
-          <Box pb={3}>
-            <TextField
-              type="number"
-              value={formik.values.cardNumber}
-              name="cardNumber"
-              fullWidth
-              onChange={formik.handleChange}
-              placeholder="Card number"
-              label="Card number"
-            />
-            <Box fontSize="body2.fontSize" color="grey.400" pt={1}>
-              Accepted credit and debit card types
+      <FocusWithin>
+        {({ isFocused, getFocusProps }) => (
+          <form onSubmit={formik.handleSubmit} {...getFocusProps()}>
+            <Box maxWidth={440}>
+              <Box pb={1}>
+                <Question inFocus={isFocused}>Enter card details</Question>
+              </Box>
+              <Box pb={3}>
+                <TextField
+                  type="number"
+                  value={formik.values.cardNumber}
+                  name="cardNumber"
+                  fullWidth
+                  onChange={formik.handleChange}
+                  placeholder="Card number"
+                  label="Card number"
+                />
+                <Box fontSize="body2.fontSize" color="grey.400" pt={1}>
+                  Accepted credit and debit card types
+                </Box>
+              </Box>
+              <Box pb={3}>
+                <Typography variant="body2" component="div" gutterBottom>
+                  Expiry date
+                </Typography>
+                <Box maxWidth={200}>
+                  <Grid
+                    container
+                    spacing={1}
+                    alignItems="flex-end"
+                    wrap="nowrap"
+                  >
+                    <Grid item>
+                      <TextField
+                        type="number"
+                        value={formik.values.month}
+                        name="month"
+                        onChange={formik.handleChange}
+                        placeholder="Month"
+                        label="Month"
+                      />
+                    </Grid>
+                    <Grid item>
+                      <Box fontSize="24px" fontWeight="400" lineHeight="40px">
+                        /
+                      </Box>
+                    </Grid>
+                    <Grid item>
+                      <TextField
+                        type="number"
+                        value={formik.values.year}
+                        name="year"
+                        onChange={formik.handleChange}
+                        placeholder="Year"
+                        label="Year"
+                      />
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Box>
+              <Box pb={3}>
+                <TextField
+                  value={formik.values.cardholderName}
+                  name="cardholderName"
+                  onChange={formik.handleChange}
+                  placeholder="Name"
+                  label="Name on card"
+                  fullWidth
+                />
+              </Box>
+              <Box pb={5}>
+                <TextField
+                  value={formik.values.securityCode}
+                  name="securityCode"
+                  onChange={formik.handleChange}
+                  placeholder="security code"
+                  label="Card security code"
+                />
+              </Box>
             </Box>
-          </Box>
-          <Box pb={3}>
-            <Typography variant="body2" component="div" gutterBottom>
-              Expiry date
-            </Typography>
-            <Box maxWidth={200}>
-              <Grid container spacing={1} alignItems="flex-end" wrap="nowrap">
-                <Grid item>
-                  <TextField
-                    type="number"
-                    value={formik.values.month}
-                    name="month"
-                    onChange={formik.handleChange}
-                    placeholder="Month"
-                    label="Month"
-                  />
-                </Grid>
-                <Grid item>
-                  <Box fontSize="24px" fontWeight="400" lineHeight="40px">
-                    /
-                  </Box>
-                </Grid>
-                <Grid item>
-                  <TextField
-                    type="number"
-                    value={formik.values.year}
-                    name="year"
-                    onChange={formik.handleChange}
-                    placeholder="Year"
-                    label="Year"
-                  />
-                </Grid>
-              </Grid>
-            </Box>
-          </Box>
-          <Box pb={3}>
-            <TextField
-              value={formik.values.cardholderName}
-              name="cardholderName"
-              onChange={formik.handleChange}
-              placeholder="Name"
-              label="Name on card"
-              fullWidth
-            />
-          </Box>
-          <Box pb={5}>
-            <TextField
-              value={formik.values.securityCode}
-              name="securityCode"
-              onChange={formik.handleChange}
-              placeholder="security code"
-              label="Card security code"
-            />
-          </Box>
-        </Box>
-        {includeSubmit && (
-          <Button type="submit" variant="contained" color="primary">
-            Save and Continue
-          </Button>
+            {includeSubmit && (
+              <Button type="submit" variant="contained" color="primary">
+                Save and Continue
+              </Button>
+            )}
+            <div>
+              {successMessageVisible ? (
+                <Messages
+                  type="success"
+                  message="Form submitted successfully"
+                />
+              ) : null}
+            </div>
+          </form>
         )}
-        <div>
-          {successMessageVisible ? (
-            <Messages type="success" message="Form submitted successfully" />
-          ) : null}
-        </div>
-      </form>
+      </FocusWithin>
     </Box>
   );
 };

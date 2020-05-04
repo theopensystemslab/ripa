@@ -5,14 +5,16 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormLabel from "@material-ui/core/FormLabel";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 import { useFormik } from "formik";
 import findIndex from "lodash/findIndex";
 import sortBy from "lodash/sortBy";
 import React, { useState } from "react";
+import { FocusWithin } from "react-focus-within";
 
 import Messages from "../shared/components/submit-messages";
 import Checkbox from "./Checkbox";
+import FocusHandler from "./FocusHandler";
+import Question from "./Question";
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -92,67 +94,82 @@ const Checkboxes: React.FC<ICheckboxes> = ({
 
   const classes = useStyles();
   return (
-    <Box py={4}>
-      <form onSubmit={formik.handleSubmit}>
-        <Typography variant="h5" gutterBottom>
-          {title}
-        </Typography>
-        <FormControl component="fieldset">
-          <FormLabel
-            component="legend"
-            className={classes.formControlLabelRoot}
-          >
-            <Box fontSize="caption.fontSize" color="text.secondary" mb={1}>
-              Select all that apply
-            </Box>
-          </FormLabel>
-          <Box mb={3}>
-            <FormGroup>
-              {Object.entries(options).map(([optionId, label]) => (
-                <FormControlLabel
-                  classes={{
-                    root: classes.formControlLabelRoot,
-                    label: classes.formControlLabel
-                  }}
-                  key={optionId}
-                  control={
-                    <Checkbox
-                      checked={formik.values.selectedOptions.includes(optionId)}
-                      disableRipple
-                      onChange={e => {
-                        changeHandler(e, optionId);
-                      }}
-                      value={optionId}
-                      name={optionId}
-                    />
-                  }
-                  label={label}
-                />
-              ))}
-            </FormGroup>
+    <FocusWithin>
+      {({ isFocused, getFocusProps }) => (
+        <FocusHandler {...getFocusProps()}>
+          <Box py={4}>
+            <form onSubmit={formik.handleSubmit}>
+              <Box pb={1}>
+                <Question inFocus={isFocused}>{title}</Question>
+              </Box>
+              <FormControl component="fieldset">
+                <FormLabel
+                  component="legend"
+                  className={classes.formControlLabelRoot}
+                >
+                  <Box
+                    fontSize="caption.fontSize"
+                    color="text.secondary"
+                    mb={1}
+                  >
+                    Select all that apply
+                  </Box>
+                </FormLabel>
+                <Box mb={3}>
+                  <FormGroup>
+                    {Object.entries(options).map(([optionId, label]) => (
+                      <FormControlLabel
+                        classes={{
+                          root: classes.formControlLabelRoot,
+                          label: classes.formControlLabel
+                        }}
+                        key={optionId}
+                        control={
+                          <Checkbox
+                            checked={formik.values.selectedOptions.includes(
+                              optionId
+                            )}
+                            disableRipple
+                            onChange={e => {
+                              changeHandler(e, optionId);
+                            }}
+                            value={optionId}
+                            name={optionId}
+                          />
+                        }
+                        label={label}
+                      />
+                    ))}
+                  </FormGroup>
+                </Box>
+                {errorMessageVisible && formik.touched ? (
+                  <Messages
+                    type="error"
+                    message="Please choose at least one option"
+                  />
+                ) : null}
+                {includeSubmit && (
+                  <Button
+                    type="submit"
+                    disabled={submitButtonDisabled}
+                    variant="contained"
+                    color="primary"
+                  >
+                    Save and Continue
+                  </Button>
+                )}
+                {successMessageVisible ? (
+                  <Messages
+                    type="success"
+                    message="Form submitted successfully"
+                  />
+                ) : null}
+              </FormControl>
+            </form>
           </Box>
-          {errorMessageVisible && formik.touched ? (
-            <Messages
-              type="error"
-              message="Please choose at least one option"
-            />
-          ) : null}
-          {includeSubmit && (
-            <Button
-              type="submit"
-              disabled={submitButtonDisabled}
-              variant="contained"
-              color="primary"
-            >
-              Save and Continue
-            </Button>
-          )}
-          {successMessageVisible ? (
-            <Messages type="success" message="Form submitted successfully" />
-          ) : null}
-        </FormControl>
-      </form>
-    </Box>
+        </FocusHandler>
+      )}
+    </FocusWithin>
   );
 };
 

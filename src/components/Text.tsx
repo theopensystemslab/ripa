@@ -4,6 +4,7 @@ import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import { useFormik } from "formik";
 import * as React from "react";
+import FocusWithin from "react-focus-within";
 
 import Question from "./Question";
 
@@ -61,64 +62,70 @@ export const Text: React.FC<IText> = ({
   });
 
   return (
-    <Box py={4} maxWidth={480}>
-      <form onSubmit={formik.handleSubmit}>
-        <Box mb={1.5}>
-          <Question>{title}</Question>
-        </Box>
-        <Box>
-          {label && <InputLabel htmlFor={name}>{label}</InputLabel>}
-          <Input
-            placeholder={placeholder}
-            fullWidth={fullWidth}
-            multiline={multiline}
-            name={name}
-            id={name}
-            type={type}
-            onChange={e => {
-              if (maxWords) {
-                setCount(e.target.value.split(" ").length - 1);
-              }
-              formik.handleChange(e);
-            }}
-            rows={multiline ? 5 : 1}
-            value={formik.values[name]}
-            required={required}
-            {...inputProps}
-          />
-          {maxWords && (
-            <Box
-              fontSize="caption.fontSize"
-              color="text.secondary"
-              pt={1}
-              textAlign="right"
-            >
-              <span>
-                {" "}
-                {diff >= 0
-                  ? `${diff} words Remaining`
-                  : `0 words Remaining`}{" "}
-              </span>
-            </Box>
-          )}
-          {unit && (
-            <Box
-              component="span"
-              fontSize="caption.fontSize"
-              style={{ verticalAlign: "bottom", lineHeight: "40px" }}
-              pl={1.5}
-            >
-              {unit}
-            </Box>
-          )}
-        </Box>
-        {includeSubmit && (
-          <Button variant="contained" color="primary" type="submit">
-            Save and Continue
-          </Button>
-        )}
-      </form>
-    </Box>
+    <FocusWithin>
+      {({ isFocused, getFocusProps }) => (
+        <div {...getFocusProps()}>
+          <Box py={4} maxWidth={480}>
+            <form onSubmit={formik.handleSubmit}>
+              <Box mb={1.5}>
+                <Question inFocus={isFocused}>{title}</Question>
+              </Box>
+              <Box>
+                {label && <InputLabel htmlFor={name}>{label}</InputLabel>}
+                <Input
+                  placeholder={placeholder}
+                  fullWidth={fullWidth}
+                  multiline={multiline}
+                  name={name}
+                  id={name}
+                  type={type}
+                  onChange={e => {
+                    if (maxWords) {
+                      setCount(e.target.value.split(" ").length - 1);
+                    }
+                    formik.handleChange(e);
+                  }}
+                  rows={multiline ? 5 : 1}
+                  value={formik.values[name]}
+                  required={required}
+                  {...inputProps}
+                />
+                {maxWords && (
+                  <Box
+                    fontSize="caption.fontSize"
+                    color="text.secondary"
+                    pt={1}
+                    textAlign="right"
+                  >
+                    <span>
+                      {" "}
+                      {diff >= 0
+                        ? `${diff} words Remaining`
+                        : `0 words Remaining`}{" "}
+                    </span>
+                  </Box>
+                )}
+                {unit && (
+                  <Box
+                    component="span"
+                    fontSize="caption.fontSize"
+                    style={{ verticalAlign: "bottom", lineHeight: "40px" }}
+                    pl={1.5}
+                  >
+                    {unit}
+                  </Box>
+                )}
+              </Box>
+              {includeSubmit && (
+                <Button variant="contained" color="primary" type="submit">
+                  Save and Continue
+                </Button>
+              )}
+            </form>
+          </Box>
+        </div>
+      )}
+    </FocusWithin>
   );
 };
 

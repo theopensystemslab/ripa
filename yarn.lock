@@ -1741,7 +1741,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.9.17":
+"@types/react@*", "@types/react@^15.0.0 || ^16.0.0", "@types/react@^16.9.17":
   version "16.9.34"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.34.tgz#f7d5e331c468f53affed17a8a4d488cd44ea9349"
   integrity sha512-8AJlYMOfPe1KGLKyHpflCg5z46n0b5DbRfqDksxBLBTUpB75ypDBAO9eCUcjNwE6LCUslwTz00yyG/X9gaVtow==
@@ -9952,7 +9952,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.5.8, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -10266,6 +10266,14 @@ react-feather@^2.0.3:
   integrity sha512-J0dCEOvOxpovHeOVj3+8mAhN3/UERTfX6rSxnV6x4E+0s+STY536jhSjRfpSvTQA0SSFjYr4KrpPfdsLmK+zZg==
   dependencies:
     prop-types "^15.7.2"
+
+react-focus-within@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-focus-within/-/react-focus-within-2.0.1.tgz#6bd727a96e81a9a602052396d681b5138818ba67"
+  integrity sha512-lsP9+UW/9iSoqAqZ34wARnypP2izt3BjQ14+5+VpfvTnsNet1wFn071GtJYMmUR0pT6Pa59WnW+HhSguFGXVQg==
+  dependencies:
+    "@types/react" "^15.0.0 || ^16.0.0"
+    prop-types "^15.6.1"
 
 react-headroom@^3.0.0:
   version "3.0.0"

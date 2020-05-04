@@ -6,11 +6,21 @@ exports[`File Upload Component should render snapshot 1`] = `
     class="MuiBox-root MuiBox-root-4"
   >
     <form>
-      <h1
-        class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      <div
+        class="MuiBox-root MuiBox-root-5"
       >
-        File upload
-      </h1>
+        <div
+          class="makeStyles-root-6"
+        >
+          <div
+            class="MuiTypography-root makeStyles-question-7 MuiTypography-h4"
+          >
+            <strong>
+              File upload
+            </strong>
+          </div>
+        </div>
+      </div>
       <div
         class="makeStyles-box-1"
         tabindex="0"
