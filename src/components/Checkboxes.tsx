@@ -44,9 +44,11 @@ const Checkboxes: React.FC<ICheckboxes> = ({
   includeSubmit = false,
   handleChange
 }) => {
-  const [errorMessageVisible, setErrorMessageVisible] = useState(false);
-  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
-  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(true);
+  const [errorMessageVisible, setErrorMessageVisible] = React.useState(false);
+  const [successMessageVisible, setSuccessMessageVisible] = React.useState(
+    false
+  );
+  const [submitButtonDisabled, setSubmitButtonDisabled] = React.useState(true);
 
   const changeHandler = (e, optionId) => {
     let selected = [];
@@ -82,13 +84,12 @@ const Checkboxes: React.FC<ICheckboxes> = ({
       }
     },
     onSubmit: (values, { resetForm }) => {
-      console.log(JSON.stringify(values, null, 2));
       setSuccessMessageVisible(true);
       setTimeout(() => {
         resetForm();
         setSuccessMessageVisible(false);
         setSubmitButtonDisabled(true);
-      }, 1000);
+      }, 10000);
     }
   });
 
@@ -98,7 +99,10 @@ const Checkboxes: React.FC<ICheckboxes> = ({
       {({ isFocused, getFocusProps }) => (
         <FocusHandler {...getFocusProps()}>
           <Box py={4}>
-            <form onSubmit={formik.handleSubmit}>
+            <form
+              data-testid="checkboxesComponent"
+              onSubmit={formik.handleSubmit}
+            >
               <Box pb={1}>
                 <Question inFocus={isFocused}>{title}</Question>
               </Box>

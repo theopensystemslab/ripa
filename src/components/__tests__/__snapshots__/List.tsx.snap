@@ -1,0 +1,580 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List Component with total bar should render snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiTableContainer-root"
+  >
+    <table
+      class="MuiTable-root makeStyles-table-331"
+    >
+      <thead
+        class="MuiTableHead-root"
+      >
+        <tr
+          class="MuiTableRow-root MuiTableRow-head"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head makeStyles-rowCount-332"
+            scope="col"
+          />
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            scope="col"
+          >
+            Building description
+          </th>
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            scope="col"
+          >
+            Internal area in m
+            <sup>
+              2
+            </sup>
+          </th>
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            scope="col"
+          >
+            In use?
+          </th>
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            colspan="2"
+            scope="col"
+          >
+            Date last in use?
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="MuiTableBody-root"
+      >
+        <tr
+          class="MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-rowCount-332"
+          >
+            1
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-335"
+            colspan="1"
+          >
+            <div
+              class="MuiInputBase-root makeStyles-input-336"
+            >
+              <input
+                class="MuiInputBase-input"
+                placeholder="Add another"
+                type="text"
+                value="30 Lake Road"
+              />
+            </div>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-335"
+            colspan="1"
+          >
+            <div
+              class="MuiInputBase-root makeStyles-input-336 MuiInputBase-adornedEnd"
+            >
+              <input
+                class="MuiInputBase-input MuiInputBase-inputAdornedEnd"
+                placeholder="Internal area"
+                type="text"
+                value="200"
+              />
+              <span>
+                m
+                <sup>
+                  2
+                </sup>
+              </span>
+            </div>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-335"
+          >
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-selectInput-337"
+            >
+              <div
+                aria-haspopup="listbox"
+                class="MuiSelect-root MuiSelect-select makeStyles-select-338 MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                role="button"
+                tabindex="0"
+              >
+                Yes
+              </div>
+              <input
+                type="hidden"
+                value="Yes"
+              />
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-335"
+            colspan="1"
+          >
+            <div
+              class="MuiInputBase-root makeStyles-input-336"
+            >
+              <input
+                class="MuiInputBase-input"
+                placeholder="dd / mm / yyyy"
+                type="text"
+                value="12/08/1999"
+              />
+            </div>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-deleteRow-334"
+          >
+            <button
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+              data-testid="closebtn"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-rowCount-332"
+          >
+            <div
+              class="MuiBox-root MuiBox-root-430"
+            >
+              2
+            </div>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-335"
+            colspan="1"
+          >
+            <div
+              class="MuiInputBase-root makeStyles-input-336"
+            >
+              <input
+                class="MuiInputBase-input"
+                placeholder="Add another"
+                type="text"
+                value=""
+              />
+            </div>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-335"
+            colspan="1"
+          >
+            <div
+              class="MuiInputBase-root makeStyles-input-336 MuiInputBase-adornedEnd"
+            >
+              <input
+                class="MuiInputBase-input MuiInputBase-inputAdornedEnd"
+                placeholder="Internal area"
+                type="text"
+                value=""
+              />
+              <span>
+                m
+                <sup>
+                  2
+                </sup>
+              </span>
+            </div>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-335"
+          >
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-selectInput-337"
+            >
+              <div
+                aria-haspopup="listbox"
+                class="MuiSelect-root MuiSelect-select makeStyles-select-338 MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                role="button"
+                tabindex="0"
+              >
+                <span>
+                  ​
+                </span>
+              </div>
+              <input
+                placeholder="Internal area"
+                type="hidden"
+                value=""
+              />
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-335"
+            colspan="2"
+          >
+            <div
+              class="MuiInputBase-root makeStyles-input-336"
+            >
+              <input
+                class="MuiInputBase-input"
+                data-testid="lastYear"
+                placeholder="dd / mm / yyyy"
+                type="text"
+                value=""
+              />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot
+        class="MuiTableFooter-root"
+      >
+        <tr
+          class="MuiTableRow-root MuiTableRow-footer"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-footer makeStyles-rowCount-332"
+          />
+          <td
+            class="MuiTableCell-root MuiTableCell-footer"
+          >
+            <strong>
+              Total
+            </strong>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-footer"
+          >
+            200 m
+            <sup>
+              2
+            </sup>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-footer"
+          />
+          <td
+            class="MuiTableCell-root MuiTableCell-footer"
+            colspan="2"
+          />
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`List Component without total bar should render snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiTableContainer-root"
+  >
+    <table
+      class="MuiTable-root makeStyles-table-221"
+    >
+      <thead
+        class="MuiTableHead-root"
+      >
+        <tr
+          class="MuiTableRow-root MuiTableRow-head"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head makeStyles-rowCount-222"
+            scope="col"
+          />
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            scope="col"
+          >
+            Building description
+          </th>
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            scope="col"
+          >
+            Internal area in m
+            <sup>
+              2
+            </sup>
+          </th>
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            scope="col"
+          >
+            In use?
+          </th>
+          <th
+            class="MuiTableCell-root MuiTableCell-head"
+            colspan="2"
+            scope="col"
+          >
+            Date last in use?
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="MuiTableBody-root"
+      >
+        <tr
+          class="MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-rowCount-222"
+          >
+            1
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-225"
+            colspan="1"
+          >
+            <div
+              class="MuiInputBase-root makeStyles-input-226"
+            >
+              <input
+                class="MuiInputBase-input"
+                placeholder="Add another"
+                type="text"
+                value="30 Lake Road"
+              />
+            </div>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-225"
+            colspan="1"
+          >
+            <div
+              class="MuiInputBase-root makeStyles-input-226 MuiInputBase-adornedEnd"
+            >
+              <input
+                class="MuiInputBase-input MuiInputBase-inputAdornedEnd"
+                placeholder="Internal area"
+                type="text"
+                value="200"
+              />
+              <span>
+                m
+                <sup>
+                  2
+                </sup>
+              </span>
+            </div>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-225"
+          >
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-selectInput-227"
+            >
+              <div
+                aria-haspopup="listbox"
+                class="MuiSelect-root MuiSelect-select makeStyles-select-228 MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                role="button"
+                tabindex="0"
+              >
+                Yes
+              </div>
+              <input
+                type="hidden"
+                value="Yes"
+              />
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-225"
+            colspan="1"
+          >
+            <div
+              class="MuiInputBase-root makeStyles-input-226"
+            >
+              <input
+                class="MuiInputBase-input"
+                placeholder="dd / mm / yyyy"
+                type="text"
+                value="12/08/1999"
+              />
+            </div>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-deleteRow-224"
+          >
+            <button
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
+              data-testid="closebtn"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-rowCount-222"
+          >
+            <div
+              class="MuiBox-root MuiBox-root-320"
+            >
+              2
+            </div>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-225"
+            colspan="1"
+          >
+            <div
+              class="MuiInputBase-root makeStyles-input-226"
+            >
+              <input
+                class="MuiInputBase-input"
+                placeholder="Add another"
+                type="text"
+                value=""
+              />
+            </div>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-225"
+            colspan="1"
+          >
+            <div
+              class="MuiInputBase-root makeStyles-input-226 MuiInputBase-adornedEnd"
+            >
+              <input
+                class="MuiInputBase-input MuiInputBase-inputAdornedEnd"
+                placeholder="Internal area"
+                type="text"
+                value=""
+              />
+              <span>
+                m
+                <sup>
+                  2
+                </sup>
+              </span>
+            </div>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-225"
+          >
+            <div
+              class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-selectInput-227"
+            >
+              <div
+                aria-haspopup="listbox"
+                class="MuiSelect-root MuiSelect-select makeStyles-select-228 MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                role="button"
+                tabindex="0"
+              >
+                <span>
+                  ​
+                </span>
+              </div>
+              <input
+                placeholder="Internal area"
+                type="hidden"
+                value=""
+              />
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSelect-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-225"
+            colspan="2"
+          >
+            <div
+              class="MuiInputBase-root makeStyles-input-226"
+            >
+              <input
+                class="MuiInputBase-input"
+                data-testid="lastYear"
+                placeholder="dd / mm / yyyy"
+                type="text"
+                value=""
+              />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</DocumentFragment>
+`;

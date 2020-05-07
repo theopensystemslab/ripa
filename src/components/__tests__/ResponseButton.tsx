@@ -1,9 +1,7 @@
-import { cleanup, fireEvent, render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import * as React from "react";
 
 import ResponseButton from "../ResponseButton";
-
-afterEach(cleanup);
 
 describe("Response Button Component", () => {
   let handleClick;
@@ -56,5 +54,6 @@ describe("Response Button Component", () => {
     );
     fireEvent.click(getByText("inner text"));
     expect(handleClick).toHaveBeenCalled();
+    expect(handleClick).toHaveBeenCalledTimes(1);
   });
 });

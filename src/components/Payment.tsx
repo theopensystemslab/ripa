@@ -36,7 +36,9 @@ interface ICardDetails {
 export const CardDetails: React.FC<ICardDetails> = ({
   includeSubmit = false
 }) => {
-  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
+  const [successMessageVisible, setSuccessMessageVisible] = React.useState(
+    false
+  );
 
   const formik = useFormik({
     initialValues: {
@@ -59,7 +61,11 @@ export const CardDetails: React.FC<ICardDetails> = ({
     <Box bgcolor="background.paper" py={6}>
       <FocusWithin>
         {({ isFocused, getFocusProps }) => (
-          <form onSubmit={formik.handleSubmit} {...getFocusProps()}>
+          <form
+            data-testid="cardDetailsForm"
+            onSubmit={formik.handleSubmit}
+            {...getFocusProps()}
+          >
             <Box maxWidth={440}>
               <Box pb={1}>
                 <Question inFocus={isFocused}>Enter card details</Question>

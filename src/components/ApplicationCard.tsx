@@ -122,7 +122,11 @@ const ApplicationCard = (
   const classes = useStyles();
   if (!listView) {
     return (
-      <Card className={classes.application} {...props}>
+      <Card
+        data-testid="standardCard"
+        className={classes.application}
+        {...props}
+      >
         <CardMedia className={classes.thumbnail} image={thumbnail} />
         <CardContent className={classes.content}>
           <Box fontSize="subtitle1.fontSize">
@@ -141,7 +145,7 @@ const ApplicationCard = (
           >
             {status}
           </Box>
-          <IconButton onClick={handleClick}>
+          <IconButton data-testid="moreButtonStandard" onClick={handleClick}>
             <MoreVertIcon />
           </IconButton>
           <Menu
@@ -188,13 +192,17 @@ const ApplicationCard = (
     );
   }
   return (
-    <ListItem className={classes.listedApplication}>
+    <ListItem data-testid="listViewCard" className={classes.listedApplication}>
       <ListItemText
         primary={description}
         secondary={`Last edited ${formatDistance(updatedAt, new Date())} ago`}
       />
       <ListItemSecondaryAction>
-        <IconButton onClick={handleClick} color="default">
+        <IconButton
+          data-testid="moreButtonList"
+          onClick={handleClick}
+          color="default"
+        >
           <MoreVertIcon />
         </IconButton>
         <Menu

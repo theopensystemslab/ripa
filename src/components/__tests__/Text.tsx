@@ -1,9 +1,7 @@
-import { cleanup, fireEvent, render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import * as React from "react";
 
 import Text from "../Text";
-
-afterEach(cleanup);
 
 describe("Text Component", () => {
   let title: string;
@@ -123,7 +121,7 @@ describe("Text Component", () => {
       });
       expect(await findByPlaceholderText(placeholder)).toHaveValue(value);
     });
-    it("should have a value if an text is entered", async () => {
+    it("should render number of words remaining", async () => {
       const value =
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
       const { findByText, getByPlaceholderText } = render(
@@ -140,7 +138,53 @@ describe("Text Component", () => {
       fireEvent.change(getByPlaceholderText(placeholder), {
         target: { value }
       });
-      expect(await findByText("0 words Remaining")).toBeInTheDocument();
+      expect(await findByText(/0 words Remaining/i)).toBeInTheDocument();
+    });
+    it("should render FAIL message when submit is enabled and no of words is OUT OF range", async () => {
+      const value =
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+      const { findByText, getByTestId, getByPlaceholderText } = render(
+        <Text
+          title={title}
+          label={label}
+          placeholder={placeholder}
+          multiline={multiline}
+          maxWords={maxWords}
+          name={name}
+          type={type}
+          includeSubmit={true}
+        />
+      );
+      fireEvent.change(getByPlaceholderText(placeholder), {
+        target: { value }
+      });
+      fireEvent.submit(getByTestId("textForm"));
+
+      expect(
+        await findByText(/you exceeded the max number of words allowed!/i)
+      ).toBeInTheDocument();
+    });
+    it("should render success message when submit is enabled and no of words is within range", async () => {
+      const value = "Lorem ipsum dolor sit amet";
+      const { findByText, getByTestId, getByPlaceholderText } = render(
+        <Text
+          title={title}
+          label={label}
+          placeholder={placeholder}
+          multiline={multiline}
+          maxWords={maxWords}
+          name={name}
+          type={type}
+          includeSubmit={true}
+        />
+      );
+      fireEvent.change(getByPlaceholderText(placeholder), {
+        target: { value }
+      });
+      fireEvent.submit(getByTestId("textForm"));
+      expect(
+        await findByText(/form submitted successfully/i)
+      ).toBeInTheDocument();
     });
   });
   describe("of type Email", () => {

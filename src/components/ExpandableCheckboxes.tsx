@@ -68,8 +68,12 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
   required = false,
   includeSubmit = false
 }) => {
-  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
-  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(required);
+  const [successMessageVisible, setSuccessMessageVisible] = React.useState(
+    false
+  );
+  const [submitButtonDisabled, setSubmitButtonDisabled] = React.useState(
+    required
+  );
 
   const formik = useFormik({
     initialValues: {
@@ -89,12 +93,11 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
       }
     },
     onSubmit: (values, { resetForm }) => {
-      console.log(JSON.stringify(values, null, 2));
       setSuccessMessageVisible(true);
       setTimeout(() => {
         resetForm();
         setSuccessMessageVisible(false);
-        setSubmitButtonDisabled(true);
+        setSubmitButtonDisabled(false);
       }, 1000);
     }
   });
@@ -103,7 +106,10 @@ export const ExpandableCheckboxes: React.FC<IExpandableCheckboxes> = ({
     <FocusWithin>
       {({ isFocused, getFocusProps }) => (
         <FocusHandler {...getFocusProps()}>
-          <form onSubmit={callback || formik.handleSubmit}>
+          <form
+            data-testid="expandableForm"
+            onSubmit={callback || formik.handleSubmit}
+          >
             <Box py={3} maxWidth={500}>
               <Box pb={1}>
                 <Question inFocus={isFocused}>{title}</Question>

@@ -3,7 +3,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import CloseIcon from "@material-ui/icons/Close";
 import classNames from "classnames";
-import * as marked from "marked";
+import marked from "marked";
 import * as React from "react";
 
 const useStyles = makeStyles(theme => ({
@@ -73,7 +73,11 @@ const MoreInfo = ({ content, open = false, handleClose }) => {
         }}
       >
         <div className={classes.close}>
-          <IconButton onClick={handleClose} aria-label="Close Panel">
+          <IconButton
+            data-testid="closeBtn"
+            onClick={handleClose}
+            aria-label="Close Panel"
+          >
             <CloseIcon />
           </IconButton>
         </div>

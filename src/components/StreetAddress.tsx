@@ -21,9 +21,11 @@ export const StreetAddress: React.FC<IStreetAddress> = ({
   options,
   includeLookup = false
 }) => {
-  const [errorMessageVisible, setErrorMessageVisible] = useState(false);
-  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
-  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(true);
+  const [errorMessageVisible, setErrorMessageVisible] = React.useState(false);
+  const [successMessageVisible, setSuccessMessageVisible] = React.useState(
+    false
+  );
+  const [submitButtonDisabled, setSubmitButtonDisabled] = React.useState(true);
   const formik = useFormik({
     initialValues: {},
     validate: values => {
@@ -60,7 +62,7 @@ export const StreetAddress: React.FC<IStreetAddress> = ({
         return "";
       case "city":
         return "Town or City";
-      case "county":
+      case "country":
       case "postcode":
         return el;
       default:
@@ -73,7 +75,10 @@ export const StreetAddress: React.FC<IStreetAddress> = ({
       {({ isFocused, getFocusProps }) => (
         <div {...getFocusProps()}>
           <Box py={4} maxWidth={480}>
-            <form onSubmit={formik.handleSubmit}>
+            <form
+              data-testid="streetAddressForm"
+              onSubmit={formik.handleSubmit}
+            >
               <Box mb={1.5}>
                 <Question inFocus={isFocused}>
                   <strong>{title}</strong>

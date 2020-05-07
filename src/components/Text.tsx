@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import * as React from "react";
 import FocusWithin from "react-focus-within";
 
+import Messages from "../shared/components/submit-messages";
 import Question from "./Question";
 
 interface IMinMax {
@@ -46,6 +47,10 @@ export const Text: React.FC<IText> = ({
   },
   includeSubmit = false
 }) => {
+  const [errorMessageVisible, setErrorMessageVisible] = React.useState(false);
+  const [successMessageVisible, setSuccessMessageVisible] = React.useState(
+    false
+  );
   const [count, setCount] = React.useState(0);
   const diff = maxWords - count;
   const formik = useFormik({
@@ -55,8 +60,11 @@ export const Text: React.FC<IText> = ({
     onSubmit: values => {
       if (diff > 0) {
         console.log(JSON.stringify(values, null, 2));
+        setSuccessMessageVisible(true);
+        setErrorMessageVisible(false);
       } else {
-        alert("You exceeded the max number of words allowed!");
+        setSuccessMessageVisible(false);
+        setErrorMessageVisible(true);
       }
     }
   });
@@ -66,7 +74,7 @@ export const Text: React.FC<IText> = ({
       {({ isFocused, getFocusProps }) => (
         <div {...getFocusProps()}>
           <Box py={4} maxWidth={480}>
-            <form onSubmit={formik.handleSubmit}>
+            <form data-testid="textForm" onSubmit={formik.handleSubmit}>
               <Box mb={1.5}>
                 <Question inFocus={isFocused}>{title}</Question>
               </Box>
@@ -115,12 +123,28 @@ export const Text: React.FC<IText> = ({
                     {unit}
                   </Box>
                 )}
+                <div>
+                  {errorMessageVisible && formik.touched ? (
+                    <Messages
+                      type="error"
+                      message="You exceeded the max number of words allowed!"
+                    />
+                  ) : null}
+                </div>
               </Box>
               {includeSubmit && (
                 <Button variant="contained" color="primary" type="submit">
                   Save and Continue
                 </Button>
               )}
+              <div>
+                {successMessageVisible ? (
+                  <Messages
+                    type="success"
+                    message="Form submitted successfully"
+                  />
+                ) : null}
+              </div>
             </form>
           </Box>
         </div>

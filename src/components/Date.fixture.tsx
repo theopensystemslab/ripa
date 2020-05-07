@@ -6,6 +6,7 @@ import Date from "./Date";
 export default (
   <Box bgcolor="background.paper" px={4}>
     <Date
+      includeSubmit={false}
       title="Date"
       type="number"
       name="date"

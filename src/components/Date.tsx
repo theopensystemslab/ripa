@@ -47,9 +47,10 @@ export const Date: React.FC<IDate> = ({
             <Grid container spacing={1}>
               {options.map((el, index) => (
                 <Grid item key={`${el}-${index}`}>
-                  <InputLabel>{el}</InputLabel>
+                  <InputLabel htmlFor={name}>{el}</InputLabel>
                   <Input
                     required
+                    id={name}
                     onChange={formik.handleChange}
                     type={type}
                     name={`${name}-${el}`}

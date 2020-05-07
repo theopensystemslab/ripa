@@ -15,6 +15,7 @@ exports[`Breadcrumbs Component render snapshot 1`] = `
           aria-controls="mobile-menu"
           aria-haspopup="true"
           class="MuiButtonBase-root makeStyles-moreBtn-91"
+          data-testid="stepperButton"
           tabindex="0"
           type="button"
         >

@@ -1,15 +1,16 @@
-import { cleanup, render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import * as React from "react";
 
 import ExpandableCheckboxes from "../ExpandableCheckboxes";
 
-afterEach(cleanup);
-
 describe("Expandable Checkboxes Component", () => {
-  it("render snapshot", () => {
-    const title = "Expandable Checkboxes";
-    const name = "ExpandableCheckboxes";
-    const panelsOptions = [
+  let title: string;
+  let name: string;
+  let panelsOptions: { sectionTitle: string; values: string[] }[];
+  beforeEach(() => {
+    title = "Expandable Checkboxes";
+    name = "ExpandableCheckboxes";
+    panelsOptions = [
       {
         sectionTitle: "section A",
         values: ["Response A1", "Response A2", "Response A3"]
@@ -23,9 +24,52 @@ describe("Expandable Checkboxes Component", () => {
         values: ["Response C1", "Response C2", "Response C3"]
       }
     ];
+  });
+  it("should render success message when submitted and component is not required", async () => {
+    const { getByLabelText, findByText, getByTestId } = render(
+      <ExpandableCheckboxes
+        title={title}
+        name={name}
+        includeSubmit={true}
+        panelsOptions={panelsOptions}
+      />
+    );
+    fireEvent.click(getByLabelText("Response A1"));
+    fireEvent.click(getByLabelText("Response B2"));
+    fireEvent.click(getByLabelText("Response C2"));
+    fireEvent.click(getByLabelText("Response A1"));
+    fireEvent.submit(getByTestId("expandableForm"));
+    expect(await findByText(/form submitted successfully/i)).toBeInTheDocument;
+  });
+  it("should render error message when submitted and component is required", async () => {
+    const { getByLabelText, findByText, getByText, getByTestId } = render(
+      <ExpandableCheckboxes
+        title={title}
+        name={name}
+        required
+        includeSubmit={true}
+        panelsOptions={panelsOptions}
+      />
+    );
+    expect(getByText(/save and continue/i).closest("button")).toHaveAttribute(
+      "disabled"
+    );
+    fireEvent.click(getByLabelText("Response A1"));
+    fireEvent.click(getByLabelText("Response B1"));
+    fireEvent.click(getByLabelText("Response C1"));
+    expect(
+      getByText(/save and continue/i).closest("button")
+    ).not.toHaveAttribute("disabled");
+    fireEvent.submit(getByTestId("expandableForm"));
+    expect(
+      await findByText(/form submitted successfully/i)
+    ).toBeInTheDocument();
+  });
+  it("should render snapshot", () => {
     const { asFragment } = render(
       <ExpandableCheckboxes
         title={title}
+        includeSubmit={true}
         name={name}
         panelsOptions={panelsOptions}
       />

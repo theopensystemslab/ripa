@@ -1,9 +1,7 @@
-import { cleanup, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import * as React from "react";
 
 import Breadcrumbs from "../Breadcrumbs";
-
-afterEach(cleanup);
 
 describe("Breadcrumbs Component", () => {
   it("should render items correctly", () => {
@@ -16,7 +14,7 @@ describe("Breadcrumbs Component", () => {
     ];
     const active = 2;
     const { getByText } = render(<Breadcrumbs active={active} list={list} />);
-    expect(getByText(/Property location/i)).toBeInTheDocument();
+    expect(getByText(/property location/i)).toBeInTheDocument();
   });
 
   it("render snapshot", () => {

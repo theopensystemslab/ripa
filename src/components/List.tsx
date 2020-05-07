@@ -177,7 +177,11 @@ const List = ({ total = false }) => {
                   value={row.dateLastInUse}
                 />
                 <TableCell className={classes.deleteRow}>
-                  <IconButton size="small" onClick={() => deleteRow()}>
+                  <IconButton
+                    data-testid="closebtn"
+                    size="small"
+                    onClick={() => deleteRow()}
+                  >
                     <CloseIcon />
                   </IconButton>
                 </TableCell>
@@ -212,9 +216,12 @@ const List = ({ total = false }) => {
               <MenuItem value="n">No</MenuItem>
             </SelectCell>
             <InputCell
+              inputProps={{ "data-testid": "lastYear" }}
               colSpan={2}
               placeholder="dd / mm / yyyy"
-              onFocus={() => setRowFocus("new")}
+              onFocus={() => {
+                setRowFocus("new");
+              }}
               onBlur={() => {
                 setRowFocus(null);
                 addRow();
