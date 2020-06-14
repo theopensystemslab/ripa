@@ -16,8 +16,8 @@ export const Date = ({ title, type, name, options, inputProps, includeSubmit = f
     });
     return (React.createElement(Box, { py: 4 },
         React.createElement(FocusWithin, null, ({ isFocused, getFocusProps }) => (React.createElement("form", Object.assign({ onSubmit: formik.handleSubmit }, getFocusProps()),
-            React.createElement(Box, { pb: 1 },
-                React.createElement(Question, { inFocus: isFocused }, title)),
+            title && (React.createElement(Box, { pb: 1 },
+                React.createElement(Question, { inFocus: isFocused }, title))),
             React.createElement(Grid, { container: true, spacing: 1 }, options.map((el, index) => (React.createElement(Grid, { item: true, key: `${el}-${index}` },
                 React.createElement(InputLabel, { htmlFor: name }, el),
                 React.createElement(Input, { required: true, id: name, onChange: formik.handleChange, type: type, name: `${name}-${el}`, inputProps: inputProps[el] }))))),

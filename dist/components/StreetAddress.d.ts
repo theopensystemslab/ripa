@@ -1,6 +1,6 @@
 import React from "react";
 interface IStreetAddress {
-    title: string;
+    title?: string;
     type: string;
     options: string[];
     includeLookup?: boolean;

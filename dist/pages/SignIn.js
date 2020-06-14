@@ -13,7 +13,7 @@ const useStyles = makeStyles({
         color: "currentColor"
     }
 });
-const SignIn = () => {
+const SignIn = ({ fullPage }) => {
     const [email, setEmail] = React.useState("");
     const set = useStore(state => state.set);
     const handleSubmit = e => {
@@ -23,9 +23,8 @@ const SignIn = () => {
         });
         window.location.href = "/";
     };
-    const classes = useStyles();
-    return (React.createElement(HVCenterContainer, { verticalCenter: true },
-        React.createElement(Box, { maxWidth: 400 },
+    const signInComponent = () => {
+        return (React.createElement(Box, { maxWidth: 400 },
             React.createElement(Typography, { component: "h1", variant: "h3", gutterBottom: true },
                 React.createElement("strong", null, "Sign in")),
             React.createElement(Box, { pb: 2 },
@@ -44,6 +43,9 @@ const SignIn = () => {
                 React.createElement(Box, { py: 2 },
                     React.createElement(Button, { variant: "contained", type: "submit" }, "Sign in"),
                     React.createElement(Box, { pt: 2 },
-                        React.createElement("a", { href: "#", className: classes.link }, "Forgot your password?")))))));
+                        React.createElement("a", { href: "#", className: classes.link }, "Forgot your password?"))))));
+    };
+    const classes = useStyles();
+    return (React.createElement(React.Fragment, null, fullPage ? (React.createElement(HVCenterContainer, { verticalCenter: true }, signInComponent())) : (signInComponent())));
 };
 export default SignIn;

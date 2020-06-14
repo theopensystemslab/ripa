@@ -4,7 +4,7 @@ interface IMinMax {
     max?: number;
 }
 interface IText {
-    title: string;
+    title?: string;
     type: string;
     name: string;
     multiline?: boolean;

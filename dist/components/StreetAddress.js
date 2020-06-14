@@ -1,11 +1,16 @@
-import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
+import { Box, Button, InputLabel, MenuItem, Select, TextField } from "@material-ui/core";
 import { useFormik } from "formik";
 import React from "react";
 import FocusWithin from "react-focus-within";
 import Messages from "../shared/components/submit-messages";
 import Question from "./Question";
+const nations = [
+    "nation1",
+    "nation2",
+    "nation3",
+    "nation4",
+    "nation5"
+];
 export const StreetAddress = ({ title, type, options, includeLookup = false }) => {
     const [errorMessageVisible, setErrorMessageVisible] = React.useState(false);
     const [successMessageVisible, setSuccessMessageVisible] = React.useState(false);
@@ -45,6 +50,8 @@ export const StreetAddress = ({ title, type, options, includeLookup = false }) =
                 return "";
             case "city":
                 return "Town or City";
+            case "nation":
+                return "nation";
             case "country":
             case "postcode":
                 return el;
@@ -55,12 +62,13 @@ export const StreetAddress = ({ title, type, options, includeLookup = false }) =
     return (React.createElement(FocusWithin, null, ({ isFocused, getFocusProps }) => (React.createElement("div", Object.assign({}, getFocusProps()),
         React.createElement(Box, { py: 4, maxWidth: 480 },
             React.createElement("form", { "data-testid": "streetAddressForm", onSubmit: formik.handleSubmit },
-                React.createElement(Box, { mb: 1.5 },
+                title && (React.createElement(Box, { mb: 1.5 },
                     React.createElement(Question, { inFocus: isFocused },
-                        React.createElement("strong", null, title))),
+                        React.createElement("strong", null, title)))),
                 options.map((el, index) => (React.createElement("div", { key: `${el}-${index}` },
-                    React.createElement(Box, { mb: 2.5 },
-                        React.createElement(TextField, { onChange: formik.handleChange, placeholder: el, label: renderLabels(el), fullWidth: true, value: formik.values[el] || "", type: type, name: el }))))),
+                    React.createElement(Box, { mb: 2.5 }, el === "nation" ? (React.createElement(React.Fragment, null,
+                        React.createElement(InputLabel, { id: "nation-label" }, renderLabels(el)),
+                        React.createElement(Select, { name: el, fullWidth: true, onChange: formik.handleChange, value: formik.values[el] || nations[0], labelId: "nation-label" }, nations.map((x, i) => (React.createElement(MenuItem, { key: i, value: x }, x)))))) : (React.createElement(TextField, { onChange: formik.handleChange, placeholder: el, label: renderLabels(el), fullWidth: true, value: formik.values[el] || "", type: type, name: el })))))),
                 React.createElement(Box, { textAlign: "right" },
                     React.createElement("div", null, errorMessageVisible && formik.touched ? (React.createElement(Messages, { type: "error", message: "Please Fill the Building, Street and Town fields" })) : null),
                     includeLookup && (React.createElement(Button, { type: "submit", disabled: submitButtonDisabled, variant: "contained", color: "primary" }, "Look up address")),

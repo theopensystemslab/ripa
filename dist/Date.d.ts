@@ -1,6 +1,6 @@
 import * as React from "react";
 interface IDate {
-    title: string;
+    title?: string;
     name: string;
     type: string;
     options: string[];
