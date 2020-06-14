@@ -18,6 +18,7 @@ interface IStreetAddress {
   type: string;
   options: string[];
   includeLookup?: boolean;
+  topSpacing?: number;
 }
 const nations: string[] = [
   "nation1",
@@ -30,7 +31,8 @@ export const StreetAddress: React.FC<IStreetAddress> = ({
   title,
   type,
   options,
-  includeLookup = false
+  includeLookup = false,
+  topSpacing
 }) => {
   const [errorMessageVisible, setErrorMessageVisible] = React.useState(false);
   const [successMessageVisible, setSuccessMessageVisible] = React.useState(
@@ -87,7 +89,7 @@ export const StreetAddress: React.FC<IStreetAddress> = ({
     <FocusWithin>
       {({ isFocused, getFocusProps }) => (
         <div {...getFocusProps()}>
-          <Box py={4} maxWidth={480}>
+          <Box py={topSpacing || 4} maxWidth={480}>
             <form
               data-testid="streetAddressForm"
               onSubmit={formik.handleSubmit}

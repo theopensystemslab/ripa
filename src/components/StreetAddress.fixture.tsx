@@ -8,6 +8,7 @@ export default (
     <StreetAddress
       title="Street Address"
       type="text"
+      topSpacing={1}
       options={["building", "street", "city", "country", "nation", "postcode"]}
       includeLookup={false}
     />

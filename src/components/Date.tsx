@@ -15,6 +15,7 @@ interface IDate {
   type: string;
   options: string[];
   inputProps: ILimits;
+  topSpacing?: number;
   includeSubmit?: boolean;
 }
 interface ILimits {
@@ -28,6 +29,7 @@ export const Date: React.FC<IDate> = ({
   name,
   options,
   inputProps,
+  topSpacing,
   includeSubmit = false
 }) => {
   const formik = useFormik({
@@ -37,7 +39,7 @@ export const Date: React.FC<IDate> = ({
     }
   });
   return (
-    <Box py={4}>
+    <Box py={topSpacing || 4}>
       <FocusWithin>
         {({ isFocused, getFocusProps }) => (
           <form onSubmit={formik.handleSubmit} {...getFocusProps()}>

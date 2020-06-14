@@ -17,8 +17,10 @@ const useStyles = makeStyles({
 });
 interface ISignIn {
   fullPage?: boolean;
+  topSpacing?: number;
+  title?: string;
 }
-const SignIn: React.FC<ISignIn> = ({ fullPage }) => {
+const SignIn: React.FC<ISignIn> = ({ fullPage, topSpacing, title }) => {
   const [email, setEmail] = React.useState("");
   const set = useStore(state => state.set);
 
@@ -31,10 +33,12 @@ const SignIn: React.FC<ISignIn> = ({ fullPage }) => {
   };
   const signInComponent = () => {
     return (
-      <Box maxWidth={400}>
-        <Typography component="h1" variant="h3" gutterBottom>
-          <strong>Sign in</strong>
-        </Typography>
+      <Box py={topSpacing} maxWidth={400}>
+        {title && (
+          <Typography component="h1" variant="h3" gutterBottom>
+            <strong>{title}</strong>
+          </Typography>
+        )}
         <Box pb={2}>
           Sign in or{" "}
           <a href="#" className={classes.link}>

@@ -9,6 +9,7 @@ export default (
       includeSubmit={false}
       title="Date"
       type="number"
+      topSpacing={0}
       name="date"
       options={["day", "month", "year"]}
       inputProps={{

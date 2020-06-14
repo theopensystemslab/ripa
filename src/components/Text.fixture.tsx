@@ -7,6 +7,7 @@ export default {
   "Short Text": (
     <Box bgcolor="background.paper" px={4}>
       <Text
+        topSpacing={1}
         title="Short Text Input"
         multiline={false}
         type="text"
@@ -21,6 +22,7 @@ export default {
   "Long Text": (
     <Box bgcolor="background.paper" px={4}>
       <Text
+        topSpacing={1}
         title="Long Text Input"
         multiline
         fullWidth
@@ -37,6 +39,7 @@ export default {
   Email: (
     <Box bgcolor="background.paper" px={4}>
       <Text
+        topSpacing={1}
         title="Email"
         label="Email Address"
         placeholder="you@example.com"
@@ -50,6 +53,7 @@ export default {
   Number: (
     <Box bgcolor="background.paper" px={4}>
       <Text
+        topSpacing={1}
         title="Number"
         label="Number"
         fullWidth={false}

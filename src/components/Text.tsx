@@ -25,6 +25,7 @@ interface IText {
   unit?: string;
   min?: string;
   max?: string;
+  topSpacing?: number;
   maxWords?: number;
   inputProps?: IMinMax;
   includeSubmit?: boolean;
@@ -32,6 +33,7 @@ interface IText {
 
 export const Text: React.FC<IText> = ({
   title,
+  topSpacing,
   label = false,
   fullWidth = true,
   placeholder = "",
@@ -73,7 +75,7 @@ export const Text: React.FC<IText> = ({
     <FocusWithin>
       {({ isFocused, getFocusProps }) => (
         <div {...getFocusProps()}>
-          <Box py={4} maxWidth={480}>
+          <Box py={topSpacing || 4} maxWidth={480}>
             <form data-testid="textForm" onSubmit={formik.handleSubmit}>
               {title && (
                 <Box mb={1.5}>
