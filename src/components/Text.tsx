@@ -14,7 +14,7 @@ interface IMinMax {
   max?: number;
 }
 interface IText {
-  title: string;
+  title?: string;
   type: string;
   name: string;
   multiline?: boolean;
@@ -75,9 +75,11 @@ export const Text: React.FC<IText> = ({
         <div {...getFocusProps()}>
           <Box py={4} maxWidth={480}>
             <form data-testid="textForm" onSubmit={formik.handleSubmit}>
-              <Box mb={1.5}>
-                <Question inFocus={isFocused}>{title}</Question>
-              </Box>
+              {title && (
+                <Box mb={1.5}>
+                  <Question inFocus={isFocused}>{title}</Question>
+                </Box>
+              )}
               <Box>
                 {label && <InputLabel htmlFor={name}>{label}</InputLabel>}
                 <Input

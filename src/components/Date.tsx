@@ -10,7 +10,7 @@ import FocusWithin from "react-focus-within";
 import Question from "./Question";
 
 interface IDate {
-  title: string;
+  title?: string;
   name: string;
   type: string;
   options: string[];
@@ -41,9 +41,11 @@ export const Date: React.FC<IDate> = ({
       <FocusWithin>
         {({ isFocused, getFocusProps }) => (
           <form onSubmit={formik.handleSubmit} {...getFocusProps()}>
-            <Box pb={1}>
-              <Question inFocus={isFocused}>{title}</Question>
-            </Box>
+            {title && (
+              <Box pb={1}>
+                <Question inFocus={isFocused}>{title}</Question>
+              </Box>
+            )}
             <Grid container spacing={1}>
               {options.map((el, index) => (
                 <Grid item key={`${el}-${index}`}>

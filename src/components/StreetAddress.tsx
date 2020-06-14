@@ -1,20 +1,31 @@
-import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
+import {
+  Box,
+  Button,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField
+} from "@material-ui/core";
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React from "react";
 import FocusWithin from "react-focus-within";
 
 import Messages from "../shared/components/submit-messages";
 import Question from "./Question";
 
 interface IStreetAddress {
-  title: string;
+  title?: string;
   type: string;
   options: string[];
   includeLookup?: boolean;
 }
-
+const nations: string[] = [
+  "nation1",
+  "nation2",
+  "nation3",
+  "nation4",
+  "nation5"
+];
 export const StreetAddress: React.FC<IStreetAddress> = ({
   title,
   type,
@@ -62,6 +73,8 @@ export const StreetAddress: React.FC<IStreetAddress> = ({
         return "";
       case "city":
         return "Town or City";
+      case "nation":
+        return "nation";
       case "country":
       case "postcode":
         return el;
@@ -79,23 +92,46 @@ export const StreetAddress: React.FC<IStreetAddress> = ({
               data-testid="streetAddressForm"
               onSubmit={formik.handleSubmit}
             >
-              <Box mb={1.5}>
-                <Question inFocus={isFocused}>
-                  <strong>{title}</strong>
-                </Question>
-              </Box>
+              {title && (
+                <Box mb={1.5}>
+                  <Question inFocus={isFocused}>
+                    <strong>{title}</strong>
+                  </Question>
+                </Box>
+              )}
               {options.map((el, index) => (
                 <div key={`${el}-${index}`}>
                   <Box mb={2.5}>
-                    <TextField
-                      onChange={formik.handleChange}
-                      placeholder={el}
-                      label={renderLabels(el)}
-                      fullWidth
-                      value={formik.values[el] || ""}
-                      type={type}
-                      name={el}
-                    />
+                    {el === "nation" ? (
+                      <>
+                        <InputLabel id="nation-label">
+                          {renderLabels(el)}
+                        </InputLabel>
+                        <Select
+                          name={el}
+                          fullWidth
+                          onChange={formik.handleChange}
+                          value={formik.values[el] || nations[0]}
+                          labelId="nation-label"
+                        >
+                          {nations.map((x, i) => (
+                            <MenuItem key={i} value={x}>
+                              {x}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </>
+                    ) : (
+                      <TextField
+                        onChange={formik.handleChange}
+                        placeholder={el}
+                        label={renderLabels(el)}
+                        fullWidth
+                        value={formik.values[el] || ""}
+                        type={type}
+                        name={el}
+                      />
+                    )}
                   </Box>
                 </div>
               ))}

@@ -8,7 +8,8 @@ export default (
     <StreetAddress
       title="Street Address"
       type="text"
-      options={["building", "street", "city", "country", "postcode"]}
+      options={["building", "street", "city", "country", "nation", "postcode"]}
+      includeLookup={false}
     />
   </Box>
 );

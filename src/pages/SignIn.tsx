@@ -15,8 +15,10 @@ const useStyles = makeStyles({
     color: "currentColor"
   }
 });
-
-const SignIn = () => {
+interface ISignIn {
+  fullPage?: boolean;
+}
+const SignIn: React.FC<ISignIn> = ({ fullPage }) => {
   const [email, setEmail] = React.useState("");
   const set = useStore(state => state.set);
 
@@ -27,9 +29,8 @@ const SignIn = () => {
     });
     window.location.href = "/";
   };
-  const classes = useStyles();
-  return (
-    <HVCenterContainer verticalCenter>
+  const signInComponent = () => {
+    return (
       <Box maxWidth={400}>
         <Typography component="h1" variant="h3" gutterBottom>
           <strong>Sign in</strong>
@@ -67,7 +68,19 @@ const SignIn = () => {
           </Box>
         </form>
       </Box>
-    </HVCenterContainer>
+    );
+  };
+  const classes = useStyles();
+  return (
+    <>
+      {fullPage ? (
+        <HVCenterContainer verticalCenter>
+          {signInComponent()}
+        </HVCenterContainer>
+      ) : (
+        signInComponent()
+      )}
+    </>
   );
 };
 
