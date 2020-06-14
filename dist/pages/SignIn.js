@@ -13,7 +13,7 @@ const useStyles = makeStyles({
         color: "currentColor"
     }
 });
-const SignIn = ({ fullPage }) => {
+const SignIn = ({ fullPage, topSpacing, title }) => {
     const [email, setEmail] = React.useState("");
     const set = useStore(state => state.set);
     const handleSubmit = e => {
@@ -24,9 +24,9 @@ const SignIn = ({ fullPage }) => {
         window.location.href = "/";
     };
     const signInComponent = () => {
-        return (React.createElement(Box, { maxWidth: 400 },
-            React.createElement(Typography, { component: "h1", variant: "h3", gutterBottom: true },
-                React.createElement("strong", null, "Sign in")),
+        return (React.createElement(Box, { py: topSpacing, maxWidth: 400 },
+            title && (React.createElement(Typography, { component: "h1", variant: "h3", gutterBottom: true },
+                React.createElement("strong", null, title))),
             React.createElement(Box, { pb: 2 },
                 "Sign in or",
                 " ",

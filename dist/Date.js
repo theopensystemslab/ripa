@@ -7,14 +7,14 @@ import { useFormik } from "formik";
 import * as React from "react";
 import FocusWithin from "react-focus-within";
 import Question from "./Question";
-export const Date = ({ title, type, name, options, inputProps, includeSubmit = false }) => {
+export const Date = ({ title, type, name, options, inputProps, topSpacing, includeSubmit = false }) => {
     const formik = useFormik({
         initialValues: {},
         onSubmit: values => {
             console.log(JSON.stringify(values, null, 2));
         }
     });
-    return (React.createElement(Box, { py: 4 },
+    return (React.createElement(Box, { py: topSpacing || 4 },
         React.createElement(FocusWithin, null, ({ isFocused, getFocusProps }) => (React.createElement("form", Object.assign({ onSubmit: formik.handleSubmit }, getFocusProps()),
             title && (React.createElement(Box, { pb: 1 },
                 React.createElement(Question, { inFocus: isFocused }, title))),

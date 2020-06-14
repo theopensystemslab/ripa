@@ -7,7 +7,7 @@ import * as React from "react";
 import FocusWithin from "react-focus-within";
 import Messages from "../shared/components/submit-messages";
 import Question from "./Question";
-export const Text = ({ title, label = false, fullWidth = true, placeholder = "", multiline = false, required = false, name = "", type = "", unit = "", maxWords, inputProps = {
+export const Text = ({ title, topSpacing, label = false, fullWidth = true, placeholder = "", multiline = false, required = false, name = "", type = "", unit = "", maxWords, inputProps = {
     min: 0,
     max: Infinity
 }, includeSubmit = false }) => {
@@ -32,7 +32,7 @@ export const Text = ({ title, label = false, fullWidth = true, placeholder = "",
         }
     });
     return (React.createElement(FocusWithin, null, ({ isFocused, getFocusProps }) => (React.createElement("div", Object.assign({}, getFocusProps()),
-        React.createElement(Box, { py: 4, maxWidth: 480 },
+        React.createElement(Box, { py: topSpacing || 4, maxWidth: 480 },
             React.createElement("form", { "data-testid": "textForm", onSubmit: formik.handleSubmit },
                 title && (React.createElement(Box, { mb: 1.5 },
                     React.createElement(Question, { inFocus: isFocused }, title))),

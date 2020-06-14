@@ -15,6 +15,7 @@ interface IText {
     unit?: string;
     min?: string;
     max?: string;
+    topSpacing?: number;
     maxWords?: number;
     inputProps?: IMinMax;
     includeSubmit?: boolean;

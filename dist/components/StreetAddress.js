@@ -11,7 +11,7 @@ const nations = [
     "nation4",
     "nation5"
 ];
-export const StreetAddress = ({ title, type, options, includeLookup = false }) => {
+export const StreetAddress = ({ title, type, options, includeLookup = false, topSpacing }) => {
     const [errorMessageVisible, setErrorMessageVisible] = React.useState(false);
     const [successMessageVisible, setSuccessMessageVisible] = React.useState(false);
     const [submitButtonDisabled, setSubmitButtonDisabled] = React.useState(true);
@@ -60,7 +60,7 @@ export const StreetAddress = ({ title, type, options, includeLookup = false }) =
         }
     };
     return (React.createElement(FocusWithin, null, ({ isFocused, getFocusProps }) => (React.createElement("div", Object.assign({}, getFocusProps()),
-        React.createElement(Box, { py: 4, maxWidth: 480 },
+        React.createElement(Box, { py: topSpacing || 4, maxWidth: 480 },
             React.createElement("form", { "data-testid": "streetAddressForm", onSubmit: formik.handleSubmit },
                 title && (React.createElement(Box, { mb: 1.5 },
                     React.createElement(Question, { inFocus: isFocused },

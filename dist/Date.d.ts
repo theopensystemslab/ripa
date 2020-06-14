@@ -5,6 +5,7 @@ interface IDate {
     type: string;
     options: string[];
     inputProps: ILimits;
+    topSpacing?: number;
     includeSubmit?: boolean;
 }
 interface ILimits {
