@@ -4,7 +4,10 @@ import { Header } from "./Application";
 
 export default (
   <Header
-    team="Council"
+    team={{
+      name: "Plan✕",
+      logo: null
+    }}
     address="30 Lake Road"
     currentUser
     breadcrumbs={[

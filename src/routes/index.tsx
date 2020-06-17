@@ -10,11 +10,12 @@ export type IContext = {
   gqlClient;
   navigation;
   currentUser;
+  team;
 };
 
 const renderNotFound: React.FC<any> = () => <h1>404 - Not Found</h1>;
 
-const Layout = ({ currentUser }) => {
+const Layout = ({ currentUser, team }) => {
   const address = useStore(state => state.data.address);
   const activeStep = useStore(state => state.data.activeStep);
 
@@ -22,6 +23,7 @@ const Layout = ({ currentUser }) => {
     <Application
       currentUser={currentUser}
       address={activeStep > 0 && address.name}
+      team={team}
     >
       <NotFoundBoundary render={renderNotFound}>
         <View />
@@ -32,7 +34,7 @@ const Layout = ({ currentUser }) => {
 
 export default compose(
   withView((req, context: IContext) => (
-    <Layout currentUser={context.currentUser} />
+    <Layout currentUser={context.currentUser} team={context.team} />
   )),
 
   mount({
