@@ -33,12 +33,15 @@ const SignIn: React.FC<ISignIn> = ({ fullPage, topSpacing, title }) => {
   };
   const signInComponent = () => {
     return (
-      <Box py={topSpacing} maxWidth={400}>
-        {title && (
-          <Typography component="h1" variant="h3" gutterBottom>
-            <strong>{title}</strong>
-          </Typography>
-        )}
+      <Box
+        py={topSpacing}
+        maxWidth={400}
+        mx="auto"
+        color="primary.contrastText"
+      >
+        <Typography component="h1" variant="h3" gutterBottom>
+          <strong>Sign in</strong>
+        </Typography>
         <Box pb={2}>
           Sign in or{" "}
           <a href="#" className={classes.link}>
