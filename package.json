@@ -52,12 +52,12 @@
     "zustand": "^2.2.2"
   },
   "peerDependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "formik": "^2.1.2",
     "@material-ui/core": "^4.8.3",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.9.10",
+    "formik": "^2.1.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "react-focus-within": "^2.0.1"
   },
   "devDependencies": {
