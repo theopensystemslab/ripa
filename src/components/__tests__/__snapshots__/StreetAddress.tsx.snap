@@ -4,19 +4,19 @@ exports[`Street Address Component should render snapshot 1`] = `
 <DocumentFragment>
   <div>
     <div
-      class="MuiBox-root MuiBox-root-274"
+      class="MuiBox-root MuiBox-root-23"
     >
       <form
         data-testid="streetAddressForm"
       >
         <div
-          class="MuiBox-root MuiBox-root-275"
+          class="MuiBox-root MuiBox-root-24"
         >
           <div
-            class="makeStyles-root-276"
+            class="makeStyles-root-25"
           >
             <div
-              class="MuiTypography-root makeStyles-question-277 MuiTypography-h4"
+              class="MuiTypography-root makeStyles-question-26 MuiTypography-h4"
             >
               <strong>
                 <strong>
@@ -28,7 +28,7 @@ exports[`Street Address Component should render snapshot 1`] = `
         </div>
         <div>
           <div
-            class="MuiBox-root MuiBox-root-309"
+            class="MuiBox-root MuiBox-root-28"
           >
             <div
               class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -56,7 +56,7 @@ exports[`Street Address Component should render snapshot 1`] = `
         </div>
         <div>
           <div
-            class="MuiBox-root MuiBox-root-367"
+            class="MuiBox-root MuiBox-root-29"
           >
             <div
               class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -78,7 +78,7 @@ exports[`Street Address Component should render snapshot 1`] = `
         </div>
         <div>
           <div
-            class="MuiBox-root MuiBox-root-368"
+            class="MuiBox-root MuiBox-root-30"
           >
             <div
               class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -106,7 +106,7 @@ exports[`Street Address Component should render snapshot 1`] = `
         </div>
         <div>
           <div
-            class="MuiBox-root MuiBox-root-369"
+            class="MuiBox-root MuiBox-root-31"
           >
             <div
               class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -134,7 +134,7 @@ exports[`Street Address Component should render snapshot 1`] = `
         </div>
         <div>
           <div
-            class="MuiBox-root MuiBox-root-370"
+            class="MuiBox-root MuiBox-root-32"
           >
             <div
               class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -161,7 +161,7 @@ exports[`Street Address Component should render snapshot 1`] = `
           </div>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-371"
+          class="MuiBox-root MuiBox-root-33"
         >
           <div />
           <div />

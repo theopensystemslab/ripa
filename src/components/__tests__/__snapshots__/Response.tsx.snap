@@ -6,35 +6,35 @@ exports[`Response Component should render snapshot when image is available 1`] =
     class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-sm-4 MuiGrid-grid-lg-3"
   >
     <button
-      class="MuiButtonBase-root makeStyles-root-104"
+      class="MuiButtonBase-root makeStyles-root-1"
       tabindex="0"
       type="button"
     >
       <div
-        class="makeStyles-buttonContent-111"
+        class="makeStyles-buttonContent-8"
       >
         <div
-          class="makeStyles-imageContainer-105"
+          class="makeStyles-imageContainer-2"
         >
           <img
             src="img.png"
           />
         </div>
         <div
-          class="MuiGrid-root makeStyles-text-109 MuiGrid-container MuiGrid-wrap-xs-nowrap"
+          class="MuiGrid-root makeStyles-text-6 MuiGrid-container MuiGrid-wrap-xs-nowrap"
         >
           <div
-            class="MuiGrid-root makeStyles-key-108 MuiGrid-item"
+            class="MuiGrid-root makeStyles-key-5 MuiGrid-item"
           >
             <p
-              class="MuiTypography-root makeStyles-type-110 MuiTypography-body1 MuiTypography-colorInherit"
+              class="MuiTypography-root makeStyles-type-7 MuiTypography-body1 MuiTypography-colorInherit"
             />
           </div>
           <div
             class="MuiGrid-root MuiGrid-item"
           >
             <p
-              class="MuiTypography-root makeStyles-type-110 MuiTypography-body1 MuiTypography-colorInherit"
+              class="MuiTypography-root makeStyles-type-7 MuiTypography-body1 MuiTypography-colorInherit"
             >
               example text
             </p>
@@ -55,15 +55,15 @@ exports[`Response Component should render snapshot when image is not available 1
     class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
   >
     <button
-      class="MuiButtonBase-root makeStyles-root-258"
+      class="MuiButtonBase-root makeStyles-root-9"
       tabindex="0"
       type="button"
     >
       <div
-        class="MuiBox-root MuiBox-root-266 makeStyles-key-259"
+        class="MuiBox-root MuiBox-root-13 makeStyles-key-10"
       />
       <div
-        class="MuiBox-root MuiBox-root-267 makeStyles-text-261"
+        class="MuiBox-root MuiBox-root-14 makeStyles-text-12"
       >
         example text
       </div>

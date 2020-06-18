@@ -3,18 +3,18 @@
 exports[`Breadcrumbs Component render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root MuiBox-root-76"
+    class="MuiBox-root MuiBox-root-14"
   >
     <div
       class="MuiContainer-root MuiContainer-maxWidthLg"
     >
       <div
-        class="MuiBox-root MuiBox-root-96 makeStyles-root-85"
+        class="MuiBox-root MuiBox-root-26 makeStyles-root-15"
       >
         <button
           aria-controls="mobile-menu"
           aria-haspopup="true"
-          class="MuiButtonBase-root makeStyles-moreBtn-91"
+          class="MuiButtonBase-root makeStyles-moreBtn-21"
           data-testid="stepperButton"
           tabindex="0"
           type="button"

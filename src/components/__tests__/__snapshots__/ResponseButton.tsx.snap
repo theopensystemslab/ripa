@@ -3,17 +3,17 @@
 exports[`Response Button Component should render snapshot when selected is false 1`] = `
 <DocumentFragment>
   <button
-    class="MuiButtonBase-root makeStyles-root-21"
+    class="MuiButtonBase-root makeStyles-root-7"
     tabindex="0"
     type="button"
   >
     <div
-      class="MuiBox-root MuiBox-root-29 makeStyles-key-22"
+      class="MuiBox-root MuiBox-root-11 makeStyles-key-8"
     >
       A
     </div>
     <div
-      class="MuiBox-root MuiBox-root-30 makeStyles-text-24"
+      class="MuiBox-root MuiBox-root-12 makeStyles-text-10"
     >
       inner text
     </div>
@@ -32,12 +32,12 @@ exports[`Response Button Component should render snapshot when selected is true 
     type="button"
   >
     <div
-      class="MuiBox-root MuiBox-root-9 makeStyles-key-2"
+      class="MuiBox-root MuiBox-root-5 makeStyles-key-2"
     >
       A
     </div>
     <div
-      class="MuiBox-root MuiBox-root-10 makeStyles-text-4"
+      class="MuiBox-root MuiBox-root-6 makeStyles-text-4"
     >
       inner text
     </div>

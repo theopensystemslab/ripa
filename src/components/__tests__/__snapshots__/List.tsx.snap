@@ -6,7 +6,7 @@ exports[`List Component with total bar should render snapshot 1`] = `
     class="MuiTableContainer-root"
   >
     <table
-      class="MuiTable-root makeStyles-table-331"
+      class="MuiTable-root makeStyles-table-31"
     >
       <thead
         class="MuiTableHead-root"
@@ -15,7 +15,7 @@ exports[`List Component with total bar should render snapshot 1`] = `
           class="MuiTableRow-root MuiTableRow-head"
         >
           <th
-            class="MuiTableCell-root MuiTableCell-head makeStyles-rowCount-332"
+            class="MuiTableCell-root MuiTableCell-head makeStyles-rowCount-32"
             scope="col"
           />
           <th
@@ -55,16 +55,16 @@ exports[`List Component with total bar should render snapshot 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-rowCount-332"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-rowCount-32"
           >
             1
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-335"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-35"
             colspan="1"
           >
             <div
-              class="MuiInputBase-root makeStyles-input-336"
+              class="MuiInputBase-root makeStyles-input-36"
             >
               <input
                 class="MuiInputBase-input"
@@ -75,11 +75,11 @@ exports[`List Component with total bar should render snapshot 1`] = `
             </div>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-335"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-35"
             colspan="1"
           >
             <div
-              class="MuiInputBase-root makeStyles-input-336 MuiInputBase-adornedEnd"
+              class="MuiInputBase-root makeStyles-input-36 MuiInputBase-adornedEnd"
             >
               <input
                 class="MuiInputBase-input MuiInputBase-inputAdornedEnd"
@@ -96,21 +96,23 @@ exports[`List Component with total bar should render snapshot 1`] = `
             </div>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-335"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-35"
           >
             <div
-              class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-selectInput-337"
+              class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-selectInput-37"
             >
               <div
                 aria-haspopup="listbox"
-                class="MuiSelect-root MuiSelect-select makeStyles-select-338 MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                class="MuiSelect-root MuiSelect-select makeStyles-select-38 MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
                 role="button"
                 tabindex="0"
               >
                 Yes
               </div>
               <input
-                type="hidden"
+                aria-hidden="true"
+                class="MuiSelect-nativeInput"
+                tabindex="-1"
                 value="Yes"
               />
               <svg
@@ -126,11 +128,11 @@ exports[`List Component with total bar should render snapshot 1`] = `
             </div>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-335"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-35"
             colspan="1"
           >
             <div
-              class="MuiInputBase-root makeStyles-input-336"
+              class="MuiInputBase-root makeStyles-input-36"
             >
               <input
                 class="MuiInputBase-input"
@@ -141,7 +143,7 @@ exports[`List Component with total bar should render snapshot 1`] = `
             </div>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-deleteRow-334"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-deleteRow-34"
           >
             <button
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
@@ -173,20 +175,20 @@ exports[`List Component with total bar should render snapshot 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-rowCount-332"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-rowCount-32"
           >
             <div
-              class="MuiBox-root MuiBox-root-430"
+              class="MuiBox-root MuiBox-root-40"
             >
               2
             </div>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-335"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-35"
             colspan="1"
           >
             <div
-              class="MuiInputBase-root makeStyles-input-336"
+              class="MuiInputBase-root makeStyles-input-36"
             >
               <input
                 class="MuiInputBase-input"
@@ -197,11 +199,11 @@ exports[`List Component with total bar should render snapshot 1`] = `
             </div>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-335"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-35"
             colspan="1"
           >
             <div
-              class="MuiInputBase-root makeStyles-input-336 MuiInputBase-adornedEnd"
+              class="MuiInputBase-root makeStyles-input-36 MuiInputBase-adornedEnd"
             >
               <input
                 class="MuiInputBase-input MuiInputBase-inputAdornedEnd"
@@ -218,14 +220,14 @@ exports[`List Component with total bar should render snapshot 1`] = `
             </div>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-335"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-35"
           >
             <div
-              class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-selectInput-337"
+              class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-selectInput-37"
             >
               <div
                 aria-haspopup="listbox"
-                class="MuiSelect-root MuiSelect-select makeStyles-select-338 MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                class="MuiSelect-root MuiSelect-select makeStyles-select-38 MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
                 role="button"
                 tabindex="0"
               >
@@ -234,8 +236,10 @@ exports[`List Component with total bar should render snapshot 1`] = `
                 </span>
               </div>
               <input
+                aria-hidden="true"
+                class="MuiSelect-nativeInput"
                 placeholder="Internal area"
-                type="hidden"
+                tabindex="-1"
                 value=""
               />
               <svg
@@ -251,11 +255,11 @@ exports[`List Component with total bar should render snapshot 1`] = `
             </div>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-335"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-35"
             colspan="2"
           >
             <div
-              class="MuiInputBase-root makeStyles-input-336"
+              class="MuiInputBase-root makeStyles-input-36"
             >
               <input
                 class="MuiInputBase-input"
@@ -275,7 +279,7 @@ exports[`List Component with total bar should render snapshot 1`] = `
           class="MuiTableRow-root MuiTableRow-footer"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-footer makeStyles-rowCount-332"
+            class="MuiTableCell-root MuiTableCell-footer makeStyles-rowCount-32"
           />
           <td
             class="MuiTableCell-root MuiTableCell-footer"
@@ -312,7 +316,7 @@ exports[`List Component without total bar should render snapshot 1`] = `
     class="MuiTableContainer-root"
   >
     <table
-      class="MuiTable-root makeStyles-table-221"
+      class="MuiTable-root makeStyles-table-21"
     >
       <thead
         class="MuiTableHead-root"
@@ -321,7 +325,7 @@ exports[`List Component without total bar should render snapshot 1`] = `
           class="MuiTableRow-root MuiTableRow-head"
         >
           <th
-            class="MuiTableCell-root MuiTableCell-head makeStyles-rowCount-222"
+            class="MuiTableCell-root MuiTableCell-head makeStyles-rowCount-22"
             scope="col"
           />
           <th
@@ -361,16 +365,16 @@ exports[`List Component without total bar should render snapshot 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-rowCount-222"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-rowCount-22"
           >
             1
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-225"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-25"
             colspan="1"
           >
             <div
-              class="MuiInputBase-root makeStyles-input-226"
+              class="MuiInputBase-root makeStyles-input-26"
             >
               <input
                 class="MuiInputBase-input"
@@ -381,11 +385,11 @@ exports[`List Component without total bar should render snapshot 1`] = `
             </div>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-225"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-25"
             colspan="1"
           >
             <div
-              class="MuiInputBase-root makeStyles-input-226 MuiInputBase-adornedEnd"
+              class="MuiInputBase-root makeStyles-input-26 MuiInputBase-adornedEnd"
             >
               <input
                 class="MuiInputBase-input MuiInputBase-inputAdornedEnd"
@@ -402,21 +406,23 @@ exports[`List Component without total bar should render snapshot 1`] = `
             </div>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-225"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-25"
           >
             <div
-              class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-selectInput-227"
+              class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-selectInput-27"
             >
               <div
                 aria-haspopup="listbox"
-                class="MuiSelect-root MuiSelect-select makeStyles-select-228 MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                class="MuiSelect-root MuiSelect-select makeStyles-select-28 MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
                 role="button"
                 tabindex="0"
               >
                 Yes
               </div>
               <input
-                type="hidden"
+                aria-hidden="true"
+                class="MuiSelect-nativeInput"
+                tabindex="-1"
                 value="Yes"
               />
               <svg
@@ -432,11 +438,11 @@ exports[`List Component without total bar should render snapshot 1`] = `
             </div>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-225"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-25"
             colspan="1"
           >
             <div
-              class="MuiInputBase-root makeStyles-input-226"
+              class="MuiInputBase-root makeStyles-input-26"
             >
               <input
                 class="MuiInputBase-input"
@@ -447,7 +453,7 @@ exports[`List Component without total bar should render snapshot 1`] = `
             </div>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-deleteRow-224"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-deleteRow-24"
           >
             <button
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall"
@@ -479,20 +485,20 @@ exports[`List Component without total bar should render snapshot 1`] = `
           class="MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-rowCount-222"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-rowCount-22"
           >
             <div
-              class="MuiBox-root MuiBox-root-320"
+              class="MuiBox-root MuiBox-root-30"
             >
               2
             </div>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-225"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-25"
             colspan="1"
           >
             <div
-              class="MuiInputBase-root makeStyles-input-226"
+              class="MuiInputBase-root makeStyles-input-26"
             >
               <input
                 class="MuiInputBase-input"
@@ -503,11 +509,11 @@ exports[`List Component without total bar should render snapshot 1`] = `
             </div>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-225"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-25"
             colspan="1"
           >
             <div
-              class="MuiInputBase-root makeStyles-input-226 MuiInputBase-adornedEnd"
+              class="MuiInputBase-root makeStyles-input-26 MuiInputBase-adornedEnd"
             >
               <input
                 class="MuiInputBase-input MuiInputBase-inputAdornedEnd"
@@ -524,14 +530,14 @@ exports[`List Component without total bar should render snapshot 1`] = `
             </div>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-225"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-25"
           >
             <div
-              class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-selectInput-227"
+              class="MuiInputBase-root MuiInput-root MuiInput-underline makeStyles-selectInput-27"
             >
               <div
                 aria-haspopup="listbox"
-                class="MuiSelect-root MuiSelect-select makeStyles-select-228 MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                class="MuiSelect-root MuiSelect-select makeStyles-select-28 MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
                 role="button"
                 tabindex="0"
               >
@@ -540,8 +546,10 @@ exports[`List Component without total bar should render snapshot 1`] = `
                 </span>
               </div>
               <input
+                aria-hidden="true"
+                class="MuiSelect-nativeInput"
                 placeholder="Internal area"
-                type="hidden"
+                tabindex="-1"
                 value=""
               />
               <svg
@@ -557,11 +565,11 @@ exports[`List Component without total bar should render snapshot 1`] = `
             </div>
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-225"
+            class="MuiTableCell-root MuiTableCell-body makeStyles-inputCell-25"
             colspan="2"
           >
             <div
-              class="MuiInputBase-root makeStyles-input-226"
+              class="MuiInputBase-root makeStyles-input-26"
             >
               <input
                 class="MuiInputBase-input"

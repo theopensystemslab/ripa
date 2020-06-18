@@ -4,19 +4,19 @@ exports[`Text Component Of type long text should render snapshot 1`] = `
 <DocumentFragment>
   <div>
     <div
-      class="MuiBox-root MuiBox-root-269"
+      class="MuiBox-root MuiBox-root-19"
     >
       <form
         data-testid="textForm"
       >
         <div
-          class="MuiBox-root MuiBox-root-270"
+          class="MuiBox-root MuiBox-root-20"
         >
           <div
-            class="makeStyles-root-271"
+            class="makeStyles-root-21"
           >
             <div
-              class="MuiTypography-root makeStyles-question-272 MuiTypography-h4"
+              class="MuiTypography-root makeStyles-question-22 MuiTypography-h4"
             >
               <strong>
                 test title
@@ -25,7 +25,7 @@ exports[`Text Component Of type long text should render snapshot 1`] = `
           </div>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-304"
+          class="MuiBox-root MuiBox-root-24"
         >
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
@@ -47,7 +47,7 @@ exports[`Text Component Of type long text should render snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiBox-root MuiBox-root-357"
+            class="MuiBox-root MuiBox-root-25"
           >
             <span>
                10 words Remaining 
@@ -66,19 +66,19 @@ exports[`Text Component of type Email should render snapshot 1`] = `
 <DocumentFragment>
   <div>
     <div
-      class="MuiBox-root MuiBox-root-893"
+      class="MuiBox-root MuiBox-root-61"
     >
       <form
         data-testid="textForm"
       >
         <div
-          class="MuiBox-root MuiBox-root-894"
+          class="MuiBox-root MuiBox-root-62"
         >
           <div
-            class="makeStyles-root-895"
+            class="makeStyles-root-63"
           >
             <div
-              class="MuiTypography-root makeStyles-question-896 MuiTypography-h4"
+              class="MuiTypography-root makeStyles-question-64 MuiTypography-h4"
             >
               <strong>
                 test title
@@ -87,7 +87,7 @@ exports[`Text Component of type Email should render snapshot 1`] = `
           </div>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-928"
+          class="MuiBox-root MuiBox-root-66"
         >
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
@@ -123,19 +123,19 @@ exports[`Text Component of type Number should render snapshot 1`] = `
 <DocumentFragment>
   <div>
     <div
-      class="MuiBox-root MuiBox-root-1160"
+      class="MuiBox-root MuiBox-root-79"
     >
       <form
         data-testid="textForm"
       >
         <div
-          class="MuiBox-root MuiBox-root-1161"
+          class="MuiBox-root MuiBox-root-80"
         >
           <div
-            class="makeStyles-root-1162"
+            class="makeStyles-root-81"
           >
             <div
-              class="MuiTypography-root makeStyles-question-1163 MuiTypography-h4"
+              class="MuiTypography-root makeStyles-question-82 MuiTypography-h4"
             >
               <strong>
                 test title
@@ -144,7 +144,7 @@ exports[`Text Component of type Number should render snapshot 1`] = `
           </div>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-1195"
+          class="MuiBox-root MuiBox-root-84"
         >
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
@@ -180,19 +180,19 @@ exports[`Text Component of type short text should render snapshot 1`] = `
 <DocumentFragment>
   <div>
     <div
-      class="MuiBox-root MuiBox-root-2"
+      class="MuiBox-root MuiBox-root-1"
     >
       <form
         data-testid="textForm"
       >
         <div
-          class="MuiBox-root MuiBox-root-3"
+          class="MuiBox-root MuiBox-root-2"
         >
           <div
-            class="makeStyles-root-4"
+            class="makeStyles-root-3"
           >
             <div
-              class="MuiTypography-root makeStyles-question-5 MuiTypography-h4"
+              class="MuiTypography-root makeStyles-question-4 MuiTypography-h4"
             >
               <strong>
                 test title
@@ -201,7 +201,7 @@ exports[`Text Component of type short text should render snapshot 1`] = `
           </div>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-37"
+          class="MuiBox-root MuiBox-root-6"
         >
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"

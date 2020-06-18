@@ -4,20 +4,19 @@ exports[`Styled Checkbox Component should render snapshot 1`] = `
 <DocumentFragment>
   <span
     aria-disabled="false"
-    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-10 MuiCheckbox-root makeStyles-checkBoxRoot-1 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-4 MuiCheckbox-root makeStyles-checkBoxRoot-1 MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
   >
     <span
       class="MuiIconButton-label"
     >
       <input
-        class="PrivateSwitchBase-input-13"
+        class="PrivateSwitchBase-input-7"
         data-indeterminate="false"
         type="checkbox"
         value=""
       />
       <span
         class="makeStyles-icon-2"
-        font-size="default"
       />
     </span>
     <span

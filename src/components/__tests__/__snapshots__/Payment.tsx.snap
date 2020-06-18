@@ -3,22 +3,22 @@
 exports[`Payment Component of type Card Details should render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root MuiBox-root-270"
+    class="MuiBox-root MuiBox-root-16"
   >
     <form
       data-testid="cardDetailsForm"
     >
       <div
-        class="MuiBox-root MuiBox-root-271"
+        class="MuiBox-root MuiBox-root-17"
       >
         <div
-          class="MuiBox-root MuiBox-root-272"
+          class="MuiBox-root MuiBox-root-18"
         >
           <div
-            class="makeStyles-root-273"
+            class="makeStyles-root-19"
           >
             <div
-              class="MuiTypography-root makeStyles-question-274 MuiTypography-h4"
+              class="MuiTypography-root makeStyles-question-20 MuiTypography-h4"
             >
               <strong>
                 Enter card details
@@ -27,7 +27,7 @@ exports[`Payment Component of type Card Details should render snapshot 1`] = `
           </div>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-306"
+          class="MuiBox-root MuiBox-root-22"
         >
           <div
             class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -52,13 +52,13 @@ exports[`Payment Component of type Card Details should render snapshot 1`] = `
             </div>
           </div>
           <div
-            class="MuiBox-root MuiBox-root-364"
+            class="MuiBox-root MuiBox-root-23"
           >
             Accepted credit and debit card types
           </div>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-365"
+          class="MuiBox-root MuiBox-root-24"
         >
           <div
             class="MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom"
@@ -66,7 +66,7 @@ exports[`Payment Component of type Card Details should render snapshot 1`] = `
             Expiry date
           </div>
           <div
-            class="MuiBox-root MuiBox-root-366"
+            class="MuiBox-root MuiBox-root-25"
           >
             <div
               class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-wrap-xs-nowrap MuiGrid-align-items-xs-flex-end"
@@ -101,7 +101,7 @@ exports[`Payment Component of type Card Details should render snapshot 1`] = `
                 class="MuiGrid-root MuiGrid-item"
               >
                 <div
-                  class="MuiBox-root MuiBox-root-470"
+                  class="MuiBox-root MuiBox-root-26"
                 >
                   /
                 </div>
@@ -136,7 +136,7 @@ exports[`Payment Component of type Card Details should render snapshot 1`] = `
           </div>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-471"
+          class="MuiBox-root MuiBox-root-27"
         >
           <div
             class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
@@ -162,7 +162,7 @@ exports[`Payment Component of type Card Details should render snapshot 1`] = `
           </div>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-472"
+          class="MuiBox-root MuiBox-root-28"
         >
           <div
             class="MuiFormControl-root MuiTextField-root"
@@ -197,7 +197,7 @@ exports[`Payment Component of type Card Details should render snapshot 1`] = `
 exports[`Payment Component of type Receipt should render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root MuiBox-root-507"
+    class="MuiBox-root MuiBox-root-31"
   >
     <h5
       class="MuiTypography-root MuiTypography-h5"
@@ -212,7 +212,7 @@ exports[`Payment Component of type Receipt should render snapshot 1`] = `
       </strong>
     </h4>
     <div
-      class="MuiBox-root MuiBox-root-538"
+      class="MuiBox-root MuiBox-root-32"
     >
       It was paid on
       <h6
@@ -228,7 +228,7 @@ exports[`Payment Component of type Receipt should render snapshot 1`] = `
 exports[`Payment Component of type payment should render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root MuiBox-root-34"
+    class="MuiBox-root MuiBox-root-2"
   >
     <p
       class="MuiTypography-root MuiTypography-h5"

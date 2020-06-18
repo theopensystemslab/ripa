@@ -59,25 +59,25 @@ exports[`Application Card Component of type list view should render snapshot 1`]
 exports[`Application Card Component of type standard view should render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiCard-root makeStyles-application-270 MuiPaper-elevation1 MuiPaper-rounded"
+    class="MuiPaper-root MuiCard-root makeStyles-application-32 MuiPaper-elevation1 MuiPaper-rounded"
     data-testid="standardCard"
   >
     <div
-      class="MuiCardMedia-root makeStyles-thumbnail-275"
+      class="MuiCardMedia-root makeStyles-thumbnail-37"
       style="background-image: url(pic.png);"
     />
     <div
-      class="MuiCardContent-root makeStyles-content-274"
+      class="MuiCardContent-root makeStyles-content-36"
     >
       <div
-        class="MuiBox-root MuiBox-root-318"
+        class="MuiBox-root MuiBox-root-46"
       >
         <strong>
           description
         </strong>
       </div>
       <div
-        class="MuiBox-root MuiBox-root-319"
+        class="MuiBox-root MuiBox-root-47"
       >
         Last edited over 50 years ago
       </div>
@@ -86,7 +86,7 @@ exports[`Application Card Component of type standard view should render snapshot
       class="MuiCardActions-root MuiCardActions-spacing"
     >
       <div
-        class="MuiBox-root MuiBox-root-322"
+        class="MuiBox-root MuiBox-root-48"
       >
         Submitted
       </div>

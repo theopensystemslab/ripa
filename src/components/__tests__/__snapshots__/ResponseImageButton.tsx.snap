@@ -3,26 +3,26 @@
 exports[`Response Button Component should render snapshot when selected is false 1`] = `
 <DocumentFragment>
   <button
-    class="MuiButtonBase-root makeStyles-root-145"
+    class="MuiButtonBase-root makeStyles-root-9"
     tabindex="0"
     type="button"
   >
     <div
-      class="makeStyles-buttonContent-152"
+      class="makeStyles-buttonContent-16"
     >
       <div
-        class="makeStyles-imageContainer-146"
+        class="makeStyles-imageContainer-10"
       >
         img.png
       </div>
       <div
-        class="MuiGrid-root makeStyles-text-150 MuiGrid-container MuiGrid-wrap-xs-nowrap"
+        class="MuiGrid-root makeStyles-text-14 MuiGrid-container MuiGrid-wrap-xs-nowrap"
       >
         <div
-          class="MuiGrid-root makeStyles-key-149 MuiGrid-item"
+          class="MuiGrid-root makeStyles-key-13 MuiGrid-item"
         >
           <p
-            class="MuiTypography-root makeStyles-type-151 MuiTypography-body1 MuiTypography-colorInherit"
+            class="MuiTypography-root makeStyles-type-15 MuiTypography-body1 MuiTypography-colorInherit"
           >
             A
           </p>
@@ -31,7 +31,7 @@ exports[`Response Button Component should render snapshot when selected is false
           class="MuiGrid-root MuiGrid-item"
         >
           <p
-            class="MuiTypography-root makeStyles-type-151 MuiTypography-body1 MuiTypography-colorInherit"
+            class="MuiTypography-root makeStyles-type-15 MuiTypography-body1 MuiTypography-colorInherit"
           >
             Inner text
           </p>

@@ -21,8 +21,10 @@ exports[`Select Question Component should render snapshot 1`] = `
         </span>
       </div>
       <input
+        aria-hidden="true"
+        class="MuiSelect-nativeInput"
         name="select"
-        type="hidden"
+        tabindex="-1"
         value=""
       />
       <svg

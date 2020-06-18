@@ -3,17 +3,17 @@
 exports[`Date Component should render snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root MuiBox-root-2"
+    class="MuiBox-root MuiBox-root-1"
   >
     <form>
       <div
-        class="MuiBox-root MuiBox-root-3"
+        class="MuiBox-root MuiBox-root-2"
       >
         <div
-          class="makeStyles-root-4"
+          class="makeStyles-root-3"
         >
           <div
-            class="MuiTypography-root makeStyles-question-5 MuiTypography-h4"
+            class="MuiTypography-root makeStyles-question-4 MuiTypography-h4"
           >
             <strong>
                test title
