@@ -294,7 +294,10 @@ const Section = ({ id }) => {
 
   return (
     <HVCenterContainer light disableScroll>
-      <Link href="/start" className={classes.backLink}>
+      <Link
+        href={`${localStorage.getItem("team")}/start`}
+        className={classes.backLink}
+      >
         <ArrowLeft /> Back
       </Link>
       <Typography variant="h3" component="h1" gutterBottom>

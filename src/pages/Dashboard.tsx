@@ -149,7 +149,10 @@ const Dashboard = ({ applications = [] }) => {
           ))}
           <Grid item xs={12} sm={"auto"}>
             <Box height={"100%"}>
-              <ButtonBase href="/start" className={classes.start}>
+              <ButtonBase
+                href={`/${localStorage.getItem("team")}/start`}
+                className={classes.start}
+              >
                 <Plus size={40} />
                 <Box pt={2} fontSize="h6.fontSize" px={3}>
                   Start a new application

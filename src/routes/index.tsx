@@ -1,4 +1,13 @@
-import { compose, lazy, map, mount, redirect, route, withView } from "navi";
+import {
+  compose,
+  lazy,
+  map,
+  mount,
+  redirect,
+  route,
+  withData,
+  withView
+} from "navi";
 import * as React from "react";
 import { NotFoundBoundary, View } from "react-navi";
 
@@ -33,40 +42,53 @@ const Layout = ({ currentUser, team }) => {
 };
 
 export default compose(
-  withView((req, context: IContext) => (
+  withView((_req, context: IContext) => (
     <Layout currentUser={context.currentUser} team={context.team} />
   )),
 
   mount({
-    "/login": map(async (req, context: IContext) =>
-      context.currentUser
-        ? redirect(
-            req.params.redirectTo
-              ? decodeURIComponent(req.params.redirectTo)
-              : "/"
-          )
-        : route({
-            title: "Login",
-            view: <Login />
-          })
-    ),
+    "/": redirect(`/${localStorage.getItem("team") || "opensystemslab"}`),
 
-    "/logout": map(async (req, context: IContext) => {
+    "/logout": map(() => {
       // context.gqlClient.resetStore();
       // localStorage.removeItem("token");
       api.getState().set(state => {
         state.data = {};
       });
-      return redirect("/login");
+      return redirect(`/${localStorage.getItem("team")}/login`);
     }),
 
-    "*": map(async (req, context: IContext) =>
-      context.currentUser
-        ? lazy(() => import("./authenticated"))
-        : redirect(
-            `/login/?redirectTo=${encodeURIComponent(req.originalUrl)}`,
-            { exact: false }
-          )
+    "/:team": compose(
+      withData(req => ({
+        team: req.params.team
+      })),
+
+      mount({
+        "/login": map(async (req, context: IContext) =>
+          context.currentUser
+            ? redirect(
+                req.params.redirectTo
+                  ? decodeURIComponent(req.params.redirectTo)
+                  : `/${req.params.team}`
+              )
+            : route({
+                title: "Login",
+                view: <Login />
+              })
+        ),
+
+        "*": map(async (req, context: IContext) => {
+          console.log({ req });
+          return context.currentUser
+            ? lazy(() => import("./authenticated"))
+            : (redirect(
+                `/${req.params.team}/login/?redirectTo=${encodeURIComponent(
+                  req.originalUrl
+                )}`,
+                { exact: false }
+              ) as any);
+        })
+      })
     )
   })
 );

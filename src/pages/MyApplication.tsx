@@ -121,7 +121,7 @@ const MyApplication = ({ sections = [] }) => {
             py={1.5}
           >
             <Link
-              href={`/start/${id}`}
+              href={`/${localStorage.getItem("team")}/start/${id}`}
               prefetch={false}
               className={classes.link}
             >
