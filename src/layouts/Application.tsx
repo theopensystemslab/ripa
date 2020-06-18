@@ -10,7 +10,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import ArrowForward from "@material-ui/icons/ArrowForward";
-import CouncilLogo from "@material-ui/icons/EcoOutlined";
 import MenuIcon from "@material-ui/icons/Menu";
 import classNames from "classnames";
 import * as React from "react";
@@ -127,8 +126,17 @@ export const Header = ({
             display="flex"
             alignItems="center"
             px={{ md: 1 }}
+            py={1}
           >
-            <CouncilLogo /> {team}
+            {team.logo ? (
+              <img
+                src={team.logo}
+                alt={`${team.name} logo`}
+                style={{ height: 48 }}
+              />
+            ) : (
+              team.name
+            )}
           </Box>
           {currentUser && (
             <>
@@ -210,13 +218,14 @@ export const Header = ({
 const Application = ({
   children,
   currentUser = false,
-  address = undefined
+  address = undefined,
+  team = { name: "Plan✕", logo: null }
 }) => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
       <Header
-        team="Hampton"
+        team={team}
         currentUser={currentUser}
         address={address}
         breadcrumbs={

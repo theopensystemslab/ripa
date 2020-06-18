@@ -5,6 +5,7 @@ import "./app.scss";
 import { ApolloProvider, useQuery } from "@apollo/react-hooks";
 import { ThemeProvider } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import { createMuiTheme } from "@material-ui/core/styles";
 import ApolloClient, { gql } from "apollo-boost";
 import { Graph } from "graphlib";
 import { createBrowserNavigation } from "navi";
@@ -17,6 +18,7 @@ import { api, useStore } from "./lib/store";
 import routes from "./routes";
 import * as serviceWorker from "./serviceWorker";
 import defaultTheme from "./themes/default";
+import getTeam from "./themes/teams";
 
 const gqlClient = new ApolloClient({
   uri: process.env.REACT_APP_GRAPHQL_URL,
@@ -77,14 +79,35 @@ const InnerApp = () => {
 
 const App = () => {
   const currentUser = useStore(state => state.data.currentUser);
+  const team = getTeam("southwark");
 
   return (
     <ApolloProvider client={gqlClient}>
-      <ThemeProvider theme={defaultTheme}>
+      <ThemeProvider
+        theme={createMuiTheme({
+          ...defaultTheme,
+          palette: {
+            ...defaultTheme.palette,
+            primary: {
+              main: team.theme.primary
+            }
+          },
+          overrides: {
+            ...defaultTheme.overrides,
+            MuiCssBaseline: {
+              "@global": {
+                body: {
+                  backgroundColor: team.theme.primary
+                }
+              }
+            }
+          }
+        })}
+      >
         <CssBaseline />
         <Router
           navigation={navigation}
-          context={{ navigation, gqlClient, currentUser }}
+          context={{ navigation, gqlClient, currentUser, team }}
         >
           <InnerApp />
         </Router>

@@ -1,6 +1,7 @@
 import "typeface-inter";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
+import { createMuiTheme } from "@material-ui/core/styles";
 import ThemeProvider from "@material-ui/styles/ThemeProvider";
 import React from "react";
 import { useValue } from "react-cosmos/fixture";
@@ -19,7 +20,7 @@ const Decorator: React.FC<{ children: any; theme?: string }> = ({
   const [theme, setTheme] = useValue("theme", { defaultValue });
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={createMuiTheme(defaultTheme)}>
       <CssBaseline />
       <header style={{ display: "none" }}>
         <select

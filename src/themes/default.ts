@@ -1,17 +1,13 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 import defaultsDeep from "lodash/defaultsDeep";
 
-// see default values here https://material-ui.com/customization/default-theme
-
 const themePalette = {
   primary: {
-    main: "#038521", // basically black
-    bodyText: "#141414",
-    contrastText: "#fff"
+    main: "#141414",
+    bodyText: "#141414"
   },
   secondary: {
-    main: "#141414",
-    contrastText: "#fff"
+    main: "#141414"
   },
   grey: {
     main: "#999999"
@@ -97,6 +93,13 @@ const _default = {
   },
   overrides: {
     // styling overrides for specific material UI components
+    MuiCssBaseline: {
+      "@global": {
+        body: {
+          backgroundColor: "#141414"
+        }
+      }
+    },
     MuiTypography: {
       root: {
         fontSize: "inherit",
@@ -508,4 +511,4 @@ const _default = {
   }
 };
 
-export default createMuiTheme(defaultsDeep(_default));
+export default defaultsDeep(_default);
