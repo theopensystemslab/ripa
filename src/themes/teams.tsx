@@ -79,7 +79,7 @@ export const Teams: React.FC = () => {
   return (
     <div id="teams">
       {Object.entries(teams)
-        .filter(([, team]) => team.logo)
+        .filter(([key]) => ["default", "canterbury", "scotland"].includes(key))
         .map(([key, team]) => (
           <a href={`/${key}`} key={key}>
             <img src={team.logo} alt={`${team.name} logo`} />
