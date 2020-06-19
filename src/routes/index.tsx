@@ -73,8 +73,9 @@ export default compose(
       })),
 
       mount({
-        "/login": map(async (req, context: IContext) =>
-          context.currentUser
+        "/login": map(async (req, context: IContext) => {
+          console.log(decodeURIComponent(req.params.redirectTo));
+          return context.currentUser
             ? redirect(
                 req.params.redirectTo
                   ? decodeURIComponent(req.params.redirectTo)
@@ -83,11 +84,11 @@ export default compose(
             : route({
                 title: "Login",
                 view: <Login />
-              })
-        ),
+              });
+        }),
 
         "*": map(async (req, context: IContext) => {
-          console.log({ req });
+          console.log(context.currentUser);
           return context.currentUser
             ? lazy(() => import("./authenticated"))
             : (redirect(

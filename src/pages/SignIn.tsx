@@ -29,7 +29,7 @@ const SignIn: React.FC<ISignIn> = ({ fullPage, topSpacing, title }) => {
     set(state => {
       state.data.currentUser = email;
     });
-    window.location.href = "/";
+    window.location.href = `/${localStorage.getItem("team")}`;
   };
   const signInComponent = () => {
     return (

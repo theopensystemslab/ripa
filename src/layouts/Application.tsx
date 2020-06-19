@@ -98,7 +98,13 @@ export const Header = ({
   address = "",
   breadcrumbs = []
 }) => {
-  const nav = [{ text: "My planning applications", link: "/" }, address];
+  const nav = [
+    {
+      text: "My planning applications",
+      link: `/${localStorage.getItem("team")}`
+    },
+    address
+  ];
   const active = useStore(state => state.data.activeStep + 1) || 1;
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -175,7 +181,7 @@ export const Header = ({
                   <MenuItem
                     className={classes.menuItem}
                     component="a"
-                    href="/"
+                    href={`/${localStorage.getItem("team")}`}
                     onClick={handleClose}
                   >
                     <ListItemIcon>
