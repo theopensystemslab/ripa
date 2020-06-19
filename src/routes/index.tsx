@@ -1,4 +1,3 @@
-import sample from "lodash/sample";
 import {
   compose,
   lazy,
@@ -15,7 +14,7 @@ import { NotFoundBoundary, View } from "react-navi";
 import Application from "../layouts/Application";
 import { api, useStore } from "../lib/store";
 import Login from "../pages/SignIn";
-import { teams } from "../themes/teams";
+import { Teams } from "../themes/teams";
 
 export type IContext = {
   gqlClient;
@@ -43,15 +42,21 @@ const Layout = ({ currentUser, team }) => {
   );
 };
 
+const Icons = () => {};
+
 export default compose(
   withView((_req, context: IContext) => (
     <Layout currentUser={context.currentUser} team={context.team} />
   )),
 
   mount({
-    "/": redirect(
-      `/${localStorage.getItem("team") || sample(Object.keys(teams))}`
-    ),
+    "/": route({
+      view: <Teams />
+    }),
+
+    // "/": redirect(
+    //   `/${localStorage.getItem("team") || sample(Object.keys(teams))}`
+    // ),
 
     "/logout": map(() => {
       // context.gqlClient.resetStore();

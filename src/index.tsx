@@ -80,7 +80,7 @@ const InnerApp = () => {
 const App = () => {
   const currentUser = useStore(state => state.data.currentUser);
   localStorage.setItem("team", window.location.pathname.split("/")[1]);
-  const team = getTeam(localStorage.getItem("team"));
+  const team = getTeam(localStorage.getItem("team") || "default");
 
   return (
     <ApolloProvider client={gqlClient}>

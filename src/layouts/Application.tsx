@@ -138,6 +138,7 @@ export const Header = ({
               team.name
             )}
           </Box>
+
           {currentUser && (
             <>
               <Box px={3} flexGrow={1} className={classes.topBarContent}>

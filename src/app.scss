@@ -24,3 +24,26 @@ body {
 label[data-shrink="false"] {
   pointer-events: none;
 }
+
+#teams {
+  margin: 0 auto;
+  padding: 10px 40px;
+  a {
+    display: block;
+    width: 200px;
+    height: 200px;
+    float: left;
+    padding: 20px;
+    opacity: 0.8;
+    transition: opacity 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      opacity: 1;
+    }
+    img {
+      width: 100%;
+    }
+  }
+}
