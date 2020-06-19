@@ -7,14 +7,7 @@ import NorthumberlandLogo from "./logos/Northumberland.svg";
 import ScotlandLogo from "./logos/Scotland.svg";
 import SouthwarkLogo from "./logos/Southwark.svg";
 
-const teams = {
-  opensystemslab: {
-    name: "Open Systems Lab",
-    logo: SouthwarkLogo,
-    theme: {
-      primary: "#000"
-    }
-  },
+export const teams = {
   southwark: {
     name: "Southwark",
     logo: SouthwarkLogo,

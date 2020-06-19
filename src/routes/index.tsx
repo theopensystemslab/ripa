@@ -1,3 +1,4 @@
+import sample from "lodash/sample";
 import {
   compose,
   lazy,
@@ -14,6 +15,7 @@ import { NotFoundBoundary, View } from "react-navi";
 import Application from "../layouts/Application";
 import { api, useStore } from "../lib/store";
 import Login from "../pages/SignIn";
+import { teams } from "../themes/teams";
 
 export type IContext = {
   gqlClient;
@@ -47,7 +49,9 @@ export default compose(
   )),
 
   mount({
-    "/": redirect(`/${localStorage.getItem("team") || "opensystemslab"}`),
+    "/": redirect(
+      `/${localStorage.getItem("team") || sample(Object.keys(teams))}`
+    ),
 
     "/logout": map(() => {
       // context.gqlClient.resetStore();
